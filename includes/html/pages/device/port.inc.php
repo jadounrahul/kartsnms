@@ -4,8 +4,8 @@ use App\Models\Port;
 use App\Models\PortAdsl;
 use App\Models\PortVdsl;
 use App\Plugins\Hooks\PortTabHook;
-use LibreNMS\Util\Rewrite;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Rewrite;
+use KartsNMS\Util\Url;
 
 $vars['view'] = basename($vars['view'] ?? 'graphs');
 
@@ -16,7 +16,7 @@ $port_details = 1;
 $hostname = $device['hostname'];
 $ifname = $port->ifDescr;
 $ifIndex = $port->ifIndex;
-$speed = \LibreNMS\Util\Number::formatSi($port->ifSpeed, 2, 3, 'bps');
+$speed = \KartsNMS\Util\Number::formatSi($port->ifSpeed, 2, 3, 'bps');
 
 $ifalias = $port->getLabel();
 
@@ -99,7 +99,7 @@ if (dbFetchCell("SELECT COUNT(*) FROM `ports_vlans` WHERE `port_id` = '" . $port
 }
 
 // Are there any CBQoS components for this device?
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];         // Re-init array in case it has been declared previously.
 $options['filter']['type'] = ['=', 'Cisco-CBQOS'];
 $components = $component->getComponents($device['device_id'], $options);
@@ -110,7 +110,7 @@ if (count($components) > 0) {
 
 $portModel = Port::find($port->port_id);
 
-if (LibreNMS\Plugins::countHooks('port_container') || \PluginManager::hasHooks(PortTabHook::class, ['port' => $portModel])) {
+if (KartsNMS\Plugins::countHooks('port_container') || \PluginManager::hasHooks(PortTabHook::class, ['port' => $portModel])) {
     // Checking if any plugin implements the port_container. If yes, allow to display the menu_option
     $menu_options['plugins'] = 'Plugins';
 }
@@ -244,7 +244,7 @@ if (dbFetchCell("SELECT COUNT(*) FROM juniAtmVp WHERE port_id = '" . $port->port
     }
 }//end if
 
-if (Auth::user()->hasGlobalAdmin() && \LibreNMS\Config::get('enable_billing') == 1) {
+if (Auth::user()->hasGlobalAdmin() && \KartsNMS\Config::get('enable_billing') == 1) {
     $bills = dbFetchRows('SELECT `bill_id` FROM `bill_ports` WHERE `port_id`=?', [$port->port_id]);
     if (count($bills) === 1) {
         echo "<span style='float: right;'><a href='" . Url::generate(['page' => 'bill', 'bill_id' => $bills[0]['bill_id']]) . "'><i class='fa fa-money fa-lg icon-theme' aria-hidden='true'></i> View Bill</a></span>";

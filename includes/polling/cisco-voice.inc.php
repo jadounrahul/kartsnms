@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Graph Cisco Voice components.
+ * KartsNMS module to Graph Cisco Voice components.
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *

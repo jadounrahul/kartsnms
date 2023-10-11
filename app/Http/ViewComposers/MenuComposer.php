@@ -2,7 +2,7 @@
 /**
  * Menu.php
  *
- * Builds data for LibreNMS menu
+ * Builds data for KartsNMS menu
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -43,9 +43,9 @@ use App\Plugins\Hooks\MenuEntryHook;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use LibreNMS\Config;
-use LibreNMS\Plugins;
-use LibreNMS\Util\ObjectCache;
+use KartsNMS\Config;
+use KartsNMS\Plugins;
+use KartsNMS\Util\ObjectCache;
 use PluginManager;
 
 class MenuComposer
@@ -70,8 +70,8 @@ class MenuComposer
         //TODO: should be handled via CSS Themes
         $vars['navbar'] = in_array($site_style, ['mono']) ? 'navbar-inverse' : '';
 
-        $vars['project_name'] = Config::get('project_name', 'LibreNMS');
-        $vars['title_image'] = Config::get('title_image', "images/librenms_logo_$site_style.svg");
+        $vars['project_name'] = Config::get('project_name', 'KartsNMS');
+        $vars['title_image'] = Config::get('title_image', "images/kartsnms_logo_$site_style.svg");
 
         //Dashboards
         $vars['dashboards'] = Dashboard::select('dashboard_id', 'dashboard_name')->allAvailable($user)->orderBy('dashboard_name')->get();
@@ -124,7 +124,7 @@ class MenuComposer
         $vars['sensor_menu'] = ObjectCache::sensors();
 
         // Wireless menu
-        $wireless_menu_order = array_keys(\LibreNMS\Device\WirelessSensor::getTypes());
+        $wireless_menu_order = array_keys(\KartsNMS\Device\WirelessSensor::getTypes());
         $vars['wireless_menu'] = WirelessSensor::hasAccess($user)
             ->groupBy('sensor_class')
             ->get(['sensor_class'])

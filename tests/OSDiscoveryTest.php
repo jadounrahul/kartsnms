@@ -17,22 +17,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use App\Models\Device;
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Data\Source\NetSnmpQuery;
-use LibreNMS\Modules\Core;
-use LibreNMS\Tests\Mocks\SnmpQueryMock;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\OS;
+use KartsNMS\Config;
+use KartsNMS\Data\Source\NetSnmpQuery;
+use KartsNMS\Modules\Core;
+use KartsNMS\Tests\Mocks\SnmpQueryMock;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\OS;
 
 class OSDiscoveryTest extends TestCase
 {

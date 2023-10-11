@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Alert;
 use App\Models\Eventlog;
 use Illuminate\Http\Request;
-use LibreNMS\Config;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Config;
+use KartsNMS\Enum\Severity;
 
 class AlertController extends Controller
 {

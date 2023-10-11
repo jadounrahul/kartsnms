@@ -1,7 +1,7 @@
 <?php
 
   /*
-   * LibreNMS module to Graph Transcoder Resources in a Cisco Voice Router
+   * KartsNMS module to Graph Transcoder Resources in a Cisco Voice Router
    *
    * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
    *

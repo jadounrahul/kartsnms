@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       http://librenms.org
+ * @link       http://kartsnms.org
  *
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -26,12 +26,12 @@
 namespace App\Actions\Alerts;
 
 use App\Models\Device;
-use LibreNMS\Alert\AlertRules;
+use KartsNMS\Alert\AlertRules;
 
 class RunAlertRulesAction
 {
     /**
-     * @var \LibreNMS\Alert\AlertRules
+     * @var \KartsNMS\Alert\AlertRules
      */
     private $rules;
     /**

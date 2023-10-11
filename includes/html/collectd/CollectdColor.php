@@ -17,10 +17,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  */
 
-namespace LibreNMS;
+namespace KartsNMS;
 
 class CollectdColor
 {
@@ -62,7 +62,7 @@ class CollectdColor
                     }
                 } else {
                     if (is_a($value, 'CollectdColor') ||
-                        is_a($value, 'LibreNMS\CollectdColor')) {
+                        is_a($value, 'KartsNMS\CollectdColor')) {
                         $this->r = $value->r;
                         $this->g = $value->g;
                         $this->b = $value->b;

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2016 Peter TKATCHENKO https://github.com/Peter2121/
  *

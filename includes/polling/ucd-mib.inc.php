@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 // Poll systemStats from UNIX-like hosts running UCD/Net-SNMPd
 // UCD-SNMP-MIB::ssIndex.0 = INTEGER: 1

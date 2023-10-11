@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Database\Console\DumpCommand;
-use LibreNMS\DB\Schema;
+use KartsNMS\DB\Schema;
 use Symfony\Component\Console\Output\StreamOutput;
 use Symfony\Component\Yaml\Yaml;
 

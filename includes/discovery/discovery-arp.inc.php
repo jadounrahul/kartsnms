@@ -1,7 +1,7 @@
 <?php
 
 //
-// LibreNMS module to do device discovery by ARP table contents.
+// KartsNMS module to do device discovery by ARP table contents.
 //
 // Needs to be run after the ARP table discovery, because it uses the
 // data gathered by the ARP table discovery module.  Keeps a cache of
@@ -10,11 +10,11 @@
 //
 // Copyright (c) 2012-2013 Gear Consulting Pty Ltd <http://libertysys.com.au/>
 //
-// Author:  Paul Gear <librenms@libertysys.com.au>
+// Author:  Paul Gear <kartsnms@libertysys.com.au>
 // License: GPLv3
 //
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $hostname = $device['hostname'];
 $deviceid = $device['device_id'];

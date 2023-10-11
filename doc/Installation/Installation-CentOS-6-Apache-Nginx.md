@@ -14,7 +14,7 @@ This host is where the MySQL database runs.  It could be the same
 machine as your network management server (this is the most common
 initial deployment scenario).
 
-> ** Whilst we are working on ensuring LibreNMS is compatible with
+> ** Whilst we are working on ensuring KartsNMS is compatible with
 > MySQL strict mode, for now, please disable this after mysql is
 > installed.
 
@@ -52,15 +52,15 @@ Enter the MySQL/MariaDB root password to enter the command-line interface.
 Create database.
 
 ```sql
-CREATE DATABASE librenms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'librenms'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'localhost';
+CREATE DATABASE kartsnms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'kartsnms'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON kartsnms.* TO 'kartsnms'@'localhost';
 FLUSH PRIVILEGES;
 exit
 ```
 
-Replace `<ip>` above with the IP of the server running LibreNMS.  If
-your database is on the same server as LibreNMS, use `localhost` as
+Replace `<ip>` above with the IP of the server running KartsNMS.  If
+your database is on the same server as KartsNMS, use `localhost` as
 the IP address.
 
 Edit the mysql/mariadb configuration file:
@@ -77,7 +77,7 @@ innodb_file_per_table=1
 
 If you are deploying a separate database server, you also need to
 specify the `bind-address`.  If your MySQL database resides on the
-same server as LibreNMS, you should skip this step.
+same server as KartsNMS, you should skip this step.
 
 ```
 bind-address = <ip>
@@ -131,18 +131,18 @@ own. To apply your changes, run `service snmpd restart` for Centos
 6.x. If you have deployed a separate database server, you will likely
 want to configure snmpd on that host as well.
 
-# Adding the librenms-user for Apache
+# Adding the kartsnms-user for Apache
 
 ```bash
-    useradd librenms -d /opt/librenms -M -r
-    usermod -a -G librenms apache
+    useradd kartsnms -d /opt/kartsnms -M -r
+    usermod -a -G kartsnms apache
 ```
 
-# Adding the librenms-user for Nginx
+# Adding the kartsnms-user for Nginx
 
 ```bash
-    useradd librenms -d /opt/librenms -M -r
-    usermod -a -G librenms nginx
+    useradd kartsnms -d /opt/kartsnms -M -r
+    usermod -a -G kartsnms nginx
 ```
 
 # Using HTTPd (Apache2)
@@ -157,22 +157,22 @@ In `/etc/php.ini`, ensure `date.timezone` is set to your preferred
 time zone.  See <https://php.net/manual/en/timezones.php> for a list of
 supported timezones.  Valid examples are: "America/New York",
 "Australia/Brisbane", "Etc/UTC". Please also ensure that
-`allow_url_fopen` is enabled. Other functions needed for LibreNMS
+`allow_url_fopen` is enabled. Other functions needed for KartsNMS
 include
 `exec,passthru,shell_exec,escapeshellarg,escapeshellcmd,proc_close,proc_open,popen`.
 
-Next, add the following to `/etc/httpd/conf.d/librenms.conf`
+Next, add the following to `/etc/httpd/conf.d/kartsnms.conf`
 
 If you are running Apache below version 2.2.18:
 
 ```apache
 <VirtualHost *:80>
-  DocumentRoot /opt/librenms/html/
-  ServerName  librenms.example.com
-  CustomLog /opt/librenms/logs/access_log combined
-  ErrorLog /opt/librenms/logs/error_log
+  DocumentRoot /opt/kartsnms/html/
+  ServerName  kartsnms.example.com
+  CustomLog /opt/kartsnms/logs/access_log combined
+  ErrorLog /opt/kartsnms/logs/error_log
   AllowEncodedSlashes On
-  <Directory "/opt/librenms/html/">
+  <Directory "/opt/kartsnms/html/">
     AllowOverride All
     Options FollowSymLinks MultiViews
   </Directory>
@@ -183,12 +183,12 @@ If you are running Apache 2.2.18 or higher:
 
 ```apache
 <VirtualHost *:80>
-  DocumentRoot /opt/librenms/html/
-  ServerName  librenms.example.com
-  CustomLog /opt/librenms/logs/access_log combined
-  ErrorLog /opt/librenms/logs/error_log
+  DocumentRoot /opt/kartsnms/html/
+  ServerName  kartsnms.example.com
+  CustomLog /opt/kartsnms/logs/access_log combined
+  ErrorLog /opt/kartsnms/logs/error_log
   AllowEncodedSlashes NoDecode
-  <Directory "/opt/librenms/html/">
+  <Directory "/opt/kartsnms/html/">
     AllowOverride All
     Options FollowSymLinks MultiViews
     Require all granted
@@ -224,19 +224,19 @@ vim /etc/php-fpm.d/www.conf      # At line #12: Change `listen` to `/var/run/php
                                  # At line #39-41: Change the `user` and `group` to `nginx`
 ```
 
-Add configuration for `nginx` at `/etc/nginx/conf.d/librenms.conf`
+Add configuration for `nginx` at `/etc/nginx/conf.d/kartsnms.conf`
 with the following content:
 
 ```nginx
 server {
  listen      80;
- server_name librenms.example.com;
- root        /opt/librenms/html;
+ server_name kartsnms.example.com;
+ root        /opt/kartsnms/html;
  index       index.php;
- access_log  /opt/librenms/logs/access_log;
- error_log   /opt/librenms/logs/error_log;
+ access_log  /opt/kartsnms/logs/access_log;
+ error_log   /opt/kartsnms/logs/error_log;
  location / {
-  try_files $uri $uri/ @librenms;
+  try_files $uri $uri/ @kartsnms;
  }
  location ~ \.php {
   fastcgi_param PATH_INFO $fastcgi_path_info;
@@ -247,7 +247,7 @@ server {
  location ~ /\.ht {
   deny all;
  }
- location @librenms {
+ location @kartsnms {
   rewrite api/v0(.*)$ /api_v0.php/$1 last;
   rewrite ^(.+)$ /index.php/$1 last;
  }
@@ -262,13 +262,13 @@ open in the outbound direction for your server.
 
 ```bash
 cd /opt
-git clone https://github.com/librenms/librenms.git librenms
-cd /opt/librenms
+git clone https://github.com/kartsnms/kartsnms.git kartsnms
+cd /opt/kartsnms
 ```
 
 NOTE: The recommended method of cloning a git repository is HTTPS.  If
 you would like to clone via SSH instead, use the command `git clone
-git@github.com:librenms/librenms.git librenms` instead.
+git@github.com:kartsnms/kartsnms.git kartsnms` instead.
 
 # Prepare the Web Interface
 
@@ -279,17 +279,17 @@ First, create and chown the `rrd` directory and create the `logs` directory
 
 ```bash
 mkdir rrd logs
-chown -R librenms:librenms /opt/librenms
+chown -R kartsnms:kartsnms /opt/kartsnms
 chmod 775 rrd
 ```
 
 If you're planning on running rrdcached, make sure that the path is
-also chmod'ed to 775 and chown'ed to librenms:librenms.
+also chmod'ed to 775 and chown'ed to kartsnms:kartsnms.
 
 **SELinux**
 > if you're using SELinux you need to allow web server user to write into logs directory.
 > semanage tool is a part of policycoreutils-python, so if don't have
-it, you can install it  **Please note that running LibreNMS with
+it, you can install it  **Please note that running KartsNMS with
 SELinux is still experimental and we cannot guarantee that everything
 will be working fine for now.**
 
@@ -298,9 +298,9 @@ will be working fine for now.**
 ```
 
 ```bash
-    semanage fcontext -a -t httpd_sys_content_t '/opt/librenms/logs(/.*)?'
-    semanage fcontext -a -t httpd_sys_rw_content_t '/opt/librenms/logs(/.*)?'
-    restorecon -RFvv /opt/librenms/logs/
+    semanage fcontext -a -t httpd_sys_content_t '/opt/kartsnms/logs(/.*)?'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/opt/kartsnms/logs(/.*)?'
+    restorecon -RFvv /opt/kartsnms/logs/
 ```
 
 Set selinux to allow httpd to sendmail
@@ -384,7 +384,7 @@ leave the angled brackets off.
 # Validate your install
 
 After performing the manual install or web install, be sure to run
-validate.php as root in the librenms directory:
+validate.php as root in the kartsnms directory:
 
 ```
 php validate.php
@@ -410,23 +410,23 @@ php discovery.php -h all
 
 # Create cronjob
 
-The polling method used by LibreNMS is `poller-wrapper.py`, which was
-placed in the public domain by its author.  By default, the LibreNMS
+The polling method used by KartsNMS is `poller-wrapper.py`, which was
+placed in the public domain by its author.  By default, the KartsNMS
 cronjob runs `poller-wrapper.py` with 16 threads.  The current
-LibreNMS recommendation is to use 4 threads per core.  The default if
+KartsNMS recommendation is to use 4 threads per core.  The default if
 no thread count is `16 threads`.
 
-If the thread count needs to be changed, you can do so by editing the cron file (`/etc/cron.d/librenms`).
+If the thread count needs to be changed, you can do so by editing the cron file (`/etc/cron.d/kartsnms`).
  Just add a number after `poller-wrapper.py`, as in the below example:
 
 ```
-/opt/librenms/poller-wrapper.py 12 >> /dev/null 2>&1
+/opt/kartsnms/poller-wrapper.py 12 >> /dev/null 2>&1
 ```
 
 Create the cronjob
 
 ```
-cp dist/librenms.cron /etc/cron.d/librenms
+cp dist/kartsnms.cron /etc/cron.d/kartsnms
 ```
 
 > NOTE: Keep in mind  that cron, by default, only uses a very limited
@@ -434,22 +434,22 @@ cp dist/librenms.cron /etc/cron.d/librenms
 > variables for the cron invocation. Alternatively adding the proxy
 > settings in config.php is possible too. The config.php file will be
 > created in the upcoming steps. Review the following URL after you
-> finished librenms install steps:
+> finished kartsnms install steps:
 > <@= config.site_url =@/Support/Configuration/#proxy-support>
 
 # Copy logrotate config
 
-LibreNMS keeps logs in `/opt/librenms/logs`. Over time these can
+KartsNMS keeps logs in `/opt/kartsnms/logs`. Over time these can
 become large and be rotated out.  To rotate out the old logs you can
 use the provided logrotate config file:
 
 ```
-cp misc/librenms.logrotate /etc/logrotate.d/librenms
+cp misc/kartsnms.logrotate /etc/logrotate.d/kartsnms
 ```
 
 # Daily Updates
 
-LibreNMS performs daily updates by default.  At 00:15 system time
+KartsNMS performs daily updates by default.  At 00:15 system time
 every day, a `git pull --no-edit --quiet` is performed.  You can
 override this default:
 
@@ -465,8 +465,8 @@ appearing in the WebUI. If you don't see data after this, please refer
 to the [FAQ](../Support/FAQ.md) for assistance.
 
 That's it!  You now should be able to log in to
-<http://librenms.example.com/>. Please note that we have not covered
-HTTPS setup in this example, so your LibreNMS install is not secure by
+<http://kartsnms.example.com/>. Please note that we have not covered
+HTTPS setup in this example, so your KartsNMS install is not secure by
 default.  Please do not expose it to the public Internet unless you
 have configured HTTPS and taken appropriate web server hardening
 steps.

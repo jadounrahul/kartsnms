@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LibreNMS\Interfaces\Models\Keyable;
+use KartsNMS\Interfaces\Models\Keyable;
 
 class MplsTunnelArHop extends Model implements Keyable
 {

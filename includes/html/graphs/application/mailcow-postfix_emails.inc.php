@@ -6,10 +6,10 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2020 LibreNMS
+ * @link       https://www.itkarts.com
+ * @copyright  2020 KartsNMS
  * @author     Cercel Valentin <crc@nuamchefazi.ro>
 */
 

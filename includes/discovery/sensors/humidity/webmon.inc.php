@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Dantel Webmon humidity sensor
+ * KartsNMS Dantel Webmon humidity sensor
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,8 +8,8 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2019 Mike Williams
  * @copyright  2019 PipoCanaja
  * @author     Mike Williams <mike@mgww.net>

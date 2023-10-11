@@ -6,14 +6,14 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage pi-hole
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
  * @author     crcro <crc@nuamchefazi.ro>
 */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'pi-hole';
 $options = '-Oqv';

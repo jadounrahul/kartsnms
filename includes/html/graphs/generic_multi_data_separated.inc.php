@@ -6,11 +6,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage graphs
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 require 'includes/html/graphs/common.inc.php';
@@ -43,20 +43,20 @@ if (! isset($multiplier)) {
 }
 
 foreach ($rrd_list as $rrd) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours_in.$iter") || ! \LibreNMS\Config::get("graph_colours.$colours_out.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours_in.$iter") || ! \KartsNMS\Config::get("graph_colours.$colours_out.$iter")) {
         $iter = 0;
     }
 
-    $colour_in = \LibreNMS\Config::get("graph_colours.$colours_in.$iter");
-    $colour_out = \LibreNMS\Config::get("graph_colours.$colours_out.$iter");
+    $colour_in = \KartsNMS\Config::get("graph_colours.$colours_in.$iter");
+    $colour_out = \KartsNMS\Config::get("graph_colours.$colours_out.$iter");
 
     if (isset($rrd['descr_in'])) {
-        $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_in'], $descr_len) . '  In';
+        $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_in'], $descr_len) . '  In';
     } else {
-        $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len) . '  In';
+        $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len) . '  In';
     }
 
-    $descr_out = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_out'], $descr_len) . ' Out';
+    $descr_out = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_out'], $descr_len) . ' Out';
 
     $rrd_options .= ' DEF:' . $in . $i . '=' . $rrd['filename'] . ':' . $ds_in . ':AVERAGE ';
     $rrd_options .= ' DEF:' . $out . $i . '=' . $rrd['filename'] . ':' . $ds_out . ':AVERAGE ';
@@ -117,9 +117,9 @@ if (! $nototal) {
     $rrd_options .= ' CDEF:inbits=inoctets,8,*';
     $rrd_options .= ' CDEF:outbits=outoctets,8,*';
     $rrd_options .= ' CDEF:doutbits=doutoctets,8,*';
-    $rrd_options .= ' VDEF:percentile_in=inbits,' . \LibreNMS\Config::get('percentile_value') . ',PERCENT';
-    $rrd_options .= ' VDEF:percentile_out=outbits,' . \LibreNMS\Config::get('percentile_value') . ',PERCENT';
-    $rrd_options .= ' CDEF:dpercentile_outn=doutbits,' . $stacked['stacked'] . ',* VDEF:dpercentile_outnp=dpercentile_outn,' . \LibreNMS\Config::get('percentile_value') . ',PERCENT CDEF:dpercentile_outnpn=doutbits,doutbits,-,dpercentile_outnp,' . $stacked['stacked'] . ',*,+ VDEF:dpercentile_out=dpercentile_outnpn,FIRST';
+    $rrd_options .= ' VDEF:percentile_in=inbits,' . \KartsNMS\Config::get('percentile_value') . ',PERCENT';
+    $rrd_options .= ' VDEF:percentile_out=outbits,' . \KartsNMS\Config::get('percentile_value') . ',PERCENT';
+    $rrd_options .= ' CDEF:dpercentile_outn=doutbits,' . $stacked['stacked'] . ',* VDEF:dpercentile_outnp=dpercentile_outn,' . \KartsNMS\Config::get('percentile_value') . ',PERCENT CDEF:dpercentile_outnpn=doutbits,doutbits,-,dpercentile_outnp,' . $stacked['stacked'] . ',*,+ VDEF:dpercentile_out=dpercentile_outnpn,FIRST';
     $rrd_options .= ' VDEF:totin=inoctets,TOTAL';
     $rrd_options .= ' VDEF:totout=outoctets,TOTAL';
     $rrd_options .= ' VDEF:tot=octets,TOTAL';

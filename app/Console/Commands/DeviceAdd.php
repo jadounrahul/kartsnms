@@ -8,11 +8,11 @@ use App\Models\Device;
 use App\Models\PollerGroup;
 use Exception;
 use Illuminate\Validation\Rule;
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\Exceptions\HostExistsException;
-use LibreNMS\Exceptions\HostnameExistsException;
-use LibreNMS\Exceptions\HostUnreachableException;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\Exceptions\HostExistsException;
+use KartsNMS\Exceptions\HostnameExistsException;
+use KartsNMS\Exceptions\HostUnreachableException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -37,8 +37,8 @@ class DeviceAdd extends LnmsCommand
         $this->optionValues = [
             'transport' => ['udp', 'udp6', 'tcp', 'tcp6'],
             'port-association-mode' => [PortAssociationMode::class, 'getModes'],
-            'auth-protocol' => [\LibreNMS\SNMPCapabilities::class, 'supportedAuthAlgorithms'],
-            'privacy-protocol' => [\LibreNMS\SNMPCapabilities::class, 'supportedCryptoAlgorithms'],
+            'auth-protocol' => [\KartsNMS\SNMPCapabilities::class, 'supportedAuthAlgorithms'],
+            'privacy-protocol' => [\KartsNMS\SNMPCapabilities::class, 'supportedCryptoAlgorithms'],
         ];
 
         $this->optionDefaults = [

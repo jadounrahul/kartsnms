@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Vlan;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 echo "ArubaOS-CX VLANs:\n";
 

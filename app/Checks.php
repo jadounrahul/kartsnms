@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -31,8 +31,8 @@ use App\Models\User;
 use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use LibreNMS\Config;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Config;
+use KartsNMS\Enum\Severity;
 
 class Checks
 {
@@ -55,7 +55,7 @@ class Checks
             $notifications = Notification::isUnread($user)->where('severity', '>', Severity::Ok->value)->get();
             foreach ($notifications as $notification) {
                 flash()
-                    ->using('template.librenms')
+                    ->using('template.kartsnms')
                     ->title($notification->title)
                     ->addWarning("<a href='notifications/'>$notification->body</a>");
             }
@@ -64,7 +64,7 @@ class Checks
             if (Device::isUp()->where('last_polled', '<=', Carbon::now()->subSeconds($warn_sec))->exists()) {
                 $warn_min = $warn_sec / 60;
                 flash()
-                    ->using('template.librenms')
+                    ->using('template.kartsnms')
                     ->title('Devices unpolled')
                     ->addWarning('<a href="poller/log?filter=unpolled/">It appears as though you have some devices that haven\'t completed polling within the last ' . $warn_min . ' minutes, you may want to check that out :)</a>');
             }

@@ -1,7 +1,7 @@
 <?php
 
 // Polls Apache statistics from script via SNMP
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'apache';
 

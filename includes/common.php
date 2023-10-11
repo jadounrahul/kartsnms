@@ -1,11 +1,11 @@
 <?php
 /*
- * LibreNMS - Common Functions
+ * KartsNMS - Common Functions
  *
  * Original Observium version by: Adam Armstrong, Tom Laermans
  * Copyright (c) 2009-2012 Adam Armstrong.
  *
- * Additions for LibreNMS by: Neil Lathwood, Paul Gear, Tim DuFrane
+ * Additions for KartsNMS by: Neil Lathwood, Paul Gear, Tim DuFrane
  * Copyright (c) 2014-2015 Neil Lathwood <http://www.lathwood.co.uk>
  * Copyright (c) 2014-2015 Gear Consulting Pty Ltd <http://libertysys.com.au/>
  *
@@ -16,12 +16,12 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Config;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\Laravel;
+use KartsNMS\Config;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\Laravel;
 use Symfony\Component\Process\Process;
 
 /**
@@ -211,7 +211,7 @@ function get_device_id_by_port_id($port_id)
 function ifclass($ifOperStatus, $ifAdminStatus)
 {
     // fake a port model
-    return \LibreNMS\Util\Url::portLinkDisplayClass((object) ['ifOperStatus' => $ifOperStatus, 'ifAdminStatus' => $ifAdminStatus]);
+    return \KartsNMS\Util\Url::portLinkDisplayClass((object) ['ifOperStatus' => $ifOperStatus, 'ifAdminStatus' => $ifAdminStatus]);
 }
 
 function device_by_name($name)
@@ -414,7 +414,7 @@ function get_graph_subtypes($type, $device = null)
 
 function generate_smokeping_file($device, $file = '')
 {
-    $smokeping = new \LibreNMS\Util\Smokeping(DeviceCache::get((int) $device['device_id']));
+    $smokeping = new \KartsNMS\Util\Smokeping(DeviceCache::get((int) $device['device_id']));
 
     return $smokeping->generateFileName($file);
 }

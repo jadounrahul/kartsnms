@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use LibreNMS\Interfaces\Models\Keyable;
+use KartsNMS\Interfaces\Models\Keyable;
 
 class PortStp extends PortRelatedModel implements Keyable
 {

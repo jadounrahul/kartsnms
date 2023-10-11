@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk>
  *
@@ -12,7 +12,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Util\Debug;
+use KartsNMS\Util\Debug;
 
 $init_modules = ['web', 'auth', 'alerts'];
 require realpath(__DIR__ . '/..') . '/includes/init.php';

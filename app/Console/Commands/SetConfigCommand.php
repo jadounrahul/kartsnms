@@ -9,10 +9,10 @@ use Illuminate\Support\Str;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\ValidationException;
 use JsonSchema\Validator;
-use LibreNMS\Config;
-use LibreNMS\DB\Eloquent;
-use LibreNMS\Util\DynamicConfig;
-use LibreNMS\Util\OS;
+use KartsNMS\Config;
+use KartsNMS\DB\Eloquent;
+use KartsNMS\Util\DynamicConfig;
+use KartsNMS\Util\OS;
 use Symfony\Component\Console\Input\InputArgument;
 
 class SetConfigCommand extends LnmsCommand
@@ -214,7 +214,7 @@ class SetConfigCommand extends LnmsCommand
     {
         // prep data to be validated
         OS::loadDefinition($os);
-        $os_data = \LibreNMS\Config::get("os.$os");
+        $os_data = \KartsNMS\Config::get("os.$os");
         if ($os_data === null) {
             throw new ValidationException(trans('commands.config:set.errors.invalid_os', ['os' => $os]));
         }

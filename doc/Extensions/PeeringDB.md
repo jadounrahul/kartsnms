@@ -1,6 +1,6 @@
 # PeeringDB Support
 
-LibreNMS has integration with PeeringDB to match up your BGP sessions
+KartsNMS has integration with PeeringDB to match up your BGP sessions
 with the peering exchanges you are connected to.
 
 To enable the integration please do so within the WebUI

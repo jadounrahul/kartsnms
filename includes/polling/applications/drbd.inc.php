@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'drbd';
 $drbd_data = $agent_data['app'][$name][$app->app_instance];

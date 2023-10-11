@@ -6,17 +6,17 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage graphs
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 /* FIXME: is there a central place we can put this? */
 
 $alert_states = [
-    // divined from librenms/alerts.php
+    // divined from kartsnms/alerts.php
     'recovered' => 0,
     'alerted' => 1,
     'acknowledged' => 2,

@@ -51,9 +51,9 @@ can access device variables such as `$device->hostname`, `$device->sysName` and 
 | external | Open link in new window. Default: true |
 | action | Show as action on device list. Default: false |
 
-### Launching Windows programs from the LibreNMS device menu
+### Launching Windows programs from the KartsNMS device menu
 
-You can launch windows programs from links in LibreNMS, but it does take
+You can launch windows programs from links in KartsNMS, but it does take
 some registry entries on the client device. Save the following as winbox.reg, 
 edit for your winbox.exe path and double click to add to your registry.
 

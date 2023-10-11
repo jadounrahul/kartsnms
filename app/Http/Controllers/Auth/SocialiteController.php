@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link https://www.librenms.org
+ * @link https://www.itkarts.com
  */
 
 namespace App\Http\Controllers\Auth;
@@ -30,8 +30,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 use Laravel\Socialite\Facades\Socialite;
-use LibreNMS\Config as LibreNMSConfig;
-use LibreNMS\Exceptions\AuthenticationException;
+use KartsNMS\Config as KartsNMSConfig;
+use KartsNMS\Exceptions\AuthenticationException;
 
 class SocialiteController extends Controller
 {
@@ -106,7 +106,7 @@ class SocialiteController extends Controller
 
     private function register(string $provider): void
     {
-        if (! LibreNMSConfig::get('auth.socialite.register', false)) {
+        if (! KartsNMSConfig::get('auth.socialite.register', false)) {
             return;
         }
 
@@ -165,11 +165,11 @@ class SocialiteController extends Controller
     }
 
     /**
-     * Take the config from Librenms Config, and insert it into Laravel Config
+     * Take the config from Kartsnms Config, and insert it into Laravel Config
      */
     private function injectConfig(): void
     {
-        foreach (LibreNMSConfig::get('auth.socialite.configs', []) as $provider => $config) {
+        foreach (KartsNMSConfig::get('auth.socialite.configs', []) as $provider => $config) {
             Config::set("services.$provider", $config);
 
             // Inject redirect URL automatically if not set

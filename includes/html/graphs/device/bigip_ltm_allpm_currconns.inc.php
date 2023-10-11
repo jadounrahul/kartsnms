@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display F5 LTM Virtual Server Details
+ * KartsNMS module to display F5 LTM Virtual Server Details
  *
  * Copyright (c) 2021 Martin Bergström <martin@bergstr0m.se>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id']);
 
 // We only care about our device id.
@@ -32,7 +32,7 @@ $components = $keep;
 include 'includes/html/graphs/common.inc.php';
 $rrd_options .= ' -l 0 -E ';
 $rrd_options .= " COMMENT:'LTM Pool Members                               Now      Avg      Max\\n'";
-$colours = array_merge(\LibreNMS\Config::get('graph_colours.mixed'), \LibreNMS\Config::get('graph_colours.manycolours'), \LibreNMS\Config::get('graph_colours.manycolours'));
+$colours = array_merge(\KartsNMS\Config::get('graph_colours.mixed'), \KartsNMS\Config::get('graph_colours.manycolours'), \KartsNMS\Config::get('graph_colours.manycolours'));
 $count = 0;
 d_echo('<pre>');
 

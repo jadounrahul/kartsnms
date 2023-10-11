@@ -16,7 +16,7 @@
  * Custom Frontpage
  *
  * @author f0o <f0o@devilcode.org>
- * @copyright 2014 f0o, LibreNMS
+ * @copyright 2014 f0o, KartsNMS
  * @license GPL
  */
 /**
@@ -33,7 +33,7 @@
  */
 $pagetitle[] = 'Geographical Map';
 
-if (\LibreNMS\Config::get('map.engine') == 'leaflet') {
+if (\KartsNMS\Config::get('map.engine') == 'leaflet') {
     require_once 'includes/html/common/worldmap.inc.php';
     echo implode('', $common_output);
 }

@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Port;
-use LibreNMS\Config;
-use LibreNMS\Util\Url;
+use KartsNMS\Config;
+use KartsNMS\Util\Url;
 
 if (empty($vars['view'])) {
     $vars['view'] = trim(Config::get('ports_page_default'), '/');

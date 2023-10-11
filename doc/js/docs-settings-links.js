@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -48,27 +48,27 @@ function isValidHttpUrl(string) {
 
 function promptSettingUrl(e) {
     e.preventDefault();
-    let librenmsUrl = prompt("Enter your LibreNMS URL to get direct settings link.\nNote: This URL is only stored in your browser.", localStorage.getItem('librenms_url') || '');
+    let kartsnmsUrl = prompt("Enter your KartsNMS URL to get direct settings link.\nNote: This URL is only stored in your browser.", localStorage.getItem('kartsnms_url') || '');
 
-    if (! isValidHttpUrl(librenmsUrl)) {
+    if (! isValidHttpUrl(kartsnmsUrl)) {
         alert("Invalid url, must start with http:// or https://")
         return false;
     }
 
-    wrapSettingsLinks(librenmsUrl);
+    wrapSettingsLinks(kartsnmsUrl);
     return false;
 }
 
 
-function wrapSettingsLinks(librenmsUrl) {
+function wrapSettingsLinks(kartsnmsUrl) {
     // fetch saved url
-    if (! librenmsUrl) {
-        librenmsUrl = localStorage.getItem('librenms_url');
+    if (! kartsnmsUrl) {
+        kartsnmsUrl = localStorage.getItem('kartsnms_url');
     }
 
-    if (librenmsUrl) {
-        localStorage.setItem('librenms_url', librenmsUrl);
-        librenmsUrl = librenmsUrl.replace(/\/+$/i, ''); // trim trailing /
+    if (kartsnmsUrl) {
+        localStorage.setItem('kartsnms_url', kartsnmsUrl);
+        kartsnmsUrl = kartsnmsUrl.replace(/\/+$/i, ''); // trim trailing /
         [].forEach.call(document.querySelectorAll('.admonition.setting>.admonition-title'), function (el) {
             if (! el.dataset.setting_url) {
                 el.dataset.setting_url = el.innerText;
@@ -76,7 +76,7 @@ function wrapSettingsLinks(librenmsUrl) {
 
             let link = document.createElement('a');
             link.classList.add('setting-link');
-            link.href = librenmsUrl + '/settings/' + el.dataset.setting_url;
+            link.href = kartsnmsUrl + '/settings/' + el.dataset.setting_url;
             link.innerText = link.href;
             link.target = '_blank';
 
@@ -100,7 +100,7 @@ function wrapSettingsLinks(librenmsUrl) {
             let link = document.createElement('a');
             link.classList.add('setting-link');
             link.onclick = promptSettingUrl;
-            link.innerText = 'https://<your librenms url>/' + el.dataset.setting_url;
+            link.innerText = 'https://<your kartsnms url>/' + el.dataset.setting_url;
             el.innerText = '';
             el.appendChild(link);
         });
@@ -108,5 +108,5 @@ function wrapSettingsLinks(librenmsUrl) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    wrapSettingsLinks(findGetParameter('librenms_url'));
+    wrapSettingsLinks(findGetParameter('kartsnms_url'));
 }, false);

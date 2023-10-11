@@ -1,12 +1,12 @@
 <?php
 
-namespace LibreNMS\Tests\Feature;
+namespace KartsNMS\Tests\Feature;
 
 use App\Models\AlertSchedule;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
-use LibreNMS\Enum\AlertScheduleStatus;
-use LibreNMS\Tests\DBTestCase;
+use KartsNMS\Enum\AlertScheduleStatus;
+use KartsNMS\Tests\DBTestCase;
 
 class TestScheduledMaintenance extends DBTestCase
 {

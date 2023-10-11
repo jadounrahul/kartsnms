@@ -19,19 +19,19 @@
  *
  * Tests JnxDomAlertSet and JnxDomAlertCleared traps from Juniper devices.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 KanREN, Inc
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 use App\Models\Device;
 use App\Models\Port;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Tests\Traits\RequiresDatabase;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Tests\Traits\RequiresDatabase;
 
 class JnxDomLaneAlarmTest extends SnmpTrapTestCase
 {

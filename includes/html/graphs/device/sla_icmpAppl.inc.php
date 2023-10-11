@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Graph Huawei VRP Icmp metrics
+ * KartsNMS module to Graph Huawei VRP Icmp metrics
  *
  * Copyright (c) 2021 PipoCanaja
  *

@@ -18,11 +18,11 @@
 /*
  * GPSD Statistics
  * @author Karl Shea <karl@karlshea.com>
- * @copyright 2016 Karl Shea, LibreNMS
+ * @copyright 2016 Karl Shea, KartsNMS
 * @author Mike Centola <mcentola@appliedengdesign.com>
-* @copyright 2019 Mike Centola, LibreNMS
+* @copyright 2019 Mike Centola, KartsNMS
  * @license GPL
- * @package LibreNMS
+ * @package KartsNMS
  * @subpackage Polling
  */
 
@@ -52,9 +52,9 @@
 }
 */
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\Exceptions\JsonAppParsingFailedException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\Exceptions\JsonAppParsingFailedException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'gpsd';
 

@@ -2,7 +2,7 @@
 /**
  * luminato.inc.php
  *
- * LibreNMS poller module for Teleste Luminato. Modify: ifSpeed ifHighSpeed ifOperStatus
+ * KartsNMS poller module for Teleste Luminato. Modify: ifSpeed ifHighSpeed ifOperStatus
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyrigh   2021 Peca Nesovanovic
  *

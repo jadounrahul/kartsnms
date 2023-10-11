@@ -2,7 +2,7 @@
 
 use Amenadiel\JpGraph\Graph\Graph;
 use Amenadiel\JpGraph\Plot\LinePlot;
-use LibreNMS\Billing;
+use KartsNMS\Billing;
 
 $bill_hist_id = $vars['bill_hist_id'];
 $reducefactor = $vars['reducefactor'];
@@ -58,7 +58,7 @@ function InvertCallback($x)
 
 function YCallback($y)
 {
-    return \LibreNMS\Util\Number::formatSi($y, 2, 0, '');
+    return \KartsNMS\Util\Number::formatSi($y, 2, 0, '');
 }
 
 $graph = new Graph($vars['width'], $vars['height'], $graph_data['graph_name']);

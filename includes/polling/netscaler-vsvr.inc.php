@@ -1,36 +1,36 @@
 <?php
 
-// NS-ROOT-MIB::vsvrFullName."librenms" = STRING: "librenms"
-// NS-ROOT-MIB::vsvrIpAddress."librenms" = IpAddress: 195.78.84.141
-// NS-ROOT-MIB::vsvrPort."librenms" = INTEGER: 80
-// NS-ROOT-MIB::vsvrType."librenms" = INTEGER: http(0)
-// NS-ROOT-MIB::vsvrState."librenms" = INTEGER: up(7)
-// NS-ROOT-MIB::vsvrCurClntConnections."librenms" = Gauge32: 18
-// NS-ROOT-MIB::vsvrCurSrvrConnections."librenms" = Gauge32: 0
-// NS-ROOT-MIB::vsvrSurgeCount."librenms" = Counter32: 0
-// NS-ROOT-MIB::vsvrTotalRequests."librenms" = Counter64: 64532
-// NS-ROOT-MIB::vsvrTotalRequestBytes."librenms" = Counter64: 22223153
-// NS-ROOT-MIB::vsvrTotalResponses."librenms" = Counter64: 64496
-// NS-ROOT-MIB::vsvrTotalResponseBytes."librenms" = Counter64: 1048603453
-// NS-ROOT-MIB::vsvrTotalPktsRecvd."librenms" = Counter64: 629637
-// NS-ROOT-MIB::vsvrTotalPktsSent."librenms" = Counter64: 936237
-// NS-ROOT-MIB::vsvrTotalSynsRecvd."librenms" = Counter64: 43130
-// NS-ROOT-MIB::vsvrCurServicesDown."librenms" = Gauge32: 0
-// NS-ROOT-MIB::vsvrCurServicesUnKnown."librenms" = Gauge32: 0
-// NS-ROOT-MIB::vsvrCurServicesOutOfSvc."librenms" = Gauge32: 0
-// NS-ROOT-MIB::vsvrCurServicesTransToOutOfSvc."librenms" = Gauge32: 0
-// NS-ROOT-MIB::vsvrCurServicesUp."librenms" = Gauge32: 0
-// NS-ROOT-MIB::vsvrTotMiss."librenms" = Counter64: 0
-// NS-ROOT-MIB::vsvrRequestRate."librenms" = STRING: "0"
-// NS-ROOT-MIB::vsvrRxBytesRate."librenms" = STRING: "248"
-// NS-ROOT-MIB::vsvrTxBytesRate."librenms" = STRING: "188"
-// NS-ROOT-MIB::vsvrSynfloodRate."librenms" = STRING: "0"
-// NS-ROOT-MIB::vsvrIp6Address."librenms" = STRING: 0:0:0:0:0:0:0:0
-// NS-ROOT-MIB::vsvrTotHits."librenms" = Counter64: 64537
-// NS-ROOT-MIB::vsvrTotSpillOvers."librenms" = Counter32: 0
-// NS-ROOT-MIB::vsvrTotalClients."librenms" = Counter64: 43023
-// NS-ROOT-MIB::vsvrClientConnOpenRate."librenms" = STRING: "0"
-use LibreNMS\RRD\RrdDefinition;
+// NS-ROOT-MIB::vsvrFullName."kartsnms" = STRING: "kartsnms"
+// NS-ROOT-MIB::vsvrIpAddress."kartsnms" = IpAddress: 195.78.84.141
+// NS-ROOT-MIB::vsvrPort."kartsnms" = INTEGER: 80
+// NS-ROOT-MIB::vsvrType."kartsnms" = INTEGER: http(0)
+// NS-ROOT-MIB::vsvrState."kartsnms" = INTEGER: up(7)
+// NS-ROOT-MIB::vsvrCurClntConnections."kartsnms" = Gauge32: 18
+// NS-ROOT-MIB::vsvrCurSrvrConnections."kartsnms" = Gauge32: 0
+// NS-ROOT-MIB::vsvrSurgeCount."kartsnms" = Counter32: 0
+// NS-ROOT-MIB::vsvrTotalRequests."kartsnms" = Counter64: 64532
+// NS-ROOT-MIB::vsvrTotalRequestBytes."kartsnms" = Counter64: 22223153
+// NS-ROOT-MIB::vsvrTotalResponses."kartsnms" = Counter64: 64496
+// NS-ROOT-MIB::vsvrTotalResponseBytes."kartsnms" = Counter64: 1048603453
+// NS-ROOT-MIB::vsvrTotalPktsRecvd."kartsnms" = Counter64: 629637
+// NS-ROOT-MIB::vsvrTotalPktsSent."kartsnms" = Counter64: 936237
+// NS-ROOT-MIB::vsvrTotalSynsRecvd."kartsnms" = Counter64: 43130
+// NS-ROOT-MIB::vsvrCurServicesDown."kartsnms" = Gauge32: 0
+// NS-ROOT-MIB::vsvrCurServicesUnKnown."kartsnms" = Gauge32: 0
+// NS-ROOT-MIB::vsvrCurServicesOutOfSvc."kartsnms" = Gauge32: 0
+// NS-ROOT-MIB::vsvrCurServicesTransToOutOfSvc."kartsnms" = Gauge32: 0
+// NS-ROOT-MIB::vsvrCurServicesUp."kartsnms" = Gauge32: 0
+// NS-ROOT-MIB::vsvrTotMiss."kartsnms" = Counter64: 0
+// NS-ROOT-MIB::vsvrRequestRate."kartsnms" = STRING: "0"
+// NS-ROOT-MIB::vsvrRxBytesRate."kartsnms" = STRING: "248"
+// NS-ROOT-MIB::vsvrTxBytesRate."kartsnms" = STRING: "188"
+// NS-ROOT-MIB::vsvrSynfloodRate."kartsnms" = STRING: "0"
+// NS-ROOT-MIB::vsvrIp6Address."kartsnms" = STRING: 0:0:0:0:0:0:0:0
+// NS-ROOT-MIB::vsvrTotHits."kartsnms" = Counter64: 64537
+// NS-ROOT-MIB::vsvrTotSpillOvers."kartsnms" = Counter32: 0
+// NS-ROOT-MIB::vsvrTotalClients."kartsnms" = Counter64: 43023
+// NS-ROOT-MIB::vsvrClientConnOpenRate."kartsnms" = STRING: "0"
+use KartsNMS\RRD\RrdDefinition;
 
 if ($device['os'] == 'netscaler') {
     $oids_gauge = [

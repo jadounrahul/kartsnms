@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Anthony F McInerney <bofh80>
  * @author     Anthony F McInerney <afm404@gmail.com>
@@ -28,7 +28,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use LibreNMS\Alerting\QueryBuilderFluentParser;
+use KartsNMS\Alerting\QueryBuilderFluentParser;
 use Log;
 
 class ServiceTemplate extends BaseModel

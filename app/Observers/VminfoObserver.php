@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Models\Eventlog;
 use App\Models\Vminfo;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 class VminfoObserver
 {

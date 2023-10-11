@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\Device;
-use LibreNMS\Alert\AlertRules;
-use LibreNMS\Config;
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Clean;
-use LibreNMS\Util\IP;
+use KartsNMS\Alert\AlertRules;
+use KartsNMS\Config;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Clean;
+use KartsNMS\Util\IP;
 
 function get_service_status($device = null)
 {
@@ -337,5 +337,5 @@ function check_service($command)
  */
 function list_available_services()
 {
-    return \LibreNMS\Services::list();
+    return \KartsNMS\Services::list();
 }

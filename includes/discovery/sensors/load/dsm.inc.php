@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2015 Steve Calvário <https://github.com/Calvario/>
  *

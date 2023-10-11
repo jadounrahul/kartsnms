@@ -23,4 +23,4 @@ $init_modules = [];
 require __DIR__ . '/includes/init.php';
 error_reporting(E_ERROR);
 
-$irc = new LibreNMS\IRCBot();
+$irc = new KartsNMS\IRCBot();

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Telco Systems Temperature Sensor Discovery module
+ * KartsNMS Telco Systems Temperature Sensor Discovery module
  *
  * Copyright (c) 2016 Chris A. Evans <thecityofguanyu@outlook.com>
  *

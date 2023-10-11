@@ -18,13 +18,13 @@
 /*
  * TinyDNS Statistics
  * @author Daniel Preussker <f0o@devilcode.org>
- * @copyright 2015 f0o, LibreNMS
+ * @copyright 2015 f0o, KartsNMS
  * @license GPL
- * @package LibreNMS
+ * @package KartsNMS
  * @subpackage Polling
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'tinydns';
 

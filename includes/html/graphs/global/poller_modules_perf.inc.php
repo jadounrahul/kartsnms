@@ -17,14 +17,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
 use App\Models\Device;
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $scale_min = '0';
 $colors = Config::get('graph_colours.manycolours');
@@ -83,7 +83,7 @@ $rrd_options .= " COMMENT:'\\n'";
 
 foreach ($modules as $index => $module) {
     $color = $colors[$index % count($colors)];
-    $rrd_options .= " AREA:$module#$color:'" . \LibreNMS\Data\Store\Rrd::fixedSafeDescr($module, 16) . "':STACK";
+    $rrd_options .= " AREA:$module#$color:'" . \KartsNMS\Data\Store\Rrd::fixedSafeDescr($module, 16) . "':STACK";
     $rrd_options .= " GPRINT:$module:LAST:%6.2lf  GPRINT:$module:MIN:%6.2lf";
     $rrd_options .= " GPRINT:$module:MAX:%6.2lf  'GPRINT:$module:AVERAGE:%6.2lf'";
     if ($graph_params->visible('previous')) {

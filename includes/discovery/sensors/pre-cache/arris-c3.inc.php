@@ -2,7 +2,7 @@
 /**
  * arris-c3.inc.php
  *
- * LibreNMS os sensor pre-cache module for Arris CMTS
+ * KartsNMS os sensor pre-cache module for Arris CMTS
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 TheGreatDoc
  * @author     TheGreatDoc

@@ -1,10 +1,10 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
- * @package    librenms
+ * @package    kartsnms
  * @subpackage billing
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */

@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Device\Processor;
-use LibreNMS\OS;
+use KartsNMS\Device\Processor;
+use KartsNMS\OS;
 
 Processor::poll(OS::make($device));

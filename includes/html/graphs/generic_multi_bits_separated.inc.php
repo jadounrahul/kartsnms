@@ -6,11 +6,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage graphs
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 require 'includes/html/graphs/common.inc.php';
@@ -54,20 +54,20 @@ if (! isset($multiplier)) {
 }
 
 foreach ($rrd_list as $rrd) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours_in.$iter") || ! \LibreNMS\Config::get("graph_colours.$colours_out.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours_in.$iter") || ! \KartsNMS\Config::get("graph_colours.$colours_out.$iter")) {
         $iter = 0;
     }
 
-    $colour_in = \LibreNMS\Config::get("graph_colours.$colours_in.$iter");
-    $colour_out = \LibreNMS\Config::get("graph_colours.$colours_out.$iter");
+    $colour_in = \KartsNMS\Config::get("graph_colours.$colours_in.$iter");
+    $colour_out = \KartsNMS\Config::get("graph_colours.$colours_out.$iter");
 
     if (! $nodetails) {
         if (isset($rrd['descr_in'])) {
-            $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_in'], $descr_len) . '  In';
+            $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_in'], $descr_len) . '  In';
         } else {
-            $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len) . '  In';
+            $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len) . '  In';
         }
-        $descr_out = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_out'], $descr_len) . ' Out';
+        $descr_out = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr_out'], $descr_len) . ' Out';
     }
 
     $rrd_options .= ' DEF:' . $in . $i . '=' . $rrd['filename'] . ':' . $ds_in . ':AVERAGE ';

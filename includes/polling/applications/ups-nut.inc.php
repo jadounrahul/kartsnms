@@ -13,14 +13,14 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *
-* @package    LibreNMS
-* @link       https://www.librenms.org
+* @package    KartsNMS
+* @link       https://www.itkarts.com
 * @copyright  2016 crcro
 * @author     Cercel Valentin <crc@nuamchefazi.ro>
 *
 */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 // (2016-11-25, R.Morris) ups-nut, try "extend" -> if not, fall back to "exec" support.
 // -> Similar to approach used by Distro, but skip "legacy UCD-MIB shell support"

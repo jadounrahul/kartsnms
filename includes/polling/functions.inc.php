@@ -1,19 +1,19 @@
 <?php
 
 use Illuminate\Support\Str;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Exceptions\JsonAppBase64DecodeException;
-use LibreNMS\Exceptions\JsonAppBlankJsonException;
-use LibreNMS\Exceptions\JsonAppExtendErroredException;
-use LibreNMS\Exceptions\JsonAppGzipDecodeException;
-use LibreNMS\Exceptions\JsonAppMissingKeysException;
-use LibreNMS\Exceptions\JsonAppParsingFailedException;
-use LibreNMS\Exceptions\JsonAppPollingFailedException;
-use LibreNMS\Exceptions\JsonAppWrongVersionException;
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Number;
-use LibreNMS\Util\UserFuncHelper;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Exceptions\JsonAppBase64DecodeException;
+use KartsNMS\Exceptions\JsonAppBlankJsonException;
+use KartsNMS\Exceptions\JsonAppExtendErroredException;
+use KartsNMS\Exceptions\JsonAppGzipDecodeException;
+use KartsNMS\Exceptions\JsonAppMissingKeysException;
+use KartsNMS\Exceptions\JsonAppParsingFailedException;
+use KartsNMS\Exceptions\JsonAppPollingFailedException;
+use KartsNMS\Exceptions\JsonAppWrongVersionException;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Number;
+use KartsNMS\Util\UserFuncHelper;
 
 function bulk_sensor_snmpget($device, $sensors)
 {
@@ -387,7 +387,7 @@ function update_application($app, $response, $metrics = [], $status = '')
  * This is to make it easier polling apps. Also to help standardize around JSON.
  *
  * If the data has is in base64, it will be converted and then gunzipped.
- * https://github.com/librenms/librenms-agent/blob/master/utils/lnms_return_optimizer
+ * https://github.com/kartsnms/kartsnms-agent/blob/master/utils/lnms_return_optimizer
  * May be used to convert output from extends to that via piping it through it.
  *
  * The required keys for the returned JSON are as below.
@@ -441,7 +441,7 @@ function update_application($app, $response, $metrics = [], $status = '')
  */
 function json_app_get($device, $extend, $min_version = 1)
 {
-    $output = snmp_get($device, 'nsExtendOutputFull.' . \LibreNMS\Util\Oid::ofString($extend), '-Oqv', 'NET-SNMP-EXTEND-MIB');
+    $output = snmp_get($device, 'nsExtendOutputFull.' . \KartsNMS\Util\Oid::ofString($extend), '-Oqv', 'NET-SNMP-EXTEND-MIB');
 
     // save for returning if not JSON
     $orig_output = $output;

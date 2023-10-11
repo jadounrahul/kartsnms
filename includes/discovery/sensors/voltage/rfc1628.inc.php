@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Number;
 
 echo 'RFC1628 ';
 

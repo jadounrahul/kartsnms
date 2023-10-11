@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Graph Hardware MTP Resources in a Cisco Voice Router
+ * KartsNMS module to Graph Hardware MTP Resources in a Cisco Voice Router
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if ($device['os_group'] == 'cisco') {
     // Total

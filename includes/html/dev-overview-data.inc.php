@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\Location;
-use LibreNMS\Config;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Util\Clean;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\Time;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Util\Clean;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\Time;
 
 echo "<div class='row'>
       <div class='col-md-12'>
@@ -24,7 +24,7 @@ echo '<script src="js/leaflet.js"></script>';
 echo '<script src="js/L.Control.Locate.min.js"></script>';
 
 if ($device['os'] == 'ios' || $device['os'] == 'iosxe') {
-    \LibreNMS\Util\Rewrite::ciscoHardware($device, false);
+    \KartsNMS\Util\Rewrite::ciscoHardware($device, false);
 }
 
 if ($device['features']) {

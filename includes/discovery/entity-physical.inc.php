@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (Config::get('enable_inventory')) {
     // Legacy entPhysical - junos/timos/cisco

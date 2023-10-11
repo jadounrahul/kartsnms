@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -27,7 +27,7 @@ namespace App\Http\Controllers\Widgets;
 
 use App\Models\Device;
 use Illuminate\Http\Request;
-use LibreNMS\DB\Eloquent;
+use KartsNMS\DB\Eloquent;
 
 class DeviceTypeController extends WidgetController
 {
@@ -61,7 +61,7 @@ class DeviceTypeController extends WidgetController
 
         $count = 0;
         $device_types = [];
-        foreach (\LibreNMS\Config::get('device_types') as $device_type) {
+        foreach (\KartsNMS\Config::get('device_types') as $device_type) {
             $count++;
             $device_types[] = [
                 'type' => $device_type['type'],

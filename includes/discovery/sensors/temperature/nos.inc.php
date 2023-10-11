@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module for Brocade NOS temperature sensor
+ * KartsNMS module for Brocade NOS temperature sensor
  *
  * Copyright (c) 2016 Maxence POULAIN <maxence.poulain@bsonetwork.com>
  *

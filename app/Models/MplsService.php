@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use LibreNMS\Interfaces\Models\Keyable;
+use KartsNMS\Interfaces\Models\Keyable;
 
 class MplsService extends DeviceRelatedModel implements Keyable
 {

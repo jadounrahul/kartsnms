@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS Network Management and Monitoring System
+ * KartsNMS Network Management and Monitoring System
  * Copyright (C) 2006-2011, Observium Developers - http://www.observium.org
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,15 +16,15 @@ use App\Models\Ipv6Address;
 use App\Models\Ipv6Network;
 use App\Models\Port;
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Device\YamlDiscovery;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Exceptions\HostExistsException;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\OS;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\IPv6;
-use LibreNMS\Util\UserFuncHelper;
+use KartsNMS\Config;
+use KartsNMS\Device\YamlDiscovery;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Exceptions\HostExistsException;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\OS;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\IPv6;
+use KartsNMS\Util\UserFuncHelper;
 
 function discover_new_device($hostname, $device = [], $method = '', $interface = '')
 {
@@ -38,7 +38,7 @@ function discover_new_device($hostname, $device = [], $method = '', $interface =
 
             return false;
         }
-    } elseif (\LibreNMS\Util\Validate::hostname($hostname)) {
+    } elseif (\KartsNMS\Util\Validate::hostname($hostname)) {
         if ($mydomain = Config::get('mydomain')) {
             $full_host = rtrim($hostname, '.') . '.' . $mydomain;
             if (isDomainResolves($full_host)) {
@@ -122,7 +122,7 @@ function discover_device(&$device, $force_module = false)
     // Start counting device poll time
     echo $device['hostname'] . ' ' . $device['device_id'] . ' ' . $device['os'] . ' ';
 
-    $helper = new \LibreNMS\Polling\ConnectivityHelper(DeviceCache::getPrimary());
+    $helper = new \KartsNMS\Polling\ConnectivityHelper(DeviceCache::getPrimary());
 
     if (! $helper->isUp()) {
         return false;
@@ -1273,7 +1273,7 @@ function find_device_id($name = '', $ip = '', $mac_address = '')
     $where = [];
     $params = [];
 
-    if ($name && \LibreNMS\Util\Validate::hostname($name)) {
+    if ($name && \KartsNMS\Util\Validate::hostname($name)) {
         $where[] = '`hostname`=?';
         $params[] = $name;
 

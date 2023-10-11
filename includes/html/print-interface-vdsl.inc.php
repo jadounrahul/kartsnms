@@ -3,8 +3,8 @@
 // This file prints a table row for each interface
 use app\Models\Ipv4Address;
 use app\Models\Ipv6Address;
-use LibreNMS\Config;
-use LibreNMS\Util\IP;
+use KartsNMS\Config;
+use KartsNMS\Util\IP;
 
 $port['device_id'] = $device['device_id'];
 $port['hostname'] = $device['hostname'];
@@ -29,7 +29,7 @@ echo "<tr style=\"background-color: $row_colour; padding: 5px;\" valign=top onmo
  <td valign=top width=350>";
 echo '        <span class=list-large>
               ' . generate_port_link($port, $port['ifIndex'] . '. ' . $port['label']) . '
-           </span><br /><span class=interface-desc>' . \LibreNMS\Util\Clean::html($port['ifAlias'], []) . '</span>';
+           </span><br /><span class=interface-desc>' . \KartsNMS\Util\Clean::html($port['ifAlias'], []) . '</span>';
 
 if ($port['ifAlias']) {
     echo '<br />';
@@ -55,7 +55,7 @@ $height = '40';
 $from = Config::get('time.day');
 
 echo '</td><td width=135>';
-echo \LibreNMS\Util\Number::formatSi($port['ifInOctets_rate'] * 8, 2, 3, 'bps') . " <i class='fa fa-arrows-v fa-lg icon-theme' aria-hidden='true'></i> " . \LibreNMS\Util\Number::formatSi($port['ifOutOctets_rate'] * 8, 2, 3, 'bps');
+echo \KartsNMS\Util\Number::formatSi($port['ifInOctets_rate'] * 8, 2, 3, 'bps') . " <i class='fa fa-arrows-v fa-lg icon-theme' aria-hidden='true'></i> " . \KartsNMS\Util\Number::formatSi($port['ifOutOctets_rate'] * 8, 2, 3, 'bps');
 echo '<br />';
 $port['graph_type'] = 'port_bits';
 echo generate_port_link(
@@ -65,7 +65,7 @@ echo generate_port_link(
 );
 
 echo '</td><td width=135>';
-echo '' . \LibreNMS\Util\Number::formatSi($port['xdsl2ChStatusActDataRateXtur'], 2, 3, 'bps') . '/' . \LibreNMS\Util\Number::formatSi($port['xdsl2ChStatusActDataRateXtuc'], 2, 3, 'bps');
+echo '' . \KartsNMS\Util\Number::formatSi($port['xdsl2ChStatusActDataRateXtur'], 2, 3, 'bps') . '/' . \KartsNMS\Util\Number::formatSi($port['xdsl2ChStatusActDataRateXtuc'], 2, 3, 'bps');
 echo '<br />';
 $port['graph_type'] = 'port_vdsl_speed';
 echo generate_port_link(
@@ -75,7 +75,7 @@ echo generate_port_link(
 );
 
 echo '</td><td width=135>';
-echo '' . \LibreNMS\Util\Number::formatSi($port['xdsl2LineStatusAttainableRateDs'], 2, 3, 'bps') . '/' . \LibreNMS\Util\Number::formatSi($port['xdsl2LineStatusAttainableRateUs'], 2, 3, 'bps');
+echo '' . \KartsNMS\Util\Number::formatSi($port['xdsl2LineStatusAttainableRateDs'], 2, 3, 'bps') . '/' . \KartsNMS\Util\Number::formatSi($port['xdsl2LineStatusAttainableRateUs'], 2, 3, 'bps');
 echo '<br />';
 $port['graph_type'] = 'port_vdsl_attainable';
 echo generate_port_link(

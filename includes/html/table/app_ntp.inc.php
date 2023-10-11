@@ -1,6 +1,6 @@
 <?php
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['ignore'] = ['=', 0];
 $options['type'] = 'ntp';

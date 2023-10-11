@@ -5,8 +5,8 @@ namespace App\Console\Commands;
 use App\Console\LnmsCommand;
 use App\Polling\Measure\MeasurementManager;
 use Illuminate\Database\QueryException;
-use LibreNMS\Config;
-use LibreNMS\Poller;
+use KartsNMS\Config;
+use KartsNMS\Poller;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -39,7 +39,7 @@ class DevicePoll extends LnmsCommand
         }
 
         try {
-            /** @var \LibreNMS\Poller $poller */
+            /** @var \KartsNMS\Poller $poller */
             $poller = app(Poller::class, ['device_spec' => $this->argument('device spec'), 'module_override' => explode(',', $this->option('modules'))]);
             $polled = $poller->poll();
 

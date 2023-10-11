@@ -16,15 +16,15 @@
   - You should have received a copy of the GNU General Public License
   - along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -
-  - @package    LibreNMS
-  - @link       http://librenms.org
+  - @package    KartsNMS
+  - @link       http://kartsnms.org
   - @copyright  2021 Tony Murray
   - @author     Tony Murray <murraytony@gmail.com>
   -->
 
 <template>
     <div>
-        <librenms-select class="form-control"
+        <kartsnms-select class="form-control"
                 :value="value"
                 :route-name="'ajax.select.' + this.options.target"
                 :placeholder="this.options.placeholder"
@@ -33,17 +33,17 @@
                 :disabled="disabled"
                 @change="$emit('change', $event)"
         >
-        </librenms-select>
+        </kartsnms-select>
     </div>
 </template>
 
 <script>
 import BaseSetting from "./BaseSetting";
-import LibrenmsSelect from "./LibrenmsSelect.vue";
+import KartsnmsSelect from "./KartsnmsSelect.vue";
 
 export default {
     name: "SettingSelectDynamic",
-    components: {LibrenmsSelect},
+    components: {KartsnmsSelect},
     mixins: [BaseSetting]
 }
 </script>

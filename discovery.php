@@ -2,14 +2,14 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
-use LibreNMS\Util\Debug;
+use KartsNMS\Util\Debug;
 
 $init_modules = ['discovery'];
 require __DIR__ . '/includes/init.php';
@@ -20,7 +20,7 @@ $sqlparams = [];
 $options = getopt('h:m:i:n:d::v::a::q', ['os:', 'type:']);
 
 if (! isset($options['q'])) {
-    echo \LibreNMS\Config::get('project_name') . " Discovery\n";
+    echo \KartsNMS\Config::get('project_name') . " Discovery\n";
 }
 
 if (isset($options['h'])) {
@@ -64,11 +64,11 @@ if (isset($options['i']) && $options['i'] && isset($options['n'])) {
 }
 
 if (Debug::set(isset($options['d']), false) || isset($options['v'])) {
-    echo \LibreNMS\Util\Version::get()->header();
+    echo \KartsNMS\Util\Version::get()->header();
 
     echo "DEBUG!\n";
     Debug::setVerbose(isset($options['v']));
-    \LibreNMS\Util\OS::updateCache(true); // Force update of OS Cache
+    \KartsNMS\Util\OS::updateCache(true); // Force update of OS Cache
 }
 
 if (! $where) {
@@ -96,8 +96,8 @@ $module_override = parse_modules('discovery', $options);
 
 $discovered_devices = 0;
 
-if (! empty(\LibreNMS\Config::get('distributed_poller_group'))) {
-    $where .= ' AND poller_group IN(' . \LibreNMS\Config::get('distributed_poller_group') . ')';
+if (! empty(\KartsNMS\Config::get('distributed_poller_group'))) {
+    $where .= ' AND poller_group IN(' . \KartsNMS\Config::get('distributed_poller_group') . ')';
 }
 
 global $device;
@@ -126,7 +126,7 @@ if (isset($new_discovery_lock)) {
     $new_discovery_lock->release();
 }
 
-$string = $argv[0] . " $doing " . date(\LibreNMS\Config::get('dateformat.compact')) . " - $discovered_devices devices discovered in $proctime secs";
+$string = $argv[0] . " $doing " . date(\KartsNMS\Config::get('dateformat.compact')) . " - $discovered_devices devices discovered in $proctime secs";
 d_echo("$string\n");
 
 if (! isset($options['q'])) {

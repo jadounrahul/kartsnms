@@ -2,7 +2,7 @@
 /**
  * q-bridge-mib.inc.php
  *
- * LibreNMS vlan discovery module for Q-BRIDGE-MIB
+ * KartsNMS vlan discovery module for Q-BRIDGE-MIB
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @author     peca.nesovanovic@sattrakt.com
  */
 
 use App\Models\Vlan;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 echo 'IEEE8021-Q-BRIDGE-MIB VLANs: ';
 

@@ -1,21 +1,21 @@
 <?php
 
 use App\Models\Device;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if ($device['os_group'] == 'unix' || $device['os'] == 'windows') {
-    echo \LibreNMS\Config::get('project_name') . ' UNIX Agent: ';
+    echo \KartsNMS\Config::get('project_name') . ' UNIX Agent: ';
 
     $agent_port = get_dev_attrib($device, 'override_Unixagent_port');
     if (empty($agent_port)) {
-        $agent_port = \LibreNMS\Config::get('unix-agent.port');
+        $agent_port = \KartsNMS\Config::get('unix-agent.port');
     }
 
     $agent_start = microtime(true);
     $agent = null;
     try {
-        $poller_target = \LibreNMS\Util\Rewrite::addIpv6Brackets(Device::pollerTarget($device['hostname']));
-        $agent = @fsockopen($poller_target, $agent_port, $errno, $errstr, \LibreNMS\Config::get('unix-agent.connection-timeout'));
+        $poller_target = \KartsNMS\Util\Rewrite::addIpv6Brackets(Device::pollerTarget($device['hostname']));
+        $agent = @fsockopen($poller_target, $agent_port, $errno, $errstr, \KartsNMS\Config::get('unix-agent.connection-timeout'));
     } catch (ErrorException $e) {
         echo $e->getMessage() . PHP_EOL; // usually connection timed out
 
@@ -26,7 +26,7 @@ if ($device['os_group'] == 'unix' || $device['os'] == 'windows') {
         echo 'Connection to UNIX agent failed on port ' . $agent_port . '.';
     } else {
         // Set stream timeout (for timeouts during agent  fetch
-        stream_set_timeout($agent, \LibreNMS\Config::get('unix-agent.read-timeout'));
+        stream_set_timeout($agent, \KartsNMS\Config::get('unix-agent.read-timeout'));
         $agentinfo = stream_get_meta_data($agent);
 
         // fetch data while not eof and not timed-out

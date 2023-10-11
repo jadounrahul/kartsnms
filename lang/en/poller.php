@@ -93,7 +93,7 @@ return [
             ],
             'watchdog_log' => [
                 'description' => 'Log File to Watch',
-                'help' => 'Default is the LibreNMS log file.',
+                'help' => 'Default is the KartsNMS log file.',
             ],
         ],
         'units' => [

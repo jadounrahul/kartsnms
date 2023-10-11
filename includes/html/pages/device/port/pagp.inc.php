@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 // FIXME functions!
 if (! $graph_type) {

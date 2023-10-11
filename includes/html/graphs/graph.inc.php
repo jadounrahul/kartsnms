@@ -1,8 +1,8 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Data\Graphing\GraphParameters;
-use LibreNMS\Enum\ImageFormat;
+use KartsNMS\Config;
+use KartsNMS\Data\Graphing\GraphParameters;
+use KartsNMS\Enum\ImageFormat;
 
 global $debug;
 
@@ -69,7 +69,7 @@ try {
         echo '</pre>';
         try {
             Rrd::graph($rrd_options, $env);
-        } catch (\LibreNMS\Exceptions\RrdGraphException $e) {
+        } catch (\KartsNMS\Exceptions\RrdGraphException $e) {
             echo "<p style='font-size: 16px; font-weight: bold;'>RRDTool Output</p>";
             echo "<pre class='rrd-pre'>";
             echo $e->getMessage();
@@ -90,14 +90,14 @@ try {
     $image_data = Rrd::graph($rrd_options, $env);
 
     // output the graph
-    if (\LibreNMS\Util\Debug::isEnabled()) {
+    if (\KartsNMS\Util\Debug::isEnabled()) {
         echo '<img src="data:' . ImageFormat::forGraph()->contentType() . ';base64,' . base64_encode($image_data) . '" alt="graph" />';
     } else {
         header('Content-type: ' . ImageFormat::forGraph()->contentType());
         echo (isset($vars['output']) && $vars['output'] === 'base64') ? base64_encode($image_data) : $image_data;
     }
-} catch (\LibreNMS\Exceptions\RrdGraphException $e) {
-    if (\LibreNMS\Util\Debug::isEnabled()) {
+} catch (\KartsNMS\Exceptions\RrdGraphException $e) {
+    if (\KartsNMS\Util\Debug::isEnabled()) {
         throw $e;
     }
 

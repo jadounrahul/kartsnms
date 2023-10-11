@@ -1,9 +1,9 @@
 <?php
 
-namespace LibreNMS\Tests\Unit\Util;
+namespace KartsNMS\Tests\Unit\Util;
 
-use LibreNMS\Tests\TestCase;
-use LibreNMS\Util\Mac;
+use KartsNMS\Tests\TestCase;
+use KartsNMS\Util\Mac;
 
 class MacUtilTest extends TestCase
 {

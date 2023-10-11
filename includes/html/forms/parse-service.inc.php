@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *

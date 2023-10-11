@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to discover hardware components in a Cisco Integrated Management Controller
+ * KartsNMS module to discover hardware components in a Cisco Integrated Management Controller
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -12,7 +12,7 @@
  */
 
 $comp_module = 'Cisco-CIMC';
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['type'=>$comp_module]);
 
 // We only care about our device id.

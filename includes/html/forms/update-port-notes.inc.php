@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2015 Søren Friis Rosiak <sorenrosiak@gmail.com>
  * This program is free software: you can redistribute it and/or modify it

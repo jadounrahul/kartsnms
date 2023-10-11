@@ -13,11 +13,11 @@ Edit `config.php` and add (or enable) the following line near the end of the con
 $config['enable_billing'] = 1; # Enable Billing
 ```
 
-Edit `/etc/cron.d/librenms` and add the following:
+Edit `/etc/cron.d/kartsnms` and add the following:
 
 ```bash
-*/5 * * * * librenms /opt/librenms/poll-billing.php >> /dev/null 2>&1
-01  * * * * librenms /opt/librenms/billing-calculate.php >> /dev/null 2>&1
+*/5 * * * * kartsnms /opt/kartsnms/poll-billing.php >> /dev/null 2>&1
+01  * * * * kartsnms /opt/kartsnms/billing-calculate.php >> /dev/null 2>&1
 ```
 
 Create billing graphs as required.

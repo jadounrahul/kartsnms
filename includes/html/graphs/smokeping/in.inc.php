@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $src = device_by_id_cache($vars['src']);
 
@@ -51,7 +51,7 @@ if (! Config::has("graph_colours.$colourset.$iter")) {
 $colour = Config::get("graph_colours.$colourset.$iter");
 $iter++;
 
-$descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($source, $descr_len);
+$descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($source, $descr_len);
 
 $rrd_options .= " DEF:median$i=" . $filename . ':median:AVERAGE ';
 $rrd_options .= " DEF:loss$i=" . $filename . ':loss:AVERAGE';

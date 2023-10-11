@@ -15,7 +15,7 @@
 * along with this program. If not, see <https://www.gnu.org/licenses/>. */
 
 // This one only will work with the CISCO-CONTEXT-MAPPING-MIB V2 of cisco
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (Config::get('enable_vrf_lite_cisco')) {
     $ids = [];
@@ -60,7 +60,7 @@ if (Config::get('enable_vrf_lite_cisco')) {
         unset($listIntance);
 
         foreach ((array) $tableVrf as $context => $vrf) {
-            if (\LibreNMS\Util\Debug::isEnabled()) {
+            if (\KartsNMS\Util\Debug::isEnabled()) {
                 echo "\n[DEBUG]\nRelation:t" . $context . 't' . $vrf['intance'] . 't' . $vrf['vrf'] . "\n[/DEBUG]\n";
             }
 

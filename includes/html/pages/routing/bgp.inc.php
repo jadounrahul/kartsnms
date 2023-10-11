@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Util\IPv6;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Util\IPv6;
 
 if (! Auth::user()->hasGlobalRead()) {
     include 'includes/html/error-no-perm.inc.php';
@@ -273,8 +273,8 @@ if (! Auth::user()->hasGlobalRead()) {
         $graph_array = [];
         $graph_array['type'] = 'bgp_updates';
         $graph_array['id'] = $peer['bgpPeer_id'];
-        $graph_array['to'] = \LibreNMS\Config::get('time.now');
-        $graph_array['from'] = \LibreNMS\Config::get('time.day');
+        $graph_array['to'] = \KartsNMS\Config::get('time.now');
+        $graph_array['from'] = \KartsNMS\Config::get('time.day');
         $graph_array['height'] = '110';
         $graph_array['width'] = $width;
 
@@ -283,7 +283,7 @@ if (! Auth::user()->hasGlobalRead()) {
         $graph_array_zoom['height'] = '150';
         $graph_array_zoom['width'] = '500';
         $overlib_link = 'device/device=' . $peer['device_id'] . '/tab=routing/proto=bgp/';
-        $peeraddresslink = '<span class=list-large>' . \LibreNMS\Util\Url::overlibLink($overlib_link, $peer_addr, \LibreNMS\Util\Url::graphTag($graph_array_zoom)) . '</span>';
+        $peeraddresslink = '<span class=list-large>' . \KartsNMS\Util\Url::overlibLink($overlib_link, $peer_addr, \KartsNMS\Util\Url::graphTag($graph_array_zoom)) . '</span>';
 
         // Local Address
         $graph_array['afi'] = 'ipv4';
@@ -291,7 +291,7 @@ if (! Auth::user()->hasGlobalRead()) {
         $graph_array_zoom['afi'] = 'ipv4';
         $graph_array_zoom['safi'] = 'unicast';
         $overlib_link = 'device/device=' . $peer['device_id'] . '/tab=routing/proto=bgp/';
-        $localaddresslink = '<span class=list-large>' . \LibreNMS\Util\Url::overlibLink($overlib_link, $local_addr, \LibreNMS\Util\Url::graphTag($graph_array_zoom)) . '</span>';
+        $localaddresslink = '<span class=list-large>' . \KartsNMS\Util\Url::overlibLink($overlib_link, $local_addr, \KartsNMS\Util\Url::graphTag($graph_array_zoom)) . '</span>';
 
         if ($peer['bgpPeerLastErrorCode'] == 0 && $peer['bgpPeerLastErrorSubCode'] == 0) {
             $last_error = $peer['bgpPeerLastErrorText'];
@@ -324,9 +324,9 @@ if (! Auth::user()->hasGlobalRead()) {
             <td>' . $peer['bgpPeerDescr'] . "</td>
             <td><strong><span style='color: $admin_col;'>" . $peer['bgpPeerAdminStatus'] . "</span><br /><span style='color: $col;'>" . $peer['bgpPeerState'] . '</span></strong></td>
             <td>' . $last_error . '</td>
-            <td>' . \LibreNMS\Util\Time::formatInterval($peer['bgpPeerFsmEstablishedTime']) . "<br />
-            Updates <i class='fa fa-arrow-down icon-theme' aria-hidden='true'></i> " . \LibreNMS\Util\Number::formatSi($peer['bgpPeerInUpdates'], 2, 3, '') . "
-            <i class='fa fa-arrow-up icon-theme' aria-hidden='true'></i> " . \LibreNMS\Util\Number::formatSi($peer['bgpPeerOutUpdates'], 2, 3, '') . '</td></tr>';
+            <td>' . \KartsNMS\Util\Time::formatInterval($peer['bgpPeerFsmEstablishedTime']) . "<br />
+            Updates <i class='fa fa-arrow-down icon-theme' aria-hidden='true'></i> " . \KartsNMS\Util\Number::formatSi($peer['bgpPeerInUpdates'], 2, 3, '') . "
+            <i class='fa fa-arrow-up icon-theme' aria-hidden='true'></i> " . \KartsNMS\Util\Number::formatSi($peer['bgpPeerOutUpdates'], 2, 3, '') . '</td></tr>';
 
         unset($invalid);
         switch ($vars['graph']) {
@@ -364,7 +364,7 @@ if (! Auth::user()->hasGlobalRead()) {
         if ($peer['graph']) {
             $graph_array['height'] = '100';
             $graph_array['width'] = '218';
-            $graph_array['to'] = \LibreNMS\Config::get('time.now');
+            $graph_array['to'] = \KartsNMS\Config::get('time.now');
             echo '<tr></tr><tr class="bgp"><td colspan="9">';
 
             include 'includes/html/print-graphrow.inc.php';

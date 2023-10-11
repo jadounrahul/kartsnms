@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\IP;
+use KartsNMS\Util\IP;
 
 $extra_sql = '';
 $link_array = [
@@ -118,18 +118,18 @@ $i = '1';
 foreach (dbFetchRows("SELECT * FROM `bgpPeers` WHERE `device_id` = ? $extra_sql ORDER BY `bgpPeerRemoteAs`, `bgpPeerIdentifier`", [$device['device_id']]) as $peer) {
     $has_macaccounting = dbFetchCell('SELECT COUNT(*) FROM `ipv4_mac` AS I, mac_accounting AS M WHERE I.ipv4_address = ? AND M.mac = I.mac_address', [$peer['bgpPeerIdentifier']]);
     if (! is_integer($i / 2)) {
-        $bg_colour = \LibreNMS\Config::get('list_colour.even');
+        $bg_colour = \KartsNMS\Config::get('list_colour.even');
     } else {
-        $bg_colour = \LibreNMS\Config::get('list_colour.odd');
+        $bg_colour = \KartsNMS\Config::get('list_colour.odd');
     }
 
     unset($alert);
     unset($peerhost, $peername);
 
     if (! is_integer($i / 2)) {
-        $bg_colour = \LibreNMS\Config::get('list_colour.odd');
+        $bg_colour = \KartsNMS\Config::get('list_colour.odd');
     } else {
-        $bg_colour = \LibreNMS\Config::get('list_colour.even');
+        $bg_colour = \KartsNMS\Config::get('list_colour.even');
     }
 
     if ($peer['bgpPeerState'] == 'established') {
@@ -216,8 +216,8 @@ foreach (dbFetchRows("SELECT * FROM `bgpPeers` WHERE `device_id` = ? $extra_sql 
     $graph_array = [];
     $graph_array['type'] = 'bgp_updates';
     $graph_array['id'] = $peer['bgpPeer_id'];
-    $graph_array['to'] = \LibreNMS\Config::get('time.now');
-    $graph_array['from'] = \LibreNMS\Config::get('time.day');
+    $graph_array['to'] = \KartsNMS\Config::get('time.now');
+    $graph_array['from'] = \KartsNMS\Config::get('time.day');
     $graph_array['height'] = '110';
     if (isset($width)) {
         $graph_array['width'] = $width;
@@ -232,8 +232,8 @@ foreach (dbFetchRows("SELECT * FROM `bgpPeers` WHERE `device_id` = ? $extra_sql 
     $link_array = $graph_array;
     $link_array['page'] = 'graphs';
     unset($link_array['height'], $link_array['width'], $link_array['legend']);
-    $link = \LibreNMS\Util\Url::generate($link_array);
-    $peeraddresslink = '<span class=list-large>' . \LibreNMS\Util\Url::overlibLink($link, $peer['bgpPeerIdentifier'], \LibreNMS\Util\Url::graphTag($graph_array_zoom)) . '</span>';
+    $link = \KartsNMS\Util\Url::generate($link_array);
+    $peeraddresslink = '<span class=list-large>' . \KartsNMS\Util\Url::overlibLink($link, $peer['bgpPeerIdentifier'], \KartsNMS\Util\Url::graphTag($graph_array_zoom)) . '</span>';
 
     if ($peer['bgpPeerLastErrorCode'] == 0 && $peer['bgpPeerLastErrorSubCode'] == 0) {
         $last_error = $peer['bgpPeerLastErrorText'];
@@ -252,7 +252,7 @@ foreach (dbFetchRows("SELECT * FROM `bgpPeers` WHERE `device_id` = ? $extra_sql 
         <td>' . $peer['bgpPeerDescr'] . "</td>
         <td><strong><span style='color: $admin_col;'>" . $peer['bgpPeerAdminStatus'] . "<span><br /><span style='color: $col;'>" . $peer['bgpPeerState'] . '</span></strong></td>
         <td>' . $last_error . '</td>
-        <td>' . \LibreNMS\Util\Time::formatInterval($peer['bgpPeerFsmEstablishedTime']) . "<br />
+        <td>' . \KartsNMS\Util\Time::formatInterval($peer['bgpPeerFsmEstablishedTime']) . "<br />
         Updates <i class='fa fa-arrow-down icon-theme' aria-hidden='true'></i> " . $peer['bgpPeerInUpdates'] . "
         <i class='fa fa-arrow-up icon-theme' aria-hidden='true'></i> " . $peer['bgpPeerOutUpdates'] . '</td>
         </tr>
@@ -296,7 +296,7 @@ foreach (dbFetchRows("SELECT * FROM `bgpPeers` WHERE `device_id` = ? $extra_sql 
     if (! empty($peer['graph'])) {
         $graph_array['height'] = '100';
         $graph_array['width'] = '216';
-        $graph_array['to'] = \LibreNMS\Config::get('time.now');
+        $graph_array['to'] = \KartsNMS\Config::get('time.now');
         echo '<tr bgcolor="' . $bg_colour . '"><td colspan="7">';
 
         include 'includes/html/print-graphrow.inc.php';

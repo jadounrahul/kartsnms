@@ -10,8 +10,8 @@ class PluginAdminController extends Controller
     public function __invoke(PluginManager $manager): \Illuminate\Contracts\View\View
     {
         // legacy v1 plugins
-        \LibreNMS\Plugins::scanNew();
-        \LibreNMS\Plugins::scanRemoved();
+        \KartsNMS\Plugins::scanNew();
+        \KartsNMS\Plugins::scanRemoved();
 
         // v2 cleanup
         $manager->cleanupPlugins();

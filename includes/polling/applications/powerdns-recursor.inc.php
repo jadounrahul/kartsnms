@@ -18,14 +18,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-use LibreNMS\Config;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Config;
+use KartsNMS\RRD\RrdDefinition;
 
 $data = '';
 $name = 'powerdns-recursor';

@@ -1,8 +1,8 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Util\IPv6;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Util\IPv6;
 
 foreach (DeviceCache::getPrimary()->getVrfContexts() as $context_name) {
     $device['context_name'] = $context_name;

@@ -1,8 +1,8 @@
-site_name: LibreNMS Docs
+site_name: KartsNMS Docs
 docs_dir: doc
 theme:
   name: material
-  logo: img/librenms.svg
+  logo: img/kartsnms.svg
   language: en
   font:
     text: 'Roboto'
@@ -31,7 +31,7 @@ theme:
     - navigation.top
     - content.tabs.link
 site_dir: out
-site_url: https://docs.librenms.org
+site_url: https://docs.kartsnms.org
 markdown_extensions:
   - tables
   - admonition
@@ -69,9 +69,9 @@ plugins:
         'Extensions/Port-Description-Parser.md': 'Extensions/Interface-Description-Parsing.md'
         'Extensions/Prometheus.md': 'Extensions/metrics/Prometheus.md'
         'General/Contributing.md': 'Developing/Getting-Started.md'
-        'Installation/CentOS-image.md': 'Installation/Install-LibreNMS.md'
-        'Installation/index.md': 'Installation/Install-LibreNMS.md'
-        'Installation/Installing-LibreNMS.md': 'Installation/Install-LibreNMS.md'
+        'Installation/CentOS-image.md': 'Installation/Install-KartsNMS.md'
+        'Installation/index.md': 'Installation/Install-KartsNMS.md'
+        'Installation/Installing-KartsNMS.md': 'Installation/Install-KartsNMS.md'
         'Installation/Ubuntu-image.md': 'Installation/Images.md'
         'Support/Support-New-OS.md': 'Developing/Support-New-OS.md'
   - minify:
@@ -83,12 +83,12 @@ plugins:
       js_files:
           - js/docs-settings-links.js
       css_files:
-          - librenms.css
+          - kartsnms.css
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css
-  - librenms.css
+  - kartsnms.css
 extra_javascript:
   - js/docs-settings-links.js
 extra:
@@ -101,29 +101,29 @@ extra:
     version_min: 8.1
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/librenms/
+      link: https://github.com/kartsnms/
       name: GitHub
     - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/librenms/librenms
+      link: https://hub.docker.com/r/kartsnms/kartsnms
       name: Docker
     - icon: fontawesome/brands/discord
-      link: https://discord.com/invite/librenms
+      link: https://discord.com/invite/kartsnms
       name: Discord
     - icon: fontawesome/brands/reddit
-      link: https://www.reddit.com/r/LibreNMS/
+      link: https://www.reddit.com/r/KartsNMS/
       name: Reddit
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/librenms
+      link: https://twitter.com/kartsnms
       name: Twitter
     - icon: fontawesome/brands/facebook
-      link: https://www.facebook.com/LibreNMS
+      link: https://www.facebook.com/KartsNMS
       name: Facebook
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/librenms/
+      link: https://www.linkedin.com/company/kartsnms/
       name: LinkedIn
-site_author: LibreNMS
-site_description: LibreNMS user and developer documentation
-repo_url: https://github.com/librenms/librenms/
+site_author: KartsNMS
+site_description: KartsNMS user and developer documentation
+repo_url: https://github.com/jadounrahul/kartsnms/
 edit_uri: edit/master/doc
 repo_name: GitHub
 nav:
@@ -135,7 +135,7 @@ nav:
     - 3rd Party Libraries: General/Acknowledgement.md
 
   - Installing:
-    - Installing LibreNMS: Installation/Install-LibreNMS.md
+    - Installing KartsNMS: Installation/Install-KartsNMS.md
     - Other Methods:
       - Docker: Installation/Docker.md
       - Virtual machines: Installation/Images.md
@@ -182,7 +182,7 @@ nav:
       - Oauth/SAML support: Extensions/OAuth-SAML.md
       - RRDCached: Extensions/RRDCached.md
       - RRDTune: Extensions/RRDTune.md
-      - Scaling LibreNMS: Extensions/Distributed-Poller.md
+      - Scaling KartsNMS: Extensions/Distributed-Poller.md
       - SNMP Proxy: Extensions/SNMP-Proxy.md
       - SNMP Trap Handler: Extensions/SNMP-Trap-Handler.md
       - Sub-directory Support: Extensions/Sub-Directory.md

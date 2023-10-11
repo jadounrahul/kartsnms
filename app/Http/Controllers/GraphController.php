@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use LibreNMS\Enum\ImageFormat;
-use LibreNMS\Exceptions\RrdGraphException;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Graph;
-use LibreNMS\Util\Url;
+use KartsNMS\Enum\ImageFormat;
+use KartsNMS\Exceptions\RrdGraphException;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Graph;
+use KartsNMS\Util\Url;
 
 class GraphController extends Controller
 {
     /**
-     * @throws \LibreNMS\Exceptions\RrdGraphException
+     * @throws \KartsNMS\Exceptions\RrdGraphException
      */
     public function __invoke(Request $request, string $path = ''): Response
     {

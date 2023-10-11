@@ -11,10 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Graph;
-use LibreNMS\Util\Url;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Graph;
+use KartsNMS\Util\Url;
 
 class DeviceController extends Controller
 {
@@ -215,7 +215,7 @@ class DeviceController extends Controller
         // SSH
         $ssh_port = $device->attribs->firstWhere('attrib_type', 'override_device_ssh_port') ? ':' . $device->attribs->firstWhere('attrib_type', 'override_device_ssh_port')->attrib_value : '';
         $ssh_url = Config::has('gateone.server')
-            ? Config::get('gateone.server') . '?ssh=ssh://' . (Config::get('gateone.use_librenms_user') ? Auth::user()->username . '@' : '') . $device['hostname'] . '&location=' . $device['hostname']
+            ? Config::get('gateone.server') . '?ssh=ssh://' . (Config::get('gateone.use_kartsnms_user') ? Auth::user()->username . '@' : '') . $device['hostname'] . '&location=' . $device['hostname']
             : 'ssh://' . $device->hostname . $ssh_port;
         $device_links['ssh'] = [
             'icon' => 'fa-lock',

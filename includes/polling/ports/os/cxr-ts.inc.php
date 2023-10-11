@@ -2,7 +2,7 @@
 /**
  * cxr-networks.inc.php
  *
- * LibreNMS CXR Serial Ports include
+ * KartsNMS CXR Serial Ports include
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  PipoCanaja 2018
  * @author     PipoCanaja <PipoCanaja@gmail.com>
@@ -27,7 +27,7 @@ $cxr_stats = snmpwalk_cache_oid($device, 'portStatsTable', $cxr_stats, 'CXR-TS-M
 
 d_echo($cxr_stats);
 
-//We'll create dummy ifIndexes to add the Serial Ports to the LibreNMS port view.
+//We'll create dummy ifIndexes to add the Serial Ports to the KartsNMS port view.
 //These devices are showing only a few interfaces, 1000 seems a sufficient offset.
 
 $offset = 1000;

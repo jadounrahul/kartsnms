@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 require 'includes/html/graphs/common.inc.php';
 

@@ -3,7 +3,7 @@
 /**
  * vrp.inc.php
  *
- * LibreNMS bgp_peers for Huawei VRP
+ * KartsNMS bgp_peers for Huawei VRP
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,14 +18,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 PipoCanaja
  * @author     PipoCanaja
  */
 
-use LibreNMS\Config;
-use LibreNMS\Util\IP;
+use KartsNMS\Config;
+use KartsNMS\Util\IP;
 
 $bgpPeersCache = snmpwalk_cache_oid($device, 'hwBgpPeerRemoteAs', [], 'HUAWEI-BGP-VPN-MIB');
 
@@ -83,7 +83,7 @@ if (count($bgpPeersCache) > 0 || count($bgpPeersCache_ietf) == 0) {
         $vrfId = $map_vrf['byName'][$vrfName]['vrf_id'];
 
         foreach ($vrf as $address => $value) {
-            $astext = \LibreNMS\Util\AutonomousSystem::get($value['hwBgpPeerRemoteAs'])->name();
+            $astext = \KartsNMS\Util\AutonomousSystem::get($value['hwBgpPeerRemoteAs'])->name();
             if (! DeviceCache::getPrimary()->bgppeers()->where('bgpPeerIdentifier', $address)->where('vrf_id', $vrfId)->exists()) {
                 $peers = [
                     'device_id' => $device['device_id'],

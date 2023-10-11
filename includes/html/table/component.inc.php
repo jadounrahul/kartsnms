@@ -4,7 +4,7 @@ $row = 1;
 
 $device_id = $vars['device_id'];
 
-$OBJCOMP = new LibreNMS\Component();
+$OBJCOMP = new KartsNMS\Component();
 
 // Add a filter if supplied
 if (isset($searchPhrase) && ! empty($searchPhrase)) {

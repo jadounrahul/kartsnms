@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Adam Bishop
  * @author     Adam Bishop <adam@omega.org.uk>
@@ -27,7 +27,7 @@ namespace App\Console\Commands;
 
 use App\Console\LnmsCommand;
 use App\Models\Device;
-use LibreNMS\Config;
+use KartsNMS\Config;
 use Symfony\Component\Console\Input\InputOption;
 
 class SmokepingGenerateCommand extends LnmsCommand
@@ -355,7 +355,7 @@ class SmokepingGenerateCommand extends LnmsCommand
     /**
      * Rewrite menu entries to a format that smokeping finds acceptable
      *
-     * @param  string  $entry  The LibreNMS device hostname to rewrite
+     * @param  string  $entry  The KartsNMS device hostname to rewrite
      * @return string
      */
     private function buildMenuEntry($entry)

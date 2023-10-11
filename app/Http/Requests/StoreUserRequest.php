@@ -5,8 +5,8 @@ namespace App\Http\Requests;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Config;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Config;
 use Silber\Bouncer\BouncerFacade as Bouncer;
 
 class StoreUserRequest extends FormRequest

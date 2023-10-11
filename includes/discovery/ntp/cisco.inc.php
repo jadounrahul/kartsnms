@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture statistics from the CISCO-NTP-MIB
+ * KartsNMS module to capture statistics from the CISCO-NTP-MIB
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,11 +11,11 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Util\IP;
+use KartsNMS\Util\IP;
 
 $module = 'ntp';
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['type'=>$module]);
 
 // We only care about our device id.

@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link https://www.librenms.org
+ * @link https://www.itkarts.com
  *
  * @copyright  2020 Lars Elgtvedt Susaas
  * @author     Lars Elgtvedt Susaas
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use App\Models\Device;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 class AddHostTest extends DBTestCase
 {

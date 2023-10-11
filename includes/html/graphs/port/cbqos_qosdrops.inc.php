@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display Cisco Class-Based QoS Details
+ * KartsNMS module to display Cisco Class-Based QoS Details
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *

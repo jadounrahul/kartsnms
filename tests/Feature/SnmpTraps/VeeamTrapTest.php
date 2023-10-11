@@ -1,8 +1,8 @@
 <?php
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 class VeeamTrapTest extends SnmpTrapTestCase
 {

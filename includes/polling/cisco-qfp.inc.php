@@ -6,15 +6,15 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * LibreNMS module to capture Cisco QFP Statistics
+ * KartsNMS module to capture Cisco QFP Statistics
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
- * @copyright  2019 LibreNMS
+ * @copyright  2019 KartsNMS
  * @author     Pavle Obradovic <pobradovic08@gmail.com>
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $module = 'cisco-qfp';
 
@@ -29,13 +29,13 @@ $options = [
     ],
 ];
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], $options);
 $components = $components[$device['device_id']];
 
 /*
  * SNMP makes available multiple datapoints dependnet on the time interval
- * Use 5min for now but if in future LibreNMS polling interval is set through
+ * Use 5min for now but if in future KartsNMS polling interval is set through
  * config file we can use this to quickly select best time interval
  */
 $time_interval_array = [

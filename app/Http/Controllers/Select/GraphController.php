@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -30,8 +30,8 @@ use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use LibreNMS\Util\Graph;
-use LibreNMS\Util\StringHelpers;
+use KartsNMS\Util\Graph;
+use KartsNMS\Util\StringHelpers;
 
 class GraphController extends Controller
 {

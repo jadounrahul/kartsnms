@@ -6,9 +6,9 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
 
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage discovery
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  * @copyright  2020 PipoCanaja <pipocanaja@gmail.com>
  * @author     PipoCanaja <pipocanaja@gmail.com>
  */

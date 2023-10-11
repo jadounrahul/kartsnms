@@ -6,10 +6,10 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage nfs-server
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
  * @author     SvennD <svennd@svennd.be>
 */
 

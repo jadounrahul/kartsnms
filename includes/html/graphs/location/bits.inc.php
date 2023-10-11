@@ -8,16 +8,16 @@ $i = 1;
 foreach ($devices as $device) {
     foreach (dbFetchRows('SELECT * FROM `ports` WHERE `device_id` = ? AND `disabled` = 0', [$device['device_id']]) as $int) {
         $ignore = 0;
-        if (is_array(\LibreNMS\Config::get('device_traffic_iftype'))) {
-            foreach (\LibreNMS\Config::get('device_traffic_iftype') as $iftype) {
+        if (is_array(\KartsNMS\Config::get('device_traffic_iftype'))) {
+            foreach (\KartsNMS\Config::get('device_traffic_iftype') as $iftype) {
                 if (preg_match($iftype . 'i', $int['ifType'])) {
                     $ignore = 1;
                 }
             }
         }
 
-        if (is_array(\LibreNMS\Config::get('device_traffic_descr'))) {
-            foreach (\LibreNMS\Config::get('device_traffic_descr') as $ifdescr) {
+        if (is_array(\KartsNMS\Config::get('device_traffic_descr'))) {
+            foreach (\KartsNMS\Config::get('device_traffic_descr') as $ifdescr) {
                 if (preg_match($ifdescr . 'i', $int['ifDescr']) || preg_match($ifdescr . 'i', $int['ifName'])) {
                     $ignore = 1;
                 }
@@ -30,7 +30,7 @@ foreach ($devices as $device) {
             $rrd_list[$i]['filename'] = $rrd_filename;
             $rrd_list[$i]['descr'] = $port['label'];
             $rrd_list[$i]['descr_in'] = $device['hostname'];
-            $rrd_list[$i]['descr_out'] = \LibreNMS\Util\Clean::html($port['ifAlias'], []);
+            $rrd_list[$i]['descr_out'] = \KartsNMS\Util\Clean::html($port['ifAlias'], []);
             $rrd_list[$i]['ds_in'] = $ds_in;
             $rrd_list[$i]['ds_out'] = $ds_out;
             $i++;

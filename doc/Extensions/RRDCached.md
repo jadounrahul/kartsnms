@@ -1,6 +1,6 @@
 # Setting up RRDCached
 
-This document will explain how to set up RRDCached for LibreNMS.
+This document will explain how to set up RRDCached for KartsNMS.
 
 Since version 1.5, rrdtool / rrdcached now supports creating rrd files
 over rrdcached. If you have rrdcached 1.5.5 or above, you can also
@@ -36,7 +36,7 @@ T = Tune RRD files.
 | >=1.5.5 | No        | G,C,U    |
 | >=1.6.x | No        | G,C,U    |
 
-It is recommended that you monitor your LibreNMS server with LibreNMS
+It is recommended that you monitor your KartsNMS server with KartsNMS
 so you can view the disk I/O usage delta.
 
 
@@ -62,23 +62,23 @@ sudo apt-get install rrdcached
 
 ```
 DAEMON=/usr/bin/rrdcached
-DAEMON_USER=librenms
-DAEMON_GROUP=librenms
+DAEMON_USER=kartsnms
+DAEMON_GROUP=kartsnms
 WRITE_THREADS=4
 WRITE_TIMEOUT=1800
 WRITE_JITTER=1800
-BASE_PATH=/opt/librenms/rrd/
+BASE_PATH=/opt/kartsnms/rrd/
 JOURNAL_PATH=/var/lib/rrdcached/journal/
 PIDFILE=/run/rrdcached.pid
 SOCKFILE=/run/rrdcached.sock
-SOCKGROUP=librenms
+SOCKGROUP=kartsnms
 BASE_OPTIONS="-B -F -R"
 ```
 
 2: Fix permissions
 
 ```bash
-chown librenms:librenms /var/lib/rrdcached/journal/
+chown kartsnms:kartsnms /var/lib/rrdcached/journal/
 ```
 
 3: Restart the rrdcached service
@@ -110,20 +110,20 @@ DAEMON=/usr/bin/rrdcached
 WRITE_TIMEOUT=1800
 WRITE_JITTER=1800
 WRITE_THREADS=4
-BASE_PATH=/opt/librenms/rrd/
+BASE_PATH=/opt/kartsnms/rrd/
 JOURNAL_PATH=/var/lib/rrdcached/journal/
 PIDFILE=/var/run/rrdcached.pid
 SOCKFILE=/run/rrdcached.sock
-SOCKGROUP=librenms
-DAEMON_GROUP=librenms
-DAEMON_USER=librenms
+SOCKGROUP=kartsnms
+DAEMON_GROUP=kartsnms
+DAEMON_USER=kartsnms
 BASE_OPTIONS="-B -F -R"
 ```
 
 3: Fix permissions
 
 ```bash
-chown librenms:librenms /var/lib/rrdcached/journal/
+chown kartsnms:kartsnms /var/lib/rrdcached/journal/
 ```
 
 4: Restart the rrdcached service
@@ -170,20 +170,20 @@ DAEMON=/usr/bin/rrdcached
 WRITE_TIMEOUT=1800
 WRITE_JITTER=1800
 WRITE_THREADS=4
-BASE_PATH=/opt/librenms/rrd/
+BASE_PATH=/opt/kartsnms/rrd/
 JOURNAL_PATH=/var/lib/rrdcached/journal/
 PIDFILE=/var/run/rrdcached.pid
 SOCKFILE=/run/rrdcached.sock
-SOCKGROUP=librenms
-DAEMON_GROUP=librenms
-DAEMON_USER=librenms
+SOCKGROUP=kartsnms
+DAEMON_GROUP=kartsnms
+DAEMON_USER=kartsnms
 BASE_OPTIONS="-B -F -R"
 ```
 
 3: Fix permissions
 
 ```bash
-chown librenms:librenms /var/lib/rrdcached/journal/
+chown kartsnms:kartsnms /var/lib/rrdcached/journal/
 ```
 
 4: Restart the rrdcached service
@@ -226,7 +226,7 @@ After=network.service
 [Service]
 Type=forking
 PIDFile=/run/rrdcached.pid
-ExecStart=/usr/bin/rrdcached -w 1800 -z 1800 -f 3600 -s librenms -U librenms -G librenms -B -R -j /var/tmp -l unix:/run/rrdcached.sock -t 4 -F -b /opt/librenms/rrd/
+ExecStart=/usr/bin/rrdcached -w 1800 -z 1800 -f 3600 -s kartsnms -U kartsnms -G kartsnms -B -R -j /var/tmp -l unix:/run/rrdcached.sock -t 4 -F -b /opt/kartsnms/rrd/
 
 [Install]
 WantedBy=default.target
@@ -235,8 +235,8 @@ WantedBy=default.target
 2: Configure SELinux for RRDCached
 
 ```
-cat > rrdcached_librenms.te << EOF
-module rrdcached_librenms 1.0;
+cat > rrdcached_kartsnms.te << EOF
+module rrdcached_kartsnms 1.0;
  
 require {
         type var_run_t;
@@ -258,9 +258,9 @@ allow rrdcached_t self:capability fsetid;
 allow rrdcached_t var_run_t:sock_file { create setattr unlink };
 EOF
 
-checkmodule -M -m -o rrdcached_librenms.mod rrdcached_librenms.te
-semodule_package -o rrdcached_librenms.pp -m rrdcached_librenms.mod
-semodule -i rrdcached_librenms.pp
+checkmodule -M -m -o rrdcached_kartsnms.mod rrdcached_kartsnms.te
+semodule_package -o rrdcached_kartsnms.pp -m rrdcached_kartsnms.mod
+semodule -i rrdcached_kartsnms.pp
 ```
 
 3: Start rrdcached
@@ -278,7 +278,7 @@ systemctl enable --now rrdcached.service
 
 ### RRDCached installation CentOS 6
 
-This example is based on a fresh LibreNMS install, on a minimal CentOS 6 installation.
+This example is based on a fresh KartsNMS install, on a minimal CentOS 6 installation.
 In this example, we'll use the Repoforge repository.
 
 ```ssh
@@ -299,13 +299,13 @@ vi /etc/yum.repos.d/rpmforge.repo
 vi /etc/sysconfig/rrdcached
 
 # Settings for rrdcached
-OPTIONS="-w 1800 -z 1800 -f 3600 -s librenms -U librenms -G librenms -B -R -j /var/tmp -l unix:/run/rrdcached.sock -t 4 -F -b /opt/librenms/rrd/"
-RRDC_USER=librenms
+OPTIONS="-w 1800 -z 1800 -f 3600 -s kartsnms -U kartsnms -G kartsnms -B -R -j /var/tmp -l unix:/run/rrdcached.sock -t 4 -F -b /opt/kartsnms/rrd/"
+RRDC_USER=kartsnms
 
 mkdir /var/run/rrdcached
-chown librenms:librenms /var/run/rrdcached/
-chown librenms:librenms /var/rrdtool/
-chown librenms:librenms /var/rrdtool/rrdcached/
+chown kartsnms:kartsnms /var/run/rrdcached/
+chown kartsnms:kartsnms /var/rrdtool/
+chown kartsnms:kartsnms /var/rrdtool/rrdcached/
 chkconfig rrdcached on
 service rrdcached start
 ```
@@ -319,8 +319,8 @@ service rrdcached start
 
 ## Verify
 
-Check to see if the graphs are being drawn in LibreNMS. This might take a few minutes.
-After at least one poll cycle (5 mins), check the LibreNMS disk I/O performance delta.
+Check to see if the graphs are being drawn in KartsNMS. This might take a few minutes.
+After at least one poll cycle (5 mins), check the KartsNMS disk I/O performance delta.
 Disk I/O can be found under the menu Devices>All Devices>[localhost
 hostname](../Installation/Installation-CentOS-7-Apache.md)>Health>Disk I/O.
 
@@ -361,7 +361,7 @@ server {
 
     error_log  /var/log/nginx/rrd.stream.error.log;
 
-    allow $LibreNMS_IP;
+    allow $KartsNMS_IP;
     deny all;
 
     proxy_pass unix:/run/rrdcached.sock;
@@ -369,7 +369,7 @@ server {
 
 ```
 
-Replace `$LibreNMS_IP` with the ip of the server that will be using
+Replace `$KartsNMS_IP` with the ip of the server that will be using
 rrdcached. You can specify more than one `allow` statement. This will
 bind nginx to TCP 42217 (the default rrdcached port), allow the
 specified IPs to connect, and deny all others.

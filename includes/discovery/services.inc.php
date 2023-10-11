@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ServiceTemplateController;
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (Config::get('discover_services_templates')) {
     (new ServiceTemplateController())->applyDeviceAll($device['device_id']); // FIXME applyAll() should not be on a controller

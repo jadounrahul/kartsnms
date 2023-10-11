@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,14 +8,14 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2018 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2018 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $graph_type = $vars['graph_type'];
 $unit = $vars['unit'];
@@ -88,9 +88,9 @@ foreach (dbFetchRows($sql, $param) as $sensor) {
     $link_array = $graph_array;
     $link_array['page'] = 'graphs';
     unset($link_array['height'], $link_array['width'], $link_array['legend']);
-    $link_graph = \LibreNMS\Util\Url::generate($link_array);
+    $link_graph = \KartsNMS\Util\Url::generate($link_array);
 
-    $link = \LibreNMS\Util\Url::generate(['page' => 'device', 'device' => $sensor['device_id'], 'tab' => $group, 'metric' => $sensor['sensor_class']]);
+    $link = \KartsNMS\Util\Url::generate(['page' => 'device', 'device' => $sensor['device_id'], 'tab' => $group, 'metric' => $sensor['sensor_class']]);
 
     $overlib_content = '<div style="width: 580px;"><span class="overlib-text">' . $sensor['hostname'] . ' - ' . $sensor['sensor_descr'] . '</span>';
     $even = true;
@@ -99,7 +99,7 @@ foreach (dbFetchRows($sql, $param) as $sensor) {
         if ($even) {
             $overlib_content .= '<br>';
         }
-        $overlib_content .= str_replace('"', "\\'", \LibreNMS\Util\Url::graphTag($graph_array));
+        $overlib_content .= str_replace('"', "\\'", \KartsNMS\Util\Url::graphTag($graph_array));
         $even = ! $even;
     }
 
@@ -110,21 +110,21 @@ foreach (dbFetchRows($sql, $param) as $sensor) {
     $graph_array['bg'] = 'ffffff00';
     // the 00 at the end makes the area transparent.
     $graph_array['from'] = Config::get('time.day');
-    $sensor_minigraph = \LibreNMS\Util\Url::graphTag($graph_array);
+    $sensor_minigraph = \KartsNMS\Util\Url::graphTag($graph_array);
 
     $sensor['sensor_descr'] = substr($sensor['sensor_descr'], 0, 48);
 
     $sensor_current = $graph_type == 'sensor_state' ? get_state_label($sensor) : get_sensor_label_color($sensor, $translations);
     $response[] = [
         'hostname'         => generate_device_link($sensor),
-        'sensor_descr'     => \LibreNMS\Util\Url::overlibLink($link, $sensor['sensor_descr'], $overlib_content),
-        'graph'            => \LibreNMS\Util\Url::overlibLink($link_graph, $sensor_minigraph, $overlib_content),
+        'sensor_descr'     => \KartsNMS\Util\Url::overlibLink($link, $sensor['sensor_descr'], $overlib_content),
+        'graph'            => \KartsNMS\Util\Url::overlibLink($link_graph, $sensor_minigraph, $overlib_content),
         'alert'            => $alert,
         'sensor_current'   => $sensor_current,
         'sensor_limit_low' => is_null($sensor['sensor_limit_low']) ? '-' :
-            '<span class=\'label label-default\'>' . trim(\LibreNMS\Util\Number::formatSi($sensor['sensor_limit_low'], 2, 3, '') . $unit) . '</span>',
+            '<span class=\'label label-default\'>' . trim(\KartsNMS\Util\Number::formatSi($sensor['sensor_limit_low'], 2, 3, '') . $unit) . '</span>',
         'sensor_limit'     => is_null($sensor['sensor_limit']) ? '-' :
-            '<span class=\'label label-default\'>' . trim(\LibreNMS\Util\Number::formatSi($sensor['sensor_limit'], 2, 3, '') . $unit) . '</span>',
+            '<span class=\'label label-default\'>' . trim(\KartsNMS\Util\Number::formatSi($sensor['sensor_limit'], 2, 3, '') . $unit) . '</span>',
     ];
 
     if ($vars['view'] == 'graphs') {

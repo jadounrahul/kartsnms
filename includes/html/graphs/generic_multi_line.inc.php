@@ -6,11 +6,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage graphs
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 require 'includes/html/graphs/common.inc.php';
@@ -26,7 +26,7 @@ if ($nototal) {
     $unitlen += '2';
 }
 
-$rrd_options .= " COMMENT:'" . \LibreNMS\Data\Store\Rrd::fixedSafeDescr($unit_text, $descr_len) . "      Now      Min      Max     Avg\l'";
+$rrd_options .= " COMMENT:'" . \KartsNMS\Data\Store\Rrd::fixedSafeDescr($unit_text, $descr_len) . "      Now      Min      Max     Avg\l'";
 
 $i = 0;
 $iter = 0;
@@ -36,10 +36,10 @@ foreach ($rrd_list as $rrd) {
     if (isset($rrd['colour'])) {
         $colour = $rrd['colour'];
     } else {
-        if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+        if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
             $iter = 0;
         }
-        $colour = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+        $colour = \KartsNMS\Config::get("graph_colours.$colours.$iter");
         $iter++;
     }
 
@@ -50,7 +50,7 @@ foreach ($rrd_list as $rrd) {
     $ds = $rrd['ds'];
     $filename = $rrd['filename'];
 
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len);
 
     $id = 'ds' . $i;
 

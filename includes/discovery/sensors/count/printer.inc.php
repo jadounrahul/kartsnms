@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,7 +8,7 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
 */
 
 $walk = snmpwalk_cache_oid($device, 'prtMarkerTable', [], 'Printer-MIB');

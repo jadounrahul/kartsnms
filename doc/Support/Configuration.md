@@ -1,12 +1,12 @@
 # Configuration Docs
 
-LibreNMS configuration is a set of key values.
+KartsNMS configuration is a set of key values.
 
 The config is stored in two places:
 Database: This applies to all pollers and can be set with either `lnms config:set` or in the Web UI. Database config takes precedence over config.php.
 config.php: This applies to the local poller only.  Configs set here will be disabled in the Web UI to prevent unexpected behaviour.
 
-The LibreNMS uses dot notation for config items:
+The KartsNMS uses dot notation for config items:
 
 | Database | config.php |
 | -------- | ---------- |
@@ -16,7 +16,7 @@ The LibreNMS uses dot notation for config items:
 
 > The documentation has not been updated to reflect using `lnms config:set` to
 > set config items, but it will work for all settings.  Not all settings have
-> been defined in LibreNMS, but they can still be set with the `--ignore-checks`
+> been defined in KartsNMS, but they can still be set with the `--ignore-checks`
 > option.  Without that option input is checked for correctness, that does not
 > mean it is not possible to set bad values.  Please report missing settings.
 
@@ -32,9 +32,9 @@ To get a complete list of all the current values, you can use the command `lnms 
 
 Example output:
 ```
-librenms@librenms:~$ lnms config:get --dump | jq 
+kartsnms@kartsnms:~$ lnms config:get --dump | jq 
 {
-  "install_dir": "/opt/librenms",
+  "install_dir": "/opt/kartsnms",
   "active_directory": {
     "users_purge": 0
   },
@@ -110,7 +110,7 @@ lnms config:get snmp.community
 ## Pre-load configuration
 
 This feature is primarily for docker images and other automation.
-When installing LibreNMS for the first time with a new database you can place yaml key value files
+When installing KartsNMS for the first time with a new database you can place yaml key value files
 in `database/seeders/config` to pre-populate the config database.
 
 Example snmp.yaml
@@ -131,18 +131,18 @@ The temporary directory is where images and other temporary files are
 created on your filesystem.
 
 ```bash
-lnms config:set log_dir /opt/librenms/logs
+lnms config:set log_dir /opt/kartsnms/logs
 ```
 
-Log files created by LibreNMS will be stored within this directory.
+Log files created by KartsNMS will be stored within this directory.
 
 ## Database config
 
-Set these variables either in .env (/opt/librenms/.env by default) or in the environment.
+Set these variables either in .env (/opt/kartsnms/.env by default) or in the environment.
 
 ```dotenv
 DB_HOST=127.0.0.1
-DB_DATABASE=librenms
+DB_DATABASE=kartsnms
 DB_USERNAME=DBUSER
 DB_PASSWORD="DBPASS"
 ```
@@ -248,7 +248,7 @@ under Device -> Edit -> Misc -> Disable ICMP Test? On
 
 #### traceroute
 
-LibreNMS uses traceroute to record debug information
+KartsNMS uses traceroute to record debug information
 when a device is down due to icmp AND you have
 `lnms config:set debug.run_trace true` set.
 
@@ -319,10 +319,10 @@ Please refer to [RRDCached](../Extensions/RRDCached.md)
 ## WebUI Settings
 
 ```bash
-lnms config:set base_url http://demo.librenms.org
+lnms config:set base_url http://demo.kartsnms.org
 ```
 
-LibreNMS will attempt to detect the URL you are using but you can override that here.
+KartsNMS will attempt to detect the URL you are using but you can override that here.
 
 !!! setting "webui/style"
     ```bash
@@ -653,7 +653,7 @@ Please refer to [Auto-Discovery](../Extensions/Auto-Discovery.md)
 !!! setting "alerting/email"
     ```bash
     lnms config:set email_backend mail
-    lnms config:set email_from librenms@yourdomain.local
+    lnms config:set email_from kartsnms@yourdomain.local
     lnms config:set email_user `lnms config:get project_id`
     lnms config:set email_sendmail_path /usr/sbin/sendmail
     lnms config:set email_smtp_host localhost
@@ -777,7 +777,7 @@ Please refer to [NFSen](../Extensions/NFSen.md)
 
 ### Location parsing
 
-LibreNMS can interpret sysLocation information and map the device loction based on GeoCoordinates or GeoCoding information.
+KartsNMS can interpret sysLocation information and map the device loction based on GeoCoordinates or GeoCoding information.
 
 - Info-keywords
   - `[]` contains optional Latitude and Longitude information if manual GeoCoordinate positioning is desired.
@@ -1026,17 +1026,17 @@ lnms config:set libvirt_username root
 Enable this to switch on support for libvirt along with `libvirt_protocols`
 to indicate how you connect to libvirt.  You also need to:
 
-1. Generate a non-password-protected ssh key for use by LibreNMS, as the
-    user which runs polling & discovery (usually `librenms`).
+1. Generate a non-password-protected ssh key for use by KartsNMS, as the
+    user which runs polling & discovery (usually `kartsnms`).
 1. On each VM host you wish to monitor:
-   1. Configure public key authentication from your LibreNMS server/poller by
-      adding the librenms public key to `~root/.ssh/authorized_keys`.
+   1. Configure public key authentication from your KartsNMS server/poller by
+      adding the kartsnms public key to `~root/.ssh/authorized_keys`.
    1. (xen+ssh only) Enable libvirtd to gather data from xend by setting
       `(xend-unix-server yes)` in `/etc/xen/xend-config.sxp` and
       restarting xend and libvirtd.
 
 To test your setup, run `virsh -c qemu+ssh://vmhost/system list` or
-`virsh -c xen+ssh://vmhost list` as your librenms polling user.
+`virsh -c xen+ssh://vmhost list` as your kartsnms polling user.
 
 ## BGP Support
 

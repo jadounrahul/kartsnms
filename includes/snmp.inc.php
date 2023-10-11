@@ -1,11 +1,11 @@
 <?php
 /*
- * LibreNMS - SNMP Functions
+ * KartsNMS - SNMP Functions
  *
  * Original Observium code by: Adam Armstrong, Tom Laermans
  * Copyright (c) 2010-2012 Adam Armstrong.
  *
- * Additions for LibreNMS by Paul Gear
+ * Additions for KartsNMS by Paul Gear
  * Copyright (c) 2014-2015 Gear Consulting Pty Ltd <http://libertysys.com.au/>
  *
  * This program is free software: you can redistribute it and/or modify it
@@ -18,8 +18,8 @@
 use App\Models\Device;
 use App\Polling\Measure\Measurement;
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Util\Oid;
+use KartsNMS\Config;
+use KartsNMS\Util\Oid;
 use Symfony\Component\Process\Exception\ProcessTimedOutException;
 
 function prep_snmp_setting($device, $setting)
@@ -69,7 +69,7 @@ function get_mib_dir($device)
  * If null return the default mib dir
  * If $mibdir is empty '', return an empty string
  *
- * @param  string  $mibdir  should be the name of the directory within \LibreNMS\Config::get('mib_dir')
+ * @param  string  $mibdir  should be the name of the directory within \KartsNMS\Config::get('mib_dir')
  * @param  array|null  $device
  * @return string The option string starting with -M
  */
@@ -177,7 +177,7 @@ function gen_snmp_cmd($cmd, $device, $oids, $options = null, $mib = null, $mibdi
         array_push($cmd, '-r', $retries);
     }
 
-    $pollertarget = \LibreNMS\Util\Rewrite::addIpv6Brackets(Device::pollerTarget($device));
+    $pollertarget = \KartsNMS\Util\Rewrite::addIpv6Brackets(Device::pollerTarget($device));
     $cmd[] = $device['transport'] . ':' . $pollertarget . ':' . $device['port'];
     $cmd = array_merge($cmd, (array) $oids);
 
@@ -718,7 +718,7 @@ function snmp_gen_auth(&$device, $cmd = [])
  *
  * @param  string|null  $oid
  * @param  string  $mib
- * @param  string  $mibdir  the mib directory (relative to the LibreNMS mibs directory)
+ * @param  string  $mibdir  the mib directory (relative to the KartsNMS mibs directory)
  * @param  array|string  $options  Options to pass to snmptranslate
  * @param  array|null  $device
  * @return string

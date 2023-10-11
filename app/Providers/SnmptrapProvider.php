@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use LibreNMS\Interfaces\SnmptrapHandler;
-use LibreNMS\Snmptrap\Handlers\Fallback;
+use KartsNMS\Interfaces\SnmptrapHandler;
+use KartsNMS\Snmptrap\Handlers\Fallback;
 
 class SnmptrapProvider extends ServiceProvider
 {

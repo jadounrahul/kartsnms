@@ -16,8 +16,8 @@
   - You should have received a copy of the GNU General Public License
   - along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -
-  - @package    LibreNMS
-  - @link       https://www.librenms.org
+  - @package    KartsNMS
+  - @link       https://www.itkarts.com
   - @copyright  2023 Tony Murray
   - @author     Tony Murray <murraytony@gmail.com>
   -->
@@ -33,12 +33,12 @@
                    @blur="updateItem(group, $event.target.value)"
                    @keyup.enter="updateItem(group, $event.target.value)"
             >
-            <librenms-select class="form-control tw-flex-grow" @change="updateRoles(group, $event)" route-name="ajax.select.role" :value="data.roles" multiple :disabled="disabled" :allow-clear="false"></librenms-select>
+            <kartsnms-select class="form-control tw-flex-grow" @change="updateRoles(group, $event)" route-name="ajax.select.role" :value="data.roles" multiple :disabled="disabled" :allow-clear="false"></kartsnms-select>
             <button v-if="!disabled" @click="removeItem(group)" type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
         </div>
         <div v-if="!disabled" class="tw-flex">
             <input type="text" class="form-control !tw-w-auto" v-model="newItem" :placeholder="options.groupPlaceholder">
-            <librenms-select class="form-control tw-flex-grow" v-model="newItemRoles" route-name="ajax.select.role" placeholder="Role" multiple :disabled="disabled" :allow-clear="false"></librenms-select>
+            <kartsnms-select class="form-control tw-flex-grow" v-model="newItemRoles" route-name="ajax.select.role" placeholder="Role" multiple :disabled="disabled" :allow-clear="false"></kartsnms-select>
             <button @click="addItem" type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
         </div>
     </div>
@@ -46,11 +46,11 @@
 
 <script>
 import BaseSetting from "./BaseSetting";
-import LibrenmsSelect from "./LibrenmsSelect.vue";
+import KartsnmsSelect from "./KartsnmsSelect.vue";
 
 export default {
         name: "SettingGroupRoleMap",
-        components: {LibrenmsSelect},
+        components: {KartsnmsSelect},
         mixins: [BaseSetting],
         data() {
             return {

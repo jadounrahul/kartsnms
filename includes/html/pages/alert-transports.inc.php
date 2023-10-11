@@ -10,7 +10,7 @@ if (Auth::user()->hasGlobalAdmin()) {
 
         if ($validator->passes()) {
             $transport_name = $request->get('oauthtransport');
-            $class = \LibreNMS\Alert\Transport::getClass($transport_name);
+            $class = \KartsNMS\Alert\Transport::getClass($transport_name);
             if (class_exists($class)) {
                 $transport = app($class);
                 if ($transport->handleOauth($request)) {

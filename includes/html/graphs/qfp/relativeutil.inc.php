@@ -8,9 +8,9 @@
  *
  * Display relative QFP utilization (in %) to kpps processed
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
- * @copyright  2019 LibreNMS
+ * @copyright  2019 KartsNMS
  * @author     Pavle Obradovic <pobradovic08@gmail.com>
  */
 $colour_line = 'cc0000';

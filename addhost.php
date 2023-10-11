@@ -2,18 +2,18 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
 use App\Actions\Device\ValidateDeviceAndCreate;
 use App\Models\Device;
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\Exceptions\HostUnreachableException;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\Exceptions\HostUnreachableException;
 
 $init_modules = [];
 require __DIR__ . '/includes/init.php';

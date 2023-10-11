@@ -120,7 +120,7 @@ snmp_bulk: false
 ```
 
 If only some specific OIDs fail with snmpbulkwalk. You can disable just those OIDs.
-This needs to match exactly the OID being walked by LibreNMS. MIB::oid is preferred to prevent name collisions.
+This needs to match exactly the OID being walked by KartsNMS. MIB::oid is preferred to prevent name collisions.
 
 ```yaml
 oids:

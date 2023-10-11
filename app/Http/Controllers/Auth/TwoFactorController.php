@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -30,9 +30,9 @@ use App\Models\User;
 use App\Models\UserPref;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use LibreNMS\Authentication\TwoFactor;
-use LibreNMS\Config;
-use LibreNMS\Exceptions\AuthenticationException;
+use KartsNMS\Authentication\TwoFactor;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\AuthenticationException;
 use Session;
 
 class TwoFactorController extends Controller

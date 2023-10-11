@@ -93,7 +93,7 @@ return [
             ],
             'watchdog_log' => [
                 'description' => 'Лог файл для нагляду',
-                'help' => 'За замовчуванням лог файл LibreNMS.',
+                'help' => 'За замовчуванням лог файл KartsNMS.',
             ],
         ],
         'units' => [

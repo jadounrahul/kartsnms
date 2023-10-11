@@ -19,14 +19,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Number;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Number;
 
 $data = '';
 $name = 'rrdcached';
@@ -46,7 +46,7 @@ if ($agent_data['app'][$name]) {
         $data = str_replace("<<<rrdcached>>>\n", '', $data);
     }
     if (strlen($data) < 100) {
-        $socket = \LibreNMS\Config::get('rrdcached');
+        $socket = \KartsNMS\Config::get('rrdcached');
         if (substr($socket, 0, 6) == 'unix:/') {
             $socket_file = substr($socket, 5);
             if (file_exists($socket_file)) {

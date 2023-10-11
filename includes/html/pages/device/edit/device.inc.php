@@ -108,7 +108,7 @@ $disable_notify = get_dev_attrib($device, 'disable_notify');
     </div>
     <div class="col-md-2 text-center">
         <?php
-        if (\LibreNMS\Config::get('enable_clear_discovery') == 1 && ! $device['snmp_disable']) {
+        if (\KartsNMS\Config::get('enable_clear_discovery') == 1 && ! $device['snmp_disable']) {
             ?>
             <button type="submit" id="rediscover" data-device_id="<?php echo $device['device_id']; ?>" class="btn btn-primary" name="rediscover" title="Schedule the device for immediate rediscovery by the poller"><i class="fa fa-retweet"></i> Rediscover device</button>
             <?php
@@ -147,7 +147,7 @@ $disable_notify = get_dev_attrib($device, 'disable_notify');
      <div class="form-group">
         <label for="descr" class="col-sm-2 control-label">Description</label>
         <div class="col-sm-6">
-            <textarea id="descr" name="descr" class="form-control"><?php echo \LibreNMS\Util\Clean::html($device_model->purpose, []); ?></textarea>
+            <textarea id="descr" name="descr" class="form-control"><?php echo \KartsNMS\Util\Clean::html($device_model->purpose, []); ?></textarea>
         </div>
     </div>
     <div class="form-group">
@@ -157,7 +157,7 @@ $disable_notify = get_dev_attrib($device, 'disable_notify');
                 <?php
                 $unknown = 1;
 
-                foreach (\LibreNMS\Config::get('device_types') as $type) {
+                foreach (\KartsNMS\Config::get('device_types') as $type) {
                     echo '          <option value="' . $type['type'] . '"';
                     if ($device_model->type == $type['type']) {
                         echo ' selected="1"';
@@ -252,18 +252,18 @@ $disable_notify = get_dev_attrib($device, 'disable_notify');
         </div>
     </div>
 <?php
-if (\LibreNMS\Config::get('distributed_poller') === true) {
+if (\KartsNMS\Config::get('distributed_poller') === true) {
                     ?>
    <div class="form-group">
        <label for="poller_group" class="col-sm-2 control-label">Poller Group</label>
        <div class="col-sm-6">
            <select name="poller_group" id="poller_group" class="form-control input-sm">
-           <option value="0">General<?=\LibreNMS\Config::get('distributed_poller_group') == 0 ? ' (default Poller)' : ''?></option>
+           <option value="0">General<?=\KartsNMS\Config::get('distributed_poller_group') == 0 ? ' (default Poller)' : ''?></option>
     <?php
     foreach (dbFetchRows('SELECT `id`,`group_name` FROM `poller_groups` ORDER BY `group_name`') as $group) {
         echo '<option value="' . $group['id'] . '"' .
         ($device_model->poller_group == $group['id'] ? ' selected' : '') . '>' . $group['group_name'];
-        echo \LibreNMS\Config::get('distributed_poller_group') == $group['id'] ? ' (default Poller)' : '';
+        echo \KartsNMS\Config::get('distributed_poller_group') == $group['id'] ? ' (default Poller)' : '';
         echo '</option>';
     } ?>
            </select>
@@ -286,7 +286,7 @@ if (\LibreNMS\Config::get('distributed_poller') === true) {
     <div class="form-group">
       <label for="maintenance" class="col-sm-2 control-label"></label>
       <div class="col-sm-6">
-      <button type="button" id="maintenance" data-device_id="<?php echo $device['device_id']; ?>" <?php echo \LibreNMS\Alert\AlertUtil::isMaintenance($device['device_id']) ? 'disabled class="btn btn-warning"' : 'class="btn btn-success"'?> name="maintenance"><i class="fa fa-wrench"></i> Maintenance Mode</button>
+      <button type="button" id="maintenance" data-device_id="<?php echo $device['device_id']; ?>" <?php echo \KartsNMS\Alert\AlertUtil::isMaintenance($device['device_id']) ? 'disabled class="btn btn-warning"' : 'class="btn btn-success"'?> name="maintenance"><i class="fa fa-wrench"></i> Maintenance Mode</button>
       </div>
     </div>
 
@@ -375,7 +375,7 @@ If `devices.ignore = 0` or `macros.device = 1` condition is is set and ignore al
 <?php
 print_optionbar_start();
 [$sizeondisk, $numrrds] = foldersize(Rrd::dirFromHost($device['hostname']));
-echo 'Size on Disk: <b>' . \LibreNMS\Util\Number::formatBi($sizeondisk, 2, 3) . '</b> in <b>' . $numrrds . ' RRD files</b>.';
+echo 'Size on Disk: <b>' . \KartsNMS\Util\Number::formatBi($sizeondisk, 2, 3) . '</b> in <b>' . $numrrds . ' RRD files</b>.';
 echo ' | Last polled: <b>' . $device['last_polled'] . '</b>';
 if ($device['last_discovered']) {
     echo ' | Last discovered: <b>' . $device['last_discovered'] . '</b>';

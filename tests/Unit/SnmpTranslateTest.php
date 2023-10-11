@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit;
+namespace KartsNMS\Tests\Unit;
 
 use App\Models\Device;
-use LibreNMS\Tests\TestCase;
+use KartsNMS\Tests\TestCase;
 
 class SnmpTranslateTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 /*
 
-LibreNMS Application for monitoring power consumption and cost
+KartsNMS Application for monitoring power consumption and cost
 
 @link       https://www.upaya.net.au/
 @copyright  2021 Ben Carbery
@@ -24,7 +24,7 @@ foreach ($graphs as $key => $text) {
     $graph_type = $key;
     $graph_array['height'] = '100';
     $graph_array['width'] = '215';
-    $graph_array['to'] = \LibreNMS\Config::get('time.now');
+    $graph_array['to'] = \KartsNMS\Config::get('time.now');
     $graph_array['id'] = $app['app_id'];
     $graph_array['type'] = 'application_' . $key;
 

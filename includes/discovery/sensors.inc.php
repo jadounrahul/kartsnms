@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\OS;
+use KartsNMS\Config;
+use KartsNMS\OS;
 
 $valid['sensor'] = [];
 

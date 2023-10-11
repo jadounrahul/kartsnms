@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS entity-physical module for the discovery of components in the MRV® OptiDriver® Optical Transport Platform
+ * KartsNMS entity-physical module for the discovery of components in the MRV® OptiDriver® Optical Transport Platform
  *
  * Copyright (c) 2019 Martijn Schmidt <martijn.schmidt@gmail.com>
  *

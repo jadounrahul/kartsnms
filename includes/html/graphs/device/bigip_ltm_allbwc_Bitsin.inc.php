@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display F5 LTM Bandwidth Controller Details
+ * KartsNMS module to display F5 LTM Bandwidth Controller Details
  *
  * Copyright (c) 2019 Yacine BENAMSILI <https://github.com/yac01/ yacine.benamsili@homail.com>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['type'] = ['=', 'f5-ltm-bwc'];
 $components = $component->getComponents($device['device_id'], $options);
@@ -22,7 +22,7 @@ $components = $components[$device['device_id']];
 include 'includes/html/graphs/common.inc.php';
 $rrd_options .= ' -l 0 -E ';
 $rrd_options .= " COMMENT:'LTM Bandwidth Controller       Now      Avg      Max\\n'";
-$colours = array_merge(\LibreNMS\Config::get('graph_colours.mixed'), \LibreNMS\Config::get('graph_colours.manycolours'));
+$colours = array_merge(\KartsNMS\Config::get('graph_colours.mixed'), \KartsNMS\Config::get('graph_colours.manycolours'));
 $colcount = 0;
 $count = 0;
 

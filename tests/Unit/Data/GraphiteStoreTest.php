@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit\Data;
+namespace KartsNMS\Tests\Unit\Data;
 
 use Carbon\Carbon;
-use LibreNMS\Data\Store\Graphite;
-use LibreNMS\Tests\TestCase;
+use KartsNMS\Data\Store\Graphite;
+use KartsNMS\Tests\TestCase;
 
 /**
  * @group datastores

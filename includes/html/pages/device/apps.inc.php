@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Util\Clean;
-use LibreNMS\Util\Html;
+use KartsNMS\Util\Clean;
+use KartsNMS\Util\Html;
 
 print_optionbar_start();
 

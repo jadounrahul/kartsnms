@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -34,9 +34,9 @@ use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use LibreNMS\Config;
-use LibreNMS\Util\Graph;
-use LibreNMS\Util\Time;
+use KartsNMS\Config;
+use KartsNMS\Util\Graph;
+use KartsNMS\Util\Time;
 
 class GraphController extends WidgetController
 {

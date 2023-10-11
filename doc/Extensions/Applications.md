@@ -10,7 +10,7 @@ Different applications support a variety of ways to collect data:
 3. [The agent](Agent-Setup.md).
 
 The monitoring of applications could be added
-before or after the hosts have been added to LibreNMS.
+before or after the hosts have been added to KartsNMS.
 
 If multiple methods of collection are listed you only need to enable one.
 
@@ -18,7 +18,7 @@ If multiple methods of collection are listed you only need to enable one.
 
 When using the snmp extend method, the application discovery module
 will pick up which applications you have set up for monitoring
-automatically, even if the device is already in LibreNMS. The
+automatically, even if the device is already in KartsNMS. The
 application discovery module is enabled by default for most \*nix
 operating systems, but in some cases you will need to manually enable
 the application discovery module.
@@ -51,14 +51,14 @@ like that for proxmox:
 extend proxmox /usr/bin/sudo /usr/local/bin/proxmox
 ```
 
-### JSON Return Optimization Using librenms_return_optimizer
+### JSON Return Optimization Using kartsnms_return_optimizer
 
 While the json_app_get does allow for more complex and larger data
 to be easily returned by a extend and the data to then be worked
 with, this can also sometimes result in large returns that
 occasionally don't play nice with SNMP on some networks.
 
-`librenms_return_optimizer` fixes this via taking the extend output
+`kartsnms_return_optimizer` fixes this via taking the extend output
 piped to it, gzipping it, and then converting it to base64. The
 later is needed as net-snmp does not play that nice with binary data,
 converting most of the non-printable characters to `.`. This does add
@@ -84,8 +84,8 @@ Installing on FreeBSD...
 
 ```
 pkg install p5-MIME-Base64 p5-Gzip-Faster wget
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/utils/librenms_return_optimizer -O /usr/local/bin/librenms_return_optimizer
-chmod +x /usr/local/bin/librenms_return_optimizer
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/utils/kartsnms_return_optimizer -O /usr/local/bin/kartsnms_return_optimizer
+chmod +x /usr/local/bin/kartsnms_return_optimizer
 ```
 
 Installing on Debian...
@@ -94,8 +94,8 @@ Installing on Debian...
 apt-get install zlib1g-dev cpanminus wget
 cpanm Gzip::Faster
 cpanm MIME::Base64
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/utils/librenms_return_optimizer -O /usr/local/bin/librenms_return_optimizer
-chmod +x /usr/local/bin/librenms_return_optimizer
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/utils/kartsnms_return_optimizer -O /usr/local/bin/kartsnms_return_optimizer
+chmod +x /usr/local/bin/kartsnms_return_optimizer
 ```
 
 Currently supported applications as are below.
@@ -140,10 +140,10 @@ if congiured to do so.
 
 After you have enabled the application module, it would be wise to
 then also enable which applications you want to monitor, in the rare
-case where LibreNMS does not automatically detect it.
+case where KartsNMS does not automatically detect it.
 
 **Note**: Only do this if an application was not auto-discovered by
-LibreNMS during discovery and polling.
+KartsNMS during discovery and polling.
 
 ## Enable the application(s) to be discovered
 
@@ -175,9 +175,9 @@ module before trying the script.
 ### SNMP Extend
 
 1. Download the script onto the desired host (the host must be added
-to LibreNMS devices)
+to KartsNMS devices)
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/apache-stats.py -O /etc/snmp/apache-stats.py
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/apache-stats.py -O /etc/snmp/apache-stats.py
 ```
 
 2. Make the script executable
@@ -185,10 +185,10 @@ wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/apach
 chmod +x /etc/snmp/apache-stats.py
 ```
 
-3. Create the cache directory, '/var/cache/librenms/' and make sure
+3. Create the cache directory, '/var/cache/kartsnms/' and make sure
 that it is owned by the user running the SNMP daemon.
 ```
-mkdir -p /var/cache/librenms/
+mkdir -p /var/cache/kartsnms/
 ```
 
 4. Verify it is working by running /etc/snmp/apache-stats.py Package `urllib3` for python3 needs to be
@@ -218,13 +218,13 @@ and copy the `apache` script to `/usr/lib/check_mk_agent/local/`
 (If you get error like "Can't locate LWP/Simple.pm". libwww-perl needs
 to be installed: apt-get install libwww-perl)
 
-2. Create the cache directory, '/var/cache/librenms/' and make sure
+2. Create the cache directory, '/var/cache/kartsnms/' and make sure
 that it is owned by the user running the SNMP daemon.
 ```
-mkdir -p /var/cache/librenms/
+mkdir -p /var/cache/kartsnms/
 ```
 
-3. On the device page in Librenms, edit your host and check the
+3. On the device page in Kartsnms, edit your host and check the
 `Apache` under the Applications tab.
 
 ## Asterisk
@@ -234,10 +234,10 @@ A small shell script that reports various Asterisk call status.
 ### SNMP Extend
 
 1. Download the [asterisk
-script](https://github.com/librenms/librenms-agent/blob/master/snmp/asterisk)
+script](https://github.com/kartsnms/kartsnms-agent/blob/master/snmp/asterisk)
 to `/etc/snmp/` on your asterisk server.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/asterisk -O /etc/snmp/asterisk
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/asterisk -O /etc/snmp/asterisk
 ```
 
 2. Make the script executable
@@ -267,10 +267,10 @@ A small shell script that reports status of last backupninja backup.
 ### SNMP Extend
 
 1. Download the [backupninja
-script](https://github.com/librenms/librenms-agent/blob/master/snmp/backupninja.py)
+script](https://github.com/kartsnms/kartsnms-agent/blob/master/snmp/backupninja.py)
 to `/etc/snmp/backupninja.py` on your backuped server.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/backupninja.py -O /etc/snmp/backupninja.py`
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/backupninja.py -O /etc/snmp/backupninja.py`
 ```
 2. Make the script executable:
 ```
@@ -343,7 +343,7 @@ rndc = The path to rndc. Default: /usr/bin/env rndc
 call_rndc = A 0/1 boolean on whether or not to call rndc stats.
     Suggest to set to 0 if using netdata. Default: 1
 stats_file = The path to the named stats file. Default: /var/cache/bind/stats
-agent = A 0/1 boolean for if this is being used as a LibreNMS
+agent = A 0/1 boolean for if this is being used as a KartsNMS
     agent or not. Default: 0
 zero_stats = A 0/1 boolean for if the stats file should be zeroed
     first. Default: 0 (1 if guessed)
@@ -356,7 +356,7 @@ and it will print out what it thinks it should be.
 
 1. Copy the bind shell script, to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/bind -O /etc/snmp/bind
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/bind -O /etc/snmp/bind
 ```
 
 2. Make the script executable
@@ -379,7 +379,7 @@ Extend` heading top of page.
 
 1. [Install the agent](Agent-Setup.md) on this device if it isn't
 already and copy the script to `/usr/lib/check_mk_agent/local/bind`
-via `wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/bind -O /usr/lib/check_mk_agent/local/bind`
+via `wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/bind -O /usr/lib/check_mk_agent/local/bind`
 
 2. Make the script executable
 ```
@@ -392,7 +392,7 @@ chmod +x /usr/lib/check_mk_agent/local/bind
 
 The BIRD Internet Routing Daemon (BGP) 
 
-Due to the lack of SNMP support in the BIRD daemon, this application extracts all configured BGP protocols and parses it into LibreNMS.
+Due to the lack of SNMP support in the BIRD daemon, this application extracts all configured BGP protocols and parses it into KartsNMS.
 This application supports both IPv4 and IPv6 Peer processing.
 
 ### SNMP Extend
@@ -462,7 +462,7 @@ c. (Optional): You may define a certificate location for self-signed certificate
 ### SNMP Extend
 1. Copy the shell script to the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/certificate.py -O /etc/snmp/certificate.py
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/certificate.py -O /etc/snmp/certificate.py
 ```
 
 2. Make the script executable
@@ -482,7 +482,7 @@ The application should be auto-discovered as described at the top of the page. I
 
 1. Copy the shell script to the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/cape -O /etc/snmp/cape
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/cape -O /etc/snmp/cape
 ```
 
 2. Make the script executable
@@ -513,7 +513,7 @@ Further details: <https://getchip.com/pages/chip>
 
 1. Copy the shell script to the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/chip.sh -O /etc/snmp/power-stat.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/chip.sh -O /etc/snmp/power-stat.sh
 ```
 
 2. Make the script executable
@@ -553,7 +553,7 @@ pip3 install python-dateutil
 2. Copy the shell script to the desired host.
 By default, it will only show the status for containers that are running. To include all containers modify the constant in the script at the top of the file and change it to `ONLY_RUNNING_CONTAINERS = False`
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/docker-stats.py -O /etc/snmp/docker-stats.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/docker-stats.py -O /etc/snmp/docker-stats.py
 ```
 
 3. Make the script executable
@@ -584,7 +584,7 @@ A small shell script that checks your system's available random entropy.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/entropy.sh -O /etc/snmp/entropy.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/entropy.sh -O /etc/snmp/entropy.sh
 ```
 
 2. Make the script executable
@@ -611,7 +611,7 @@ SNMP extend script to get your exim stats data into your host.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/exim-stats.sh -O /etc/snmp/exim-stats.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/exim-stats.sh -O /etc/snmp/exim-stats.sh
 ```
 
 2. Make the script executable
@@ -642,7 +642,7 @@ Extend` heading top of page.
 
 1. Copy the shell script, fail2ban, to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/fail2ban -O /etc/snmp/fail2ban
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/fail2ban -O /etc/snmp/fail2ban
 ```
 
 2. Make the script executable
@@ -695,7 +695,7 @@ script it self at the top.
 
 1. Copy the shell script, fbsdnfsserver, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/fbsdnfsclient -O /etc/snmp/fbsdnfsclient
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/fbsdnfsclient -O /etc/snmp/fbsdnfsclient
 ```
 
 2. Make the script executable
@@ -720,7 +720,7 @@ Extend` heading top of page.
 
 1. Copy the shell script, fbsdnfsserver, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/fbsdnfsserver -O /etc/snmp/fbsdnfsserver
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/fbsdnfsserver -O /etc/snmp/fbsdnfsserver
 ```
 
 2. Make the script executable
@@ -746,7 +746,7 @@ enabled in your FreeRADIUS config.  For more information see:
 <https://wiki.freeradius.org/config/Status>
 
 You should note that status requests increment the FreeRADIUS request
-stats.  So LibreNMS polls will ultimately be reflected in your
+stats.  So KartsNMS polls will ultimately be reflected in your
 stats/charts.
 
 1. Go to your FreeRADIUS configuration directory (usually /etc/raddb
@@ -771,7 +771,7 @@ Change if you've modified this.
 
 1. Copy the freeradius shell script, to the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/freeradius.sh -O /etc/snmp/freeradius.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/freeradius.sh -O /etc/snmp/freeradius.sh
 ```
 
 2. Make the script executable
@@ -798,7 +798,7 @@ Extend` heading top of page.
 
 1. Install the script to your agent
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/freeradius.sh -O /usr/lib/check_mk_agent/local/freeradius.sh`
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/freeradius.sh -O /usr/lib/check_mk_agent/local/freeradius.sh`
 ```
 
 2. Make the script executable
@@ -822,7 +822,7 @@ A small shell script that reports various Freeswitch call status.
 1. [Install the agent](Agent-Setup.md) on this device if it isn't already
 and copy the `freeswitch` script to `/usr/lib/check_mk_agent/local/`
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/agent-local/freeswitch -O /usr/lib/check_mk_agent/local/freeswitch`
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/agent-local/freeswitch -O /usr/lib/check_mk_agent/local/freeswitch`
 ```
 
 2. Make the script executable
@@ -840,7 +840,7 @@ authentication.
 
 1. Download the script onto the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/agent-local/freeswitch -O /etc/snmp/freeswitch
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/agent-local/freeswitch -O /etc/snmp/freeswitch
 ```
 
 2. Make the script executable
@@ -871,7 +871,7 @@ Extend` heading top of page.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/gpsd -O /etc/snmp/gpsd
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/gpsd -O /etc/snmp/gpsd
 ```
 
 2. Make the script executable
@@ -954,9 +954,9 @@ extend hv-monitor /bin/cat
 Shell script that reports load average/memory/open-files stats of Icecast
 ### SNMP Extend
 
-1. Copy the shell script, icecast-stats.sh, to the desired host (the host must be added to LibreNMS devices)
+1. Copy the shell script, icecast-stats.sh, to the desired host (the host must be added to KartsNMS devices)
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/icecast-stats.sh -O /etc/snmp/icecast-stats.sh
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/icecast-stats.sh -O /etc/snmp/icecast-stats.sh
 ```
 
 2. Make the script executable
@@ -983,7 +983,7 @@ FreeBSD `pkg install dhcpd-pools`.
 
 1. Copy the shell script to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/dhcp.py -O /etc/snmp/dhcp.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/dhcp.py -O /etc/snmp/dhcp.py
 ```
 
 2. Make the script executable
@@ -1015,7 +1015,7 @@ Extend` heading top of page.
 1. Download the script and make it executable.
 
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/logsize -O /etc/snmp/logsize
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/logsize -O /etc/snmp/logsize
 chmod +x /etc/snmp/logsize
 ```
 
@@ -1086,7 +1086,7 @@ Fedora/RHEL: Rpmconf is a utility that analyzes rpm configuration files using th
 
 1. Copy the python script, linux_config_files.py, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/linux_config_files.py -O /etc/snmp/linux_config_files.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/linux_config_files.py -O /etc/snmp/linux_config_files.py
 ```
 
 2. Make the script executable
@@ -1123,7 +1123,7 @@ cpanm File::Slurp MIME::Base64 JSON Gzip::Faster
 
 2. Download the script into the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/linux_softnet_stat -O /etc/snmp/linux_softnet_stat
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/linux_softnet_stat -O /etc/snmp/linux_softnet_stat
 ```
 
 3. Make the script executable
@@ -1144,7 +1144,7 @@ Then either enable the application Linux Softnet Stat or wait for it to be re-di
 
 1. Download the script into the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/mailcow-dockerized-postfix -O /etc/snmp/mailcow-dockerized-postfix
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/mailcow-dockerized-postfix -O /etc/snmp/mailcow-dockerized-postfix
 ```
 
 2. Make the script executable
@@ -1170,7 +1170,7 @@ Extend` heading top of page.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/mailscanner.php -O /etc/snmp/mailscanner.php
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/mailscanner.php -O /etc/snmp/mailscanner.php
 ```
 
 2. Make the script executable
@@ -1204,7 +1204,7 @@ sudo apt install jq
 
 2. Download the script onto the desired host.
 ```
-sudo wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/mdadm -O /etc/snmp/mdadm
+sudo wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/mdadm -O /etc/snmp/mdadm
 ```
 
 3. Make the script executable
@@ -1251,10 +1251,10 @@ pass .1.3.6.1.4.1.3582 /usr/sbin/lsi_mrdsnmpmain
 ### SNMP Extend
 
 1. Copy the [memcached
-   script](https://github.com/librenms/librenms-agent/blob/master/snmp/memcached)
+   script](https://github.com/kartsnms/kartsnms-agent/blob/master/snmp/memcached)
    to `/etc/snmp/` on your remote server.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/memcached -O /etc/snmp/memcached
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/memcached -O /etc/snmp/memcached
 ```
 
 2. Make the script executable:
@@ -1293,7 +1293,7 @@ enabled it in the device settings app page.
 
 1. Install the script to your agent:
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/agent-local/munin -O /usr/lib/check_mk_agent/local/munin
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/agent-local/munin -O /usr/lib/check_mk_agent/local/munin
 ```
 
 2. Make the script executable
@@ -1328,10 +1328,10 @@ echo -n "foobar.value " $(date +%s) #Populate a value, here unix-timestamp
 
 ## MySQL
 
-Create the cache directory, '/var/cache/librenms/' and make sure
+Create the cache directory, '/var/cache/kartsnms/' and make sure
 that it is owned by the user running the SNMP daemon.
 ```
-mkdir -p /var/cache/librenms/
+mkdir -p /var/cache/kartsnms/
 ```
 
 The MySQL script requires PHP-CLI and the PHP MySQL extension, so
@@ -1380,7 +1380,7 @@ Verify it is working by running `/usr/lib/check_mk_agent/local/mysql`
 
 1. Copy the mysql script to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/mysql -O /etc/snmp/mysql
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/mysql -O /etc/snmp/mysql
 ```
 
 2. Make the file executable
@@ -1421,7 +1421,7 @@ location /nginx-status {
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/nginx -O /etc/snmp/nginx
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/nginx -O /etc/snmp/nginx
 ```
 
 2. Make the script executable
@@ -1488,7 +1488,7 @@ A shell script that gets stats from ntp client.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/ntp-client -O /etc/snmp/ntp-client
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/ntp-client -O /etc/snmp/ntp-client
 ```
 
 2. Make the script executable
@@ -1515,7 +1515,7 @@ A shell script that gets stats from ntp server (ntpd).
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/ntp-server.sh -O /etc/snmp/ntp-server.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/ntp-server.sh -O /etc/snmp/ntp-server.sh
 ```
 
 2. Make the script executable
@@ -1542,7 +1542,7 @@ A shell script that gets the stats from chronyd and exports them with SNMP Exten
 
 1. Download the shell script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/chrony -O /etc/snmp/chrony
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/chrony -O /etc/snmp/chrony
 ```
 
 2. Make the script executable
@@ -1567,7 +1567,7 @@ Application should be auto-discovered and its stats presented on the Apps-page o
 
 1. Copy the shell script, nvidia, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/nvidia -O /etc/snmp/nvidia
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/nvidia -O /etc/snmp/nvidia
 ```
 
 2. Make the script executable
@@ -1597,7 +1597,7 @@ nvidia-smi man file under the section covering dmon.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/opensearch -O /etc/snmp/opensearch
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/opensearch -O /etc/snmp/opensearch
 ```
 
 2. Make it executable
@@ -1638,7 +1638,7 @@ Shell script to track the OGS/GE jobs running on clusters.
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/agent-local/rocks.sh -O /etc/snmp/rocks.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/agent-local/rocks.sh -O /etc/snmp/rocks.sh
 ```
 
 2. Make the script executable
@@ -1665,7 +1665,7 @@ Script that reports load-average/memory/open-files stats of Opensips
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/opensips-stats.sh -O /etc/snmp/opensips-stats.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/opensips-stats.sh -O /etc/snmp/opensips-stats.sh
 ```
 
 2. Make the script executable:
@@ -1694,7 +1694,7 @@ recommended you use an alternative database location
 
 1. Download the script onto the desired host.
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/osupdate -O /etc/snmp/osupdate
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/osupdate -O /etc/snmp/osupdate
 ```
 
 2. Make the script executable
@@ -1734,7 +1734,7 @@ using it as a agent.
 
 1. Copy the shell script, phpfpmsp, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/phpfpmsp -O /etc/snmp/phpfpmsp
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/phpfpmsp -O /etc/snmp/phpfpmsp
 ```
 
 2. Make the script executable
@@ -1769,7 +1769,7 @@ and copy the `phpfpmsp` script to `/usr/lib/check_mk_agent/local/`
 
 1. Copy the shell script, pi-hole, to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/pi-hole -O /etc/snmp/pi-hole
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/pi-hole -O /etc/snmp/pi-hole
 ```
 
 2. Make the script executable
@@ -1801,9 +1801,9 @@ apt install libparse-netstat-perl
 apt install libjson-perl
 ```
 
-2. Copy the Perl script to the desired host (the host must be added to LibreNMS devices)
+2. Copy the Perl script to the desired host (the host must be added to KartsNMS devices)
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/portactivity -O /etc/snmp/portactivity
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/portactivity -O /etc/snmp/portactivity
 ```
 
 3. Make the script executable
@@ -1831,12 +1831,12 @@ Please note that for only TCP[46] services are supported.
 
 1. Copy the shell script, postfix-queues, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/postfix-queues -O /etc/snmp/postfix-queues
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/postfix-queues -O /etc/snmp/postfix-queues
 ```
 
 2. Copy the Perl script, postfixdetailed, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/postfixdetailed -O /etc/snmp/postfixdetailed
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/postfixdetailed -O /etc/snmp/postfixdetailed
 ```
 
 3. Make both scripts executable
@@ -1862,7 +1862,7 @@ make sure the path for pflogsumm is correct.
 8. Run /etc/snmp/postfixdetailed to create the initial cache file so
 you don't end up with some crazy initial starting value. Please note
 that each time /etc/snmp/postfixdetailed is ran, the cache file is
-updated, so if this happens in between LibreNMS doing it then the
+updated, so if this happens in between KartsNMS doing it then the
 values will be thrown off for that polling period.
 
 The application should be auto-discovered as described at the top of
@@ -1879,7 +1879,7 @@ Extend` heading top of page.
 
 1. Copy the shell script, postgres, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/postgres -O /etc/snmp/postgres
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/postgres -O /etc/snmp/postgres
 ```
 
 2. Make the script executable
@@ -1928,7 +1928,7 @@ An authoritative DNS server: <https://www.powerdns.com/auth.html>
 
 1. Copy the shell script, powerdns.py, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/powerdns.py -O /etc/snmp/powerdns.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/powerdns.py -O /etc/snmp/powerdns.py
 ```
 
 2. Make the script executable
@@ -1958,7 +1958,7 @@ A recursive DNS server: <https://www.powerdns.com/recursor.html>
 
 ### Direct
 
-The LibreNMS polling host must be able to connect to port 8082 on the
+The KartsNMS polling host must be able to connect to port 8082 on the
 monitored device. The web-server must be enabled, see the Recursor
 docs: <https://doc.powerdns.com/md/recursor/settings/#webserver>
 
@@ -1977,7 +1977,7 @@ defaults to use http.
 
 1. Copy the shell script, powerdns-recursor, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/powerdns-recursor -O /etc/snmp/powerdns-recursor
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/powerdns-recursor -O /etc/snmp/powerdns-recursor
 ```
 
 2. Make the script executable
@@ -2010,7 +2010,7 @@ This script uses `rec_control get-all` to collect stats.
 
 1. Copy the BASH script to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/powerdns-dnsdist -O /etc/snmp/powerdns-dnsdist
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/powerdns-dnsdist -O /etc/snmp/powerdns-dnsdist
 ```
 
 2. Make the script executable
@@ -2059,7 +2059,7 @@ script which method to use. The are several options to assist with testing, see
 
 1. Download the python script onto the host:
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/powermon-snmp.py -O /usr/local/bin/powermon-snmp.py
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/powermon-snmp.py -O /usr/local/bin/powermon-snmp.py
 ```
 
 2. Make the script executable:
@@ -2164,14 +2164,14 @@ extend  powermon   /usr/local/bin/powermon-snmp.py -m hpasmcli
 ```
 
     > NOTE: Avoid using other script options in the snmpd config as the results may not be
-    > interpreted correctly by LibreNMS.
+    > interpreted correctly by KartsNMS.
 
 6. Reload your snmpd service:
 ```
 systemctl reload snmpd
 ```
 
-7. You're now ready to enable the application in LibreNMS.
+7. You're now ready to enable the application in KartsNMS.
 
 
 ## Privoxy
@@ -2190,7 +2190,7 @@ debug  8192 # Non-fatal errors
 
 1. Download the extend and make sure it is executable.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/privoxy -O /etc/snmp/privoxy
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/privoxy -O /etc/snmp/privoxy
 chmod +x /etc/snmp/privoxy
 ```
 
@@ -2227,7 +2227,7 @@ https://www.cyberpowersystems.com/products/software/power-panel-personal/
 
 1. Copy the python script, pwrstatd.py, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/pwrstatd.py -O /etc/snmp/pwrstatd.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/pwrstatd.py -O /etc/snmp/pwrstatd.py
 ```
 
 2. Make the script executable
@@ -2259,7 +2259,7 @@ apt install libpve-apiclient-perl
 
 2. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/agent-local/proxmox -O /usr/local/bin/proxmox
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/agent-local/proxmox -O /usr/local/bin/proxmox
 ```
 
 3. Make the script executable
@@ -2295,7 +2295,7 @@ SNMP extend script to get your Puppet Agent data into your host.
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/puppet_agent.py -O /etc/snmp/puppet_agent.py
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/puppet_agent.py -O /etc/snmp/puppet_agent.py
 ```
 
 2. Make the script executable
@@ -2335,7 +2335,7 @@ SNMP extend script to monitor PureFTPd.
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/pureftpd.py -O /etc/snmp/pureftpd.py
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/pureftpd.py -O /etc/snmp/pureftpd.py
 ```
 
 2. Make the script executable
@@ -2377,7 +2377,7 @@ SNMP extend script to get your PI data into your host.
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/raspberry.sh -O /etc/snmp/raspberry.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/raspberry.sh -O /etc/snmp/raspberry.sh
 ```
 
 2. Make the script executable
@@ -2414,11 +2414,11 @@ apt-get install wiringpi
 ```
 
 2: Download the script to your Raspberry Pi. `wget
-   https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/rpigpiomonitor.php
+   https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/rpigpiomonitor.php
    -O /etc/snmp/rpigpiomonitor.php`
 
 3: (optional) Download the example configuration to your Raspberry Pi. `wget
-   https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/rpigpiomonitor.ini
+   https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/rpigpiomonitor.ini
    -O /etc/snmp/rpigpiomonitor.ini`
 
 4: Make the script executable: `chmod +x /etc/snmp/rpigpiomonitor.php`
@@ -2433,7 +2433,7 @@ apt-get install wiringpi
 extend rpigpiomonitor /etc/snmp/rpigpiomonitor.php
 ```
 
-8: Restart snmpd on your Raspberry Pi and, if your Raspberry Pi is already present in LibreNMS, perform a manual rediscover.
+8: Restart snmpd on your Raspberry Pi and, if your Raspberry Pi is already present in KartsNMS, perform a manual rediscover.
 
 ## Redis
 
@@ -2443,7 +2443,7 @@ Script to monitor your Redis Server
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/redis.py -O /etc/snmp/redis.py
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/redis.py -O /etc/snmp/redis.py
 ```
 
 2. Make the script executable
@@ -2487,7 +2487,7 @@ and copy the `redis` script to `/usr/lib/check_mk_agent/local/`
 ## RRDCached
 
 Install/Setup:
-For Install/Setup Local Librenms RRDCached: Please see [RRDCached](RRDCached.md)
+For Install/Setup Local Kartsnms RRDCached: Please see [RRDCached](RRDCached.md)
 
 Will collect stats by:
 1. Connecting directly to the associated device on port 42217
@@ -2500,7 +2500,7 @@ SNMP extend script to monitor your (remote) RRDCached via snmp
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/agent-local/rrdcached -O /etc/snmp/rrdcached
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/agent-local/rrdcached -O /etc/snmp/rrdcached
 ```
 
 2. Make the script executable
@@ -2521,7 +2521,7 @@ A small shell script that exportfs SDFS volume info.
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/sdfsinfo -O /etc/snmp/sdfsinfo
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/sdfsinfo -O /etc/snmp/sdfsinfo
 ```
 
 2. Make the script executable
@@ -2548,7 +2548,7 @@ SNMP extend script to monitor your Seafile Server
 
 1. Copy the Python script, seafile.py, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/seafile.py -O /etc/snmp/seafile.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/seafile.py -O /etc/snmp/seafile.py
 ```
 
 Also you have to install the requests Package for Python3.
@@ -2597,7 +2597,7 @@ hide_monitoring_account = With this Boolean you can hide the Account which you
 
 1. Copy the Perl script, smart, to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/smart-v1 -O /etc/snmp/smart
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/smart-v1 -O /etc/snmp/smart
 ```
 
 2. Install the depends.
@@ -2694,8 +2694,8 @@ Extend` heading top of page.
 
 ## Sneck
 
-This is for replacing Nagios/Icinga or the LibreNMS service
-integration in regards to NRPE. This allows LibreNMS to query what
+This is for replacing Nagios/Icinga or the KartsNMS service
+integration in regards to NRPE. This allows KartsNMS to query what
 checks were ran on the server and keep track of totals of OK, WARNING,
 CRITICAL, and UNKNOWN statuses.
 
@@ -2784,7 +2784,7 @@ cpanm Monitoring::Sneck
 extend sneck /usr/bin/env PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin /usr/local/bin/sneck -c
 ```
 
-5. In LibreNMS, enable the application for the server in question or wait for auto
+5. In KartsNMS, enable the application for the server in question or wait for auto
    discovery to find it.
 
 ## Squid
@@ -2821,7 +2821,7 @@ It shows you the totals per status and also the uptime per process. That way you
 
 1. Copy the python script to the desired host.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/supervisord.py -O /etc/snmp/supervisord.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/supervisord.py -O /etc/snmp/supervisord.py
 ```
 Notice that this will use the default unix socket path. Modify the `unix_socket_path` variable in the script if your path differs from the default.
 
@@ -2968,7 +2968,7 @@ The systemd application polls systemd and scrapes systemd units' load, activatio
 
 1. Copy the python script, systemd.py, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/systemd.py -O /etc/snmp/systemd.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/systemd.py -O /etc/snmp/systemd.py
 ```
 
 2. Make the script executable
@@ -3071,7 +3071,7 @@ working by running `unbound-control stats`.
 
 1. Copy the shell script, unbound, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/unbound -O /etc/snmp/unbound
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/unbound -O /etc/snmp/unbound
 ```
 
 2. Make the script executable
@@ -3103,7 +3103,7 @@ A small shell script that exports nut ups status.
 
 1. Copy the shell script, unbound, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/ups-nut.sh -O /etc/snmp/ups-nut.sh
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/ups-nut.sh -O /etc/snmp/ups-nut.sh
 ```
 
 2. Make the script executable
@@ -3136,7 +3136,7 @@ A small shell script that exports apcacess ups status.
 
 1. Copy the shell script, unbound, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/ups-apcups -O /etc/snmp/ups-apcups
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/ups-apcups -O /etc/snmp/ups-apcups
 ```
    
 2. Make the script executable
@@ -3170,7 +3170,7 @@ Shell script that reports cpu-load/memory/open-files files stats of Voip Monitor
 
 1. Download the script onto the desired host
 ```
-wget https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/voipmon-stats.sh -O /etc/snmp/voipmon-stats.sh
+wget https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/voipmon-stats.sh -O /etc/snmp/voipmon-stats.sh
 ```
 
 2. Make the script executable
@@ -3191,7 +3191,7 @@ The wireguard application polls the Wireguard service and scrapes all client sta
 
 1. Copy the python script, wireguard.py, to the desired host
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/wireguard.py -O /etc/snmp/wireguard.py
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/wireguard.py -O /etc/snmp/wireguard.py
 ```
 
 2. Make the script executable
@@ -3236,7 +3236,7 @@ cpanm Mime::Base64 JSON Gzip::Faster
 
 2: Fetch the script in question and make it executable.
 ```
-wget https://github.com/librenms/librenms-agent/raw/master/snmp/zfs -O /etc/snmp/zfs
+wget https://github.com/kartsnms/kartsnms-agent/raw/master/snmp/zfs -O /etc/snmp/zfs
 chmod +x /etc/snmp/zfs
 ```
 

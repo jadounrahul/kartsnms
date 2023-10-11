@@ -2,7 +2,7 @@
 /**
  * device_maintenance.inc.php
  *
- * LibreNMS device maintenance modal
+ * KartsNMS device maintenance modal
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Thomas Berberich
  * @author     Thomas Berberich <sourcehhdoctor@gmail.com>
@@ -79,7 +79,7 @@ foreach ($hour_steps as $hour) {
                     <div class="form-group">
                         <label for="maintenance-submit" class="col-sm-4 control-label"></label>
                         <div class="col-sm-8">
-                            <button type="button" id="maintenance-submit" data-device_id="<?php echo $device['device_id']; ?>" <?php echo \LibreNMS\Alert\AlertUtil::isMaintenance($device['device_id']) ? 'disabled class="btn btn-warning"' : 'class="btn btn-success"'?> name="maintenance-submit">Start Maintenance</button>
+                            <button type="button" id="maintenance-submit" data-device_id="<?php echo $device['device_id']; ?>" <?php echo \KartsNMS\Alert\AlertUtil::isMaintenance($device['device_id']) ? 'disabled class="btn btn-warning"' : 'class="btn btn-success"'?> name="maintenance-submit">Start Maintenance</button>
                         </div>
                     </div>
                 </form>
@@ -90,7 +90,7 @@ foreach ($hour_steps as $hour) {
 <script>
     $("#maintenance-submit").on("click", function() {
         var device_id = $(this).data("device_id");
-        var title = '<?=\LibreNMS\Util\Clean::html(DeviceCache::get($device['device_id'])->displayName(), []); ?>';
+        var title = '<?=\KartsNMS\Util\Clean::html(DeviceCache::get($device['device_id'])->displayName(), []); ?>';
         var notes = $('#notes').val();
         var recurring = 0;
         var start = '<?=date('Y-m-d H:i:00'); ?>';

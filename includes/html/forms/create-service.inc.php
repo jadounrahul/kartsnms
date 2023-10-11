@@ -18,8 +18,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2016 Aaron Daniels
  * @author     Aaron Daniels <aaron@daniels.id.au>
  */

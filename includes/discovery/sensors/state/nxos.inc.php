@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS NX-OS Fan state
+ * KartsNMS NX-OS Fan state
  *
  * Copyright (c) 2016 Dave Bell <me@geordish.org>
  * This program is free software: you can redistribute it and/or modify it

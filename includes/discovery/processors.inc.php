@@ -1,5 +1,5 @@
 <?php
 
-use LibreNMS\Device\Processor;
+use KartsNMS\Device\Processor;
 
 Processor::runDiscovery($os);

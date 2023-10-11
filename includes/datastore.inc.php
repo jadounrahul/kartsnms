@@ -1,8 +1,8 @@
 <?php
 /*
- * LibreNMS abstract data storage interface to both rrdtool & influxdb
+ * KartsNMS abstract data storage interface to both rrdtool & influxdb
  *
- * Copyright (c) 2016 Paul D. Gear <paul@librenms.org>
+ * Copyright (c) 2016 Paul D. Gear <paul@kartsnms.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

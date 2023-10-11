@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 foreach (glob(Config::get('install_dir') . '/' . $include_dir . '/*.inc.php') as $file) {
     include $file;

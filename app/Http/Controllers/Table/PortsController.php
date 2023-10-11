@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -29,9 +29,9 @@ use App\Models\Port;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use LibreNMS\Util\Number;
-use LibreNMS\Util\Rewrite;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Number;
+use KartsNMS\Util\Rewrite;
+use KartsNMS\Util\Url;
 
 class PortsController extends TableController
 {

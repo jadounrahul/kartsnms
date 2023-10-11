@@ -35,7 +35,7 @@
 
                 <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="usage_reporting" name="usage_reporting" @config('reporting.usage') checked @endconfig>
-                    <label class="custom-control-label" for="usage_reporting"><a target="_blank" href="https://stats.librenms.org/">{{ __('settings.settings.reporting.usage.description') }}</a></label>
+                    <label class="custom-control-label" for="usage_reporting"><a target="_blank" href="https://stats.kartsnms.org/">{{ __('settings.settings.reporting.usage.description') }}</a></label>
                 </div>
 
                 <div class="custom-control custom-checkbox mb-3">

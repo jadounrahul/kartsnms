@@ -1,6 +1,6 @@
 <?php
 
-// don't add new things here use wireless polling: https://docs.librenms.org/#Developing/os/Wireless-Sensors/
+// don't add new things here use wireless polling: https://docs.kartsnms.org/#Developing/os/Wireless-Sensors/
 
 if ($device['os'] == 'airos-af') {
     echo 'It Is AirFIBER' . PHP_EOL;

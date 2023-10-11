@@ -5,7 +5,7 @@ changes with your devices before raising an alert.
 
 [Creating alert rules](Rules.md)
 
-After that you also need to tell LibreNMS how to notify you when an
+After that you also need to tell KartsNMS how to notify you when an
 alert is raised, this is done using `Alert Transports`.
 
 [Configuring alert transports](Transports.md)

@@ -2,7 +2,7 @@
 /**
  * tegile.inc.php
  *
- * LibreNMS storage discovery module for Tegile Storage
+ * KartsNMS storage discovery module for Tegile Storage
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,11 +17,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.storage snmpgnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  * @copyright  2018 Ryan Finney
  * @author     https://github.com/theherodied/
  */
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if ($device['os'] == 'intelliflash') {
     $tegile_storage = snmpwalk_cache_oid($device, 'poolEntry', null, 'TEGILE-MIB');

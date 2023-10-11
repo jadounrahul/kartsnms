@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -27,11 +27,11 @@ namespace App\Http\Controllers\Install;
 
 use Exception;
 use Illuminate\Http\Request;
-use LibreNMS\Config;
-use LibreNMS\Exceptions\FileWriteFailedException;
-use LibreNMS\Interfaces\InstallerStep;
-use LibreNMS\Util\EnvHelper;
-use LibreNMS\Util\Git;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\FileWriteFailedException;
+use KartsNMS\Interfaces\InstallerStep;
+use KartsNMS\Util\EnvHelper;
+use KartsNMS\Util\Git;
 
 class FinalizeController extends InstallationController implements InstallerStep
 {
@@ -136,7 +136,7 @@ class FinalizeController extends InstallationController implements InstallerStep
     }
 
     /**
-     * @throws \LibreNMS\Exceptions\FileWriteFailedException
+     * @throws \KartsNMS\Exceptions\FileWriteFailedException
      */
     private function writeConfigFile()
     {

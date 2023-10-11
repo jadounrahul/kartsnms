@@ -8,7 +8,7 @@ class CliServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        // Restrict LibreNMS CLI commands
+        // Restrict KartsNMS CLI commands
         if (defined('ARTISAN_BINARY') && ARTISAN_BINARY == 'lnms' && $this->app->environment() == 'production') {
             $this->app->register(\NunoMaduro\LaravelConsoleSummary\LaravelConsoleSummaryServiceProvider::class);
         }

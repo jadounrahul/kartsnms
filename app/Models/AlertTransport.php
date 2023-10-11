@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use LibreNMS\Alert\Transport;
-use LibreNMS\Alert\Transport\Dummy;
+use KartsNMS\Alert\Transport;
+use KartsNMS\Alert\Transport\Dummy;
 
 class AlertTransport extends Model
 {

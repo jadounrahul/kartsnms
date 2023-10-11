@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 use Log;
 
 class SocialiteWasCalledListener

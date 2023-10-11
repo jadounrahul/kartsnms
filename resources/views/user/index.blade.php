@@ -1,4 +1,4 @@
-@extends('layouts.librenmsv1')
+@extends('layouts.kartsnmsv1')
 
 @section('title', __('Manage Users'))
 
@@ -20,7 +20,7 @@
                     <th data-column-id="auth_type" data-visible="{{ $multiauth ? 'true' : 'false' }}">{{ __('auth.title') }}</th>
                     <th data-column-id="email" data-formatter="text">{{ __('Email') }}</th>
                     <th data-column-id="timezone">{{ __('Timezone') }}</th>
-                    @if(\LibreNMS\Authentication\LegacyAuth::getType() == 'mysql')
+                    @if(\KartsNMS\Authentication\LegacyAuth::getType() == 'mysql')
                     <th data-column-id="enabled" data-formatter="enabled">{{ __('Enabled') }}</th>
                     @endif
                     @config('twofactor')
@@ -40,7 +40,7 @@
                             <td>{{ $user->auth_type }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ \App\Models\UserPref::getPref($user, 'timezone') ?: "Browser Timezone" }}</td>
-                            @if(\LibreNMS\Authentication\LegacyAuth::getType() == 'mysql')
+                            @if(\KartsNMS\Authentication\LegacyAuth::getType() == 'mysql')
                             <td>{{ $user->enabled }}</td>
                             @endif
                             @config('twofactor')

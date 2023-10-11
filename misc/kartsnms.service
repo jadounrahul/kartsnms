@@ -1,0 +1,15 @@
+[Unit]
+Description=KartsNMS SNMP Poller Service
+After=network.target
+
+[Service]
+ExecStart=/opt/kartsnms/kartsnms-service.py -v
+ExecReload=/bin/kill -HUP $MAINPID
+WorkingDirectory=/opt/kartsnms
+User=kartsnms
+Group=kartsnms
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

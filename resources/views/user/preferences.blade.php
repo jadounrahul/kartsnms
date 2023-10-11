@@ -1,4 +1,4 @@
-@extends('layouts.librenmsv1')
+@extends('layouts.kartsnmsv1')
 
 @section('title', __('preferences.title'))
 
@@ -120,7 +120,7 @@
 
     @config('auth.socialite.configs')
     <x-panel title="{{ __('OAuth/SAML Authentication') }}">
-        @foreach (\LibreNMS\Config::get('auth.socialite.configs', []) as $provider => $config)
+        @foreach (\KartsNMS\Config::get('auth.socialite.configs', []) as $provider => $config)
         <form role="form" action="{{ route('socialite.redirect', $provider) }}" method="post">
             {{ csrf_field() }}
             <button type="submit" id="login" class="btn btn-success btn-block">

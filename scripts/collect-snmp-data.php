@@ -2,10 +2,10 @@
 <?php
 
 use Illuminate\Support\Str;
-use LibreNMS\Exceptions\InvalidModuleException;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\ModuleTestHelper;
-use LibreNMS\Util\Snmpsim;
+use KartsNMS\Exceptions\InvalidModuleException;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\ModuleTestHelper;
+use KartsNMS\Util\Snmpsim;
 
 $install_dir = realpath(__DIR__ . '/..');
 chdir($install_dir);
@@ -134,7 +134,7 @@ try {
     $full = isset($options['full']);
 
     echo 'Capturing Data: ';
-    \LibreNMS\Util\OS::updateCache(true); // Force update of OS Cache
+    \KartsNMS\Util\OS::updateCache(true); // Force update of OS Cache
     $capture->captureFromDevice($device['device_id'], $prefer_new_snmprec, $full);
     echo "\nVerify these file(s) do not contain any private data before sharing!\n";
 } catch (InvalidModuleException $e) {

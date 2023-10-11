@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Modules\Core;
-use LibreNMS\Util\Debug;
+use KartsNMS\Config;
+use KartsNMS\Modules\Core;
+use KartsNMS\Util\Debug;
 
 $init_modules = [''];
 require __DIR__ . '/../includes/init.php';
@@ -169,7 +169,7 @@ modules:
 Info:
     You can use to build the yaml files for a new OS.
 Usage:
-    -h Is the device ID or hostname of the device in LibreNMS detected as generic
+    -h Is the device ID or hostname of the device in KartsNMS detected as generic
     -o This is the OS name, i.e ios, nxos, eos
     -t This is the OS type, i.e network, power, etc
     -v The vendor name in lower case, i.e cisco, arista

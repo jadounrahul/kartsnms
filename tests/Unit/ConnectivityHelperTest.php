@@ -1,14 +1,14 @@
 <?php
 
-namespace LibreNMS\Tests\Unit;
+namespace KartsNMS\Tests\Unit;
 
 use App\Models\Device;
-use LibreNMS\Config;
-use LibreNMS\Data\Source\Fping;
-use LibreNMS\Data\Source\FpingResponse;
-use LibreNMS\Data\Source\SnmpResponse;
-use LibreNMS\Polling\ConnectivityHelper;
-use LibreNMS\Tests\TestCase;
+use KartsNMS\Config;
+use KartsNMS\Data\Source\Fping;
+use KartsNMS\Data\Source\FpingResponse;
+use KartsNMS\Data\Source\SnmpResponse;
+use KartsNMS\Polling\ConnectivityHelper;
+use KartsNMS\Tests\TestCase;
 use Mockery;
 use SnmpQuery;
 

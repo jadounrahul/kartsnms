@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2016 Søren Friis Rosiak <sorenrosiak@gmail.com>
  * This program is free software: you can redistribute it and/or modify it
@@ -171,7 +171,7 @@ if ($apcContactData['uioInputContactStatusTableSize'] > 0) {
             $severity = $apcContactData[$index]['uioInputContactStatusAlarmStatus'];
 
             // APC normal (1), warning (2), critical (3), notaplicable (4)
-            // LibreNMS warning (1), critical (2)
+            // KartsNMS warning (1), critical (2)
 
             $state_name = $apcContactData[$index]['uioInputContactStatusContactName'];
             $states = [
@@ -209,7 +209,7 @@ if ($apcContactData['uioInputContactStatusTableSize'] > 0) {
             $severity = $apcContactData[$index]['iemConfigContactSeverity'];
 
             // APC critical (1), warning (2)
-            // LibreNMS warning (1), critical (2)
+            // KartsNMS warning (1), critical (2)
             $faultGeneric = 1;
             if ($severity == 1) {
                 $faultGeneric = 2;

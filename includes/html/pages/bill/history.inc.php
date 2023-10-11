@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Number;
 
 $pagetitle[] = 'Historical Usage';
 // $detail      = (isset($vars['detail']) ? $vars['detail'] : "");
@@ -60,7 +60,7 @@ echo '<table class="table table-striped">
         <th>Total</th>
         <th>95th %ile</th>
         <th style="text-align: center;">Overusage</th>
-        <th colspan="2" style="text-align: right;"><a href="' . \LibreNMS\Util\Url::generate($vars, ['detail' => 'all']) . '">
+        <th colspan="2" style="text-align: right;"><a href="' . \KartsNMS\Util\Url::generate($vars, ['detail' => 'all']) . '">
             <i class="fa fa-bar-chart fa-lg icon-theme" aria-hidden="true" title="Show details"></i> Show details</a>
         </th>
     </tr>
@@ -76,9 +76,9 @@ foreach (dbFetchRows('SELECT * FROM `bill_history` WHERE `bill_id` = ? ORDER BY 
         $percent = $history['bill_percent'];
         $dir_95th = $history['dir_95th'];
         $rate_95th = Number::formatSi($history['rate_95th'], 2, 3, 'bps');
-        $total_data = Number::formatBase($history['traf_total'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
+        $total_data = Number::formatBase($history['traf_total'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
 
-        $background = \LibreNMS\Util\Color::percentage($percent, null);
+        $background = \KartsNMS\Util\Color::percentage($percent, null);
 
         if ($type == 'CDR') {
             $allowed = Number::formatSi($history['bill_allowed'], 2, 3, 'bps');
@@ -87,19 +87,19 @@ foreach (dbFetchRows('SELECT * FROM `bill_history` WHERE `bill_id` = ? ORDER BY 
             $out = Number::formatSi($history['rate_95th_out'], 2, 3, 'bps');
             $overuse = (($history['bill_overuse'] <= 0) ? '-' : '<span style="color: #' . $background['left'] . '; font-weight: bold;">' . Number::formatSi($history['bill_overuse'], 2, 3, 'bps') . '</span>');
         } elseif ($type == 'Quota') {
-            $allowed = Number::formatBase($history['bill_allowed'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
-            $used = Number::formatBase($history['total_data'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
-            $in = Number::formatBase($history['traf_in'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
-            $out = Number::formatBase($history['traf_out'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
-            $overuse = (($history['bill_overuse'] <= 0) ? '-' : '<span style="color: #' . $background['left'] . '; font-weight: bold;">' . Number::formatBase($history['bill_overuse'], \LibreNMS\Config::get('billing.base')) . '</span>');
+            $allowed = Number::formatBase($history['bill_allowed'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
+            $used = Number::formatBase($history['total_data'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
+            $in = Number::formatBase($history['traf_in'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
+            $out = Number::formatBase($history['traf_out'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
+            $overuse = (($history['bill_overuse'] <= 0) ? '-' : '<span style="color: #' . $background['left'] . '; font-weight: bold;">' . Number::formatBase($history['bill_overuse'], \KartsNMS\Config::get('billing.base')) . '</span>');
         }
-        $peakOut = Number::formatBase($history['bill_peak_out'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
-        $peakIn = Number::formatBase($history['bill_peak_in'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
+        $peakOut = Number::formatBase($history['bill_peak_out'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
+        $peakIn = Number::formatBase($history['bill_peak_in'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
 
         $total_data = (($type == 'Quota') ? '<b>' . $total_data . '</b>' : $total_data);
         $rate_95th = (($type == 'CDR') ? '<b>' . $rate_95th . '</b>' : $rate_95th);
 
-        $url = \LibreNMS\Util\Url::generate($vars, ['detail' => $history['bill_hist_id']]);
+        $url = \KartsNMS\Util\Url::generate($vars, ['detail' => $history['bill_hist_id']]);
 
         echo '
             <tr>

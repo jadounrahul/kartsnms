@@ -110,7 +110,7 @@
                                                                          aria-hidden="true"></i> {{ __('RIPE NCC API') }}
                                     </a></li>
                                 @config('smokeping.integration')
-                                <li><a href="{{ \LibreNMS\Config::get('smokeping.url') }}"><i class="fa fa-line-chart fa-fw fa-lg"
+                                <li><a href="{{ \KartsNMS\Config::get('smokeping.url') }}"><i class="fa fa-line-chart fa-fw fa-lg"
                                                                        aria-hidden="true"></i> {{ __('Smokeping') }}</a>
                                 </li>
                                 @endconfig
@@ -324,7 +324,7 @@
                                                                                   aria-hidden="true"></i> {{ __('Peering') }}
                                     </a></li>
                                 @endconfig
-                                @if(\LibreNMS\Config::get('int_peering') && \LibreNMS\Config::get('int_transit'))
+                                @if(\KartsNMS\Config::get('int_peering') && \KartsNMS\Config::get('int_transit'))
                                     <li><a href="{{ url('iftype/type=peering,transit') }}"><i
                                                 class="fa fa-rocket fa-fw fa-lg"
                                                 aria-hidden="true"></i> {{ __('Peering + Transit') }}</a></li>
@@ -582,7 +582,7 @@
                                 <li><a href="{{ url('api-access') }}"><i class="fa fa-cog fa-fw fa-lg"
                                                                          aria-hidden="true"></i> {{ __('API Settings') }}
                                     </a></li>
-                                <li><a href="https://docs.librenms.org/API/" target="_blank" rel="noopener"><i
+                                <li><a href="https://docs.kartsnms.org/API/" target="_blank" rel="noopener"><i
                                             class="fa fa-book fa-fw fa-lg" aria-hidden="true"></i> {{ __('API Docs') }}</a>
                                 </li>
                             </ul>
@@ -599,7 +599,7 @@
                         <li role="presentation" class="divider"></li>
                         @endif
                         <li><a href="{{ url('about') }}"><i class="fa-solid fa-circle-info fa-fw fa-lg"
-                                                            aria-hidden="true"></i> {{ __('About :project_name', ['project_name' => \LibreNMS\Config::get('project_name')]) }}
+                                                            aria-hidden="true"></i> {{ __('About :project_name', ['project_name' => \KartsNMS\Config::get('project_name')]) }}
                             </a></li>
                     </ul>
                 </li>

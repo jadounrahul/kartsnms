@@ -2,7 +2,7 @@
 
 // This is my translation of Smokeping's graphing.
 // Thanks to Bill Fenner for Perl->Human translation:>
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $scale_min = 0;
 $scale_rigid = true;
@@ -37,7 +37,7 @@ foreach ($smokeping_files[$direction][$device['hostname']] as $source => $filena
     $iter++;
 
     // FIXME: $descr unused? -- PDG 2015-11-14
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($source, $descr_len);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($source, $descr_len);
 
     $filename = generate_smokeping_file($device, $filename);
     $rrd_options .= " DEF:median$i=" . $filename . ':median:AVERAGE ';
@@ -74,7 +74,7 @@ foreach ($smokeping_files[$direction][$device['hostname']] as $source => $filena
     $i++;
 }//end foreach
 
-$descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr('Average', $descr_len);
+$descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr('Average', $descr_len);
 
 $rrd_options .= ' CDEF:ploss_all=0' . $ploss_list . ",$i,/";
 $rrd_options .= ' CDEF:dm_all=0' . $dm_list . ",$i,/";

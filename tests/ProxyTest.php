@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Config;
-use LibreNMS\Util\Http;
-use LibreNMS\Util\Version;
+use KartsNMS\Config;
+use KartsNMS\Util\Http;
+use KartsNMS\Util\Version;
 
 class ProxyTest extends TestCase
 {
     public function testClientAgentIsCorrect(): void
     {
-        $this->assertEquals('LibreNMS/' . Version::VERSION, Http::client()->getOptions()['headers']['User-Agent']);
+        $this->assertEquals('KartsNMS/' . Version::VERSION, Http::client()->getOptions()['headers']['User-Agent']);
     }
 
     public function testProxyIsNotSet(): void

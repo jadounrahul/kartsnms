@@ -8,7 +8,7 @@ use DeviceCache;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\Rule;
-use LibreNMS\Data\Source\SnmpResponse;
+use KartsNMS\Data\Source\SnmpResponse;
 use SnmpQuery;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

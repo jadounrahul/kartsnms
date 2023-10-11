@@ -17,19 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit;
+namespace KartsNMS\Tests\Unit;
 
 use App\Models\Bill;
 use App\Models\Device;
 use App\Models\Port;
 use App\Models\User;
-use LibreNMS\Tests\TestCase;
+use KartsNMS\Tests\TestCase;
 
 class PermissionsTest extends TestCase
 {
@@ -58,7 +58,7 @@ class PermissionsTest extends TestCase
 
     public function testUserCanAccessDevice(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getDevicePermissions')->andReturnUsing(function ($user) {
             return self::devicePermissionData($user);
         });
@@ -82,7 +82,7 @@ class PermissionsTest extends TestCase
 
     public function testDevicesForUser(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getDevicePermissions')->andReturnUsing(function ($user) {
             return self::devicePermissionData($user);
         });
@@ -99,7 +99,7 @@ class PermissionsTest extends TestCase
     /*
         public function testUsersForDevice()
         {
-            $perms = \Mockery::mock(\LibreNMS\Permissions::class)->makePartial();
+            $perms = \Mockery::mock(\KartsNMS\Permissions::class)->makePartial();
             $perms->shouldReceive('getDevicePermissions')->andReturn(collect([
                 (object)['user_id' => 3, 'device_id' => 7],
                 (object)['user_id' => 3, 'device_id' => 2],
@@ -115,7 +115,7 @@ class PermissionsTest extends TestCase
     */
     public function testUserCanAccessPort(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getPortPermissions')->andReturn(collect([
             (object) ['user_id' => 43, 'port_id' => 54],
             (object) ['user_id' => 43, 'port_id' => 32],
@@ -141,7 +141,7 @@ class PermissionsTest extends TestCase
 
     public function testPortsForUser(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getPortPermissions')->andReturn(collect([
             (object) ['user_id' => 3, 'port_id' => 7],
             (object) ['user_id' => 3, 'port_id' => 2],
@@ -159,7 +159,7 @@ class PermissionsTest extends TestCase
 
     public function testUsersForPort(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getPortPermissions')->andReturn(collect([
             (object) ['user_id' => 3, 'port_id' => 7],
             (object) ['user_id' => 3, 'port_id' => 2],
@@ -176,7 +176,7 @@ class PermissionsTest extends TestCase
 
     public function testUserCanAccessBill(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getBillPermissions')->andReturn(collect([
             (object) ['user_id' => 43, 'bill_id' => 54],
             (object) ['user_id' => 43, 'bill_id' => 32],
@@ -202,7 +202,7 @@ class PermissionsTest extends TestCase
 
     public function testBillsForUser(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getBillPermissions')->andReturn(collect([
             (object) ['user_id' => 3, 'bill_id' => 7],
             (object) ['user_id' => 3, 'bill_id' => 2],
@@ -220,7 +220,7 @@ class PermissionsTest extends TestCase
 
     public function testUsersForBill(): void
     {
-        $perms = \Mockery::mock(\LibreNMS\Cache\PermissionsCache::class)->makePartial();
+        $perms = \Mockery::mock(\KartsNMS\Cache\PermissionsCache::class)->makePartial();
         $perms->shouldReceive('getBillPermissions')->andReturn(collect([
             (object) ['user_id' => 3, 'bill_id' => 7],
             (object) ['user_id' => 3, 'bill_id' => 2],

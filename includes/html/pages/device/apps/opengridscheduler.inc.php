@@ -6,10 +6,10 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage opengridscheduler
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
  * @author     SvennD <svennd@svennd.be>
 */
 
@@ -21,7 +21,7 @@ foreach ($graphs as $key => $text) {
     $graph_type = $key;
     $graph_array['height'] = '100';
     $graph_array['width'] = '215';
-    $graph_array['to'] = \LibreNMS\Config::get('time.now');
+    $graph_array['to'] = \KartsNMS\Config::get('time.now');
     $graph_array['id'] = $app['app_id'];
     $graph_array['type'] = 'application_' . $key;
 

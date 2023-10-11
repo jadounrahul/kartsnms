@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Neil Lathwood
- * @author     Neil Lathwood <librenms+n@laf.io>
+ * @author     Neil Lathwood <kartsnms+n@laf.io>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use Illuminate\Support\Str;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Exception\JsonDecodingException;
-use LibreNMS\Config;
+use KartsNMS\Config;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;

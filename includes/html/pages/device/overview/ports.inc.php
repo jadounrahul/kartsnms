@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\ObjectCache;
+use KartsNMS\Util\ObjectCache;
 
 if (ObjectCache::portCounts(['total'], $device['device_id'])['total'] > 0) {
     echo '<div class="row">
@@ -12,12 +12,12 @@ if (ObjectCache::portCounts(['total'], $device['device_id'])['total'] > 0) {
             <table class="table table-hover table-condensed table-striped">';
 
     $graph_array = \App\Http\Controllers\Device\Tabs\OverviewController::setGraphWidth();
-    $graph_array['to'] = \LibreNMS\Config::get('time.now');
+    $graph_array['to'] = \KartsNMS\Config::get('time.now');
     $graph_array['device'] = $device['device_id'];
     $graph_array['type'] = 'device_bits';
-    $graph_array['from'] = \LibreNMS\Config::get('time.day');
+    $graph_array['from'] = \KartsNMS\Config::get('time.day');
     $graph_array['legend'] = 'no';
-    $graph = \LibreNMS\Util\Url::lazyGraphTag($graph_array);
+    $graph = \KartsNMS\Util\Url::lazyGraphTag($graph_array);
 
     //Generate tooltip
     $graph_array['width'] = 210;
@@ -25,14 +25,14 @@ if (ObjectCache::portCounts(['total'], $device['device_id'])['total'] > 0) {
     $link_array = $graph_array;
     $link_array['page'] = 'graphs';
     unset($link_array['height'], $link_array['width']);
-    $link = \LibreNMS\Util\Url::generate($link_array);
+    $link = \KartsNMS\Util\Url::generate($link_array);
 
     $graph_array['width'] = '210';
     $overlib_content = generate_overlib_content($graph_array, $device['hostname'] . ' - Device Traffic');
 
     echo '<tr>
           <td colspan="4">';
-    echo \LibreNMS\Util\Url::overlibLink($link, $graph, $overlib_content);
+    echo \KartsNMS\Util\Url::overlibLink($link, $graph, $overlib_content);
     echo '  </td>
         </tr>';
 

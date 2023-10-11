@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -28,8 +28,8 @@ namespace App\Http\Controllers\Device\Tabs;
 use App\Facades\DeviceCache;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
-use LibreNMS\Config;
-use LibreNMS\Interfaces\UI\DeviceTab;
+use KartsNMS\Config;
+use KartsNMS\Interfaces\UI\DeviceTab;
 
 class ShowConfigController extends Controller implements DeviceTab
 {

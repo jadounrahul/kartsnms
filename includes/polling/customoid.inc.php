@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 foreach (dbFetchRows('SELECT * FROM `customoids` WHERE `customoid_passed` = 1 AND `device_id` = ?', [$device['device_id']]) as $customoid) {
     d_echo($customoid);

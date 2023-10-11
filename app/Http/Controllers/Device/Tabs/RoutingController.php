@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -28,7 +28,7 @@ namespace App\Http\Controllers\Device\Tabs;
 use App\Facades\DeviceCache;
 use App\Models\Component;
 use App\Models\Device;
-use LibreNMS\Interfaces\UI\DeviceTab;
+use KartsNMS\Interfaces\UI\DeviceTab;
 
 class RoutingController implements DeviceTab
 {

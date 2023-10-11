@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link https://www.librenms.org
+ * @link https://www.itkarts.com
  */
 
-use LibreNMS\OS;
+use KartsNMS\OS;
 
 if (! $os instanceof OS) {
     $os = OS::make($device);
 }
-(new \LibreNMS\Modules\PrinterSupplies())->poll($os, app('Datastore'));
+(new \KartsNMS\Modules\PrinterSupplies())->poll($os, app('Datastore'));

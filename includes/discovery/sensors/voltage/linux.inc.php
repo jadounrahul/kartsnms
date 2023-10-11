@@ -1,7 +1,7 @@
 <?php
 /*
  * voltages for raspberry pi
- * requires snmp extend agent script from librenms-agent
+ * requires snmp extend agent script from kartsnms-agent
  */
 if (! empty($pre_cache['raspberry_pi_sensors'])) {
     $sensor_type = 'raspberry_volts';

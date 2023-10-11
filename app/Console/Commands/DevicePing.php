@@ -5,8 +5,8 @@ namespace App\Console\Commands;
 use App\Console\LnmsCommand;
 use App\Models\Device;
 use Illuminate\Database\Eloquent\Builder;
-use LibreNMS\Config;
-use LibreNMS\Polling\ConnectivityHelper;
+use KartsNMS\Config;
+use KartsNMS\Polling\ConnectivityHelper;
 use Symfony\Component\Console\Input\InputArgument;
 
 class DevicePing extends LnmsCommand

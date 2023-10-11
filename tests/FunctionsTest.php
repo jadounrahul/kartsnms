@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Device\YamlDiscovery;
-use LibreNMS\Util\Number;
-use LibreNMS\Util\Time;
+use KartsNMS\Device\YamlDiscovery;
+use KartsNMS\Util\Number;
+use KartsNMS\Util\Time;
 
 class FunctionsTest extends TestCase
 {

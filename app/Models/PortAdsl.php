@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use LibreNMS\Interfaces\Models\Keyable;
+use KartsNMS\Interfaces\Models\Keyable;
 
 class PortAdsl extends PortRelatedModel implements Keyable
 {

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS entity-physical module for discovery of components in a Schleifenbauer SPDM databus ring
+ * KartsNMS entity-physical module for discovery of components in a Schleifenbauer SPDM databus ring
  *
  * Copyright (c) 2018 Martijn Schmidt <martijn.schmidt@gmail.com>
  *

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,11 +8,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 if (! isset($vars['section'])) {
@@ -44,7 +44,7 @@ if ($vars['section'] == 'eventlog') {
     echo '</span>';
 }
 
-if (\LibreNMS\Config::get('enable_syslog') == 1) {
+if (\KartsNMS\Config::get('enable_syslog') == 1) {
     echo ' | ';
 
     if ($vars['section'] == 'syslog') {
@@ -57,7 +57,7 @@ if (\LibreNMS\Config::get('enable_syslog') == 1) {
     }
 }
 
-if (\LibreNMS\Config::get('graylog.port')) {
+if (\KartsNMS\Config::get('graylog.port')) {
     echo ' | ';
     if ($vars['section'] == 'graylog') {
         echo '<span class="pagemenu-selected">';

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -14,7 +14,7 @@
 
 $pagetitle[] = 'Map';
 
-if (\LibreNMS\Config::get('gui.network-map.style') == 'old') {
+if (\KartsNMS\Config::get('gui.network-map.style') == 'old') {
     echo '
 <center style="height:100%">
     <object data="network-map.php?device=' . $device['device_id'] . '&format=svg" type="image/svg+xml" style="width: 100%; height:100%"></object>

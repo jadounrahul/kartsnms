@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use LibreNMS\Util\Rewrite;
+use KartsNMS\Util\Rewrite;
 use Permissions;
 
 class Port extends DeviceRelatedModel
@@ -64,27 +64,27 @@ class Port extends DeviceRelatedModel
     {
         $os = $this->device?->os;
 
-        if (\LibreNMS\Config::getOsSetting($os, 'ifname')) {
+        if (\KartsNMS\Config::getOsSetting($os, 'ifname')) {
             $label = $this->ifName;
-        } elseif (\LibreNMS\Config::getOsSetting($os, 'ifalias')) {
+        } elseif (\KartsNMS\Config::getOsSetting($os, 'ifalias')) {
             $label = $this->ifAlias;
         }
 
         if (empty($label)) {
             $label = $this->ifDescr;
 
-            if (\LibreNMS\Config::getOsSetting($os, 'ifindex')) {
+            if (\KartsNMS\Config::getOsSetting($os, 'ifindex')) {
                 $label .= " $this->ifIndex";
             }
         }
 
-        foreach ((array) \LibreNMS\Config::get('rewrite_if', []) as $src => $val) {
+        foreach ((array) \KartsNMS\Config::get('rewrite_if', []) as $src => $val) {
             if (Str::contains(strtolower($label), strtolower($src))) {
                 $label = $val;
             }
         }
 
-        foreach ((array) \LibreNMS\Config::get('rewrite_if_regexp', []) as $reg => $val) {
+        foreach ((array) \KartsNMS\Config::get('rewrite_if_regexp', []) as $reg => $val) {
             $label = preg_replace($reg . 'i', $val, $label);
         }
 

@@ -17,23 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 use App\Models\Device;
 use App\Models\Eventlog;
 use App\Models\Ipv4Address;
 use App\Models\Port;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Snmptrap\Dispatcher;
-use LibreNMS\Snmptrap\Trap;
-use LibreNMS\Tests\Traits\RequiresDatabase;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Snmptrap\Dispatcher;
+use KartsNMS\Snmptrap\Trap;
+use KartsNMS\Tests\Traits\RequiresDatabase;
 use Log;
 
 class CommonTrapTest extends SnmpTrapTestCase

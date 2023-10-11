@@ -17,13 +17,13 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\IPv4;
-use LibreNMS\Util\IPv6;
-use LibreNMS\Util\Rewrite;
-use LibreNMS\Util\Time;
-use LibreNMS\Util\Url;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\IPv4;
+use KartsNMS\Util\IPv6;
+use KartsNMS\Util\Rewrite;
+use KartsNMS\Util\Time;
+use KartsNMS\Util\Url;
 use Permissions;
 
 /**
@@ -182,7 +182,7 @@ class Device extends BaseModel
     {
         $hostname_is_ip = IP::isValid($this->hostname);
 
-        return SimpleTemplate::parse($this->display ?: \LibreNMS\Config::get('device_display_default', '{{ $hostname }}'), [
+        return SimpleTemplate::parse($this->display ?: \KartsNMS\Config::get('device_display_default', '{{ $hostname }}'), [
             'hostname' => $this->hostname,
             'sysName' => $this->sysName ?: $this->hostname,
             'sysName_fallback' => $hostname_is_ip ? $this->sysName : $this->hostname,
@@ -250,7 +250,7 @@ class Device extends BaseModel
             return $name;
         }
 
-        $length = \LibreNMS\Config::get('shorthost_target_length', $length);
+        $length = \KartsNMS\Config::get('shorthost_target_length', $length);
         if ($length < strlen($name)) {
             $take = max(substr_count($name, '.', 0, $length), 1);
 

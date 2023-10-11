@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use LibreNMS\Util\DynamicConfig;
+use KartsNMS\Util\DynamicConfig;
 
 class SettingsController extends Controller
 {
@@ -45,14 +45,14 @@ class SettingsController extends Controller
             return $this->jsonResponse($id, ':id is not a valid setting', null, 400);
         }
 
-        $current = \LibreNMS\Config::get($id);
+        $current = \KartsNMS\Config::get($id);
         $config_item = $config->get($id);
 
         if (! $config_item->checkValue($value)) {
             return $this->jsonResponse($id, $config_item->getValidationMessage($value), $current, 400);
         }
 
-        if (\LibreNMS\Config::persist($id, $value)) {
+        if (\KartsNMS\Config::persist($id, $value)) {
             return $this->jsonResponse($id, "Successfully set $id", $value);
         }
 

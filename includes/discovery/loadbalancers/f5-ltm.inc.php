@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture Cisco Class-Based QoS Details
+ * KartsNMS module to capture Cisco Class-Based QoS Details
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -12,7 +12,7 @@
  */
 
 // Define some error messages
-use LibreNMS\Util\IP;
+use KartsNMS\Util\IP;
 
 $error_poolaction = [];
 $error_poolaction[0] = 'Unused';
@@ -23,7 +23,7 @@ $error_poolaction[4] = 'Failover and Restart';
 $error_poolaction[5] = 'Go Active';
 $error_poolaction[6] = 'None';
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id']);
 
 // We only care about our device id.

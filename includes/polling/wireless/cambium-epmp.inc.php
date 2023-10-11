@@ -7,8 +7,8 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Number;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Number;
 
 // $cambiumSTADLRSSI = snmp_get($device, "cambiumSTADLRSSI.0", "-Ovqn", "CAMBIUM-PMP80211-MIB");
 // $cambiumSTADLSNR = snmp_get($device, "cambiumSTADLSNR.0", "-Ovqn", "CAMBIUM-PMP80211-MIB");

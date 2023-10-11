@@ -2,7 +2,7 @@
 /**
  * routeros.inc.php.
  *
- * LibreNMS vlan discovery module for Mikrotik RouterOS
+ * KartsNMS vlan discovery module for Mikrotik RouterOS
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @author     peca.nesovanovic@sattrakt.com
  */
@@ -28,7 +28,7 @@
 // i.e: T,254,ether1 is translated to: tagged vlan 254 on ether1
 
 use App\Models\Vlan;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 $scripts = SnmpQuery::walk('MIKROTIK-MIB::mtxrScriptName')->table();
 $sIndex = array_flip($scripts['MIKROTIK-MIB::mtxrScriptName'] ?? [])['LNMS_vlans'] ?? null;

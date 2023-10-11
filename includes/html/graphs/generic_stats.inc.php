@@ -6,11 +6,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage graphs
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 require 'includes/html/graphs/common.inc.php';
@@ -35,14 +35,14 @@ if ($nototal) {
 }
 
 if ($height > 99) {
-    $rrd_options .= " COMMENT:'" . \LibreNMS\Data\Store\Rrd::fixedSafeDescr($unit_text, $descr_len) . "      Now      Min      Max     Avg\l'";
+    $rrd_options .= " COMMENT:'" . \KartsNMS\Data\Store\Rrd::fixedSafeDescr($unit_text, $descr_len) . "      Now      Min      Max     Avg\l'";
 }
 
 $i = 0;
 $iter = 0;
 
 if (! isset($colour)) {
-    $colour = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
@@ -55,61 +55,61 @@ if (! isset($colourAalpha)) {
 }
 
 if (! isset($colour25th)) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
         $iter = 0;
     }
-    $colour25th = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour25th = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
 if (! isset($colour50th)) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
         $iter = 0;
     }
-    $colour50th = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour50th = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
 if (! isset($colour75th)) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
         $iter = 0;
     }
-    $colour75th = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour75th = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
 if (! isset($colour1h)) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
         $iter = 0;
     }
-    $colour1h = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour1h = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
 if (! isset($colour1d)) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
         $iter = 0;
     }
-    $colour1d = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour1d = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
 if (! isset($colour1w)) {
-    if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+    if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
         $iter = 0;
     }
-    $colour1w = \LibreNMS\Config::get("graph_colours.$colours.$iter");
+    $colour1w = \KartsNMS\Config::get("graph_colours.$colours.$iter");
     $iter++;
 }
 
-$graph_stat_percentile_disable = \LibreNMS\Config::get('graph_stat_percentile_disable');
+$graph_stat_percentile_disable = \KartsNMS\Config::get('graph_stat_percentile_disable');
 
-$descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($descr, $descr_len);
+$descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($descr, $descr_len);
 
 if ($height > 25) {
-    $descr_1h = \LibreNMS\Data\Store\Rrd::fixedSafeDescr('1 hour avg', $descr_len);
-    $descr_1d = \LibreNMS\Data\Store\Rrd::fixedSafeDescr('1 day avg', $descr_len);
-    $descr_1w = \LibreNMS\Data\Store\Rrd::fixedSafeDescr('1 week avg', $descr_len);
+    $descr_1h = \KartsNMS\Data\Store\Rrd::fixedSafeDescr('1 hour avg', $descr_len);
+    $descr_1d = \KartsNMS\Data\Store\Rrd::fixedSafeDescr('1 day avg', $descr_len);
+    $descr_1w = \KartsNMS\Data\Store\Rrd::fixedSafeDescr('1 week avg', $descr_len);
 }
 
 $id = 'ds0';

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Graph Juniper RPM IcmpEcho metrics
+ * KartsNMS module to Graph Juniper RPM IcmpEcho metrics
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *

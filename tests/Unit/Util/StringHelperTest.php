@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit\Util;
+namespace KartsNMS\Tests\Unit\Util;
 
-use LibreNMS\Tests\TestCase;
-use LibreNMS\Util\StringHelpers;
+use KartsNMS\Tests\TestCase;
+use KartsNMS\Util\StringHelpers;
 
 class StringHelperTest extends TestCase
 {

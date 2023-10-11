@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Number;
 
 $sensors = dbFetchRows("SELECT * FROM `sensors` WHERE `device_id` = ? AND `entPhysicalIndex` = ? AND entPhysicalIndex_measured = 'ports' ORDER BY `sensor_type` ASC", [$device['device_id'], $port['ifIndex']]);
 

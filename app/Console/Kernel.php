@@ -6,9 +6,9 @@ use App\Console\Commands\MaintenanceFetchOuis;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Cache;
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Version;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Version;
 
 class Kernel extends ConsoleKernel
 {
@@ -45,7 +45,7 @@ class Kernel extends ConsoleKernel
         if (is_null($this->artisan)) {
             parent::getArtisan();
             /** @phpstan-ignore-next-line */
-            $this->artisan->setName('LibreNMS');
+            $this->artisan->setName('KartsNMS');
             /** @phpstan-ignore-next-line */
             $this->artisan->setVersion(Version::VERSION);
         }
@@ -60,7 +60,7 @@ class Kernel extends ConsoleKernel
             if ($input->hasParameterOption(['-vvv'], true)) {
                 Debug::setVerbose();
             }
-            $this->app->booted('\LibreNMS\Util\Debug::set');
+            $this->app->booted('\KartsNMS\Util\Debug::set');
         }
 
         return parent::handle($input, $output);

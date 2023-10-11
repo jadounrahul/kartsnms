@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Network Management and Monitoring System
+ * KartsNMS Network Management and Monitoring System
  * Copyright (C) 2006-2011, Observium Developers - http://www.observium.org
  *
  * This program is free software: you can redistribute it and/or modify
@@ -11,4 +11,4 @@
  * See COPYING for more details.
  */
 
-(new \LibreNMS\Modules\Core())->poll($os, app('Datastore'));
+(new \KartsNMS\Modules\Core())->poll($os, app('Datastore'));

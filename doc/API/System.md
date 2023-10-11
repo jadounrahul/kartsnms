@@ -1,6 +1,6 @@
 ### `system`
 
-Display Librenms instance information.
+Display Kartsnms instance information.
 
 Route: `/api/v0/system`
 
@@ -11,7 +11,7 @@ Input:
 Example:
 
 ```curl
-curl -H 'X-Auth-Token: YOURAPITOKENHERE' https://librenms.org/api/v0/system
+curl -H 'X-Auth-Token: YOURAPITOKENHERE' https://kartsnms.org/api/v0/system
 ```
 
 Output:

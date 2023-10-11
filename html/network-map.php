@@ -1,15 +1,15 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
 
 $links = 1;
 

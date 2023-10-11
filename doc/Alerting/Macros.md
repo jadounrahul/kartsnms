@@ -186,12 +186,12 @@ Description: Ports that have an xDP (lldp, cdp, etc) neighbour.
 
 Example: `macros.port_has_xdp_neighbours = 1`
 
-### Port has xDP neighbour already known in LibreNMS (Boolean)
+### Port has xDP neighbour already known in KartsNMS (Boolean)
 
 Entity: `%macros.port_has_neighbours AND (%links.remote_port_id IS NOT NULL)`
 
 Description: Ports that have an xDP (lldp, cdp, etc) neighbour that is
-already known in libreNMS.
+already known in kartsNMS.
 
 Example: `macros.port_has_xdp_neighbours_device = 1`
 

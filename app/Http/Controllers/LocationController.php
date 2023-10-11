@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
-use LibreNMS\Config;
-use LibreNMS\Util\Html;
+use KartsNMS\Config;
+use KartsNMS\Util\Html;
 
 class LocationController extends Controller
 {

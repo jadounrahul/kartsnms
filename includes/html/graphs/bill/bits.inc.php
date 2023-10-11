@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Billing;
-use LibreNMS\Util\Number;
+use KartsNMS\Billing;
+use KartsNMS\Util\Number;
 
 $datefrom = date('YmdHis', $vars['from']);
 $dateto = date('YmdHis', $vars['to']);

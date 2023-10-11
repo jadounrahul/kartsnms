@@ -1,5 +1,5 @@
 <?php
-use Librenms\Config;
+use Kartsnms\Config;
 
 $no_refresh = true;
 ?>

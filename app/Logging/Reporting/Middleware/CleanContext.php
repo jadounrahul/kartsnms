@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -41,15 +41,15 @@ class CleanContext implements \Spatie\FlareClient\FlareMiddleware\FlareMiddlewar
             $context = $report->allContext();
 
             if (isset($context['request']['url'])) {
-                $context['request']['url'] = str_replace($context['headers']['host'] ?? '', 'librenms', $context['request']['url']);
+                $context['request']['url'] = str_replace($context['headers']['host'] ?? '', 'kartsnms', $context['request']['url']);
             }
 
             if (isset($context['session']['url']['intended'])) {
-                $context['session']['url']['intended'] = str_replace($context['headers']['host'] ?? '', 'librenms', $context['session']['url']['intended']);
+                $context['session']['url']['intended'] = str_replace($context['headers']['host'] ?? '', 'kartsnms', $context['session']['url']['intended']);
             }
 
             if (isset($context['session']['_previous']['url'])) {
-                $context['session']['_previous']['url'] = str_replace($context['headers']['host'] ?? '', 'librenms', $context['session']['_previous']['url']);
+                $context['session']['_previous']['url'] = str_replace($context['headers']['host'] ?? '', 'kartsnms', $context['session']['_previous']['url']);
             }
 
             $context['headers']['host'] = null;

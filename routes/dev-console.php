@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\GitHub;
+use KartsNMS\Util\GitHub;
 use Symfony\Component\Process\Process;
 
 Artisan::command('release:tag
@@ -41,4 +41,4 @@ Artisan::command('release:tag
 
     // remove changelog modifications
     (new Process(['git', 'checkout', base_path($file)]))->run();
-})->purpose('Create a new LibreNMS release including changelog');
+})->purpose('Create a new KartsNMS release including changelog');

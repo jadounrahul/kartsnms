@@ -2,7 +2,7 @@
 /**
  * airflow.inc.php
  *
- * LibreNMS airflow graph for WebUI
+ * KartsNMS airflow graph for WebUI
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Neil Lathwood
  * @author     Neil Lathwood <neil@lathwood.co.uk>
@@ -29,7 +29,7 @@ require 'includes/html/graphs/common.inc.php';
 
 $rrd_options .= " COMMENT:'                            Min   Max   Last\\n'";
 $rrd_options .= " DEF:sensor=$rrd_filename:sensor:AVERAGE";
-$rrd_options .= " LINE1.5:sensor#cc0000:'" . \LibreNMS\Data\Store\Rrd::fixedSafeDescr($sensor['sensor_descr'], 21) . "'";
+$rrd_options .= " LINE1.5:sensor#cc0000:'" . \KartsNMS\Data\Store\Rrd::fixedSafeDescr($sensor['sensor_descr'], 21) . "'";
 $rrd_options .= ' GPRINT:sensor:MIN:%4.1lf';
 $rrd_options .= ' GPRINT:sensor:MAX:%4.1lf';
 $rrd_options .= ' GPRINT:sensor:LAST:%4.1lf\l';

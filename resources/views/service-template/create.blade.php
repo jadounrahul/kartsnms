@@ -1,4 +1,4 @@
-@extends('layouts.librenmsv1')
+@extends('layouts.kartsnmsv1')
 
 @section('title', __('Create Service Template'))
 

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture details from various Load Balancers
+ * KartsNMS module to capture details from various Load Balancers
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the

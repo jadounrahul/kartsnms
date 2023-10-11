@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Config;
-use LibreNMS\Data\Store\Rrd;
+use KartsNMS\Config;
+use KartsNMS\Data\Store\Rrd;
 
 class RrdtoolTest extends TestCase
 {
@@ -34,55 +34,55 @@ class RrdtoolTest extends TestCase
     {
         Config::set('rrdcached', '');
         Config::set('rrdtool_version', '1.4');
-        Config::set('rrd_dir', '/opt/librenms/rrd');
+        Config::set('rrd_dir', '/opt/kartsnms/rrd');
 
-        $cmd = $this->buildCommandProxy('create', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('create /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('create', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('create /opt/kartsnms/rrd/f o', $cmd);
 
-        $cmd = $this->buildCommandProxy('tune', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('tune /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('tune', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('tune /opt/kartsnms/rrd/f o', $cmd);
 
-        $cmd = $this->buildCommandProxy('update', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('update /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('update', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('update /opt/kartsnms/rrd/f o', $cmd);
 
         $this->app->forgetInstance(Rrd::class);
         Config::set('rrdtool_version', '1.6');
 
-        $cmd = $this->buildCommandProxy('create', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('create /opt/librenms/rrd/f o -O', $cmd);
+        $cmd = $this->buildCommandProxy('create', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('create /opt/kartsnms/rrd/f o -O', $cmd);
 
-        $cmd = $this->buildCommandProxy('tune', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('tune /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('tune', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('tune /opt/kartsnms/rrd/f o', $cmd);
 
-        $cmd = $this->buildCommandProxy('update', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('update /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('update', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('update /opt/kartsnms/rrd/f o', $cmd);
     }
 
     public function testBuildCommandRemote(): void
     {
         Config::set('rrdcached', 'server:42217');
         Config::set('rrdtool_version', '1.4');
-        Config::set('rrd_dir', '/opt/librenms/rrd');
+        Config::set('rrd_dir', '/opt/kartsnms/rrd');
 
-        $cmd = $this->buildCommandProxy('create', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('create /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('create', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('create /opt/kartsnms/rrd/f o', $cmd);
 
-        $cmd = $this->buildCommandProxy('tune', '/opt/librenms/rrd/f', 'o');
-        $this->assertEquals('tune /opt/librenms/rrd/f o', $cmd);
+        $cmd = $this->buildCommandProxy('tune', '/opt/kartsnms/rrd/f', 'o');
+        $this->assertEquals('tune /opt/kartsnms/rrd/f o', $cmd);
 
-        $cmd = $this->buildCommandProxy('update', '/opt/librenms/rrd/f', 'o');
+        $cmd = $this->buildCommandProxy('update', '/opt/kartsnms/rrd/f', 'o');
         $this->assertEquals('update f o --daemon server:42217', $cmd);
 
         $this->app->forgetInstance(Rrd::class);
         Config::set('rrdtool_version', '1.6');
 
-        $cmd = $this->buildCommandProxy('create', '/opt/librenms/rrd/f', 'o');
+        $cmd = $this->buildCommandProxy('create', '/opt/kartsnms/rrd/f', 'o');
         $this->assertEquals('create f o -O --daemon server:42217', $cmd);
 
-        $cmd = $this->buildCommandProxy('tune', '/opt/librenms/rrd/f', 'o');
+        $cmd = $this->buildCommandProxy('tune', '/opt/kartsnms/rrd/f', 'o');
         $this->assertEquals('tune f o --daemon server:42217', $cmd);
 
-        $cmd = $this->buildCommandProxy('update', '/opt/librenms/rrd/f', 'o');
+        $cmd = $this->buildCommandProxy('update', '/opt/kartsnms/rrd/f', 'o');
         $this->assertEquals('update f o --daemon server:42217', $cmd);
     }
 
@@ -91,7 +91,7 @@ class RrdtoolTest extends TestCase
         Config::set('rrdcached', '');
         Config::set('rrdtool_version', '1.4');
 
-        $this->expectException('LibreNMS\Exceptions\FileExistsException');
+        $this->expectException('KartsNMS\Exceptions\FileExistsException');
         // use this file, since it is guaranteed to exist
         $this->buildCommandProxy('create', __FILE__, 'o');
     }

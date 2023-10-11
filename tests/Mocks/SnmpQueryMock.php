@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Mocks;
+namespace KartsNMS\Tests\Mocks;
 
 use App\Models\Device;
 use DeviceCache;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use LibreNMS\Data\Source\NetSnmpQuery;
-use LibreNMS\Data\Source\SnmpQueryInterface;
-use LibreNMS\Data\Source\SnmpResponse;
-use LibreNMS\Util\Mac;
-use LibreNMS\Util\Oid;
+use KartsNMS\Data\Source\NetSnmpQuery;
+use KartsNMS\Data\Source\SnmpQueryInterface;
+use KartsNMS\Data\Source\SnmpResponse;
+use KartsNMS\Util\Mac;
+use KartsNMS\Util\Oid;
 use Log;
 
 class SnmpQueryMock implements SnmpQueryInterface
@@ -170,7 +170,7 @@ class SnmpQueryMock implements SnmpQueryInterface
 
     /**
      * @param  array|string  $oids
-     * @return \LibreNMS\Data\Source\SnmpResponse
+     * @return \KartsNMS\Data\Source\SnmpResponse
      *
      * @throws \Exception
      */

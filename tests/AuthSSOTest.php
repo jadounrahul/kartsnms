@@ -17,19 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://librenms.org
+ * @link       https://kartsnms.org
  *
  * @copyright  2017 Adam Bishop
  * @author     Adam Bishop <adam@omega.org.uk>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Str;
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Config;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Config;
 
 class AuthSSOTest extends DBTestCase
 {
@@ -126,7 +126,7 @@ class AuthSSOTest extends DBTestCase
     public function testValidAuthCreateOnly(): void
     {
         $this->basicConfig();
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         Config::set('sso.create_users', true);
@@ -160,7 +160,7 @@ class AuthSSOTest extends DBTestCase
     public function testValidAuthUpdate(): void
     {
         $this->basicConfig();
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         // Create a random username and store it with the defaults
@@ -185,19 +185,19 @@ class AuthSSOTest extends DBTestCase
     public function testBadAuth(): void
     {
         $this->basicConfig();
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         $this->basicEnvironmentEnv();
         unset($_SERVER);
 
-        $this->expectException('LibreNMS\Exceptions\AuthenticationException');
+        $this->expectException('KartsNMS\Exceptions\AuthenticationException');
         $a->authenticate([]);
 
         $this->basicEnvironmentHeader();
         unset($_SERVER);
 
-        $this->expectException('LibreNMS\Exceptions\AuthenticationException');
+        $this->expectException('KartsNMS\Exceptions\AuthenticationException');
         $a->authenticate([]);
     }
 
@@ -205,7 +205,7 @@ class AuthSSOTest extends DBTestCase
     public function testNoAttribute(): void
     {
         $this->basicConfig();
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         $this->basicEnvironmentEnv();
@@ -237,7 +237,7 @@ class AuthSSOTest extends DBTestCase
     public function testGetExternalUserName(): void
     {
         $this->basicConfig();
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         $this->basicEnvironmentEnv();
@@ -271,7 +271,7 @@ class AuthSSOTest extends DBTestCase
 
     public function testGetAttr(): void
     {
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         $_SERVER['HTTP_VALID_ATTR'] = 'string';
@@ -294,7 +294,7 @@ class AuthSSOTest extends DBTestCase
 
     public function testTrustedProxies(): void
     {
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         Config::set('sso.trusted_proxies', ['127.0.0.1', '::1', '2001:630:50::/48', '8.8.8.0/25']);
@@ -347,7 +347,7 @@ class AuthSSOTest extends DBTestCase
 
     public function testLevelCaulculationFromAttr(): void
     {
-        /** @var \LibreNMS\Authentication\SSOAuthorizer $a */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer $a */
         $a = LegacyAuth::reset();
 
         Config::set('sso.mode', 'env');
@@ -371,32 +371,32 @@ class AuthSSOTest extends DBTestCase
         //Invalid String
         Config::set('sso.level_attr', 'level');
         $_SERVER['level'] = 'foobar';
-        $this->expectException('LibreNMS\Exceptions\AuthenticationException');
+        $this->expectException('KartsNMS\Exceptions\AuthenticationException');
         $a->getRoles('');
 
         //null
         Config::set('sso.level_attr', 'level');
         $_SERVER['level'] = null;
-        $this->expectException('LibreNMS\Exceptions\AuthenticationException');
+        $this->expectException('KartsNMS\Exceptions\AuthenticationException');
         $a->getRoles('');
 
         //Unset pointer
         Config::forget('sso.level_attr');
         $_SERVER['level'] = '9';
-        $this->expectException('LibreNMS\Exceptions\AuthenticationException');
+        $this->expectException('KartsNMS\Exceptions\AuthenticationException');
         $a->getRoles('');
 
         //Unset attr
         Config::set('sso.level_attr', 'level');
         unset($_SERVER['level']);
-        $this->expectException('LibreNMS\Exceptions\AuthenticationException');
+        $this->expectException('KartsNMS\Exceptions\AuthenticationException');
         $a->getRoles('');
     }
 
     public function testGroupParsing(): void
     {
         $this->basicConfig();
-        /** @var \LibreNMS\Authentication\SSOAuthorizer */
+        /** @var \KartsNMS\Authentication\SSOAuthorizer */
         $a = LegacyAuth::reset();
 
         $this->basicEnvironmentEnv();
@@ -405,8 +405,8 @@ class AuthSSOTest extends DBTestCase
         Config::set('sso.group_strategy', 'map');
         Config::set('sso.group_delimiter', ';');
         Config::set('sso.group_attr', 'member');
-        Config::set('sso.group_level_map', ['librenms-admins' => 10, 'librenms-readers' => 1, 'librenms-billingcontacts' => 5]);
-        $_SERVER['member'] = 'librenms-admins;librenms-readers;librenms-billingcontacts;unrelatedgroup;confluence-admins';
+        Config::set('sso.group_level_map', ['kartsnms-admins' => 10, 'kartsnms-readers' => 1, 'kartsnms-billingcontacts' => 5]);
+        $_SERVER['member'] = 'kartsnms-admins;kartsnms-readers;kartsnms-billingcontacts;unrelatedgroup;confluence-admins';
 
         // Valid options
         $this->assertSame(10, $a->authSSOParseGroups());
@@ -436,14 +436,14 @@ class AuthSSOTest extends DBTestCase
         unset($_SERVER['member']);
         $this->assertSame(0, $a->authSSOParseGroups());
 
-        $_SERVER['member'] = 'librenms-admins;librenms-readers;librenms-billingcontacts;unrelatedgroup;confluence-admins';
+        $_SERVER['member'] = 'kartsnms-admins;kartsnms-readers;kartsnms-billingcontacts;unrelatedgroup;confluence-admins';
 
         // Empty
         Config::set('sso.group_level_map', []);
         $this->assertSame(0, $a->authSSOParseGroups());
 
         // Not associative
-        Config::set('sso.group_level_map', ['foo', 'bar', 'librenms-admins']);
+        Config::set('sso.group_level_map', ['foo', 'bar', 'kartsnms-admins']);
         $this->assertSame(0, $a->authSSOParseGroups());
 
         // Null
@@ -461,7 +461,7 @@ class AuthSSOTest extends DBTestCase
         // Test group filtering by regex
         Config::set('sso.group_filter', '/confluence-(.*)/i');
         Config::set('sso.group_delimiter', ';');
-        Config::set('sso.group_level_map', ['librenms-admins' => 10, 'librenms-readers' => 1, 'librenms-billingcontacts' => 5, 'confluence-admins' => 7]);
+        Config::set('sso.group_level_map', ['kartsnms-admins' => 10, 'kartsnms-readers' => 1, 'kartsnms-billingcontacts' => 5, 'confluence-admins' => 7]);
         $this->assertSame(7, $a->authSSOParseGroups());
 
         // Test group filtering by empty regex

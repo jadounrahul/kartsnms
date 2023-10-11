@@ -1,6 +1,6 @@
 # Network Map
 
-LibreNMS has the ability to show you a network map based on:
+KartsNMS has the ability to show you a network map based on:
 
 - xDP Discovery
 - MAC addresses
@@ -28,7 +28,7 @@ show you all the options and explain what they do.
 
 You may also access the dynamic configuration interface [example
 here](https://visjs.github.io/vis-network/examples/network/other/configuration.html)
-from within LibreNMS by adding the following to config.php
+from within KartsNMS by adding the following to config.php
 
 ```php
 $config['network_map_vis_options'] = '{

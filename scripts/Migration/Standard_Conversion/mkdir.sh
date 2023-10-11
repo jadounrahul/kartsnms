@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Observium to LibreNMS conversion
+# Observium to KartsNMS conversion
 
 ####################### SCRIPT DESCRIPTION ########################
-# A simple script to create needed directories on LibreNMS server #
+# A simple script to create needed directories on KartsNMS server #
 ###################################################################
 
 ########################### DIRECTIONS ############################
@@ -11,14 +11,14 @@
 ###################################################################
 
 ############################# CREDITS #############################             
-# LibreNMS work is done by a great group - https://www.librenms.org    #
+# KartsNMS work is done by a great group - https://www.itkarts.com    #
 # Script Written by - Dan Brown - http://vlan50.com               #
 ###################################################################
 
 # Enter path to node list text file
 NODELIST=/tmp/nodelist.txt
-# Enter path to LibreNMS RRD directories
-L_RRDPATH=/opt/librenms/rrd/
+# Enter path to KartsNMS RRD directories
+L_RRDPATH=/opt/kartsnms/rrd/
 
 # This loop enters the RRD folder and creates dir based on contents of node list text file
 while read line 

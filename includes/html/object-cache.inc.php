@@ -3,7 +3,7 @@
 // FIXME queries such as the one below should probably go into index.php?
 // FIXME: This appears to keep a complete cache of device details in memory for every page load.
 // It would be interesting to know where this is used.  It probably should have its own API.
-use LibreNMS\ObjectCache;
+use KartsNMS\ObjectCache;
 
 $devices = new ObjectCache('devices');
 $ports = new ObjectCache('ports');

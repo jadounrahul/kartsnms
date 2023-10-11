@@ -2,7 +2,7 @@
 /**
  * microsemipdsine.inc.php
  *
- * LibreNMS voltage sensor discovery module for Microsemi PoE Switches
+ * KartsNMS voltage sensor discovery module for Microsemi PoE Switches
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Lorenzo Zafra
  * @author     Lorenzo Zafra<zafra@ualberta.ca>

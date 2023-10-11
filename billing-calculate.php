@@ -2,15 +2,15 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
-use LibreNMS\Billing;
-use LibreNMS\Util\Number;
+use KartsNMS\Billing;
+use KartsNMS\Util\Number;
 
 $init_modules = [];
 require __DIR__ . '/includes/init.php';

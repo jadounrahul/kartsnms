@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Lantronix SLC Temperature Sensor Discovery module
+ * KartsNMS Lantronix SLC Temperature Sensor Discovery module
  *
  * Copyright (c) 2016 Chris A. Evans <thecityofguanyu@outlook.com>
  *

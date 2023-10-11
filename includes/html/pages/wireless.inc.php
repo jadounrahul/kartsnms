@@ -17,14 +17,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 $pagetitle[] = 'Wireless';
 
-use LibreNMS\Device\WirelessSensor;
+use KartsNMS\Device\WirelessSensor;
 
 $sensors = dbFetchColumn('SELECT `sensor_class` FROM `wireless_sensors` GROUP BY `sensor_class`');
 $valid_wireless_types = array_intersect_key(WirelessSensor::getTypes(), array_flip($sensors));
@@ -77,7 +77,7 @@ if (isset($valid_wireless_types[$class])) {
     $graph_type = 'wireless_' . $class;
     $unit = __("wireless.$class.unit");
     $pagetitle[] = 'Wireless :: ' . $class;
-    include \LibreNMS\Config::get('install_dir') . '/includes/html/pages/wireless/sensors.inc.php';
+    include \KartsNMS\Config::get('install_dir') . '/includes/html/pages/wireless/sensors.inc.php';
 } else {
     echo 'No sensors of type ' . $class . ' found.';
 }

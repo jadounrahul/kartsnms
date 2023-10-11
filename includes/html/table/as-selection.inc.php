@@ -38,11 +38,11 @@ if ($rowCount != -1) {
 $sql = "SELECT `bgpLocalAs` $sql";
 
 foreach (dbFetchRows($sql, $param) as $asn) {
-    $astext = \LibreNMS\Util\AutonomousSystem::get($asn['bgpLocalAs'])->name();
+    $astext = \KartsNMS\Util\AutonomousSystem::get($asn['bgpLocalAs'])->name();
     $response[] = [
         'bgpLocalAs'    => $asn['bgpLocalAs'],
         'asname' => $astext,
-        'action' => "<a class='btn btn-sm btn-primary' href='" . \LibreNMS\Util\Url::generate(['page' => 'peering', 'section' => 'ix-list', 'bgpLocalAs' => $asn['bgpLocalAs']]) . "' role='button'>Show connected IXes</a>",
+        'action' => "<a class='btn btn-sm btn-primary' href='" . \KartsNMS\Util\Url::generate(['page' => 'peering', 'section' => 'ix-list', 'bgpLocalAs' => $asn['bgpLocalAs']]) . "' role='button'>Show connected IXes</a>",
     ];
 }
 

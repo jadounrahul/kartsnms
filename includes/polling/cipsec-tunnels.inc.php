@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\IP;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\IP;
 
 if ($device['os_group'] == 'cisco') {
     // FIXME - seems to be broken. IPs appear with leading zeroes.

@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Models\Eventlog;
 use App\Models\Package;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 use Log;
 
 class PackageObserver

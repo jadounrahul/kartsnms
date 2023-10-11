@@ -1,14 +1,14 @@
 <?php
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
-use LibreNMS\Data\Store\Datastore;
-use LibreNMS\Util\Debug;
+use KartsNMS\Data\Store\Datastore;
+use KartsNMS\Util\Debug;
 
 $auth = false;
 $start = microtime(true);
@@ -26,7 +26,7 @@ if (! Auth::check()) {
 
 Debug::set(isset($_GET['debug']));
 
-require \LibreNMS\Config::get('install_dir') . '/includes/html/graphs/graph.inc.php';
+require \KartsNMS\Config::get('install_dir') . '/includes/html/graphs/graph.inc.php';
 
 Datastore::terminate();
 

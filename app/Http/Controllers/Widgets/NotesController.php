@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -49,7 +49,7 @@ class NotesController extends WidgetController
             'HTML.SafeIframe' => true,
             'URI.SafeIframeRegexp' => '%^(https?:)?//%',
         ];
-        $output = \LibreNMS\Util\Clean::html(nl2br($settings['notes']), $purifier_config);
+        $output = \KartsNMS\Util\Clean::html(nl2br($settings['notes']), $purifier_config);
 
         return $output;
     }

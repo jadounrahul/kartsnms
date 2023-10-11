@@ -2,7 +2,7 @@
 /**
  * alert-rules.inc.php
  *
- * LibreNMS alert-rules.inc.php
+ * KartsNMS alert-rules.inc.php
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Neil Lathwood
  * @author     Neil Lathwood <gh+n@laf.io>
  */
 
 use Illuminate\Support\Str;
-use LibreNMS\Alerting\QueryBuilderParser;
+use KartsNMS\Alerting\QueryBuilderParser;
 
 header('Content-type: application/json');
 

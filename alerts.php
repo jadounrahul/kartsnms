@@ -17,9 +17,9 @@
  *
  * Alerts Cronjob
  * @author f0o <f0o@devilcode.org>
- * @copyright 2014 f0o, LibreNMS
+ * @copyright 2014 f0o, KartsNMS
  * @license GPL
- * @package LibreNMS
+ * @package KartsNMS
  * @subpackage Alerts
 
  * Edited 4/1/19
@@ -27,8 +27,8 @@
  * @author: Heath Barnhart <hbarnhart@kanren.net>
  */
 
-use LibreNMS\Alert\RunAlerts;
-use LibreNMS\Util\Debug;
+use KartsNMS\Alert\RunAlerts;
+use KartsNMS\Util\Debug;
 
 $init_modules = ['alerts', 'laravel'];
 require __DIR__ . '/includes/init.php';
@@ -39,10 +39,10 @@ if (Debug::set(isset($options['d']))) {
     echo "DEBUG!\n";
 }
 
-$alerts_lock = Cache::lock('alerts', \LibreNMS\Config::get('service_alerting_frequency'));
+$alerts_lock = Cache::lock('alerts', \KartsNMS\Config::get('service_alerting_frequency'));
 if ($alerts_lock->get()) {
     $alerts = new RunAlerts();
-    if (! defined('TEST') && \LibreNMS\Config::get('alert.disable') != 'true') {
+    if (! defined('TEST') && \KartsNMS\Config::get('alert.disable') != 'true') {
         echo 'Start: ' . date('r') . "\r\n";
         echo 'ClearStaleAlerts():' . PHP_EOL;
         $alerts->clearStaleAlerts();

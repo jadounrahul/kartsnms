@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -29,7 +29,7 @@ use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use LibreNMS\Interfaces\InstallerStep;
+use KartsNMS\Interfaces\InstallerStep;
 use Silber\Bouncer\BouncerFacade as Bouncer;
 
 class MakeUserController extends InstallationController implements InstallerStep

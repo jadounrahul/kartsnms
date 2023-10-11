@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -28,12 +28,12 @@ namespace App\Http\Controllers\Install;
 use App\StreamedOutput;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use LibreNMS\DB\Eloquent;
-use LibreNMS\DB\Schema;
-use LibreNMS\Interfaces\InstallerStep;
-use LibreNMS\ValidationResult;
-use LibreNMS\Validations\Database;
-use LibreNMS\Validator;
+use KartsNMS\DB\Eloquent;
+use KartsNMS\DB\Schema;
+use KartsNMS\Interfaces\InstallerStep;
+use KartsNMS\ValidationResult;
+use KartsNMS\Validations\Database;
+use KartsNMS\Validator;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class DatabaseController extends InstallationController implements InstallerStep
@@ -59,9 +59,9 @@ class DatabaseController extends InstallationController implements InstallerStep
         Eloquent::setConnection(
             'setup',
             $request->get('host', 'localhost'),
-            $request->get('username', 'librenms'),
+            $request->get('username', 'kartsnms'),
             $request->get('password', ''),
-            $request->get('database', 'librenms'),
+            $request->get('database', 'kartsnms'),
             $request->get('port', 3306),
             $request->get('unix_socket')
         );

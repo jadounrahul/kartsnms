@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\OS;
+use KartsNMS\OS;
 
 $modulation = snmpwalk_group($device, 'linkAcmRxModulation', 'SIAE-RADIO-SYSTEM-MIB', 2);
 $modulation = snmpwalk_group($device, 'linkAcmTxModulation', 'SIAE-RADIO-SYSTEM-MIB', 2, $modulation);

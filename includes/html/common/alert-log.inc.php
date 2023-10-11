@@ -6,11 +6,11 @@
 * option) any later version.  Please see LICENSE.txt at the top level of
 * the source code distribution for details.
 *
-* @package    LibreNMS
+* @package    KartsNMS
 * @subpackage graphs
-* @link       https://www.librenms.org
-* @copyright  2017 LibreNMS
-* @author     LibreNMS Contributors
+* @link       https://www.itkarts.com
+* @copyright  2017 KartsNMS
+* @author     KartsNMS Contributors
 */
 
 $param = [];
@@ -18,7 +18,7 @@ $param = [];
 $pagetitle[] = 'Alert Log';
 
 $alert_states = [
-    // divined from librenms/alerts.php
+    // divined from kartsnms/alerts.php
     'Any' => -1,
     'Ok (recovered)' => 0,
     'Alert' => 1,

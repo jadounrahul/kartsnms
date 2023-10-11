@@ -16,8 +16,8 @@
   - You should have received a copy of the GNU General Public License
   - along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -
-  - @package    LibreNMS
-  - @link       https://www.librenms.org
+  - @package    KartsNMS
+  - @link       https://www.itkarts.com
   - @copyright  2020 Tony Murray
   - @author     Tony Murray <murraytony@gmail.com>
   -->
@@ -37,11 +37,11 @@
                          v-for="setting in settings[id]"
                          v-if="!setting.advanced || advanced"
                          :key="setting.name">
-                        <librenms-setting
+                        <kartsnms-setting
                             prefix="poller.settings"
                             :setting='setting'
                             :id="poller.id"
-                        ></librenms-setting>
+                        ></kartsnms-setting>
                     </div>
                 </v-tab>
             </vue-tabs>

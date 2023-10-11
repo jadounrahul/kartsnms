@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\Mac;
+use KartsNMS\Util\Mac;
 
 $port = $vars['id'];
 $stat = $vars['stat'] ?: 'bits';
@@ -83,12 +83,12 @@ foreach ($accs as $acc) {
         }//end if
 
         $this_id = str_replace('.', '', $acc['mac']);
-        if (! \LibreNMS\Config::get("graph_colours.$colours.$iter")) {
+        if (! \KartsNMS\Config::get("graph_colours.$colours.$iter")) {
             $iter = 0;
         }
 
-        $colour = \LibreNMS\Config::get("graph_colours.$colours.$iter");
-        $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($name, 36);
+        $colour = \KartsNMS\Config::get("graph_colours.$colours.$iter");
+        $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($name, 36);
         $rrd_options .= ' DEF:in' . $this_id . "=$this_rrd:" . $prefix . 'IN:AVERAGE ';
         $rrd_options .= ' DEF:out' . $this_id . "temp=$this_rrd:" . $prefix . 'OUT:AVERAGE ';
         $rrd_options .= ' CDEF:inB' . $this_id . '=in' . $this_id . ",$multiplier,* ";

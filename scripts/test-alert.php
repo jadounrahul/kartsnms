@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use LibreNMS\Alert\RunAlerts;
-use LibreNMS\Util\Debug;
+use KartsNMS\Alert\RunAlerts;
+use KartsNMS\Util\Debug;
 
 $init_modules = ['alerts', 'laravel'];
 require __DIR__ . '/../includes/init.php';

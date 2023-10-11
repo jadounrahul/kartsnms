@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Feature\Commands;
+namespace KartsNMS\Tests\Feature\Commands;
 
-use LibreNMS\Config;
-use LibreNMS\Tests\InMemoryDbTestCase;
+use KartsNMS\Config;
+use KartsNMS\Tests\InMemoryDbTestCase;
 
 class TestConfigCommands extends InMemoryDbTestCase
 {
@@ -123,7 +123,7 @@ class TestConfigCommands extends InMemoryDbTestCase
      */
     private function assertCliGets(string $setting, $expected): void
     {
-        $this->assertSame($expected, \LibreNMS\Config::get($setting));
+        $this->assertSame($expected, \KartsNMS\Config::get($setting));
 
         $command = $this->artisan('config:get', ['setting' => $setting]);
         if ($expected === null) {

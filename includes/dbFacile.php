@@ -21,8 +21,8 @@
  */
 
 use Illuminate\Database\QueryException;
-use LibreNMS\DB\Eloquent;
-use LibreNMS\Util\Laravel;
+use KartsNMS\DB\Eloquent;
+use KartsNMS\Util\Laravel;
 
 /**
  * Performs a query using the given string.

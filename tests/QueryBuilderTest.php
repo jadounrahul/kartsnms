@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Alerting\QueryBuilderFluentParser;
-use LibreNMS\Alerting\QueryBuilderParser;
-use LibreNMS\Config;
+use KartsNMS\Alerting\QueryBuilderFluentParser;
+use KartsNMS\Alerting\QueryBuilderParser;
+use KartsNMS\Config;
 
 class QueryBuilderTest extends TestCase
 {

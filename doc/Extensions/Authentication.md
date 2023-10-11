@@ -1,6 +1,6 @@
 # Authentication Options
 
-LibreNMS supports multiple authentication modules along with [Two Factor Auth](Two-Factor-Auth.md).
+KartsNMS supports multiple authentication modules along with [Two Factor Auth](Two-Factor-Auth.md).
 Here we will provide configuration details for these modules. Alternatively,
 you can use [Socialite Providers](OAuth-SAML.md) which supports a wide variety
 of social/OAuth/SAML authentication methods.
@@ -28,7 +28,7 @@ longer be available to log in.**
 
 To enable a particular authentication module you need to set this up
 in config.php. Please note that only ONE module can be
-enabled. LibreNMS doesn't support multiple authentication mechanisms at
+enabled. KartsNMS doesn't support multiple authentication mechanisms at
 the same time.
 
 !!! setting "auth/general"
@@ -53,7 +53,7 @@ that only Administrator account type can see configs.
 
 ## Note for SELinux users
 
-When using SELinux on the LibreNMS server, you need to allow Apache
+When using SELinux on the KartsNMS server, you need to allow Apache
 (httpd) to connect LDAP/Active Directory server, this is disabled by
 default. You can use SELinux Booleans to allow network access to LDAP
 resources with this command:
@@ -79,7 +79,7 @@ Enable debug output to troubleshoot issues
     lnms config:set auth_mechanism mysql
     ```
 
-This is default option with LibreNMS so you should have already have the following configuration setup
+This is default option with KartsNMS so you should have already have the following configuration setup
 in your environment file (.env).
 
 ```dotenv
@@ -181,7 +181,7 @@ the group filter.
 
 ### SELinux configuration
 
-On RHEL / CentOS / Fedora, in order for LibreNMS to reach Active Directory, you need to allow LDAP requests in SELinux:
+On RHEL / CentOS / Fedora, in order for KartsNMS to reach Active Directory, you need to allow LDAP requests in SELinux:
 ```
 setsebool -P httpd_can_connect_ldap 1
 ```
@@ -283,7 +283,7 @@ levels replace the `auth_ldap_groups` line with the following:
 
 ### SELinux configuration
 
-On RHEL / CentOS / Fedora, in order for LibreNMS to reach LDAP, you need to allow LDAP requests in SELinux:
+On RHEL / CentOS / Fedora, in order for KartsNMS to reach LDAP, you need to allow LDAP requests in SELinux:
 ```
 setsebool -P httpd_can_connect_ldap 1
 ```
@@ -303,15 +303,15 @@ lnms config:set radius.default_roles '["csr"]'
 The attribute `Filter-ID` is a standard Radius-Reply-Attribute (string) that
 can be assigned a specially formatted string to assign a single role to the user. 
 
-The string to send in `Filter-ID` reply attribute must start with `librenms_role_` followed by the role name.
-For example to set the admin role send `librenms_role_admin`.
+The string to send in `Filter-ID` reply attribute must start with `kartsnms_role_` followed by the role name.
+For example to set the admin role send `kartsnms_role_admin`.
 
 The following strings correspond to the built-in roles, but any defined role can be used:
-- `librenms_role_normal` - Sets the normal user level.
-- `librenms_role_admin` - Sets the administrator level.
-- `librenms_role_global-read` - Sets the global read level
+- `kartsnms_role_normal` - Sets the normal user level.
+- `kartsnms_role_admin` - Sets the administrator level.
+- `kartsnms_role_global-read` - Sets the global read level
 
-LibreNMS will ignore any other strings sent in `Filter-ID` and revert to default role that is set in your config.
+KartsNMS will ignore any other strings sent in `Filter-ID` and revert to default role that is set in your config.
 
 ```php
 $config['radius']['hostname']      = 'localhost';
@@ -325,7 +325,7 @@ $config['radius']['default_level'] = 1;  // Set the default user level when auto
 ### Radius Huntgroup
 
 Freeradius has a function called `Radius Huntgroup` which allows to send different attributes based on NAS.
-This may be utilized if you already use `Filter-ID` in your environment and also want to use radius with LibreNMS.
+This may be utilized if you already use `Filter-ID` in your environment and also want to use radius with KartsNMS.
 
 ### Old account cleanup
 
@@ -341,7 +341,7 @@ won't be removed.
 
 Config option: `http-auth`
 
-LibreNMS will expect the user to have authenticated via your
+KartsNMS will expect the user to have authenticated via your
 webservice already. At this stage it will need to assign a userlevel
 for that user which is done in one of two ways:
 
@@ -361,7 +361,7 @@ Config option: `ad-authorization`
 
 This module is a combination of ___http-auth___ and ___active\_directory___
 
-LibreNMS will expect the user to have authenticated via your
+KartsNMS will expect the user to have authenticated via your
 webservice already (e.g. using Kerberos Authentication in Apache) but
 will use Active Directory lookups to determine and assign the
 userlevel of a user. The userlevel will be calculated by using AD
@@ -394,7 +394,7 @@ Config option: `ldap-authorization`
 
 This module is a combination of ___http-auth___ and ___ldap___
 
-LibreNMS will expect the user to have authenticated via your
+KartsNMS will expect the user to have authenticated via your
 webservice already (e.g. using Kerberos Authentication in Apache) but
 will use LDAP to determine and assign the userlevel of a user. The
 userlevel will be calculated by using LDAP group membership
@@ -445,7 +445,7 @@ $config['auth_ldap_binduser'] = 'ldapbind'; // will use auth_ldap_prefix and aut
 $config['auth_ldap_bindpassword'] = 'password';
 ```
 
-## View/embedded graphs without being logged into LibreNMS
+## View/embedded graphs without being logged into KartsNMS
 
 !!! setting "webui/graph"
     ```bash
@@ -456,7 +456,7 @@ $config['auth_ldap_bindpassword'] = 'password';
 ## Single Sign-on
 
 The single sign-on mechanism is used to integrate with third party
-authentication providers that are managed outside of LibreNMS - such
+authentication providers that are managed outside of KartsNMS - such
 as ADFS, Shibboleth, EZProxy, BeyondCorp, and others. A large number
 of these methods use
 [SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)
@@ -466,7 +466,7 @@ possible to use any software that works in a similar way.
 
 In order to make use of the single sign-on module, you need to have an
 Identity Provider up and running, and know how to configure your
-Relying Party to pass attributes to LibreNMS via header injection or
+Relying Party to pass attributes to KartsNMS via header injection or
 environment variables. Setting these up is outside of the scope of
 this documentation.
 
@@ -502,7 +502,7 @@ going and using that mechanism.
 If there is a proxy involved (e.g. EZProxy, Azure AD Application
 Proxy, NGINX, mod_proxy) it's ___essential___ that you have some means
 in place to prevent headers being injected between the proxy and the
-end user, and also prevent end users from contacting LibreNMS
+end user, and also prevent end users from contacting KartsNMS
 directly.
 
 This should also apply to user connections to the proxy itself - the
@@ -519,7 +519,7 @@ $config['sso']['trusted_proxies'] = ['127.0.0.1/8', '::1/128', '192.0.2.0', '200
 ```
 
 This configuration item should contain an array with a list of IP
-addresses or CIDR prefixes that are allowed to connect to LibreNMS and
+addresses or CIDR prefixes that are allowed to connect to KartsNMS and
 supply environment variables or headers.
 
 ### Advanced Configuration Options
@@ -583,7 +583,7 @@ $config['sso']['level_attr']     = "entitlement";
 If your Relying Party is capable of calculating the necessary
 privilege level, you can configure the module to read the privilege
 number straight from an attribute. ___sso\_level\_attr___ should contain
-the name of the attribute that the Relying Party exposes to LibreNMS -
+the name of the attribute that the Relying Party exposes to KartsNMS -
 as long as ___sso\_mode___ is correctly set, the mechanism should find
 the value.
 
@@ -594,7 +594,7 @@ This is the most flexible (and complex) way of assigning privileges.
 ```php
 $config['sso']['group_strategy']  = "map";
 $config['sso']['group_attr']      = "member";
-$config['sso']['group_level_map'] = ['librenms-admins' => 10, 'librenms-readers' => 1, 'librenms-billingcontacts' => 5];
+$config['sso']['group_level_map'] = ['kartsnms-admins' => 10, 'kartsnms-readers' => 1, 'kartsnms-billingcontacts' => 5];
 $config['sso']['group_delimiter'] = ';';
 ```
 
@@ -618,18 +618,18 @@ may create pseudo arrays).
 There is an optional value for sites with large numbers of groups:
 
 ```php
-$config['sso']['group_filter']  = "/librenms-(.*)/i";
+$config['sso']['group_filter']  = "/kartsnms-(.*)/i";
 ```
 
 This filter causes the mechanism to only consider groups matching a regular expression.
 
 #### Logout Behaviour
 
-LibreNMS has no capability to log out a user authenticated via Single
+KartsNMS has no capability to log out a user authenticated via Single
 Sign-On - that responsibility falls to the Relying Party.
 
 If your Relying Party has a magic URL that needs to be called to end a
-session, you can configure LibreNMS to direct the user to it:
+session, you can configure KartsNMS to direct the user to it:
 
 ```php
 # Example for Shibboleth
@@ -657,7 +657,7 @@ $config['sso']['realname_attr'] = 'displayName';
 $config['sso']['email_attr'] = 'mail';
 $config['sso']['group_strategy'] = 'map';
 $config['sso']['group_attr'] = 'member';
-$config['sso']['group_filter'] = '/(librenms-.*)/i';
+$config['sso']['group_filter'] = '/(kartsnms-.*)/i';
 $config['sso']['group_delimiter'] = ';';
-$config['sso']['group_level_map'] = ['librenms-demo' => 11, 'librenms-globaladmin' => 10, 'librenms-globalread' => 5, 'librenms-lowpriv'=> 1];
+$config['sso']['group_level_map'] = ['kartsnms-demo' => 11, 'kartsnms-globaladmin' => 10, 'kartsnms-globalread' => 5, 'kartsnms-lowpriv'=> 1];
 ```

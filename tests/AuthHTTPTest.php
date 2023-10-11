@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://librenms.org
+ * @link       https://kartsnms.org
  *
  * @copyright  2017 Adam Bishop
  * @author     Adam Bishop <adam@omega.org.uk>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Config;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Config;
 
 use function strip_tags;
 use function strip_tags as strip_tags1;

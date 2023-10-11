@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use LibreNMS\Util\Dns;
+use KartsNMS\Util\Dns;
 
 /**
  * @method static \Database\Factories\LocationFactory factory(...$parameters)
@@ -83,7 +83,7 @@ class Location extends Model
             return true;
         }
 
-        if ($hostname && \LibreNMS\Config::get('geoloc.dns')) {
+        if ($hostname && \KartsNMS\Config::get('geoloc.dns')) {
             $coord = app(Dns::class)->getCoordinates($hostname);
 
             if (! empty($coord)) {
@@ -93,7 +93,7 @@ class Location extends Model
             }
         }
 
-        if ($this->location && ! $this->hasCoordinates() && \LibreNMS\Config::get('geoloc.latlng', true)) {
+        if ($this->location && ! $this->hasCoordinates() && \KartsNMS\Config::get('geoloc.latlng', true)) {
             return $this->fetchCoordinates();
         }
 
@@ -126,8 +126,8 @@ class Location extends Model
     protected function fetchCoordinates()
     {
         try {
-            /** @var \LibreNMS\Interfaces\Geocoder $api */
-            $api = app(\LibreNMS\Interfaces\Geocoder::class);
+            /** @var \KartsNMS\Interfaces\Geocoder $api */
+            $api = app(\KartsNMS\Interfaces\Geocoder::class);
 
             // Removes Location info inside () when looking up lat/lng
             $this->fill($api->getCoordinates(preg_replace($this->location_ignore_regex, '', $this->location)));

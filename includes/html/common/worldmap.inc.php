@@ -17,13 +17,13 @@
  * Custom Frontpage
  *
  * @author f0o <f0o@devilcode.org>
- * @copyright 2014 f0o, LibreNMS
+ * @copyright 2014 f0o, KartsNMS
  * @license GPL
  */
 
 use Illuminate\Support\Facades\Auth;
-use LibreNMS\Alert\AlertUtil;
-use LibreNMS\Config;
+use KartsNMS\Alert\AlertUtil;
+use KartsNMS\Config;
 
 $install_dir = Config::get('install_dir');
 
@@ -125,7 +125,7 @@ var greenMarker = L.AwesomeMarkers.icon({
                 $z_offset = 10000;  // move marker to foreground
             }
         }
-        $temp_output .= "var title = '<a href=\"" . \LibreNMS\Util\Url::deviceUrl((int) $map_devices['device_id']) . '"><img src="' . getIcon($map_devices) . '" width="32" height="32" alt=""> ' . format_hostname($map_devices) . "</a>';
+        $temp_output .= "var title = '<a href=\"" . \KartsNMS\Util\Url::deviceUrl((int) $map_devices['device_id']) . '"><img src="' . getIcon($map_devices) . '" width="32" height="32" alt=""> ' . format_hostname($map_devices) . "</a>';
 var tooltip = '" . format_hostname($map_devices) . "';
 var marker = L.marker(new L.LatLng(" . $map_devices['lat'] . ', ' . $map_devices['lng'] . "), {title: tooltip, icon: $icon, zIndexOffset: $z_offset});
 marker.bindPopup(title);

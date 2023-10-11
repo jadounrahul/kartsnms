@@ -14,7 +14,7 @@
 
         // close other popups, except this one
         this.ignoreNextShownEvent = true;
-        this.$dispatch('librenms-popup-shown', this.$el);
+        this.$dispatch('kartsnms-popup-shown', this.$el);
      }, timeout);
  },
  hide(timeout) {
@@ -28,7 +28,7 @@
  }
 }"
  x-on:click.away="hide(0)"
- x-on:librenms-popup-shown.window="() => hide(0)"
+ x-on:kartsnms-popup-shown.window="() => hide(0)"
 >
     <div class="tw-inline-block" x-ref="targetRef" x-on:mouseenter='show(100)' x-on:mouseleave="hide(delay)">
         {{ $slot }}

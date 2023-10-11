@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
-use LibreNMS\Interfaces\Models\Keyable;
-use LibreNMS\Util\Number;
+use KartsNMS\Interfaces\Models\Keyable;
+use KartsNMS\Util\Number;
 
 class Mempool extends DeviceRelatedModel implements Keyable
 {

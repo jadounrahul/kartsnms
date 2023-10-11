@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Util\Mac;
+use KartsNMS\Util\Mac;
 
 $param = [];
 

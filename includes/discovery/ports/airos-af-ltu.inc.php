@@ -2,7 +2,7 @@
 /**
  * airos-af-ltu.inc.php
  *
- * LibreNMS eth0 port discovery module for Ubiquiti airFiber 5XHD
+ * KartsNMS eth0 port discovery module for Ubiquiti airFiber 5XHD
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Denny Friebe
  * @author     Denny Friebe <denny.friebe@icera-network.de>

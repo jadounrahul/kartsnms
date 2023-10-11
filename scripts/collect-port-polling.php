@@ -2,9 +2,9 @@
 <?php
 
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Number;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Number;
 
 $install_dir = realpath(__DIR__ . '/..');
 chdir($install_dir);

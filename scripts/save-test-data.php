@@ -1,10 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-use LibreNMS\Exceptions\InvalidModuleException;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\ModuleTestHelper;
-use LibreNMS\Util\Snmpsim;
+use KartsNMS\Exceptions\InvalidModuleException;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\ModuleTestHelper;
+use KartsNMS\Util\Snmpsim;
 
 global $device;
 
@@ -145,7 +145,7 @@ try {
         }
         echo PHP_EOL;
 
-        \LibreNMS\Util\OS::updateCache(true); // Force update of OS Cache
+        \KartsNMS\Util\OS::updateCache(true); // Force update of OS Cache
         $tester = new ModuleTestHelper($modules, $target_os, $target_variant);
         if (! $no_save && ! empty($output_file)) {
             $tester->setJsonSavePath($output_file);

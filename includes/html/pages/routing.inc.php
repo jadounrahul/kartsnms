@@ -9,7 +9,7 @@ if ($_GET['optb'] == 'graphs' || $_GET['optc'] == 'graphs') {
 }
 
 $user = Auth::user();
-$routing_count = \LibreNMS\Util\ObjectCache::routing();
+$routing_count = \KartsNMS\Util\ObjectCache::routing();
 // $datas[] = 'overview';
 // $routing_count is populated by print-menubar.inc.php
 // $type_text['overview'] = "Overview";

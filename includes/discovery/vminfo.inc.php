@@ -1,3 +1,3 @@
 <?php
 
-(new \LibreNMS\Modules\Vminfo())->discover($os);
+(new \KartsNMS\Modules\Vminfo())->discover($os);

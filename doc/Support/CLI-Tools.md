@@ -10,7 +10,7 @@ This might come in handy when trying to clean up old ports after large changes
 within the network or when hacking on the poller/discovery functions.
 
 ```
-LibreNMS Port purge tool
+KartsNMS Port purge tool
 -p port_id  Purge single port by it's port-id
 -f file     Purge a list of ports, read port-ids from _file_, one on each line
             A filename of - means reading from STDIN.

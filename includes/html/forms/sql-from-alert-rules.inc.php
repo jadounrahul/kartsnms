@@ -2,7 +2,7 @@
 /**
  * alert-rules.inc.php
  *
- * LibreNMS alert-rules.inc.php for processor
+ * KartsNMS alert-rules.inc.php for processor
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Thomas Berberich
  * @author     Thomas Berberich <sourcehhdoctor@gmail.com>
  */
 
-use LibreNMS\Alerting\QueryBuilderParser;
-use LibreNMS\Config;
+use KartsNMS\Alerting\QueryBuilderParser;
+use KartsNMS\Config;
 
 header('Content-type: application/json');
 

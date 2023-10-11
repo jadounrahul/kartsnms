@@ -1,7 +1,7 @@
 <?php
 
 use App\Facades\DeviceCache;
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (! Auth::user()->hasGlobalRead()) {
     include 'includes/html/error-no-perm.inc.php';
@@ -100,7 +100,7 @@ if (! Auth::user()->hasGlobalRead()) {
 
             echo "<tr valign=top bgcolor='$bg_colour'>";
             echo '<td width=240>';
-            echo '<a class=list-large href=' . \LibreNMS\Util\Url::generate($vars, ['view' => 'detail', 'vrf' => $vrf['vrf_name']]) . '>';
+            echo '<a class=list-large href=' . \KartsNMS\Util\Url::generate($vars, ['view' => 'detail', 'vrf' => $vrf['vrf_name']]) . '>';
             echo $vrf['vrf_name'] . '</a><br />';
             echo '<span class=box-desc>' . $vrf['mplsVpnVrfDescription'] . '</span></td>';
             echo '<td width=100 class=box-desc>' . $vrf['mplsVpnVrfRouteDistinguisher'] . '</td>';
@@ -122,7 +122,7 @@ if (! Auth::user()->hasGlobalRead()) {
                 }
 
                 echo "<tr bgcolor='$dev_colour'><td width=150><a href='";
-                echo \LibreNMS\Util\Url::generate(['page' => 'device'], ['device' => $device['device_id'], 'tab' => 'routing', 'view' => 'basic', 'proto' => 'vrf']);
+                echo \KartsNMS\Util\Url::generate(['page' => 'device'], ['device' => $device['device_id'], 'tab' => 'routing', 'view' => 'basic', 'proto' => 'vrf']);
                 echo "'>" . DeviceCache::get($device['device_id'])->displayName() . '</a> ';
 
                 if ($device['vrf_name'] != $vrf['vrf_name']) {

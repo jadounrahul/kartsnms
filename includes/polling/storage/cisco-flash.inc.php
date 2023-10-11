@@ -2,7 +2,7 @@
 /**
  * cisco-flash.inc.php
  *
- * LibreNMS storage polling module for Cisco Flash
+ * KartsNMS storage polling module for Cisco Flash
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2022 Félix Bouynot
  * @author     Félix Bouynot <felix.bouynot@setenforce.one>
  */
 
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Number;
 
 $oids = array('ciscoFlashPartitionSize.' . $storage['storage_index'], 'ciscoFlashPartitionFreeSpace.' . $storage['storage_index'], 'ciscoFlashPartitionSizeExtended.' . $storage['storage_index'], 'ciscoFlashPartitionFreeSpaceExtended.' . $storage['storage_index']);
 $entry = snmp_get_multi($device, $oids, '-OQUs', 'CISCO-FLASH-MIB');

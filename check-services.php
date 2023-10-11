@@ -2,7 +2,7 @@
 <?php
 
 /*
- * LibreNMS module to poll Nagios Services
+ * KartsNMS module to poll Nagios Services
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -13,9 +13,9 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Data\Store\Datastore;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Util\Debug;
+use KartsNMS\Data\Store\Datastore;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Util\Debug;
 
 $init_modules = [];
 require __DIR__ . '/includes/init.php';
@@ -85,7 +85,7 @@ $poller_end = microtime(true);
 $poller_run = ($poller_end - $poller_start);
 $poller_time = substr($poller_run, 0, 5);
 
-$string = $argv[0] . ' ' . date(\LibreNMS\Config::get('dateformat.compact'))
+$string = $argv[0] . ' ' . date(\KartsNMS\Config::get('dateformat.compact'))
     . " - $polled_services services polled in $poller_time secs";
 d_echo("$string\n");
 

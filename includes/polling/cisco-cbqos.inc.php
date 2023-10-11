@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture Cisco Class-Based QoS Details
+ * KartsNMS module to capture Cisco Class-Based QoS Details
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,12 +11,12 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if ($device['os_group'] == 'cisco') {
     $tmp_module = 'Cisco-CBQOS';
 
-    $component = new LibreNMS\Component();
+    $component = new KartsNMS\Component();
     $options['filter']['type'] = ['=', $tmp_module];
     $options['filter']['disabled'] = ['=', 0];
     $options['filter']['ignore'] = ['=', 0];

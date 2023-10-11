@@ -1,6 +1,6 @@
 # Transports
 
-Transports are located within `LibreNMS/Alert/Transport/` and can be
+Transports are located within `KartsNMS/Alert/Transport/` and can be
 configured within the WebUI under Alerts -> Alert Transports.
 
 Contacts will be gathered automatically and passed to the configured transports.
@@ -10,10 +10,10 @@ If you want contacts to be re-gathered before each dispatch, please
 set 'Updates to contact email addresses not honored' to Off in the WebUI.
 
 The contacts will always include the `SysContact` defined in the
-Device's SNMP configuration and also every LibreNMS user that has at
+Device's SNMP configuration and also every KartsNMS user that has at
 least `read`-permissions on the entity that is to be alerted.
 
-At the moment LibreNMS only supports Port or Device permissions.
+At the moment KartsNMS only supports Port or Device permissions.
 
 You can exclude the `SysContact` by toggling 'Issue alerts to sysContact'.
 
@@ -57,7 +57,7 @@ alert processing sent by Prometheus.
 It has built-in functionality for deduplicating, grouping and routing
 alerts based on configurable criteria.
 
-LibreNMS uses alert grouping by alert rule, which can produce an array
+KartsNMS uses alert grouping by alert rule, which can produce an array
 of alerts of similar content for an array of hosts, whereas
 Alertmanager can group them by alert meta, ideally producing one
 single notice in case an issue occurs.
@@ -91,7 +91,7 @@ If you let those value blank, no authentication will be used.
 | Alertmanager URL(s)   | http://alertmanager1.example.com,http://alertmanager2.example.com |
 | Alertmanager Username | myUsername |
 | Alertmanager Password | myPassword |
-| Alertmanager Options: | source=librenms <br/> customlabel=value <br/> extra_dynamic_value=variable_name |
+| Alertmanager Options: | source=kartsnms <br/> customlabel=value <br/> extra_dynamic_value=variable_name |
 
 ## API
 
@@ -120,8 +120,8 @@ A few variables commonly used :
 | {{ $hostname }}     | Hostname |
 | {{ $sysName }}      | SysName |
 | {{ $sysDescr }}     | SysDescr |
-| {{ $os }}           | OS of device (librenms defined) |
-| {{ $type }}         | Type of device (librenms defined) |
+| {{ $os }}           | OS of device (kartsnms defined) |
+| {{ $type }}         | Type of device (kartsnms defined) |
 | {{ $ip }}           | IP Address |
 | {{ $hardware }}     | Hardware |
 | {{ $version }}      | Version |
@@ -197,7 +197,7 @@ alerts on a browser on the user preferences page.
 
 ## Canopsis
 
-Canopsis is a hypervision tool. LibreNMS can send alerts to Canopsis
+Canopsis is a hypervision tool. KartsNMS can send alerts to Canopsis
 which are then converted to canopsis events.
 
 [Canopsis Docs](https://doc.canopsis.net/guide-developpement/structures/#structure-des-evenements)
@@ -214,7 +214,7 @@ which are then converted to canopsis events.
 
 ## Cisco Spark (aka Webex Teams)
 
-Cisco Spark (now known as Webex Teams). LibreNMS can send alerts to a Cisco
+Cisco Spark (now known as Webex Teams). KartsNMS can send alerts to a Cisco
 Spark room. To make this possible you need to have a RoomID and a token.
 You can also choose to send alerts using Markdown syntax.  Enabling this
 option provides for more richly formatted alerts, but be sure to adjust your
@@ -269,7 +269,7 @@ in the Discord Docs below.
 
 ## Elasticsearch
 
-You can have LibreNMS send alerts to an elasticsearch database. Each
+You can have KartsNMS send alerts to an elasticsearch database. Each
 fault will be sent as a separate document.
 
 **Example:**
@@ -282,7 +282,7 @@ fault will be sent as a separate document.
 
 ## GitLab
 
-LibreNMS will create issues for warning and critical level alerts
+KartsNMS will create issues for warning and critical level alerts
 however only title and description are set. Uses Personal access
 tokens to authenticate with GitLab and will store the token in cleartext.
 
@@ -308,7 +308,7 @@ for details on acceptable values.
 | ------ | ------- |
 | API URL | <https://api.hipchat.com/v1/rooms/message?auth_token=109jawregoaihj> |
 | Room ID | 7654321 |
-| From Name | LibreNMS |
+| From Name | KartsNMS |
 | Options | color=red |
 
 At present the following options are supported: `color`.
@@ -320,8 +320,8 @@ At present the following options are supported: `color`.
 
 ## IRC
 
-The IRC transports only works together with the LibreNMS IRC-Bot.
-Configuration of the LibreNMS IRC-Bot is described [here](https://github.com/librenms/librenms/blob/master/doc/Extensions/IRC-Bot.md).
+The IRC transports only works together with the KartsNMS IRC-Bot.
+Configuration of the KartsNMS IRC-Bot is described [here](https://github.com/jadounrahul/kartsnms/blob/master/doc/Extensions/IRC-Bot.md).
 
 **Example:**
 
@@ -331,14 +331,14 @@ Configuration of the LibreNMS IRC-Bot is described [here](https://github.com/lib
 
 ## JIRA
 
-You can have LibreNMS create issues on a Jira instance for critical
+You can have KartsNMS create issues on a Jira instance for critical
 and warning alerts. The Jira transport only sets  summary and
 description fields. Therefore your Jira project must not have any
 other mandatory field for the provided issuetype. The config fields
 that need to set are Jira URL, Jira username, Jira password, Project
 key, and issue type.  Currently http authentication is used to access
 Jira and Jira username and password will be stored as cleartext in the
-LibreNMS database.
+KartsNMS database.
 
 [Jira Issue Types](https://confluence.atlassian.com/adminjiracloud/issue-types-844500742.html)
 
@@ -356,7 +356,7 @@ LibreNMS database.
 
 [LINE Messaging API Docs](https://developers.line.biz/en/docs/messaging-api/overview/)
 
-Here is the step for setup a LINE bot and using it in LibreNMS.
+Here is the step for setup a LINE bot and using it in KartsNMS.
 
 1. Use your real LINE account register in [developer protal](https://developers.line.biz/).
 
@@ -365,11 +365,11 @@ Here is the step for setup a LINE bot and using it in LibreNMS.
 1. Go to "Messaging API" tab of your channel, here listing some important value.
 
 	- `Bot basic ID` and `QR code` is your LINE bot's ID and QR code.
-	- `Channel access token (long-lived)`, will use it in LibreNMS, keep it safe.
+	- `Channel access token (long-lived)`, will use it in KartsNMS, keep it safe.
 
 1. Use your real Line account add your LINE bot as a friend.
 
-1. Recipient ID can be `groupID`, `userID` or `roomID`, it will be used in LibreNMS to send message to a group or a user. Use the following NodeJS program and `ngrok` for temporally https webhook to listen it.
+1. Recipient ID can be `groupID`, `userID` or `roomID`, it will be used in KartsNMS to send message to a group or a user. Use the following NodeJS program and `ngrok` for temporally https webhook to listen it.
 
 	[LINE-bot-RecipientFetcher](https://github.com/j796160836/LINE-bot-RecipientFetcher)
 
@@ -425,7 +425,7 @@ Here is the step for setup a LINE bot and using it in LibreNMS.
 
 ## Mail
 
-The E-Mail transports uses the same email-configuration as the rest of LibreNMS.
+The E-Mail transports uses the same email-configuration as the rest of KartsNMS.
 As a small reminder, here is its configuration directives including defaults:
 
 Emails will attach all graphs included with the @signedGraphTag directive.
@@ -461,11 +461,11 @@ beginning of the ``_matrix/client/r0/...`` API-part.
 | Matrix-Server URL | <https://matrix.example.com/> |
 | Room | !ajPbbPalmVbNuQoBDK:example.com |
 | Auth_token: | MDAyYmxvY2F0aW9uI...z1DCn6lz_uOhtW3XRICg |
-| Message: | Alert: {{ $msg }} https://librenms.example.com |
+| Message: | Alert: {{ $msg }} https://kartsnms.example.com |
 
 ## Messagebird
 
-LibreNMS can send text messages through Messagebird Rest API transport.
+KartsNMS can send text messages through Messagebird Rest API transport.
 
 | Config | Example |
 | ------ | ------- |
@@ -476,7 +476,7 @@ LibreNMS can send text messages through Messagebird Rest API transport.
 
 ## Messagebird Voice
 
-LibreNMS can send messages through Messagebird voice Rest API transport (text to speech).
+KartsNMS can send messages through Messagebird voice Rest API transport (text to speech).
 
 | Config | Example |
 | ------ | ------- |
@@ -489,7 +489,7 @@ LibreNMS can send messages through Messagebird voice Rest API transport (text to
 
 ## Microsoft Teams
 
-LibreNMS can send alerts to Microsoft Teams [Incoming
+KartsNMS can send alerts to Microsoft Teams [Incoming
 Webhooks](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook)
 which are then posted to a specific channel. Microsoft recommends using
 [markdown](https://docs.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-format#markdown-formatting-for-connector-cards)
@@ -509,7 +509,7 @@ themselves using JSON to get the full functionality.
 
 The nagios transport will feed a FIFO at the defined location with the
 same format that nagios would. This allows you to use other alerting
-systems with LibreNMS, for example [Flapjack](http://flapjack.io).
+systems with KartsNMS, for example [Flapjack](http://flapjack.io).
 
 **Example:**
 
@@ -519,20 +519,20 @@ systems with LibreNMS, for example [Flapjack](http://flapjack.io).
 
 ## OpsGenie
 
-Using OpsGenie LibreNMS integration, LibreNMS forwards alerts to
+Using OpsGenie KartsNMS integration, KartsNMS forwards alerts to
 OpsGenie with detailed information. OpsGenie acts as a dispatcher for
-LibreNMS alerts, determines the right people to notify based on
+KartsNMS alerts, determines the right people to notify based on
 on-call schedules and notifies via email, text messages (SMS), phone
 calls and iOS & Android push notifications. Then escalates alerts
 until the alert is acknowledged or closed.
 
-Create a [LibreNMS
-Integration](https://docs.opsgenie.com/docs/librenms-integration) from
-the integrations page  once you signup. Then copy the API key from OpsGenie to LibreNMS.
+Create a [KartsNMS
+Integration](https://docs.opsgenie.com/docs/kartsnms-integration) from
+the integrations page  once you signup. Then copy the API key from OpsGenie to KartsNMS.
 
 If you want to automatically ack and close alerts, leverage Marid
 integration. More detail with screenshots is available in
-[OpsGenie LibreNMS Integration page](https://docs.opsgenie.com/docs/librenms-integration).
+[OpsGenie KartsNMS Integration page](https://docs.opsgenie.com/docs/kartsnms-integration).
 
 **Example:**
 
@@ -542,7 +542,7 @@ integration. More detail with screenshots is available in
 
 ## osTicket
 
-LibreNMS can send alerts to osTicket API which are then converted to osTicket tickets.
+KartsNMS can send alerts to osTicket API which are then converted to osTicket tickets.
 
 **Example:**
 
@@ -553,7 +553,7 @@ LibreNMS can send alerts to osTicket API which are then converted to osTicket ti
 
 ## PagerDuty
 
-LibreNMS can make use of PagerDuty, this is done by utilizing an API
+KartsNMS can make use of PagerDuty, this is done by utilizing an API
 key and Integraton Key.
 
 API Keys can be found under 'API Access' in the PagerDuty portal.
@@ -570,13 +570,13 @@ Service you have created in the PagerDuty portal.
 
 ## Philips Hue
 
-Want to spice up your noc life? LibreNMS will flash all lights
+Want to spice up your noc life? KartsNMS will flash all lights
 connected to your philips hue bridge whenever an alert is triggered.
 
 To setup, go to the you <http://`your-bridge-ip`/debug/clip.html>
 
 - Update the "URL:" field to `/api`
-- Paste this in the "Message Body" {"devicetype":"librenms"}
+- Paste this in the "Message Body" {"devicetype":"kartsnms"}
 - Press the round button on your `philips Hue Bridge`
 - Click on `POST`
 - In the `Command Response` You should see output with your
@@ -637,7 +637,7 @@ You also have the possibility to change sound per severity:
 
 Enabling Pushover support is fairly easy, there are only two required parameters.
 
-Firstly you need to create a new Application (called LibreNMS, for
+Firstly you need to create a new Application (called KartsNMS, for
 example) in your account on the Pushover website ([https://pushover.net/apps](https://pushover.net/apps)).
 
 Now copy your API Key and obtain your User Key from the newly created
@@ -679,13 +679,13 @@ upon an alert being generated.
 It will be categorised (ok, warning or critical), and if you configure the
 alert to send recovery notifications, Sensu will also clear the alert
 automatically. No configuration is required - as long as you are running the
-Sensu Agent on your poller with the HTTP socket enabled on tcp/3031, LibreNMS
+Sensu Agent on your poller with the HTTP socket enabled on tcp/3031, KartsNMS
 will start generating Sensu events as soon as you create the transport.
 
-Acknowledging alerts within LibreNMS is not directly supported, but an
+Acknowledging alerts within KartsNMS is not directly supported, but an
 annotation (`acknowledged`) is set, so a mutator or silence, or even the
 handler could be written to look for it directly in the handler. There is also
-an annotation (`generated-by`) set, to allow you to treat LibreNMS events
+an annotation (`generated-by`) set, to allow you to treat KartsNMS events
 differently from agent events.
 
 The 'shortname' option is a simple way to reduce the length of device names in
@@ -699,10 +699,10 @@ websrv08.dc4.eu.corp.example.net gets shortened to websrv08.dc4.eu.cen).
 to fix up rule names, but it's best to stick to letters, numbers and spaces
 - The transport only deals in absolutes - it ignores the got worse/got better
 states
-- The agent will buffer alerts, but LibreNMS will not - if your agent is
+- The agent will buffer alerts, but KartsNMS will not - if your agent is
 offline, alerts will be dropped
-- There is no backchannel between Sensu and LibreNMS - if you make changes in
-Sensu to LibreNMS alerts, they'll be lost on the next event (silences will work)
+- There is no backchannel between Sensu and KartsNMS - if you make changes in
+Sensu to KartsNMS alerts, they'll be lost on the next event (silences will work)
 
 **Example:**
 
@@ -771,7 +771,7 @@ You need a token you can find on your personnal space.
 
 ## Splunk
 
-LibreNMS can send alerts to a Splunk instance and provide all device
+KartsNMS can send alerts to a Splunk instance and provide all device
 and alert details.
 
 Example output:
@@ -817,12 +817,12 @@ Each alert will be sent as a separate message.
 
 ## Syslog
 
-You can have LibreNMS emit alerts as syslogs complying with RFC 3164.
+You can have KartsNMS emit alerts as syslogs complying with RFC 3164.
 
 More information on RFC 3164 can be found here:
 [https://tools.ietf.org/html/rfc3164](https://tools.ietf.org/html/rfc3164)
 
-Example output: `<26> Mar 22 00:59:03 librenms.host.net librenms[233]:
+Example output: `<26> Mar 22 00:59:03 kartsnms.host.net kartsnms[233]:
 [Critical] network.device.net: Port Down - port_id => 98939; ifDescr => xe-1/1/0;`
 
 Each fault will be sent as a separate syslog.
@@ -864,7 +864,7 @@ Each fault will be sent as a separate syslog.
    `"message":{"message_id":7,"from":"id":656556,"first_name":"Joo","last_name":"Doo","username":"JohnDoo"},"chat":{"id":-9787468,"title":"Telegram
    Group"},"date":1435216924,"text":"Hi"}}]}`.
 
-1. Now create a new "Telegram transport" in LibreNMS (Global Settings
+1. Now create a new "Telegram transport" in KartsNMS (Global Settings
    -> Alerting Settings -> Telegram transport). Click on 'Add Telegram
    config' and put your chat id and token into the relevant box.
 
@@ -921,21 +921,21 @@ Settings -> Integrations -> REST Endpoint -> Enable Integration.
 
 The URL provided will have $routing_key at the end, you need to change
 this to something that is unique to the system  sending the alerts
-such as librenms. I.e:
+such as kartsnms. I.e:
 
-`https://alert.victorops.com/integrations/generic/20132414/alert/2f974ce1-08fc-4dg8-a4f4-9aee6cf35c98/librenms`
+`https://alert.victorops.com/integrations/generic/20132414/alert/2f974ce1-08fc-4dg8-a4f4-9aee6cf35c98/kartsnms`
 
 **Example:**
 
 | Config | Example |
 | ------ | ------- |
-| Post URL | <https://alert.victorops.com/integrations/generic/20132414/alert/2f974ce1-08fc-4dg8-a4f4-9aee6cf35c98/librenms> |
+| Post URL | <https://alert.victorops.com/integrations/generic/20132414/alert/2f974ce1-08fc-4dg8-a4f4-9aee6cf35c98/kartsnms> |
 
 ## Kayako Classic
 
-LibreNMS can send alerts to Kayako Classic API which are then
+KartsNMS can send alerts to Kayako Classic API which are then
 converted to tickets. To use this module, you need REST API feature
-enabled in Kayako Classic and configured email account at LibreNMS. To
+enabled in Kayako Classic and configured email account at KartsNMS. To
 enable this, do this:
 
 AdminCP -> REST API -> Settings -> Enable API (Yes)
@@ -996,23 +996,23 @@ They can be in international dialling format only.
 
 ## Zenduty
 
-Leveraging LibreNMS<>Zenduty Integration, users can send new LibreNMS 
+Leveraging KartsNMS<>Zenduty Integration, users can send new KartsNMS 
 alerts to the right team and notify them based on on-call schedules
 via email, SMS, Phone Calls, Slack, Microsoft Teams and mobile push
 notifications. Zenduty provides engineers with detailed context around 
-the LibreNMS alert along with playbooks and a complete incident command
+the KartsNMS alert along with playbooks and a complete incident command
 framework to triage, remediate and resolve incidents with speed.
 
-Create a [LibreNMS
-Integration](https://docs.zenduty.com/docs/librenms) from inside 
+Create a [KartsNMS
+Integration](https://docs.zenduty.com/docs/kartsnms) from inside 
 [Zenduty](https://www.zenduty.com), then copy the Webhook URL from Zenduty
-to LibreNMS.
+to KartsNMS.
 
 For a detailed guide with screenshots, refer to the 
-[LibreNMS documentation at Zenduty](https://docs.zenduty.com/docs/librenms).
+[KartsNMS documentation at Zenduty](https://docs.zenduty.com/docs/kartsnms).
 
 **Example:**
 
 | Config | Example |
 | ------ | ------- |
-| WebHook URL | <https://www.zenduty.com/api/integration/librenms/integration-key/> |
+| WebHook URL | <https://www.zenduty.com/api/integration/kartsnms/integration-key/> |

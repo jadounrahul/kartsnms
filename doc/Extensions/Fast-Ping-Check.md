@@ -1,12 +1,12 @@
 # Fast up/down checking
 
-Normally, LibreNMS sends an ICMP ping to the device before polling to
+Normally, KartsNMS sends an ICMP ping to the device before polling to
 check if it is up or down. This check is tied to the poller frequency,
 which is normally 5 minutes.  This means it may take up to 5 minutes
 to find out if a device is down.
 
 Some users may want to know if devices stop responding to ping more
-quickly than that. LibreNMS offers a ping.php script to run ping
+quickly than that. KartsNMS offers a ping.php script to run ping
 checks as quickly as possible without increasing snmp load on your
 devices by switching to 1 minute polling.
 
@@ -35,11 +35,11 @@ creation in rrd files)
 ./scripts/rrdstep.php -h all
 ```
 
-4: Add the following line to /etc/cron.d/librenms to allow 1 minute
+4: Add the following line to /etc/cron.d/kartsnms to allow 1 minute
 ping checks
 
 ```
-*    *    * * *   librenms    /opt/librenms/ping.php >> /dev/null 2>&1
+*    *    * * *   kartsnms    /opt/kartsnms/ping.php >> /dev/null 2>&1
 ```
 
 5: If applicable: Start the [RRDCached](../Extensions/RRDCached.md) service
@@ -73,10 +73,10 @@ proceeding!
 3: Update cron (removing any other ping.php or alert.php entries)
 
 ```
-*    *    * * *   librenms    /opt/librenms/ping.php >> /dev/null 2>&1
-*    *    * * *   librenms    sleep 30 && /opt/librenms/ping.php >> /dev/null 2>&1
-*    *    * * *   librenms    sleep 15 && /opt/librenms/alerts.php >> /dev/null 2>&1
-*    *    * * *   librenms    sleep 45 && /opt/librenms/alerts.php >> /dev/null 2>&1
+*    *    * * *   kartsnms    /opt/kartsnms/ping.php >> /dev/null 2>&1
+*    *    * * *   kartsnms    sleep 30 && /opt/kartsnms/ping.php >> /dev/null 2>&1
+*    *    * * *   kartsnms    sleep 15 && /opt/kartsnms/alerts.php >> /dev/null 2>&1
+*    *    * * *   kartsnms    sleep 45 && /opt/kartsnms/alerts.php >> /dev/null 2>&1
 ```
 
 ## Device dependencies

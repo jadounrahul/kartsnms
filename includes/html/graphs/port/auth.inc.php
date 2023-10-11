@@ -9,8 +9,8 @@ if (is_numeric($vars['id']) && ($auth || port_permitted($vars['id']))) {
     $graph_title = DeviceCache::get($device['device_id'])->shortDisplayName() . '::' . strtolower(makeshortif($port['ifDescr']));
 
     if (($port['ifAlias'] != '') && ($port['ifAlias'] != $port['ifDescr'])) {
-        $title .= ', ' . \LibreNMS\Util\Clean::html($port['ifAlias'], []);
-        $graph_title .= '::' . \LibreNMS\Util\Clean::html($port['ifAlias'], []);
+        $title .= ', ' . \KartsNMS\Util\Clean::html($port['ifAlias'], []);
+        $graph_title .= '::' . \KartsNMS\Util\Clean::html($port['ifAlias'], []);
     }
 
     $auth = true;

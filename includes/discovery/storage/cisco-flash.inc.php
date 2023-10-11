@@ -2,7 +2,7 @@
 /**
  * cisco-flash.inc.php
  *
- * LibreNMS storage discovery module for Cisco Flash
+ * KartsNMS storage discovery module for Cisco Flash
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2022 Félix Bouynot
  * @author     Félix Bouynot <felix.bouynot@setenforce.one>
  */
 
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Number;
 
 if ($device['os_group'] == 'cisco') {
     $ciscoFlashPartitionName = snmpwalk_cache_oid($device, 'ciscoFlashPartitionName', null, 'CISCO-FLASH-MIB');

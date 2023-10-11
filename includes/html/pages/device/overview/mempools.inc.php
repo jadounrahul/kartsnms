@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Arr;
-use LibreNMS\Util\Color;
-use LibreNMS\Util\Html;
-use LibreNMS\Util\Number;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Color;
+use KartsNMS\Util\Html;
+use KartsNMS\Util\Number;
+use KartsNMS\Util\Url;
 
 $graph_type = 'mempool_usage';
 
@@ -34,11 +34,11 @@ if ($mempools->isNotEmpty()) {
     $graph = \App\Http\Controllers\Device\Tabs\OverviewController::setGraphWidth([
         'device' => DeviceCache::getPrimary()->device_id,
         'type' => 'device_mempool',
-        'from' => \LibreNMS\Config::get('time.day'),
+        'from' => \KartsNMS\Config::get('time.day'),
         'legend' => 'no',
         'popup_title' => DeviceCache::getPrimary()->hostname . ' - Memory Usage',
     ]);
-    echo \LibreNMS\Util\Url::graphPopup($graph, \LibreNMS\Util\Url::lazyGraphTag($graph), $mempools_url);
+    echo \KartsNMS\Util\Url::graphPopup($graph, \KartsNMS\Util\Url::lazyGraphTag($graph), $mempools_url);
     echo '  </td>
             </tr>';
 
@@ -64,8 +64,8 @@ if ($mempools->isNotEmpty()) {
             'id' => $mempool->mempool_id,
             'height' => 100,
             'width' => 210,
-            'from' => \LibreNMS\Config::get('time.day'),
-            'to' => \LibreNMS\Config::get('time.now'),
+            'from' => \KartsNMS\Config::get('time.day'),
+            'to' => \KartsNMS\Config::get('time.now'),
             'legend' => 'no',
         ];
 
@@ -76,15 +76,15 @@ if ($mempools->isNotEmpty()) {
         $graph_array['height'] = 20;
         $graph_array['bg'] = 'ffffff00';
         // the 00 at the end makes the area transparent.
-        $minigraph = \LibreNMS\Util\Url::lazyGraphTag($graph_array);
+        $minigraph = \KartsNMS\Util\Url::lazyGraphTag($graph_array);
 
         $percentageBar = $available_used_all
             ? Html::percentageBar(200, 20, $mempool->mempool_perc, "$mempool->mempool_perc%", "$available_used_all%", $mempool->mempool_perc_warn, $available_used_all)
             : Html::percentageBar(200, 20, $mempool->mempool_perc, "$mempool->mempool_perc%", '', $mempool->mempool_perc_warn);
         echo '<tr>
-            <td class="col-md-4">' . \LibreNMS\Util\Url::overlibLink($link, $mempool->mempool_descr, $overlib_content) . '</td>
-            <td class="col-md-4">' . \LibreNMS\Util\Url::overlibLink($link, $minigraph, $overlib_content) . '</td>
-            <td class="col-md-4">' . \LibreNMS\Util\Url::overlibLink($link, $percentageBar, $overlib_content) . '
+            <td class="col-md-4">' . \KartsNMS\Util\Url::overlibLink($link, $mempool->mempool_descr, $overlib_content) . '</td>
+            <td class="col-md-4">' . \KartsNMS\Util\Url::overlibLink($link, $minigraph, $overlib_content) . '</td>
+            <td class="col-md-4">' . \KartsNMS\Util\Url::overlibLink($link, $percentageBar, $overlib_content) . '
             </a></td>
             </tr>';
     }//end foreach

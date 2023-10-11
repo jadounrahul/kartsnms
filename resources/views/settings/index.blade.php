@@ -1,16 +1,16 @@
-@extends('layouts.librenmsv1')
+@extends('layouts.kartsnmsv1')
 
 @section('title', __('settings.title'))
 
 @section('content')
     <div class="container-fluid">
         <div id="app">
-            <librenms-settings
+            <kartsnms-settings
                 prefix="{{ url('settings') }}"
                 initial-tab="{{ $active_tab }}"
                 initial-section="{{ $active_section }}"
                 :tabs="{{ $groups }}"
-            ></librenms-settings>
+            ></kartsnms-settings>
         </div>
     </div>
 @endsection

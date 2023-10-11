@@ -2,7 +2,7 @@
 
 /*
 
-LibreNMS Application for monitoring power consumption and cost
+KartsNMS Application for monitoring power consumption and cost
 
 @link       https://www.upaya.net.au/
 @copyright  2021 Ben Carbery
@@ -16,8 +16,8 @@ version 3. See https://www.gnu.org/licenses/gpl-3.0.txt
 
 */
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'powermon';
 

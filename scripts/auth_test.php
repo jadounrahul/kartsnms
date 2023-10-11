@@ -2,9 +2,9 @@
 <?php
 
 use Illuminate\Support\Str;
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
 
 $options = getopt('u:rldvh');
 if (isset($options['h']) || (! isset($options['l']) && ! isset($options['u']))) {
@@ -52,7 +52,7 @@ try {
     }
 
     // AD bind tests
-    if ($authorizer instanceof \LibreNMS\Authentication\ActiveDirectoryAuthorizer) {
+    if ($authorizer instanceof \KartsNMS\Authentication\ActiveDirectoryAuthorizer) {
         // peek inside the class
         $lc_rp = new ReflectionProperty($authorizer, 'ldap_connection');
         $lc_rp->setAccessible(true);

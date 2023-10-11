@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (Auth::user()->hasGlobalAdmin()) {
     require 'includes/html/javascript-interfacepicker.inc.php';
@@ -56,7 +56,7 @@ if (Auth::user()->hasGlobalAdmin()) {
                             // Need to pre-populate port as we've got a port pre-selected
                             foreach (dbFetch('SELECT * FROM ports WHERE device_id = ?', [$port_device_id]) as $interface) {
                                 $interface = cleanPort($interface);
-                                $string = $interface['label'] . ' - ' . \LibreNMS\Util\Clean::html($interface['ifAlias'], []);
+                                $string = $interface['label'] . ' - ' . \KartsNMS\Util\Clean::html($interface['ifAlias'], []);
                                 $selected = $interface['port_id'] === $port['port_id'] ? ' selected' : '';
                                 echo "<option value='${interface['port_id']}' $selected>$string</option>\n";
                             }

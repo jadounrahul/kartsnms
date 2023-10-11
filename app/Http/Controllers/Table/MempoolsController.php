@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -28,10 +28,10 @@ namespace App\Http\Controllers\Table;
 use App\Models\Device;
 use App\Models\Mempool;
 use Illuminate\Support\Arr;
-use LibreNMS\Config;
-use LibreNMS\Util\Html;
-use LibreNMS\Util\Number;
-use LibreNMS\Util\Url;
+use KartsNMS\Config;
+use KartsNMS\Util\Html;
+use KartsNMS\Util\Number;
+use KartsNMS\Util\Url;
 
 class MempoolsController extends TableController
 {
@@ -72,7 +72,7 @@ class MempoolsController extends TableController
     {
         if ($mempool instanceof Device) {
             $device = $mempool;
-            $graphs = \LibreNMS\Util\Html::graphRow([
+            $graphs = \KartsNMS\Util\Html::graphRow([
                 'device' => $device->device_id,
                 'type' => 'device_mempool',
                 'height' => 100,

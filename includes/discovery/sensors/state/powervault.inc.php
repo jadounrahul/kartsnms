@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Powervault state
+ * KartsNMS Powervault state
  *
  * Copyright (c) 2017 Dave Bell <me@geordish.org>
  * This program is free software: you can redistribute it and/or modify it

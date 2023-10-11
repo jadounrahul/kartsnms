@@ -1,28 +1,28 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
 use App\Models\Device;
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Exceptions\HostExistsException;
-use LibreNMS\Exceptions\HostIpExistsException;
-use LibreNMS\Exceptions\HostnameExistsException;
-use LibreNMS\Exceptions\HostSysnameExistsException;
-use LibreNMS\Exceptions\HostUnreachableException;
-use LibreNMS\Exceptions\HostUnreachablePingException;
-use LibreNMS\Exceptions\HostUnreachableSnmpException;
-use LibreNMS\Exceptions\InvalidPortAssocModeException;
-use LibreNMS\Exceptions\SnmpVersionUnsupportedException;
-use LibreNMS\Modules\Core;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Exceptions\HostExistsException;
+use KartsNMS\Exceptions\HostIpExistsException;
+use KartsNMS\Exceptions\HostnameExistsException;
+use KartsNMS\Exceptions\HostSysnameExistsException;
+use KartsNMS\Exceptions\HostUnreachableException;
+use KartsNMS\Exceptions\HostUnreachablePingException;
+use KartsNMS\Exceptions\HostUnreachableSnmpException;
+use KartsNMS\Exceptions\InvalidPortAssocModeException;
+use KartsNMS\Exceptions\SnmpVersionUnsupportedException;
+use KartsNMS\Modules\Core;
 
 /**
  * Parse cli discovery or poller modules and set config for this run
@@ -114,7 +114,7 @@ function getImageTitle($device)
 
 function getImageName($device, $use_database = true, $dir = 'images/os/')
 {
-    return \LibreNMS\Util\Url::findOsImage($device['os'], $device['features'] ?? '', $use_database ? $device['icon'] : null, $dir);
+    return \KartsNMS\Util\Url::findOsImage($device['os'], $device['features'] ?? '', $use_database ? $device['icon'] : null, $dir);
 }
 
 function renamehost($id, $new, $source = 'console')
@@ -165,7 +165,7 @@ function delete_device($id)
 }
 
 /**
- * Add a device to LibreNMS
+ * Add a device to KartsNMS
  *
  * @param  string  $host  dns name or ip address
  * @param  string  $snmp_version  If this is empty, try v2c,v3,v1.  Otherwise, use this specific version.
@@ -212,7 +212,7 @@ function addHost($host, $snmp_version = '', $port = 161, $transport = 'udp', $po
 
     // Test reachability
     if (! $force_add) {
-        if (! (new \LibreNMS\Polling\ConnectivityHelper(new Device(['hostname' => $ip])))->isPingable()->success()) {
+        if (! (new \KartsNMS\Polling\ConnectivityHelper(new Device(['hostname' => $ip])))->isPingable()->success()) {
             throw new HostUnreachablePingException($host);
         }
     }
@@ -448,7 +448,7 @@ function match_network($nets, $ip, $first = false)
     return $return;
 }
 
-// FIXME port to LibreNMS\Util\IPv6 class
+// FIXME port to KartsNMS\Util\IPv6 class
 function snmp2ipv6($ipv6_snmp)
 {
     // Workaround stupid Microsoft bug in Windows 2008 -- this is fixed length!
@@ -1059,7 +1059,7 @@ function cache_peeringdb()
             // 4294967295 (Reserved)
             foreach (dbFetchRows('SELECT `bgpLocalAs` FROM `devices` WHERE `disabled` = 0 AND `ignore` = 0 AND `bgpLocalAs` > 0 AND (`bgpLocalAs` < 64512 OR `bgpLocalAs` > 65535) AND `bgpLocalAs` < 4200000000 GROUP BY `bgpLocalAs`') as $as) {
                 $asn = $as['bgpLocalAs'];
-                $get = \LibreNMS\Util\Http::client()->get($peeringdb_url . '/net?depth=2&asn=' . $asn);
+                $get = \KartsNMS\Util\Http::client()->get($peeringdb_url . '/net?depth=2&asn=' . $asn);
                 $json_data = $get->body();
                 $data = json_decode($json_data);
                 $ixs = $data->{'data'}[0]->{'netixlan_set'};
@@ -1080,12 +1080,12 @@ function cache_peeringdb()
                         $pdb_ix_id = dbInsert($insert, 'pdb_ix');
                     }
                     $ix_keep[] = $pdb_ix_id;
-                    $get_ix = \LibreNMS\Util\Http::client()->get("$peeringdb_url/netixlan?ix_id=$ixid");
+                    $get_ix = \KartsNMS\Util\Http::client()->get("$peeringdb_url/netixlan?ix_id=$ixid");
                     $ix_json = $get_ix->body();
                     $ix_data = json_decode($ix_json);
                     $peers = $ix_data->{'data'};
                     foreach ($peers ?? [] as $index => $peer) {
-                        $peer_name = \LibreNMS\Util\AutonomousSystem::get($peer->{'asn'})->name();
+                        $peer_name = \KartsNMS\Util\AutonomousSystem::get($peer->{'asn'})->name();
                         $tmp_peer = dbFetchRow('SELECT * FROM `pdb_ix_peers` WHERE `peer_id` = ? AND `ix_id` = ?', [$peer->{'id'}, $ixid]);
                         if ($tmp_peer) {
                             $peer_keep[] = $tmp_peer['pdb_ix_peers_id'];

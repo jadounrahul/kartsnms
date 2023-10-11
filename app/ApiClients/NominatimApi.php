@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -25,7 +25,7 @@
 
 namespace App\ApiClients;
 
-use LibreNMS\Interfaces\Geocoder;
+use KartsNMS\Interfaces\Geocoder;
 
 class NominatimApi extends BaseApi implements Geocoder
 {
@@ -59,7 +59,7 @@ class NominatimApi extends BaseApi implements Geocoder
                 'limit' => 1,
             ],
             'headers' => [
-                'User-Agent' => 'LibreNMS',
+                'User-Agent' => 'KartsNMS',
                 'Accept'     => 'application/json',
             ],
         ];

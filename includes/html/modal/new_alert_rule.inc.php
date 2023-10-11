@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2018 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  * Copyright (c) 2018 Tony Murray <murraytony@gmail.com>
@@ -12,8 +12,8 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Alerting\QueryBuilderFilter;
-use LibreNMS\Config;
+use KartsNMS\Alerting\QueryBuilderFilter;
+use KartsNMS\Config;
 
 $default_severity = Config::get('alert_rule.severity');
 $default_max_alerts = Config::get('alert_rule.max_alerts');
@@ -33,7 +33,7 @@ if (Auth::user()->hasGlobalAdmin()) {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h5 class="modal-title" id="Create">Alert Rule :: <a target="_blank" href="https://docs.librenms.org/Alerting/"><i class="fa fa-book fa-1x"></i> Docs</a> </h5>
+                    <h5 class="modal-title" id="Create">Alert Rule :: <a target="_blank" href="https://docs.kartsnms.org/Alerting/"><i class="fa fa-book fa-1x"></i> Docs</a> </h5>
                 </div>
                 <div class="modal-body">
                     <ul class="nav nav-tabs" role="tablist">

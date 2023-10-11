@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture NTP statistics
+ * KartsNMS module to capture NTP statistics
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -25,7 +25,7 @@
  * )
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (isset($device['os_group']) && file_exists(Config::get('install_dir') . "/includes/discovery/ntp/{$device['os_group']}.inc.php")) {
     include Config::get('install_dir') . "/includes/discovery/ntp/{$device['os_group']}.inc.php";

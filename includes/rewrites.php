@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 function rewrite_entity_descr($descr)
 {
@@ -115,7 +115,7 @@ function makeshortif($if)
         'bundle-ether'        => 'BE',
     ];
 
-    $if = \LibreNMS\Util\Rewrite::normalizeIfName($if);
+    $if = \KartsNMS\Util\Rewrite::normalizeIfName($if);
     $if = strtolower($if);
     $if = str_replace(array_keys($rewrite_shortif), array_values($rewrite_shortif), $if);
 

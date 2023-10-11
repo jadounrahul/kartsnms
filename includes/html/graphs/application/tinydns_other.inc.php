@@ -18,9 +18,9 @@
 /*
  * TinyDNS Other Graph
  * @author Daniel Preussker <f0o@devilcode.org>
- * @copyright 2015 f0o, LibreNMS
+ * @copyright 2015 f0o, KartsNMS
  * @license GPL
- * @package LibreNMS
+ * @package KartsNMS
  * @subpackage Graphs
  */
 

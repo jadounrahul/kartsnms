@@ -1,12 +1,12 @@
 <?php
 
-use LibreNMS\Exceptions\RrdGraphException;
-use LibreNMS\Util\Mac;
+use KartsNMS\Exceptions\RrdGraphException;
+use KartsNMS\Util\Mac;
 
 if (is_numeric($vars['id'])) {
     $acc = dbFetchRow('SELECT * FROM `mac_accounting` AS M, `ports` AS I, `devices` AS D WHERE M.ma_id = ? AND I.port_id = M.port_id AND I.device_id = D.device_id', [$vars['id']]);
 
-    if (\LibreNMS\Util\Debug::isEnabled()) {
+    if (\KartsNMS\Util\Debug::isEnabled()) {
         echo '<pre>';
         print_r($acc);
         echo '</pre>';

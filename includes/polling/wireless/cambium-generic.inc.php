@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,7 +8,7 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  */
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if (strstr($hardware, 'CMM') == false) {
     $fecInErrorsCount = snmp_get($device, 'fecInErrorsCount.0', '-Ovqn', 'WHISP-BOX-MIBV2-MIB');

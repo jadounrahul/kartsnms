@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,11 +8,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 $pagetitle[] = 'Services';
@@ -83,7 +83,7 @@ if (count($services) > '0') {
         echo '<tr id="row_' . $service['service_id'] . '">';
         echo '<td class="col-sm-12">';
         echo '<div class="col-sm-1">' . $status . '</div>';
-        echo '<div class="col-sm-2 text-muted">' . \LibreNMS\Util\Time::formatInterval(time() - $service['service_changed']) . '</div>';
+        echo '<div class="col-sm-2 text-muted">' . \KartsNMS\Util\Time::formatInterval(time() - $service['service_changed']) . '</div>';
         echo '<div class="col-sm-2 text-muted">' . $service['service_desc'] . '</div>';
         echo '<div class="col-sm-5">' . nl2br(trim($service['service_message'])) . '</div>';
         echo '<div class="col-sm-2">';
@@ -98,7 +98,7 @@ if (count($services) > '0') {
         if ($vars['view'] == 'details') {
             // if we have a script for this check, use it.
             $check_ds = null;
-            $check_script = \LibreNMS\Config::get('install_dir') . '/includes/services/check_' . strtolower($service['service_type']) . '.inc.php';
+            $check_script = \KartsNMS\Config::get('install_dir') . '/includes/services/check_' . strtolower($service['service_type']) . '.inc.php';
             if (is_file($check_script)) {
                 include $check_script;
 

@@ -15,14 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 /*
  * TinyDNS Query Graph
  * @author Daniel Preussker <f0o@devilcode.org>
- * @copyright 2015 f0o, LibreNMS
+ * @copyright 2015 f0o, KartsNMS
  * @license GPL
- * @package LibreNMS
+ * @package KartsNMS
  * @subpackage Graphs
  */
 

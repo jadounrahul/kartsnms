@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -29,9 +29,9 @@ use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use LibreNMS\Config;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Util\IP;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Util\IP;
 
 class AuthenticateGraph
 {

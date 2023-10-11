@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 // Load our list of available applications
 $applications = [];
@@ -22,7 +22,7 @@ $enabled_apps = array_reduce(dbFetchRows(
 echo '<ul class="list-group row">';
 foreach ($applications as $app) {
     $modifiers = '';
-    $app_text = \LibreNMS\Util\StringHelpers::niceCase($app);
+    $app_text = \KartsNMS\Util\StringHelpers::niceCase($app);
     // check if the app exists in the enable apps array and check if it was automatically enabled
     if (isset($enabled_apps[$app])) {
         $modifiers = ' checked';

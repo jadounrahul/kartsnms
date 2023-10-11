@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display Cisco Class-Based QoS Details
+ * KartsNMS module to display Cisco Class-Based QoS Details
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['type'] = ['=', 'Cisco-CBQOS'];
 $components = $component->getComponents($device['device_id'], $options);
@@ -35,7 +35,7 @@ $rrd_options .= ' -l 0 -E ';
 $rrd_options .= " COMMENT:'Class-Map              Now      Avg      Max\\n'";
 $rrd_additions = '';
 
-$colours = array_merge(\LibreNMS\Config::get('graph_colours.mixed'), \LibreNMS\Config::get('graph_colours.manycolours'), \LibreNMS\Config::get('graph_colours.manycolours'));
+$colours = array_merge(\KartsNMS\Config::get('graph_colours.mixed'), \KartsNMS\Config::get('graph_colours.manycolours'), \KartsNMS\Config::get('graph_colours.manycolours'));
 $count = 0;
 
 d_echo('<pre>Policy: ' . $vars['policy']);

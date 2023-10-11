@@ -4,8 +4,8 @@ namespace App\Observers;
 
 use App\Models\Eventlog;
 use App\Models\Stp;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Util\Time;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Util\Time;
 
 class StpObserver
 {

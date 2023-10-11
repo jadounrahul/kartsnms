@@ -19,12 +19,12 @@ if ($perf->isNotEmpty()) {
     $graph = \App\Http\Controllers\Device\Tabs\OverviewController::setGraphWidth([
         'device' => DeviceCache::getPrimary()->device_id,
         'type' => 'device_ping_perf',
-        'from' => \LibreNMS\Config::get('time.day'),
+        'from' => \KartsNMS\Config::get('time.day'),
         'legend' => 'yes',
         'popup_title' => DeviceCache::getPrimary()->hostname . ' - Ping Response',
     ]);
 
-    echo \LibreNMS\Util\Url::graphPopup($graph, \LibreNMS\Util\Url::lazyGraphTag($graph), $perf_url);
+    echo \KartsNMS\Util\Url::graphPopup($graph, \KartsNMS\Util\Url::lazyGraphTag($graph), $perf_url);
     echo '  </td>
             </tr>
         </table>

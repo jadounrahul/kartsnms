@@ -6,14 +6,14 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage nfs-server
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
  * @author     SvennD <svennd@svennd.be>
 */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'nfs-server';
 $oid = '.1.3.6.1.4.1.8072.1.3.2.3.1.2.10.110.102.115.45.115.101.114.118.101.114';

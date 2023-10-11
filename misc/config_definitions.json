@@ -849,11 +849,11 @@
             "type": "integer"
         },
         "callback_clear": {
-            "default": "https://stats.librenms.org/clear.php",
+            "default": "https://stats.kartsnms.org/clear.php",
             "type": "text"
         },
         "callback_post": {
-            "default": "https://stats.librenms.org/log.php",
+            "default": "https://stats.kartsnms.org/log.php",
             "type": "text"
         },
         "callback_proxy": {
@@ -1617,7 +1617,7 @@
             }
         },
         "email_user": {
-            "default": "LibreNMS",
+            "default": "KartsNMS",
             "group": "alerting",
             "section": "email",
             "order": 1,
@@ -1804,7 +1804,7 @@
             }
         },
         "github_api": {
-            "default": "https://api.github.com/repos/librenms/librenms/",
+            "default": "https://api.github.com/repos/kartsnms/kartsnms/",
             "type": "text"
         },
         "good_if": {
@@ -3737,7 +3737,7 @@
         },
         "group": {
             "type": "text",
-            "default": "librenms"
+            "default": "kartsnms"
         },
         "gui.network-map.style": {
             "default": "new",
@@ -3933,7 +3933,7 @@
             "order": 3
         },
         "influxdb.db": {
-            "default": "librenms",
+            "default": "kartsnms",
             "type": "text",
             "group": "poller",
             "section": "influxdb",
@@ -4040,7 +4040,7 @@
             "type": "boolean"
         },
         "irc_ctcp_version": {
-            "default": "LibreNMS IRCbot. https://www.librenms.org/",
+            "default": "KartsNMS IRCbot. https://www.itkarts.com/",
             "type": "text"
         },
         "irc_debug": {
@@ -4416,8 +4416,8 @@
             "order": 2,
             "type": "text"
         },
-        "notifications.LibreNMS": {
-            "default": "https://www.librenms.org/notifications.rss",
+        "notifications.KartsNMS": {
+            "default": "https://www.itkarts.com/notifications.rss",
             "type": "text"
         },
         "notifications.local": {
@@ -5076,19 +5076,19 @@
             "type": "boolean"
         },
         "project_home": {
-            "default": "https://www.librenms.org/",
+            "default": "https://www.itkarts.com/",
             "type": "text"
         },
         "project_id": {
-            "default": "librenms",
+            "default": "kartsnms",
             "type": "text"
         },
         "project_issues": {
-            "default": "https://community.librenms.org/c/help",
+            "default": "https://community.itkarts.com/c/help",
             "type": "text"
         },
         "project_name": {
-            "default": "LibreNMS",
+            "default": "KartsNMS",
             "type": "text"
         },
         "prometheus.enable": {
@@ -5109,7 +5109,7 @@
             }
         },
         "prometheus.job": {
-            "default": "librenms",
+            "default": "kartsnms",
             "type": "text",
             "group": "poller",
             "section": "prometheus",
@@ -5825,7 +5825,7 @@
         },
         "user": {
             "type": "text",
-            "default": "librenms"
+            "default": "kartsnms"
         },
         "vertical_summary": {
             "default": 0,

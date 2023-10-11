@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display F5 GTM Wide IP Details
+ * KartsNMS module to display F5 GTM Wide IP Details
  *
  * Adapted from F5 LTM module by Darren Napper
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
@@ -12,7 +12,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['type'] = ['=', 'f5-gtm-wide'];
 $components = $component->getComponents($device['device_id'], $options);

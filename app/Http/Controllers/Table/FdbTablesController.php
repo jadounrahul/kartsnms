@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -33,9 +33,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\Mac;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\Mac;
+use KartsNMS\Util\Url;
 
 class FdbTablesController extends TableController
 {

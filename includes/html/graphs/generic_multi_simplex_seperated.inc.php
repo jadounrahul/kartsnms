@@ -18,7 +18,7 @@ if ($nototal) {
     $unitlen += 2;
 }
 
-$rrd_options .= " COMMENT:'" . \LibreNMS\Data\Store\Rrd::fixedSafeDescr($unit_text, $descr_len) . "        Now       Min       Max     Avg\l'";
+$rrd_options .= " COMMENT:'" . \KartsNMS\Data\Store\Rrd::fixedSafeDescr($unit_text, $descr_len) . "        Now       Min       Max     Avg\l'";
 
 $unitlen = 10;
 if ($nototal) {
@@ -33,15 +33,15 @@ foreach ($rrd_list as $i => $rrd) {
     if (isset($rrd['colour'])) {
         $colour = $rrd['colour'];
     } else {
-        if (! \LibreNMS\Config::get("graph_colours.$colours.$colour_iter")) {
+        if (! \KartsNMS\Config::get("graph_colours.$colours.$colour_iter")) {
             $colour_iter = 0;
         }
 
-        $colour = \LibreNMS\Config::get("graph_colours.$colours.$colour_iter");
+        $colour = \KartsNMS\Config::get("graph_colours.$colours.$colour_iter");
         $colour_iter++;
     }
 
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len);
 
     $rrd_options .= ' DEF:' . $rrd['ds'] . $i . '=' . $rrd['filename'] . ':' . $rrd['ds'] . ':AVERAGE ';
 

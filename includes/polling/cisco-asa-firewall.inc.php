@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ fua http://www.lathwood.co.uk>
  *
@@ -12,7 +12,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if ($device['os_group'] == 'cisco' && ($device['os'] == 'asa' || $device['os'] == 'ftd') && $device['type'] == 'firewall') {
     $connections = SnmpQuery::get('CISCO-FIREWALL-MIB::cfwConnectionStatValue.protoIp.currentInUse')->value();

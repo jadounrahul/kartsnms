@@ -67,7 +67,7 @@ return [
             'censor_fields' => [
                 'password',
                 'password_confirmation',
-                // LibreNMS
+                // KartsNMS
                 'username',
                 'sysContact',
                 'community',

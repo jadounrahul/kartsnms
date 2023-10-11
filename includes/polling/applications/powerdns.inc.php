@@ -2,9 +2,9 @@
 
 // Polls powerdns statistics from script via SNMP
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\Exceptions\JsonAppParsingFailedException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\Exceptions\JsonAppParsingFailedException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'powerdns';
 $powerdns = [];

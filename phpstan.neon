@@ -9,7 +9,7 @@ parameters:
         - app
         - config
         - database
-        - LibreNMS
+        - KartsNMS
         - resources
         - tests
 

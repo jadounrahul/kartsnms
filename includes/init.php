@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -27,10 +27,10 @@
  * @param  array  $modules  Which modules to initialize
  */
 
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Laravel;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Laravel;
 
 global $vars, $console_color;
 
@@ -92,18 +92,18 @@ if (module_selected('web', $init_modules)) {
 Debug::set($debug ?? false); // override laravel configured settings (hides legacy errors too)
 
 if (! module_selected('nodb', $init_modules)) {
-    if (! \LibreNMS\DB\Eloquent::isConnected()) {
-        echo "Could not connect to database, check logs/librenms.log.\n";
+    if (! \KartsNMS\DB\Eloquent::isConnected()) {
+        echo "Could not connect to database, check logs/kartsnms.log.\n";
 
         if (! extension_loaded('mysqlnd') || ! extension_loaded('pdo_mysql')) {
             echo "\nYour PHP is missing required mysql extension(s), please install and enable.\n";
-            echo "Check the install docs for more info: https://docs.librenms.org/Installation/\n";
+            echo "Check the install docs for more info: https://docs.kartsnms.org/Installation/\n";
         }
 
         exit;
     }
 }
-\LibreNMS\DB\Eloquent::setStrictMode(false); // disable strict mode for legacy code...
+\KartsNMS\DB\Eloquent::setStrictMode(false); // disable strict mode for legacy code...
 
 if (is_numeric(Config::get('php_memory_limit')) && Config::get('php_memory_limit') > 128) {
     ini_set('memory_limit', Config::get('php_memory_limit') . 'M');
@@ -119,7 +119,7 @@ try {
 
 if (module_selected('web', $init_modules)) {
     require $install_dir . '/includes/html/vars.inc.php';
-    \LibreNMS\Util\OS::loadAllDefinitions(! module_selected('nodb', $init_modules), true);
+    \KartsNMS\Util\OS::loadAllDefinitions(! module_selected('nodb', $init_modules), true);
 }
 
 $console_color = new Console_Color2();

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -34,8 +34,8 @@ use ErrorException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Util\Git;
+use KartsNMS\Config;
+use KartsNMS\Util\Git;
 use Spatie\FlareClient\Report;
 use Spatie\LaravelIgnition\Facades\Flare;
 
@@ -77,7 +77,7 @@ class ErrorReportingProvider extends \Spatie\LaravelIgnition\IgnitionServiceProv
         });
 
         Flare::determineVersionUsing(function () {
-            return \LibreNMS\Util\Version::VERSION;
+            return \KartsNMS\Util\Version::VERSION;
         });
 
         // add git information, but cache it unlike the upstream provider
@@ -87,7 +87,7 @@ class ErrorReportingProvider extends \Spatie\LaravelIgnition\IgnitionServiceProv
         // Move to header middleware when switching to spatie/laravel-ignition
         Flare::registerMiddleware(CleanContext::class);
 
-        // Add more LibreNMS related info
+        // Add more KartsNMS related info
         Flare::registerMiddleware(SetGroups::class);
         Flare::registerMiddleware(SetInstanceId::class);
 
@@ -131,14 +131,14 @@ class ErrorReportingProvider extends \Spatie\LaravelIgnition\IgnitionServiceProv
         // Check git
         $git = Git::make(180);
         if ($git->isAvailable()) {
-            if (! Str::contains($git->remoteUrl(), ['git@github.com:librenms/librenms.git', 'https://github.com/librenms/librenms.git'])) {
-                \Log::debug('Reporting disabled because LibreNMS is not from the official repository');
+            if (! Str::contains($git->remoteUrl(), ['git@github.com:kartsnms/kartsnms.git', 'https://github.com/kartsnms/kartsnms.git'])) {
+                \Log::debug('Reporting disabled because KartsNMS is not from the official repository');
 
                 return false;
             }
 
             if ($git->hasChanges()) {
-                \Log::debug('Reporting disabled because LibreNMS is not from the official repository');
+                \Log::debug('Reporting disabled because KartsNMS is not from the official repository');
 
                 return false;
             }

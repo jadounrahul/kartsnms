@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Graph Cisco IPSLA ICMP Jitter metrics
+ * KartsNMS module to Graph Cisco IPSLA ICMP Jitter metrics
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *

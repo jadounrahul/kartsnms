@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $diskio_data = dbFetchRows('SELECT * FROM `ucd_diskio` WHERE `device_id`  = ?', [$device['device_id']]);
 

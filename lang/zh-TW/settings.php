@@ -80,7 +80,7 @@ return [
         'active_directory' => [
             'users_purge' => [
                 'description' => '保留未登入使用者於',
-                'help' => '設定使用者超過幾天沒有登入後，將會被 LibreNMS 自動刪除。設為 0 表示不會刪除，若使用者重新登入，將會重新建立帳戶。',
+                'help' => '設定使用者超過幾天沒有登入後，將會被 KartsNMS 自動刪除。設為 0 表示不會刪除，若使用者重新登入，將會重新建立帳戶。',
             ],
         ],
         'addhost_alwayscheckip' => [
@@ -385,7 +385,7 @@ return [
         ],
         'distributed_poller' => [
             'description' => '啟用分散式輪詢 (需要額外設定)',
-            'help' => 'Enable distributed polling system wide. This is intended for load sharing, not remote polling. You must read the documentation for steps to enable: https://docs.librenms.org/Extensions/Distributed-Poller/',
+            'help' => 'Enable distributed polling system wide. This is intended for load sharing, not remote polling. You must read the documentation for steps to enable: https://docs.kartsnms.org/Extensions/Distributed-Poller/',
         ],
         'distributed_poller_group' => [
             'description' => '預設輪詢器群組',
@@ -620,7 +620,7 @@ return [
         ],
         'mydomain' => [
             'description' => '主要網域',
-            'help' => 'This domain is used for network auto-discovery and other processes. LibreNMS will attempt to append it to unqualified hostnames.',
+            'help' => 'This domain is used for network auto-discovery and other processes. KartsNMS will attempt to append it to unqualified hostnames.',
         ],
         'nfsen_enable' => [
             'description' => '啟用 NfSen',
@@ -671,8 +671,8 @@ return [
             'description' => 'nmap 路徑',
         ],
         'own_hostname' => [
-            'description' => 'LibreNMS 主機名稱',
-            'help' => 'Should be set to the hostname/ip the librenms server is added as',
+            'description' => 'KartsNMS 主機名稱',
+            'help' => 'Should be set to the hostname/ip the kartsnms server is added as',
         ],
         'oxidized' => [
             'default_group' => [
@@ -782,7 +782,7 @@ return [
         ],
         'rrd_dir' => [
             'description' => 'RRD 位置',
-            'help' => 'Location of rrd files.  Default is rrd inside the LibreNMS directory.  Changing this setting does not move the rrd files.',
+            'help' => 'Location of rrd files.  Default is rrd inside the KartsNMS directory.  Changing this setting does not move the rrd files.',
         ],
         'rrd_purge' => [
             'description' => 'RRD 檔案項目大於',

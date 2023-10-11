@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $param = [];
 $sql = ' FROM `devices` AS D ';

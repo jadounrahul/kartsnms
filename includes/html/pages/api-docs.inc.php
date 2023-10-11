@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-sm-12">
 <?php
-print_error('Documentation for the API is available <a href="https://docs.librenms.org/API/" target="_blank" rel="noopener">here</a>.');
+print_error('Documentation for the API is available <a href="https://docs.kartsnms.org/API/" target="_blank" rel="noopener">here</a>.');
 ?>
     </div>
 </div>

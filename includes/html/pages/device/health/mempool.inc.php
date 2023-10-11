@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Mempool;
-use LibreNMS\Util\Html;
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Html;
+use KartsNMS\Util\Number;
 
 $mempools = DeviceCache::getPrimary()->mempools;
 

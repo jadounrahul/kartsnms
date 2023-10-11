@@ -17,25 +17,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use DeviceCache;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Arr;
-use LibreNMS\Config;
-use LibreNMS\Data\Source\Fping;
-use LibreNMS\Data\Source\FpingResponse;
-use LibreNMS\Exceptions\FileNotFoundException;
-use LibreNMS\Exceptions\InvalidModuleException;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\ModuleTestHelper;
-use LibreNMS\Util\Number;
+use KartsNMS\Config;
+use KartsNMS\Data\Source\Fping;
+use KartsNMS\Data\Source\FpingResponse;
+use KartsNMS\Exceptions\FileNotFoundException;
+use KartsNMS\Exceptions\InvalidModuleException;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\ModuleTestHelper;
+use KartsNMS\Util\Number;
 use PHPUnit\Util\Color;
 
 class OSModulesTest extends DBTestCase
@@ -167,7 +167,7 @@ class OSModulesTest extends DBTestCase
         });
 
         $this->app->bind(Fping::class, function ($app) {
-            $mock = \Mockery::mock(\LibreNMS\Data\Source\Fping::class);
+            $mock = \Mockery::mock(\KartsNMS\Data\Source\Fping::class);
             $mock->shouldReceive('ping')->andReturn(FpingResponse::artificialUp());
 
             return $mock;

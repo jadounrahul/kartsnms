@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'default' => 'template.librenms',
+    'default' => 'template.kartsnms',
 
     'root_script' => null,
 
     'template_factory' => [
         'templates' => [
-            'librenms' => [
+            'kartsnms' => [
                 'view' => 'layouts.flasher-notification',
                 'options' => [
                     'timeout' => 12000,

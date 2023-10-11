@@ -118,7 +118,7 @@ if ($vars['id']) {
 
         // These Types have more graphs. Display a sub-page
         if (($sla['rtt_type'] == 'jitter') || ($sla['rtt_type'] == 'icmpjitter') || ($sla['rtt_type'] == 'IcmpEcho') || ($sla['rtt_type'] == 'IcmpTimeStamp') || ($sla['rtt_type'] == 'icmpAppl')) {
-            $name = '<a href="' . \LibreNMS\Util\Url::generate($vars, ['tab' => 'slas', 'id' => $sla['sla_id']]) . '">' . $name . '</a>';
+            $name = '<a href="' . \KartsNMS\Util\Url::generate($vars, ['tab' => 'slas', 'id' => $sla['sla_id']]) . '">' . $name . '</a>';
         } else {
             $name = htmlentities($name);
         }
@@ -134,7 +134,7 @@ if ($vars['id']) {
         $graph_array['device'] = $device['device_id'];
         $graph_array['height'] = '100';
         $graph_array['width'] = '215';
-        $graph_array['to'] = \LibreNMS\Config::get('time.now');
+        $graph_array['to'] = \KartsNMS\Config::get('time.now');
         $graph_array['type'] = 'device_sla';
         $graph_array['id'] = $sla['sla_id'];
         echo '<div class="panel panel-default ' . $danger . '">

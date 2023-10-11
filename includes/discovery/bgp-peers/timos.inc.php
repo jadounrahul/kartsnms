@@ -3,7 +3,7 @@
 /**
  * timos.inc.php
  *
- * LibreNMS bgp_peers for Timos
+ * KartsNMS bgp_peers for Timos
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,14 +18,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
- * @copyright  2020 LibreNMS Contributors
- * @author     LibreNMS Contributors
+ * @copyright  2020 KartsNMS Contributors
+ * @author     KartsNMS Contributors
  */
 
-use LibreNMS\Config;
-use LibreNMS\Util\IP;
+use KartsNMS\Config;
+use KartsNMS\Util\IP;
 
 if ($device['os'] == 'timos') {
     $bgpPeersCache = snmpwalk_cache_multi_oid($device, 'tBgpPeerNgTable', [], 'TIMETRA-BGP-MIB', 'nokia');
@@ -44,7 +44,7 @@ if ($device['os'] == 'timos') {
         $vrfId = dbFetchCell('SELECT vrf_id from `vrfs` WHERE vrf_oid = ?', [$vrfOid]);
         d_echo($vrfId);
         foreach ($vrf as $address => $value) {
-            $astext = \LibreNMS\Util\AutonomousSystem::get($value['tBgpPeerNgPeerAS4Byte'])->name();
+            $astext = \KartsNMS\Util\AutonomousSystem::get($value['tBgpPeerNgPeerAS4Byte'])->name();
 
             if (dbFetchCell('SELECT COUNT(*) from `bgpPeers` WHERE device_id = ? AND bgpPeerIdentifier = ? AND vrf_id = ?', [$device['device_id'], $address, $vrfId]) < '1') {
                 $peers = [

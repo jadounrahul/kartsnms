@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Billing;
-use LibreNMS\Util\Number;
+use KartsNMS\Billing;
+use KartsNMS\Util\Number;
 
 $pagetitle[] = 'Bandwidth Graphs';
 
@@ -23,8 +23,8 @@ $total_data = $bill_data['total_data'];
 $in_data = $bill_data['total_data_in'];
 $out_data = $bill_data['total_data_out'];
 
-$fromtext = dbFetchCell("SELECT DATE_FORMAT($datefrom, '" . \LibreNMS\Config::get('dateformat.mysql.date') . "')");
-$totext = dbFetchCell("SELECT DATE_FORMAT($dateto, '" . \LibreNMS\Config::get('dateformat.mysql.date') . "')");
+$fromtext = dbFetchCell("SELECT DATE_FORMAT($datefrom, '" . \KartsNMS\Config::get('dateformat.mysql.date') . "')");
+$totext = dbFetchCell("SELECT DATE_FORMAT($dateto, '" . \KartsNMS\Config::get('dateformat.mysql.date') . "')");
 $unixfrom = dbFetchCell("SELECT UNIX_TIMESTAMP('$datefrom')");
 $unixto = dbFetchCell("SELECT UNIX_TIMESTAMP('$dateto')");
 $unix_prev_from = dbFetchCell("SELECT UNIX_TIMESTAMP('$lastfrom')");
@@ -50,7 +50,7 @@ if ($bill_data['bill_type'] == 'quota') {
 } else {
     $total['per'] = Number::calculatePercent($bill_data['total_data'], $bill_data['total_data'] / $cur_days * $total_days);
 }
-$total['bg'] = \LibreNMS\Util\Color::percentage($total['per'], null);
+$total['bg'] = \KartsNMS\Util\Color::percentage($total['per'], null);
 
 $in = [];
 $in['data'] = Billing::formatBytes($bill_data['total_data_in']);
@@ -58,7 +58,7 @@ $in['allow'] = $total['allow'];
 $in['ave'] = Billing::formatBytes(($bill_data['total_data_in'] / $cur_days));
 $in['est'] = Billing::formatBytes(($bill_data['total_data_in'] / $cur_days * $total_days));
 $in['per'] = Number::calculatePercent($bill_data['total_data_in'], $bill_data['total_data']);
-$in['bg'] = \LibreNMS\Util\Color::percentage($in['per'], null);
+$in['bg'] = \KartsNMS\Util\Color::percentage($in['per'], null);
 
 $out = [];
 $out['data'] = Billing::formatBytes($bill_data['total_data_out']);
@@ -66,22 +66,22 @@ $out['allow'] = $total['allow'];
 $out['ave'] = Billing::formatBytes(($bill_data['total_data_out'] / $cur_days));
 $out['est'] = Billing::formatBytes(($bill_data['total_data_out'] / $cur_days * $total_days));
 $out['per'] = Number::calculatePercent($bill_data['total_data_out'], $bill_data['total_data']);
-$out['bg'] = \LibreNMS\Util\Color::percentage($out['per'], null);
+$out['bg'] = \KartsNMS\Util\Color::percentage($out['per'], null);
 
 $ousage = [];
 $ousage['over'] = ($bill_data['total_data'] - ($bill_data['bill_quota']));
 $ousage['over'] = (($ousage['over'] < 0) ? '0' : $ousage['over']);
-$ousage['data'] = \LibreNMS\Util\Number::formatBase($ousage['over'], \LibreNMS\Config::get('billing.base'), 2, 3, '');
+$ousage['data'] = \KartsNMS\Util\Number::formatBase($ousage['over'], \KartsNMS\Config::get('billing.base'), 2, 3, '');
 $ousage['allow'] = $total['allow'];
 $ousage['ave'] = Billing::formatBytes(($ousage['over'] / $cur_days));
 $ousage['est'] = Billing::formatBytes(($ousage['over'] / $cur_days * $total_days));
 $ousage['per'] = Number::calculatePercent($bill_data['total_data'], $bill_data['bill_quota']) - 100;
 $ousage['per'] = (($ousage['per'] < 0) ? '0' : $ousage['per']);
-$ousage['bg'] = \LibreNMS\Util\Color::percentage($ousage['per'], null);
+$ousage['bg'] = \KartsNMS\Util\Color::percentage($ousage['per'], null);
 
 function showPercent($per)
 {
-    $background = \LibreNMS\Util\Color::percentage($per, null);
+    $background = \KartsNMS\Util\Color::percentage($per, null);
     $right_background = $background['right'];
     $left_background = $background['left'];
     $res = print_percentage_bar(200, 20, $per, null, 'ffffff', $left_background, $per . '%', 'ffffff', $right_background);
@@ -169,7 +169,7 @@ $bi .= '&amp;width=1190&amp;height=250';
 $bi .= "'>";
 
 $di = "<img src='graph.php?type=bill_historictransfer&id=" . $bill_id;
-$di .= '&amp;from=' . \LibreNMS\Config::get('time.day') . '&amp;to=' . \LibreNMS\Config::get('time.now');
+$di .= '&amp;from=' . \KartsNMS\Config::get('time.day') . '&amp;to=' . \KartsNMS\Config::get('time.now');
 $di .= '&amp;imgtype=hour';
 $di .= '&amp;width=1190&amp;height=250';
 $di .= "'>";

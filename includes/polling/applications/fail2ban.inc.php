@@ -1,8 +1,8 @@
 <?php
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\Exceptions\JsonAppParsingFailedException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\Exceptions\JsonAppParsingFailedException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'fail2ban';
 

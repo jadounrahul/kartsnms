@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Vminfo;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use LibreNMS\Enum\PowerState;
+use KartsNMS\Enum\PowerState;
 
 /** @extends Factory<Vminfo> */
 class VminfoFactory extends Factory

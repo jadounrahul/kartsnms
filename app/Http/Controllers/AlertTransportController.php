@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AlertTransport;
 use App\Models\Device;
 use Illuminate\Http\Request;
-use LibreNMS\Alert\AlertData;
-use LibreNMS\Exceptions\AlertTransportDeliveryException;
+use KartsNMS\Alert\AlertData;
+use KartsNMS\Exceptions\AlertTransportDeliveryException;
 
 class AlertTransportController extends Controller
 {

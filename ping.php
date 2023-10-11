@@ -2,8 +2,8 @@
 <?php
 
 use App\Jobs\PingCheck;
-use LibreNMS\Data\Store\Datastore;
-use LibreNMS\Util\Debug;
+use KartsNMS\Data\Store\Datastore;
+use KartsNMS\Util\Debug;
 
 $init_modules = ['alerts', 'laravel', 'nodb'];
 require __DIR__ . '/includes/init.php';

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,7 +8,7 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  */
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if (strstr($hardware, 'CMM') == false) {
     $fecInErrorsCount = snmp_get($device, 'fecInErrorsCount.0', '-Ovqn', 'WHISP-BOX-MIBV2-MIB');
@@ -128,7 +128,7 @@ if (strstr($hardware, 'CMM') == false) {
         unset($rrd_filename, $horizontal, $vertical);
     }
 }
-// Convert to: https://docs.librenms.org/#Developing/Sensor-State-Support/
+// Convert to: https://docs.kartsnms.org/#Developing/Sensor-State-Support/
 if (strstr($hardware, 'AP') || strstr($hardware, 'Master') || strstr($hardware, 'CMM')) {
     // Implemented
     // $gpsStatus = snmp_get($device, "whispGPSStats.0", "-Ovqn", "WHISP-APS-MIB");

@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use Illuminate\Support\Str;
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\Util\Clean;
-use LibreNMS\Util\StringHelpers;
-use LibreNMS\Util\Validate;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\Util\Clean;
+use KartsNMS\Util\StringHelpers;
+use KartsNMS\Util\Validate;
 
 class CommonFunctionsTest extends TestCase
 {
@@ -76,7 +76,7 @@ class CommonFunctionsTest extends TestCase
     public function testRrdDescriptions(): void
     {
         $data = 'Toner, S/N:CR_UM-16021314488.';
-        $this->assertEquals('Toner, S/N CR_UM-16021314488.', \LibreNMS\Data\Store\Rrd::safeDescr($data));
+        $this->assertEquals('Toner, S/N CR_UM-16021314488.', \KartsNMS\Data\Store\Rrd::safeDescr($data));
     }
 
     public function testSetNull(): void
@@ -107,11 +107,11 @@ class CommonFunctionsTest extends TestCase
 
     public function testStringToClass(): void
     {
-        $this->assertSame('LibreNMS\OS\Os', StringHelpers::toClass('OS', 'LibreNMS\\OS\\'));
+        $this->assertSame('KartsNMS\OS\Os', StringHelpers::toClass('OS', 'KartsNMS\\OS\\'));
         $this->assertSame('SpacesName', StringHelpers::toClass('spaces name', null));
         $this->assertSame('DashName', StringHelpers::toClass('dash-name', null));
         $this->assertSame('UnderscoreName', StringHelpers::toClass('underscore_name', null));
-        $this->assertSame('LibreNMS\\AllOfThemName', StringHelpers::toClass('all OF-thEm_NaMe', 'LibreNMS\\'));
+        $this->assertSame('KartsNMS\\AllOfThemName', StringHelpers::toClass('all OF-thEm_NaMe', 'KartsNMS\\'));
     }
 
     public function testIsValidHostname(): void
@@ -171,7 +171,7 @@ class CommonFunctionsTest extends TestCase
     public function testFormatHostname(): void
     {
         $device_dns = [
-            'hostname' => 'test.librenms.org',
+            'hostname' => 'test.kartsnms.org',
             'sysName' => 'Testing DNS',
         ];
         $invalid_dns = [
@@ -187,26 +187,26 @@ class CommonFunctionsTest extends TestCase
             'sysName' => 'Testing Invalid IP',
         ];
         $custom_display = [
-            'hostname' => 'test.librenms.org',
+            'hostname' => 'test.kartsnms.org',
             'sysName' => 'sysName',
             'display' => 'Custom Display ({{ $hostname }} {{ $sysName }})',
         ];
 
         // default {{ $hostname }}
         Config::set('device_display_default', null);
-        $this->assertEquals('test.librenms.org', format_hostname($device_dns));
+        $this->assertEquals('test.kartsnms.org', format_hostname($device_dns));
         $this->assertEquals('Not DNS', format_hostname($invalid_dns));
         $this->assertEquals('192.168.1.2', format_hostname($device_ip));
         $this->assertEquals('256.168.1.2', format_hostname($invalid_ip));
-        $this->assertEquals('Custom Display (test.librenms.org sysName)', format_hostname($custom_display));
+        $this->assertEquals('Custom Display (test.kartsnms.org sysName)', format_hostname($custom_display));
 
         // ip to sysname
         Config::set('device_display_default', '{{ $sysName_fallback }}');
-        $this->assertEquals('test.librenms.org', format_hostname($device_dns));
+        $this->assertEquals('test.kartsnms.org', format_hostname($device_dns));
         $this->assertEquals('Not DNS', format_hostname($invalid_dns));
         $this->assertEquals('Testing IP', format_hostname($device_ip));
         $this->assertEquals('256.168.1.2', format_hostname($invalid_ip));
-        $this->assertEquals('Custom Display (test.librenms.org sysName)', format_hostname($custom_display));
+        $this->assertEquals('Custom Display (test.kartsnms.org sysName)', format_hostname($custom_display));
 
         // sysname
         Config::set('device_display_default', '{{ $sysName }}');
@@ -214,7 +214,7 @@ class CommonFunctionsTest extends TestCase
         $this->assertEquals('Testing Invalid DNS', format_hostname($invalid_dns));
         $this->assertEquals('Testing IP', format_hostname($device_ip));
         $this->assertEquals('Testing Invalid IP', format_hostname($invalid_ip));
-        $this->assertEquals('Custom Display (test.librenms.org sysName)', format_hostname($custom_display));
+        $this->assertEquals('Custom Display (test.kartsnms.org sysName)', format_hostname($custom_display));
 
         // custom
         $custom_ip = ['display' => 'IP: {{ $ip }}', 'hostname' => '1.1.1.1', 'ip' => '2.2.2.2'];

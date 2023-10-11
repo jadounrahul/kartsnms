@@ -19,16 +19,16 @@
  *
  * Tests vmwVmHBLost and vmwVmHBDetected traps from VMWare ESXi hosts.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 KanREN, Inc
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 use App\Models\Device;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 class VmwHBTest extends SnmpTrapTestCase
 {

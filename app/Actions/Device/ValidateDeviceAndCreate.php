@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -27,15 +27,15 @@ namespace App\Actions\Device;
 
 use App\Models\Device;
 use Illuminate\Support\Arr;
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\Exceptions\HostIpExistsException;
-use LibreNMS\Exceptions\HostnameExistsException;
-use LibreNMS\Exceptions\HostSysnameExistsException;
-use LibreNMS\Exceptions\HostUnreachablePingException;
-use LibreNMS\Exceptions\HostUnreachableSnmpException;
-use LibreNMS\Exceptions\SnmpVersionUnsupportedException;
-use LibreNMS\Modules\Core;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\Exceptions\HostIpExistsException;
+use KartsNMS\Exceptions\HostnameExistsException;
+use KartsNMS\Exceptions\HostSysnameExistsException;
+use KartsNMS\Exceptions\HostUnreachablePingException;
+use KartsNMS\Exceptions\HostUnreachableSnmpException;
+use KartsNMS\Exceptions\SnmpVersionUnsupportedException;
+use KartsNMS\Modules\Core;
 use SnmpQuery;
 
 class ValidateDeviceAndCreate
@@ -53,7 +53,7 @@ class ValidateDeviceAndCreate
      */
     private $ping_fallback;
     /**
-     * @var \LibreNMS\Polling\ConnectivityHelper
+     * @var \KartsNMS\Polling\ConnectivityHelper
      */
     private $connectivity;
 
@@ -62,16 +62,16 @@ class ValidateDeviceAndCreate
         $this->device = $device;
         $this->force = $force;
         $this->ping_fallback = $ping_fallback;
-        $this->connectivity = new \LibreNMS\Polling\ConnectivityHelper($this->device);
+        $this->connectivity = new \KartsNMS\Polling\ConnectivityHelper($this->device);
     }
 
     /**
      * @return bool
      *
-     * @throws \LibreNMS\Exceptions\HostExistsException
-     * @throws \LibreNMS\Exceptions\HostUnreachablePingException
-     * @throws \LibreNMS\Exceptions\HostUnreachableException
-     * @throws \LibreNMS\Exceptions\SnmpVersionUnsupportedException
+     * @throws \KartsNMS\Exceptions\HostExistsException
+     * @throws \KartsNMS\Exceptions\HostUnreachablePingException
+     * @throws \KartsNMS\Exceptions\HostUnreachableException
+     * @throws \KartsNMS\Exceptions\SnmpVersionUnsupportedException
      */
     public function execute(): bool
     {
@@ -104,8 +104,8 @@ class ValidateDeviceAndCreate
     }
 
     /**
-     * @throws \LibreNMS\Exceptions\HostUnreachableException
-     * @throws \LibreNMS\Exceptions\SnmpVersionUnsupportedException
+     * @throws \KartsNMS\Exceptions\HostUnreachableException
+     * @throws \KartsNMS\Exceptions\SnmpVersionUnsupportedException
      */
     private function detectCredentials(): void
     {
@@ -197,7 +197,7 @@ class ValidateDeviceAndCreate
     }
 
     /**
-     * @throws \LibreNMS\Exceptions\HostExistsException
+     * @throws \KartsNMS\Exceptions\HostExistsException
      */
     private function exceptIfHostnameExists(): void
     {
@@ -207,7 +207,7 @@ class ValidateDeviceAndCreate
     }
 
     /**
-     * @throws \LibreNMS\Exceptions\HostExistsException
+     * @throws \KartsNMS\Exceptions\HostExistsException
      */
     private function exceptIfIpExists(): void
     {
@@ -232,7 +232,7 @@ class ValidateDeviceAndCreate
      *
      * @return void
      *
-     * @throws \LibreNMS\Exceptions\HostExistsException
+     * @throws \KartsNMS\Exceptions\HostExistsException
      */
     private function exceptIfSysNameExists(): void
     {

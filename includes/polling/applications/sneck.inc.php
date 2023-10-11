@@ -1,9 +1,9 @@
 <?php
 
 use Carbon\Carbon;
-use LibreNMS\Config;
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'sneck';
 

@@ -6,9 +6,9 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
 
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  * @copyright  2018 PipoCanaja <pipocanaja@gmail.com>
  * @author     PipoCanaja <pipocanaja@gmail.com>
  */
@@ -22,7 +22,7 @@ $no_refresh = true;
 <h3>Plugins</h3>
 <hr>
 <?php
-echo \LibreNMS\Plugins::call('port_container', [$device, $port]);
+echo \KartsNMS\Plugins::call('port_container', [$device, $port]);
 PluginManager::call(PortTabHook::class, ['port' => $portModel])->each(function ($view) {
     echo $view;
 });

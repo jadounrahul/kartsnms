@@ -1,6 +1,6 @@
 # Grouping Devices
 
-LibreNMS supports grouping your devices together in much the same way
+KartsNMS supports grouping your devices together in much the same way
 as you can configure alerts. This document will hopefully help you get
 started.
 

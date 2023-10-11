@@ -2,7 +2,7 @@
 /**
  * infinera-groove.inc.php
  *
- * LibreNMS fanspeed discovery module for Infinera Groove
+ * KartsNMS fanspeed discovery module for Infinera Groove
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Nick Hilliard
  * @author     Nick Hilliard <nick@foobar.org>

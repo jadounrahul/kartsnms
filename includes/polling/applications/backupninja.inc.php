@@ -1,9 +1,9 @@
 <?php
 
 // Polls backupninja statistics from script via SNMP
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\Exceptions\JsonAppMissingKeysException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\Exceptions\JsonAppMissingKeysException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'backupninja';
 $output = 'OK';

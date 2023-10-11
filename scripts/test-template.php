@@ -4,10 +4,10 @@
 $init_modules = ['alerts', 'laravel'];
 require __DIR__ . '/../includes/init.php';
 
-use LibreNMS\Alert\AlertData;
-use LibreNMS\Alert\RunAlerts;
-use LibreNMS\Alert\Template;
-use LibreNMS\Util\Debug;
+use KartsNMS\Alert\AlertData;
+use KartsNMS\Alert\RunAlerts;
+use KartsNMS\Alert\Template;
+use KartsNMS\Util\Debug;
 
 $options = getopt('t:h:r:p:s:d::');
 

@@ -17,7 +17,7 @@
  * Alert Templates
  *
  * @author f0o <f0o@devilcode.org>
- * @copyright 2014 f0o, LibreNMS
+ * @copyright 2014 f0o, KartsNMS
  * @license GPL
  */
 $status = 'error';

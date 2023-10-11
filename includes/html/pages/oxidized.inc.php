@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2018 Søren Friis Rosiak <sorenrosiak@gmail.com>
  * This program is free software: you can redistribute it and/or modify it
@@ -18,7 +18,7 @@ $pagetitle[] = 'Oxidized';
         <ul class="nav nav-tabs">
             <li class="active"><a href="#list" data-toggle="tab">Node List</a></li>
             <li><a href="#search" data-toggle="tab">Config Search</a></li>
-            <li><a href="<?php echo \LibreNMS\Util\Url::generate(['page' => 'tools', 'tool' => 'oxidized-cfg-check']); ?>">Oxidized config validation</a></li>
+            <li><a href="<?php echo \KartsNMS\Util\Url::generate(['page' => 'tools', 'tool' => 'oxidized-cfg-check']); ?>">Oxidized config validation</a></li>
         </ul>
     </div>
     <div class="panel with-nav-tabs panel-default">
@@ -72,7 +72,7 @@ $pagetitle[] = 'Oxidized';
                         <div class="col-sm-8 actionBar">\
                             <span class="pull-left">\
                                 <button type="submit" class="btn btn-success btn-sm" name="btn-reload-nodes" id="btn-reload-nodes"\
-                                title="Update Oxidized\'s node list from LibreNMS data"><i class="fa fa-refresh"></i>\
+                                title="Update Oxidized\'s node list from KartsNMS data"><i class="fa fa-refresh"></i>\
                                 Reload node list</button>\
                             </span>\
                         </div>\

@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Illuminate\Database\Events\QueryExecuted;
-use LibreNMS\Util\Debug;
+use KartsNMS\Util\Debug;
 use Log;
 
 class QueryDebugListener

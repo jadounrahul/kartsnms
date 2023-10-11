@@ -38,6 +38,6 @@ foreach ($port_stats as $index => $port) {
         //Set port number to match current
         $ifName = $port['ifName'] ?? null;
     }
-    //set the libre ifName value to new port name
+    //set the karts ifName value to new port name
     $port_stats[$index]['ifName'] = $ifName;
 }

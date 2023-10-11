@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture statistics from the CISCO-NTP-MIB
+ * KartsNMS module to capture statistics from the CISCO-NTP-MIB
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,11 +11,11 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $tmp_module = 'ntp';
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['type'] = ['=', $tmp_module];
 $options['filter']['disabled'] = ['=', 0];

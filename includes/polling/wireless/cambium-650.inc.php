@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -9,7 +9,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 // $transmitPower = snmp_get($device, "transmitPower.0", "-Ovqn", "CAMBIUM-PTP650-MIB");
 // if (is_numeric($transmitPower)) {

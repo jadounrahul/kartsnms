@@ -6,9 +6,9 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
- * @copyright  2019 LibreNMS
+ * @copyright  2019 KartsNMS
  * @author     Pavle Obradovic <pobradovic08@gmail.com>
  */
 
@@ -16,16 +16,16 @@
  * Get module's components for a device
  */
 
-use LibreNMS\Util\Number;
+use KartsNMS\Util\Number;
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['type' => 'cisco-qfp']);
 $components = $components[$device['device_id']];
 
 foreach ($components as $component_id => $tmp_component) {
     $default_graph_array = [
-        'from' => \LibreNMS\Config::get('time.day'),
-        'to' => \LibreNMS\Config::get('time.now'),
+        'from' => \KartsNMS\Config::get('time.day'),
+        'to' => \KartsNMS\Config::get('time.now'),
         'id' => $component_id,
         'page' => 'graphs',
     ];

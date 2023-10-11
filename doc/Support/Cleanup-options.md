@@ -1,8 +1,8 @@
 # Cleanup Options
 
-As the number of devices starts to grow in your LibreNMS install, so
+As the number of devices starts to grow in your KartsNMS install, so
 will things such as the RRD files, MySQL database containing
-eventlogs, Syslogs and performance data etc. Your LibreNMS install
+eventlogs, Syslogs and performance data etc. Your KartsNMS install
 could become quite large so it becomes necessary to clean up those
 entries. With Cleanup Options, you can stay in control.
 
@@ -21,7 +21,7 @@ These options rely on ```daily.sh``` running from cron as per the installation i
     lnms config:set ports_purge true
     ```
 
-These options will ensure data within LibreNMS over X days old is
+These options will ensure data within KartsNMS over X days old is
 automatically purged. You can alter these individually, values are in
 days.
 

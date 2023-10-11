@@ -1,3 +1,3 @@
 <?php
 
-(new \LibreNMS\Modules\Mempools())->discover($os);
+(new \KartsNMS\Modules\Mempools())->discover($os);

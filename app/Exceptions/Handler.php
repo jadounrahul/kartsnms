@@ -26,12 +26,12 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $upgradable = [
-        \LibreNMS\Exceptions\FilePermissionsException::class,
-        \LibreNMS\Exceptions\DatabaseConnectException::class,
-        \LibreNMS\Exceptions\DuskUnsafeException::class,
-        \LibreNMS\Exceptions\UnserializableRouteCache::class,
-        \LibreNMS\Exceptions\MaximumExecutionTimeExceeded::class,
-        \LibreNMS\Exceptions\DatabaseInconsistentException::class,
+        \KartsNMS\Exceptions\FilePermissionsException::class,
+        \KartsNMS\Exceptions\DatabaseConnectException::class,
+        \KartsNMS\Exceptions\DuskUnsafeException::class,
+        \KartsNMS\Exceptions\UnserializableRouteCache::class,
+        \KartsNMS\Exceptions\MaximumExecutionTimeExceeded::class,
+        \KartsNMS\Exceptions\DatabaseInconsistentException::class,
     ];
 
     public function render($request, Throwable $exception)

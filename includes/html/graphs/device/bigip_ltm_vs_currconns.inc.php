@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display F5 LTM Virtual Server Details
+ * KartsNMS module to display F5 LTM Virtual Server Details
  *
  * Copyright (c) 2021 Martin Bergström <martin@bergstr0m.se>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['type'] = ['=', 'f5-ltm-vs'];
 $components = $component->getComponents($device['device_id'], $options);

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Graph Cisco IPSLA UDP Jitter metrics
+ * KartsNMS module to Graph Cisco IPSLA UDP Jitter metrics
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -15,7 +15,7 @@ $sla = dbFetchRow('SELECT `sla_nr` FROM `slas` WHERE `sla_id` = ?', [$vars['id']
 
 require 'includes/html/graphs/common.inc.php';
 $rrd_options .= ' -l 0 -E ';
-$rrd_filename = Rrd::dirFromHost($device['hostname']) . '/' . \LibreNMS\Data\Store\Rrd::safeName('sla-' . $sla['sla_nr'] . '-jitter.rrd');
+$rrd_filename = Rrd::dirFromHost($device['hostname']) . '/' . \KartsNMS\Data\Store\Rrd::safeName('sla-' . $sla['sla_nr'] . '-jitter.rrd');
 
 if (Rrd::checkRrdExists($rrd_filename)) {
     $rrd_options .= " COMMENT:'                            Cur   Min  Max\\n'";

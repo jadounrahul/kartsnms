@@ -74,7 +74,7 @@ return [
         'active_directory' => [
             'users_purge' => [
                 'description' => 'Conserver les utilisateurs inactifs pendant',
-                'help' => 'Les utilisateurs seront effacés de LibreNMS après ce nombre de jour(s) sans connexion. 0 signifie `jamais`. Les utilisteurs seront créés à nouveau quand ils se reconnecteront.',
+                'help' => 'Les utilisateurs seront effacés de KartsNMS après ce nombre de jour(s) sans connexion. 0 signifie `jamais`. Les utilisteurs seront créés à nouveau quand ils se reconnecteront.',
             ],
         ],
         'addhost_alwayscheckip' => [
@@ -501,7 +501,7 @@ return [
         ],
         'distributed_poller' => [
             'description' => 'Activation des sondeurs distribués (`Distributed Pollers`, nécessite des configurations additionnelles)',
-            'help' => 'Cf documentation : https://docs.librenms.org/Extensions/Distributed-Poller/',
+            'help' => 'Cf documentation : https://docs.kartsnms.org/Extensions/Distributed-Poller/',
         ],
         'distributed_poller_group' => [
             'description' => 'Groupe de sondeurs par défaut',
@@ -680,7 +680,7 @@ return [
         ],
         'mydomain' => [
             'description' => 'Domaine principal',
-            'help' => 'Ce domaine est utilisé pour la découverte automatique de réseau et d\'autres processus. LibreNMS essaie de le concatener aux noms incomplets.',
+            'help' => 'Ce domaine est utilisé pour la découverte automatique de réseau et d\'autres processus. KartsNMS essaie de le concatener aux noms incomplets.',
         ],
         'nfdump' => [
             'description' => 'Chemin vers `nfdump`',
@@ -734,8 +734,8 @@ return [
             'description' => 'Chemin vers `nmap`',
         ],
         'own_hostname' => [
-            'description' => 'Nom d\'hôte LibreNMS',
-            'help' => 'Doit être configuré avec le nom d\'hôte/IP du serveur LibreNMS.',
+            'description' => 'Nom d\'hôte KartsNMS',
+            'help' => 'Doit être configuré avec le nom d\'hôte/IP du serveur KartsNMS.',
         ],
         'oxidized' => [
             'default_group' => [
@@ -946,7 +946,7 @@ return [
         ],
         'rrd_dir' => [
             'description' => 'Emplacement des fichiers RRD',
-            'help' => 'Emplacement des fichiers rrd.  Défaut: fichiers rrd dans le répertoire de LibreNMS. La modification de cette valeur ne déplace pas les fichiers RRD.',
+            'help' => 'Emplacement des fichiers rrd.  Défaut: fichiers rrd dans le répertoire de KartsNMS. La modification de cette valeur ne déplace pas les fichiers RRD.',
         ],
         'rrd_purge' => [
             'description' => 'RRD, fichiers non modifiés depuis plus de',
@@ -1054,7 +1054,7 @@ return [
         ],
         'title_image' => [
             'description' => 'Image d\'accueil',
-            'help' => 'Remplace le logo LibreNMS sur la page d\'accueil/authentification',
+            'help' => 'Remplace le logo KartsNMS sur la page d\'accueil/authentification',
         ],
         'traceroute' => [
             'description' => 'Chemin vers `traceroute`',

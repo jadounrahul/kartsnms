@@ -14,10 +14,10 @@
                 <tr>
                     <td>{{ trans('stp.bridge_address') }}</td>
                     <td>
-                        {{ \LibreNMS\Util\Mac::parse($instance['bridgeAddress'])->readable() }}
-                        @if($url = \LibreNMS\Util\Url::deviceLink(\App\Facades\DeviceCache::get(\App\Models\Stp::where('bridgeAddress', $instance['bridgeAddress'])->value('device_id'))))
+                        {{ \KartsNMS\Util\Mac::parse($instance['bridgeAddress'])->readable() }}
+                        @if($url = \KartsNMS\Util\Url::deviceLink(\App\Facades\DeviceCache::get(\App\Models\Stp::where('bridgeAddress', $instance['bridgeAddress'])->value('device_id'))))
                             ({!! $url !!})
-                        @elseif($brVendor = \LibreNMS\Util\Mac::parse($instance['bridgeAddress'])->vendor())
+                        @elseif($brVendor = \KartsNMS\Util\Mac::parse($instance['bridgeAddress'])->vendor())
                             ({{ $brVendor }})
                         @endif
                     </td>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>{{ trans('stp.last_topology_change') }}</td>
-                    <td>{{ \LibreNMS\Util\Time::formatInterval($instance['timeSinceTopologyChange']) }}</td>
+                    <td>{{ \KartsNMS\Util\Time::formatInterval($instance['timeSinceTopologyChange']) }}</td>
                 </tr>
                 <tr>
                     <td>{{ trans('stp.topology_changes') }}</td>
@@ -42,9 +42,9 @@
                     <td>{{ trans('stp.designated_root') }}</td>
                     <td>
                         {{ Mac::parse($instance['designatedRoot'])->readable() }}
-                        @if($url = \LibreNMS\Util\Url::deviceLink(\App\Facades\DeviceCache::get(\App\Models\Stp::where('bridgeAddress', $instance['designatedRoot'])->value('device_id'))))
+                        @if($url = \KartsNMS\Util\Url::deviceLink(\App\Facades\DeviceCache::get(\App\Models\Stp::where('bridgeAddress', $instance['designatedRoot'])->value('device_id'))))
                             ({!! $url !!})
-                        @elseif($drVendor = \LibreNMS\Util\Mac::parse($instance['designatedRoot'])->vendor())
+                        @elseif($drVendor = \KartsNMS\Util\Mac::parse($instance['designatedRoot'])->vendor())
                             ({{ $drVendor }})
                         @endif
                     </td>

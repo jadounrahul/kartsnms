@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -32,8 +32,8 @@ class SnmpCapabilities
     public function __invoke(): JsonResponse
     {
         return new JsonResponse([
-            'auth' => \LibreNMS\SNMPCapabilities::supportedAuthAlgorithms(),
-            'crypto' => \LibreNMS\SNMPCapabilities::supportedCryptoAlgorithms(),
+            'auth' => \KartsNMS\SNMPCapabilities::supportedAuthAlgorithms(),
+            'crypto' => \KartsNMS\SNMPCapabilities::supportedCryptoAlgorithms(),
         ]);
     }
 }

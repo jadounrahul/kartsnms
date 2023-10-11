@@ -1,6 +1,6 @@
 <?php
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
     public function dbSetUp()
     {
         if (getenv('DBTEST')) {
-            \LibreNMS\DB\Eloquent::DB()->beginTransaction();
+            \KartsNMS\DB\Eloquent::DB()->beginTransaction();
         } else {
             $this->markTestSkipped('Database tests not enabled.  Set DBTEST=1 to enable.');
         }
@@ -29,7 +29,7 @@ abstract class TestCase extends BaseTestCase
     {
         if (getenv('DBTEST')) {
             try {
-                \LibreNMS\DB\Eloquent::DB()->rollBack();
+                \KartsNMS\DB\Eloquent::DB()->rollBack();
             } catch (\Exception $e) {
                 $this->fail("Exception when rolling back transaction.\n" . $e->getTraceAsString());
             }

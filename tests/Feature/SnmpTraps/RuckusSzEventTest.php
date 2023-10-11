@@ -19,15 +19,15 @@
  *
  * Tests Ruckus Wireless SmartZone Event trap handlers.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Heath Barnhart
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 class RuckusSzEventTest extends SnmpTrapTestCase
 {

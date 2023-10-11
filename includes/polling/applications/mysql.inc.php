@@ -1,7 +1,7 @@
 <?php
 
 // FIXME - this is lame
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'mysql';
 

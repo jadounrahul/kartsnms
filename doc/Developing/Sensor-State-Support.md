@@ -30,11 +30,11 @@ and what class the sensor is etc. This information is fetched from the sensors t
 #### state_translations
 
 *Is where we map the possible returned state sensor values to a
-generic LibreNMS value, in order to make displaying and alerting more
+generic KartsNMS value, in order to make displaying and alerting more
 generic. We also map these values to the actual state
 sensor(state_index) where these values are actually returned from.*
 
-*The LibreNMS generic states are derived from Nagios:*
+*The KartsNMS generic states are derived from Nagios:*
 
 ```
 0 = OK

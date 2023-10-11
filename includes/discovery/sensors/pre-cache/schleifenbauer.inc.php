@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2018 Martijn Schmidt <martijn.schmidt@gmail.com>
  * This program is free software: you can redistribute it and/or modify it

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -12,8 +12,8 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Config;
-use LibreNMS\Util\Number;
+use KartsNMS\Config;
+use KartsNMS\Util\Number;
 
 $highlight_node = $vars['highlight_node'] ?? 0;
 $group = $vars['group'] ?? 0;
@@ -328,7 +328,7 @@ foreach ($list as $items) {
             [
                 'from'=>$items['local_device_id'],
                 'to'=>$items['remote_device_id'],
-                'label'=> \LibreNMS\Util\Rewrite::shortenIfType($local_port['ifName']) . ' > ' . \LibreNMS\Util\Rewrite::shortenIfType($remote_port['ifName']),
+                'label'=> \KartsNMS\Util\Rewrite::shortenIfType($local_port['ifName']) . ' > ' . \KartsNMS\Util\Rewrite::shortenIfType($remote_port['ifName']),
                 'title' => generate_port_link($local_port, "<img src='graph.php?type=port_bits&amp;id=" . $items['local_port_id'] . '&amp;from=' . Config::get('time.day') . '&amp;to=' . Config::get('time.now') . '&amp;width=100&amp;height=20&amp;legend=no&amp;bg=' . str_replace('#', '', $row_colour) . "'>\n", '', 0, 1),
                 'width'=>$width,
             ],

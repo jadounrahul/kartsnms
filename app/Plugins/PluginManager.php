@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -30,7 +30,7 @@ use App\Models\Plugin;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
-use LibreNMS\Util\Notifications;
+use KartsNMS\Util\Notifications;
 use Log;
 
 class PluginManager
@@ -49,7 +49,7 @@ class PluginManager
     }
 
     /**
-     * Publish plugin hook, this is the main way to hook into different parts of LibreNMS.
+     * Publish plugin hook, this is the main way to hook into different parts of KartsNMS.
      * plugin_name should be unique. For internal (user) plugins in the app/Plugins directory, the directory name will be used.
      * Hook type will be the full class name of the hook from app/Plugins/Hooks.
      *
@@ -116,7 +116,7 @@ class PluginManager
                     $name = $hook['plugin_name'];
                     Log::error("Error calling hook $hookType for $name: " . $e->getMessage());
 
-                    Notifications::create("Plugin $name disabled", "$name caused an error and was disabled, please check with the plugin creator to fix the error. The error can be found in logs/librenms.log", 'plugins', 2);
+                    Notifications::create("Plugin $name disabled", "$name caused an error and was disabled, please check with the plugin creator to fix the error. The error can be found in logs/kartsnms.log", 'plugins', 2);
                     Plugin::where('plugin_name', $name)->update(['plugin_active' => 0]);
 
                     return 'HOOK FAILED';

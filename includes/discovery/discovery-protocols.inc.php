@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Util\IP;
+use KartsNMS\Config;
+use KartsNMS\Util\IP;
 
 global $link_exists;
 
@@ -108,7 +108,7 @@ if (($device['os'] == 'routeros') && version_compare($device['version'], '7.7', 
             $remote_device_id = find_device_id($lldp['lldpRemSysName'], $lldp['lldpRemManAddr'], $remote_port_mac);
 
             if (! $remote_device_id &&
-                \LibreNMS\Util\Validate::hostname($lldp['lldpRemSysName']) &&
+                \KartsNMS\Util\Validate::hostname($lldp['lldpRemSysName']) &&
                 ! can_skip_discovery($lldp['lldpRemSysName'], $lldp['lldpRemSysDesc']) &&
                 Config::get('autodiscovery.xdp') === true) {
                 $remote_device_id = discover_new_device($lldp['lldpRemSysName'], $device, 'LLDP', $interface);
@@ -140,7 +140,7 @@ if (($device['os'] == 'routeros') && version_compare($device['version'], '7.7', 
         $remote_device_id = find_device_id($lldp['lldpRemSysName']);
 
         if (! $remote_device_id &&
-            \LibreNMS\Util\Validate::hostname($lldp['lldpRemSysName']) &&
+            \KartsNMS\Util\Validate::hostname($lldp['lldpRemSysName']) &&
             ! can_skip_discovery($lldp['lldpRemSysName'], $lldp['lldpRemSysDesc'] &&
             Config::get('autodiscovery.xdp') === true)
         ) {
@@ -174,7 +174,7 @@ if (($device['os'] == 'routeros') && version_compare($device['version'], '7.7', 
         $remote_device_id = find_device_id($lldp['tmnxLldpRemSysName'][$ifIndex][$MacIndex][$RemIndex]);
 
         if (! $remote_device_id &&
-            \LibreNMS\Util\Validate::hostname($lldp['tmnxLldpRemSysName'][$ifIndex][$MacIndex][$RemIndex]) &&
+            \KartsNMS\Util\Validate::hostname($lldp['tmnxLldpRemSysName'][$ifIndex][$MacIndex][$RemIndex]) &&
             ! can_skip_discovery($lldp['tmnxLldpRemSysName'][$ifIndex][$MacIndex][$RemIndex], $lldp['tmnxLldpRemSysDesc'][$ifIndex][$MacIndex][$RemIndex]) &&
             Config::get('autodiscovery.xdp') === true
         ) {
@@ -216,7 +216,7 @@ if (($device['os'] == 'routeros') && version_compare($device['version'], '7.7', 
         $remote_port_id = find_port_id($remote_port_descr, null, $remote_device_id);
 
         if (! $remote_device_id &&
-            \LibreNMS\Util\Validate::hostname($remote_device_name) &&
+            \KartsNMS\Util\Validate::hostname($remote_device_name) &&
             ! can_skip_discovery($remote_device_name, $remote_device_ip) &&
             Config::get('autodiscovery.xdp') === true) {
             $remote_device_id = discover_new_device($remote_device_name, $device, 'LLDP', $local_ifName);
@@ -418,7 +418,7 @@ if (Config::get('autodiscovery.ospf') === true) {
 
             $name = gethostbyaddr($ip);
             $remote_device_id = discover_new_device($name, $device, 'OSPF');
-        } catch (\LibreNMS\Exceptions\InvalidIpException $e) {
+        } catch (\KartsNMS\Exceptions\InvalidIpException $e) {
             //
         }
     }

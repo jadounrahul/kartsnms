@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture NTP statistics
+ * KartsNMS module to capture NTP statistics
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -12,13 +12,13 @@
  *
  * This module will display NTP details from various device types.
  * To display, modules must create rrd's named: ntp-%PEER%.rrd with the following DS':
- *      DS:stratum:GAUGE:'.\LibreNMS\Config::get('rrd.heartbeat').':0:U
- *      DS:offset:GAUGE:'.\LibreNMS\Config::get('rrd.heartbeat').':0:U
- *      DS:delay:GAUGE:'.\LibreNMS\Config::get('rrd.heartbeat').':0:U
- *      DS:dispersion:GAUGE:'.\LibreNMS\Config::get('rrd.heartbeat').':0:U
+ *      DS:stratum:GAUGE:'.\KartsNMS\Config::get('rrd.heartbeat').':0:U
+ *      DS:offset:GAUGE:'.\KartsNMS\Config::get('rrd.heartbeat').':0:U
+ *      DS:delay:GAUGE:'.\KartsNMS\Config::get('rrd.heartbeat').':0:U
+ *      DS:dispersion:GAUGE:'.\KartsNMS\Config::get('rrd.heartbeat').':0:U
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 if (isset($device['os_group']) && file_exists(Config::get('install_dir') . "/includes/polling/ntp/{$device['os_group']}.inc.php")) {
     include Config::get('install_dir') . "/includes/polling/ntp/{$device['os_group']}.inc.php";

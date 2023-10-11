@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display F5 LTM Details
+ * KartsNMS module to display F5 LTM Details
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 // Define some error messages
 $error_poolaction = [];
@@ -23,7 +23,7 @@ $error_poolaction[4] = 'Failover and Restart';
 $error_poolaction[5] = 'Go Active';
 $error_poolaction[6] = 'None';
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options['filter']['disabled'] = ['=', 0];
 $options['filter']['ignore'] = ['=', 0];
 $components = $component->getComponents($device['device_id'], $options);

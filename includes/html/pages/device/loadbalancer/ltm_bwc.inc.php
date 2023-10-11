@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Display data from F5 BigIP LTM Devices
+ * KartsNMS module to Display data from F5 BigIP LTM Devices
  *
  * Copyright (c) 2019 Yacine BENAMSILI <https://github.com/yac01/ yacine.benamsili@homail.com>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['filter' => ['ignore' => ['=', 0]]]);
 
 // We only care about our device id.

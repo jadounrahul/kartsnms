@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -28,8 +28,8 @@ namespace App\Http\Controllers\Ajax;
 use App\Models\BgpPeer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use LibreNMS\Util\Color;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Color;
+use KartsNMS\Util\Url;
 
 class BgpSearchController extends SearchController
 {

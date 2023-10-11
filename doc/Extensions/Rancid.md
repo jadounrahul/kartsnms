@@ -1,6 +1,6 @@
 # Rancid
 
-Librenms can generate a list of hosts that can be monitored by
+Kartsnms can generate a list of hosts that can be monitored by
 RANCID. We assume you have currently a running Rancid, and you just
 need to create and update the file 'router.db'
 
@@ -8,20 +8,20 @@ need to create and update the file 'router.db'
 
 To generate the config file (maybe even add a cron to schedule
 this). We've assumed a few locations for Rancid, the config file you
-want to call it and where LibreNMS is:
+want to call it and where KartsNMS is:
 
 ```bash
-cd /opt/librenms/scripts/
+cd /opt/kartsnms/scripts/
 php ./gen_rancid.php > /the/path/where/is/rancid/core/router.db
 ```
 
 Sample cron:
 
 ```bash
-15   0    * * * root cd /opt/librenms/scripts && php ./gen_rancid.php > /the/path/where/is/rancid/core/router.db
+15   0    * * * root cd /opt/kartsnms/scripts && php ./gen_rancid.php > /the/path/where/is/rancid/core/router.db
 ```
 
-Now configure LibreNMS (make sure you point dir to your rancid data directory):
+Now configure KartsNMS (make sure you point dir to your rancid data directory):
 
 ```php
 $config['rancid_configs']['core'] = '/the/path/where/is/rancid/core';
@@ -42,7 +42,7 @@ Edit Rancid config file to use subversion or git instead of default
 cvs, and adds a group:
 `sudo vi /etc/rancid/rancid.conf`
 
-`LIST_OF_GROUPS="librenms"`
+`LIST_OF_GROUPS="kartsnms"`
 
 Now change these two lines:
 
@@ -64,10 +64,10 @@ get the hang of it, this is just a basic 'Need it to work" deal.
 `sudo su -c /var/lib/rancid/bin/rancid-cvs -s /bin/bash -l rancid`
 > NOTE - do NOT change cvs to svn here! Leave command as is!
 
-Get a list of devices from Librenms you can pull configs from:
+Get a list of devices from Kartsnms you can pull configs from:
 
 ```
-cd /opt/librenms/scripts
+cd /opt/kartsnms/scripts
 sudo ./gen_rancid.php
 ```
 
@@ -79,7 +79,7 @@ alphcr1;cisco;up
 ```
 
 copy and past results into the below file:
-`sudo vi /var/lib/rancid/librenms/router.db`
+`sudo vi /var/lib/rancid/kartsnms/router.db`
 
 NOTE - This ONLY applies to newer RANCID versions and Linux
 distros. Older versions will need to retain the : and not the ;
@@ -129,21 +129,21 @@ Ensure your configs pulled:
 
 ```
 sudo su - rancid
-cd librenms/configs/
+cd kartsnms/configs/
 ls
 ```
 
 Make sure your config files are there :-)
 
 ```
-sudo usermod -a -G rancid librenms
+sudo usermod -a -G rancid kartsnms
 ```
 
-Add Rancid into LibreNMS config.php:
+Add Rancid into KartsNMS config.php:
 
 ```php
 ### Rancid
-$config['rancid_configs'][]             = '/var/lib/rancid/librenms/configs/';
+$config['rancid_configs'][]             = '/var/lib/rancid/kartsnms/configs/';
 $config['rancid_repo_type']             = 'svn';  //'svn' or 'git'
 $config['rancid_ignorecomments']        = 0;
 ```

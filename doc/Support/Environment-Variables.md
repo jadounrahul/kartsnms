@@ -1,6 +1,6 @@
 # Environment Variables
 
-LibreNMS allows certain settings to be set via the environment or
+KartsNMS allows certain settings to be set via the environment or
 through the .env file.
 
 ## Database
@@ -10,8 +10,8 @@ Set the variables to connect to the database.  The default values are shown belo
 ```dotenv
 DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=librenms
-DB_USERNAME=librenms
+DB_DATABASE=kartsnms
+DB_USERNAME=kartsnms
 DB_PASSWORD=
 DB_SOCKET=
 
@@ -35,21 +35,21 @@ Set the base url for generated urls.
 This will be needed when using signed graph urls for alerting. It may
 be needed when using reverse proxies combined with a subdirectory.
 
-Generally, LibreNMS will make correct URLs (especially if you have set
+Generally, KartsNMS will make correct URLs (especially if you have set
 up your proxy variables correctly)
 
 ```dotenv
-APP_URL=http://librenms/
+APP_URL=http://kartsnms/
 ```
 
 ## User / Group
 
-The user and group that LibreNMS should operate as.
+The user and group that KartsNMS should operate as.
 Group will default to the same as the user if unset.
 
 ```dotenv
-LIBRENMS_USER=librenms
-LIBRENMS_GROUP=librenms
+LIBRENMS_USER=kartsnms
+LIBRENMS_GROUP=kartsnms
 ```
 
 ## Debug

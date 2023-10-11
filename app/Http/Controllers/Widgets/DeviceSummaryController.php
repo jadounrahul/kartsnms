@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -26,8 +26,8 @@
 namespace App\Http\Controllers\Widgets;
 
 use Illuminate\Http\Request;
-use LibreNMS\Config;
-use LibreNMS\Util\ObjectCache;
+use KartsNMS\Config;
+use KartsNMS\Util\ObjectCache;
 
 abstract class DeviceSummaryController extends WidgetController
 {

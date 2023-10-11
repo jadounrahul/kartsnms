@@ -1,0 +1,11 @@
+# /etc/logrotate.d/kartsnms
+/opt/kartsnms/logs/*log {
+    su kartsnms kartsnms
+    weekly
+    rotate 6
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 664 kartsnms kartsnms
+}

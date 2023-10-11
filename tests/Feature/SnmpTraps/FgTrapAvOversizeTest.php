@@ -17,13 +17,13 @@
  *
  * Unit tests for Fortigate FgTrapAvOversized.php
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2019 KanREN, Inc
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 class FgTrapAvOversizeTest extends SnmpTrapTestCase
 {

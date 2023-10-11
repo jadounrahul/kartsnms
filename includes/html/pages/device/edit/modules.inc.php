@@ -18,7 +18,7 @@
       </tr>
 <?php
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $language = \config('app.locale');
 $settings = (include Config::get('install_dir') . '/lang/' . $language . '/settings.php')['settings'];

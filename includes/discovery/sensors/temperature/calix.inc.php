@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Calix E5-1xx Temperature Discovery module
+ * KartsNMS Calix E5-1xx Temperature Discovery module
  *
  * Copyright (c) 2016 Chris A. Evans <thecityofguanyu@outlook.com>
  *

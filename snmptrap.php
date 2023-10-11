@@ -2,16 +2,16 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
  * @copyright  (C) 2006 - 2012 Adam Armstrong
- * @copyright  (C) 2018 LibreNMS
+ * @copyright  (C) 2018 KartsNMS
  * Adapted from old snmptrap.php handler
  */
 
-use LibreNMS\Util\Debug;
+use KartsNMS\Util\Debug;
 
 $init_modules = [];
 require __DIR__ . '/includes/init.php';
@@ -25,4 +25,4 @@ if (Debug::set(isset($options['d']))) {
 $text = stream_get_contents(STDIN);
 
 // create handle and send it this trap
-\LibreNMS\Snmptrap\Dispatcher::handle(new \LibreNMS\Snmptrap\Trap($text));
+\KartsNMS\Snmptrap\Dispatcher::handle(new \KartsNMS\Snmptrap\Trap($text));

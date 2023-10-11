@@ -19,19 +19,19 @@
  * Tests Junipers BGPv4 traps, specificaly jnxBgpM2Established and
  * jnxBgpM2BackwardTransition
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 KanREN, Inc
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 use App\Models\BgpPeer;
 use App\Models\Device;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Tests\Traits\RequiresDatabase;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Tests\Traits\RequiresDatabase;
 
 class JnxBgpM2Test extends SnmpTrapTestCase
 {

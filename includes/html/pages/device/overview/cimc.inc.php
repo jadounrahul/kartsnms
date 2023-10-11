@@ -1,6 +1,6 @@
 <?php
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['type'=>'Cisco-CIMC']);
 
 // We only care about our device id.

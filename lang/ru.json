@@ -70,7 +70,7 @@
     "The user could not be deleted": "Пользователь не может быть удалён",
     "Whoops, the web server could not write required files to the filesystem.": "Ой, вэб сервер не может записать файл в файловую систему.",
     "Running the following commands will fix the issue most of the time:": "Выполнение следующих команд в большинстве случаев решит проблему:",
-    "Whoops, looks like something went wrong. Check your librenms.log.": "Ой, что-то сломалось, проверьте librenms.log.",
+    "Whoops, looks like something went wrong. Check your kartsnms.log.": "Ой, что-то сломалось, проверьте kartsnms.log.",
     "Public Devices": "Общее устройство",
     "System Status": "Статус Системы",
     "Logon": "Вход",

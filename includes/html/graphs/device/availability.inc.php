@@ -15,7 +15,7 @@ if ($duration > 86400) {
 
     $colour_area_max = 'cc9999';
 
-    $line_text = \LibreNMS\Util\Time::formatInterval($duration);
+    $line_text = \KartsNMS\Util\Time::formatInterval($duration);
 
     $graph_title .= '::' . $line_text;
 

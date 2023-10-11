@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 class ConfigServiceProvider extends ServiceProvider
 {

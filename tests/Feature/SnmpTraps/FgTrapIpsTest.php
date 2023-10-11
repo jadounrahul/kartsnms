@@ -17,19 +17,19 @@
  *
  * Unit tests for Fortigate IPS SNMP trap handlers (FgTrapIps*)
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2019 KanREN, Inc
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 use App\Models\Device;
 use App\Models\Ipv4Address;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Tests\Traits\RequiresDatabase;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Tests\Traits\RequiresDatabase;
 
 class FgTrapIpsTest extends SnmpTrapTestCase
 {

@@ -38,7 +38,7 @@ if ($width > '500') {
 foreach ($rrd_list as $rrd) {
     $colours = (isset($rrd['colour']) ? $rrd['colour'] : 'default');
     $strlen = ((strlen($rrd['descr']) < $descr_len) ? ($descr_len - strlen($rrd['descr'])) : '0');
-    $descr = (isset($rrd['descr']) ? \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $desc_len + $strlen) : 'Unknown');
+    $descr = (isset($rrd['descr']) ? \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $desc_len + $strlen) : 'Unknown');
     for ($z = 0; $z < $strlen; $z++) {
         $descr .= ' ';
     }
@@ -47,7 +47,7 @@ foreach ($rrd_list as $rrd) {
         $stack = ':STACK';
     }
 
-    $colour = \LibreNMS\Config::get("graph_colours.$colours.$x");
+    $colour = \KartsNMS\Config::get("graph_colours.$colours.$x");
     $rrd_options .= ' DEF:cur' . $x . '=' . $rrd['filename'] . ':current:AVERAGE';
     $rrd_options .= ' DEF:peak' . $x . '=' . $rrd['filename'] . ':peak:MAX';
     $rrd_options .= ' DEF:unique' . $x . '=' . $rrd['filename'] . ':unique:AVERAGE';
@@ -64,14 +64,14 @@ foreach ($rrd_list as $rrd) {
         $totunique .= ',unique' . $x . ',+';
     }
 
-    $x = (($x < count(\LibreNMS\Config::get("graph_colours.$colours")) - 1) ? $x + 1 : 0);
+    $x = (($x < count(\KartsNMS\Config::get("graph_colours.$colours")) - 1) ? $x + 1 : 0);
     // $x++;
 }//end foreach
 
 if (! $nototal) {
     $strlen = ((strlen($total_text) < $descr_len) ? ($descr_len - strlen($total_text)) : '0');
-    $descr = (isset($total_text) ? \LibreNMS\Data\Store\Rrd::fixedSafeDescr($total_text, $desc_len + $strlen) : 'Total');
-    $colour = \LibreNMS\Config::get("graph_colours.$colours.$x");
+    $descr = (isset($total_text) ? \KartsNMS\Data\Store\Rrd::fixedSafeDescr($total_text, $desc_len + $strlen) : 'Total');
+    $colour = \KartsNMS\Config::get("graph_colours.$colours.$x");
     for ($z = 0; $z < $strlen; $z++) {
         $descr .= ' ';
     }

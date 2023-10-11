@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Thomas Berberich
  * @author     Thomas Berberich <sourcehhdoctor@gmail.com>
@@ -28,7 +28,7 @@ namespace App\Http\Controllers\Maps;
 use App\Models\Device;
 use App\Models\DeviceGroup;
 use Illuminate\Http\Request;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Url;
 
 class DeviceDependencyController extends MapController
 {

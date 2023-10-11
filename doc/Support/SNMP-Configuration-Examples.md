@@ -11,7 +11,7 @@ ASDM
 1. Launch ASDM and connect to your device
 1. Go to Configuration > Management Access > SNMP
 1. Add your community string
-1. Add in the "SNMP Host Access List" section your LibreNMS server IP address
+1. Add in the "SNMP Host Access List" section your KartsNMS server IP address
 1. Click Apply and Save
 
 CLI
@@ -89,7 +89,7 @@ snmp-server location <YOUR-LOCATION>
 1. Connect to the Web UI of the device
 1. Upgrade to the latest available manufacturer firmware which applies to your hardware revision. Refer to the release notes.   For devices which can use the Lx releases, *do* install LD.
 1. After rebooting the card (safe for connected load), configure Network, System and Access Control. Save config for each step.
-1. Configure SNMP. The device defaults to both SNMP v1 and v3 enabled, with default credentials. Disable what you do not need. SNMP v3 works, but uses MD5/DES. You may have to add another section to your SNMP credentials table in LibreNMS. Save.
+1. Configure SNMP. The device defaults to both SNMP v1 and v3 enabled, with default credentials. Disable what you do not need. SNMP v3 works, but uses MD5/DES. You may have to add another section to your SNMP credentials table in KartsNMS. Save.
 
 ### HPE / 3PAR
 
@@ -125,10 +125,10 @@ snmp-agent packet max-size 6000
 #### Inform OS 3.2.x
 
 - Access the CLI
-- Add an SNMP Manager with your LibreNMS IP address:
+- Add an SNMP Manager with your KartsNMS IP address:
 
 ```
-addsnmpmgr <librenms ip>
+addsnmpmgr <kartsnms ip>
 ```
 
 - Add your SNMP community:
@@ -190,7 +190,7 @@ Notes:
 
 * About the snmp community commands:
     * The commands change the default snmp community.  It is probably possible to create a new one instead.
-    * <ALLOWED-SRC-IPs/NETMASK> specify the address and host (not network) netmask of the LibreNMS server.  Example: 192.168.8.71/32
+    * <ALLOWED-SRC-IPs/NETMASK> specify the address and host (not network) netmask of the KartsNMS server.  Example: 192.168.8.71/32
     * trap-version=2 must also be specified if some other trap-version has been set
     * trap-interfaces may also be used to limit the interfaces the router listens on
 * About the snmp command:
@@ -383,16 +383,16 @@ extend hardware '/bin/cat /sys/firmware/devicetree/base/model'
 extend serial '/bin/cat /sys/firmware/devicetree/base/serial-number'
 ```
 
-The LibreNMS server include a copy of this example here:
+The KartsNMS server include a copy of this example here:
 
 ```
-/opt/librenms/snmpd.conf.example
+/opt/kartsnms/snmpd.conf.example
 ```
 
 The binary /usr/bin/distro must be copied from the original source repository:
 
 ```
-curl -o /usr/bin/distro https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/distro
+curl -o /usr/bin/distro https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/distro
 chmod +x /usr/bin/distro
 ```
 
@@ -419,7 +419,7 @@ This line simply means listen to connections across all interfaces
 IPv4 and IPv6 respectively
 
 Uncomment and change the following line to give read access to the
-username created above (rouser is what LibreNMS uses) :
+username created above (rouser is what KartsNMS uses) :
 
 ```
 #rouser authPrivUser priv
@@ -482,7 +482,7 @@ service snmpd restart
 1. Go to the security tab
 1. In "Accepted community name" click "Add" to add your community string and permission
 1. In "Accept SNMP packets from these hosts" click "Add" and add your
-   LibreNMS server IP address
+   KartsNMS server IP address
 1. Validate change by clicking "Apply"
 
 ### Windows Server 2012 R2 and newer
@@ -498,11 +498,11 @@ service snmpd restart
 1. Go to the security tab
 1. In "Accepted community name" click "Add" to add your community string and permission
 1. In "Accept SNMP packets from these hosts" click "Add" and add your
-   LibreNMS server IP address
+   KartsNMS server IP address
 1. Validate change by clicking "Apply"
 
 #### PowerShell
-The following example will install SNMP, set the Librenms IP and set a read only community string.  
+The following example will install SNMP, set the Kartsnms IP and set a read only community string.  
 Replace `$IP` and `$communitystring` with your values.
 
 ```Powershell

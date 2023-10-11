@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if ($device['os_group'] == 'cisco') {
     $cefs = SnmpQuery::hideMib()->walk('CISCO-CEF-MIB::cefSwitchingStatsTable')->table(3);

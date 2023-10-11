@@ -7,7 +7,7 @@
  *
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $init_modules = ['nodb'];
 require __DIR__ . '/includes/init.php';

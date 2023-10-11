@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -12,8 +12,8 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
 
 $init_modules = ['web', 'auth'];
 require realpath(__DIR__ . '/..') . '/includes/init.php';
@@ -44,7 +44,7 @@ $pdf->SetFont('dejavusans', '', 14, '', true);
 $pdf->setTextShadow(['enabled' => false, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => [196, 196, 196], 'opacity' => 1, 'blend_mode' => 'Normal']);
 
 if (! empty($_GET['report'])) {
-    $report = \LibreNMS\Util\Clean::fileName($_GET['report']);
+    $report = \KartsNMS\Util\Clean::fileName($_GET['report']);
     $image = base_path('html/' . Config::get('title_image'));
     $pdf->SetHeaderData($image, 40, ucfirst($report), $project_name, [0, 0, 0], [0, 64, 128]);
     include_once "includes/html/reports/$report.pdf.inc.php";

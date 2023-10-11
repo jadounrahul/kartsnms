@@ -2,7 +2,7 @@
 /**
  * fs-net-pdu.inc.php
  *
- * LibreNMS current discovery module for FS.com NET-PDU
+ * KartsNMS current discovery module for FS.com NET-PDU
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Neil Lathwood
  * @author     Neil Lathwood <gh+n@laf.io>

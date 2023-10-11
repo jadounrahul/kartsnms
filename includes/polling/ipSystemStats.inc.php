@@ -47,7 +47,7 @@
 // IP-MIB::ipSystemStatsRefreshRate.ipv4 = Gauge32: 30000 milli-seconds
 // IP-MIB::ipSystemStatsRefreshRate.ipv6 = Gauge32: 30000 milli-seconds
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $data = snmpwalk_cache_oid($device, 'ipSystemStats', null, 'IP-MIB');
 

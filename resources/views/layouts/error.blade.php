@@ -72,9 +72,9 @@
     </div>
 
     <hr class="separator"/>
-    <p>{{ __("Check your log for more details.") }} ({{ isset($log_file) ? $log_file : 'librenms.log' }})</p>
+    <p>{{ __("Check your log for more details.") }} ({{ isset($log_file) ? $log_file : 'kartsnms.log' }})</p>
 
-    <p>{{ __("If you need additional help, you can find how to get help at") }} <a target="_blank" href="https://docs.librenms.org/Support">https://docs.librenms.org/Support</a>.</p>
+    <p>{{ __("If you need additional help, you can find how to get help at") }} <a target="_blank" href="https://docs.kartsnms.org/Support">https://docs.kartsnms.org/Support</a>.</p>
 
     @if(! empty(Flare::sentReports()->all()))
         <p>{{ __("Please include this Error-ID when reporting problems:") }} <b>{{ Flare::sentReports()->latestUuid() }}</b></p>

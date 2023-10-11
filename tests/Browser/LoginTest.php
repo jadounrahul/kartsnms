@@ -1,15 +1,15 @@
 <?php
 
-namespace LibreNMS\Tests\Browser;
+namespace KartsNMS\Tests\Browser;
 
 use App\Models\User;
 use App\Models\UserPref;
 use Hash;
 use Laravel\Dusk\Browser;
-use LibreNMS\Config;
-use LibreNMS\Tests\Browser\Pages\LoginPage;
-use LibreNMS\Tests\Browser\Pages\TwoFactorPage;
-use LibreNMS\Tests\DuskTestCase;
+use KartsNMS\Config;
+use KartsNMS\Tests\Browser\Pages\LoginPage;
+use KartsNMS\Tests\Browser\Pages\TwoFactorPage;
+use KartsNMS\Tests\DuskTestCase;
 
 /**
  * Class LoginTest

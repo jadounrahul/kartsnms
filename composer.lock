@@ -2815,16 +2815,16 @@
             "time": "2022-04-15T14:02:14+00:00"
         },
         {
-            "name": "librenms/laravel-vue-i18n-generator",
+            "name": "kartsnms/laravel-vue-i18n-generator",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/librenms/laravel-vue-i18n-generator.git",
+                "url": "https://github.com/jadounrahul/laravel-vue-i18n-generator.git",
                 "reference": "c662202e21b41a33b1da405c0ca167983ac7e4e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/librenms/laravel-vue-i18n-generator/zipball/c662202e21b41a33b1da405c0ca167983ac7e4e9",
+                "url": "https://api.github.com/repos/kartsnms/laravel-vue-i18n-generator/zipball/c662202e21b41a33b1da405c0ca167983ac7e4e9",
                 "reference": "c662202e21b41a33b1da405c0ca167983ac7e4e9",
                 "shasum": ""
             },
@@ -2868,14 +2868,14 @@
                 }
             ],
             "description": "Generates a vue-i18n compatible include file from your Laravel translations.",
-            "homepage": "http://github.com/librenms/laravel-vue-i18n-generator",
+            "homepage": "https://github.com/jadounrahul/laravel-vue-i18n-generator",
             "keywords": [
                 "laravel",
                 "vue-i18n"
             ],
             "support": {
-                "issues": "https://github.com/librenms/laravel-vue-i18n-generator/issues",
-                "source": "https://github.com/librenms/laravel-vue-i18n-generator/tree/master"
+                "issues": "https://github.com/jadounrahul/laravel-vue-i18n-generator/issues",
+                "source": "https://github.com/jadounrahul/laravel-vue-i18n-generator/tree/master"
             },
             "time": "2023-02-17T21:30:56+00:00"
         },
@@ -13341,7 +13341,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "librenms/laravel-vue-i18n-generator": 20
+        "kartsnms/laravel-vue-i18n-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

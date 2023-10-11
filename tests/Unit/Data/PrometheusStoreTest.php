@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit\Data;
+namespace KartsNMS\Tests\Unit\Data;
 
 use Illuminate\Support\Facades\Http as LaravelHttp;
-use LibreNMS\Config;
-use LibreNMS\Data\Store\Prometheus;
-use LibreNMS\Tests\TestCase;
+use KartsNMS\Config;
+use KartsNMS\Data\Store\Prometheus;
+use KartsNMS\Tests\TestCase;
 
 /**
  * @group datastores
@@ -74,7 +74,7 @@ class PrometheusStoreTest extends TestCase
         LaravelHttp::assertSentCount(1);
         LaravelHttp::assertSent(function (\Illuminate\Http\Client\Request $request) {
             return $request->method() == 'POST' &&
-                $request->url() == 'http://fake:9999/metrics/job/librenms/instance/testhost/measurement/testmeasure/ifName/testifname/type/testtype' &&
+                $request->url() == 'http://fake:9999/metrics/job/kartsnms/instance/testhost/measurement/testmeasure/ifName/testifname/type/testtype' &&
                 $request->body() == "ifIn 234234\nifOut 53453\n";
         });
     }

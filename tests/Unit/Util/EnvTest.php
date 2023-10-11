@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit\Util;
+namespace KartsNMS\Tests\Unit\Util;
 
-use LibreNMS\Tests\TestCase;
-use LibreNMS\Util\EnvHelper;
+use KartsNMS\Tests\TestCase;
+use KartsNMS\Util\EnvHelper;
 
 class EnvTest extends TestCase
 {

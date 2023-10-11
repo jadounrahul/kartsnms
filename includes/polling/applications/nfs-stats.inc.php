@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'nfsstat';
 $oid = '.1.3.6.1.4.1.8072.1.3.2.4';

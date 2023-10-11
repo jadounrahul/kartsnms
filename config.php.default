@@ -2,9 +2,9 @@
 
 ## Have a look in misc/config_definitions.json for examples of settings you can set here. DO NOT EDIT misc/config_definitions.json!
 
-// This is the user LibreNMS will run as
+// This is the user KartsNMS will run as
 //Please ensure this user is created and has the correct permissions to your install
-#$config['user'] = 'librenms';
+#$config['user'] = 'kartsnms';
 
 ### This should *only* be set if you want to *force* a particular hostname/port
 ### It will prevent the web interface being usable form any other hostname

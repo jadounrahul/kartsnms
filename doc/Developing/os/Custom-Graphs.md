@@ -1,5 +1,5 @@
 First we define our graphs in `includes/definitions.inc.php` to share
-our work and contribute in the development of LibreNMS. :-) (or place
+our work and contribute in the development of KartsNMS. :-) (or place
 in `config.php` if you don't plan to contribute)
 
 ```php
@@ -12,7 +12,7 @@ $config['graph_types']['device']['pulse_users'] = ['section' => 'firewall', 'ord
 
 OS polling is not necessarily where custom polling should be done,
 please speak to one of the core devs in
-[Discord](https://t.libren.ms/discord) for guidance.
+[Discord](https://t.kartsn.ms/discord) for guidance.
 
 Let's update our example file to add additional polling:
 
@@ -27,7 +27,7 @@ as it was written in the definition include file.
 ```php
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $users = snmp_get($device, 'iveConcurrentUsers.0', '-OQv', 'PULSESECURE-PSG-MIB');
 

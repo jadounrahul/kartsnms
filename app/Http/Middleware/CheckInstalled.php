@@ -2,7 +2,7 @@
 /**
  * CheckInstalled.php
  *
- * Check if LibreNMS install has been completed (config.php exists) and redirect to install.php as needed.
+ * Check if KartsNMS install has been completed (config.php exists) and redirect to install.php as needed.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -28,7 +28,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
-use LibreNMS\Util\EnvHelper;
+use KartsNMS\Util\EnvHelper;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckInstalled
@@ -41,7 +41,7 @@ class CheckInstalled
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $installed = ! config('librenms.install') && file_exists(base_path('.env'));
+        $installed = ! config('kartsnms.install') && file_exists(base_path('.env'));
         $is_install_route = $request->is('install*');
 
         // further middleware will fail without an app key, init one

@@ -90,7 +90,7 @@ return [
         'active_directory' => [
             'users_purge' => [
                 'description' => 'Keep inactive users for',
-                'help' => 'Users will be deleted from LibreNMS after this may days of not logging in. 0 means never and users will be recreated if the user logs back in.',
+                'help' => 'Users will be deleted from KartsNMS after this may days of not logging in. 0 means never and users will be recreated if the user logs back in.',
             ],
         ],
         'addhost_alwayscheckip' => [
@@ -617,7 +617,7 @@ return [
         ],
         'distributed_poller' => [
             'description' => 'Enable Distributed Polling (requires additional setup)',
-            'help' => 'Enable distributed polling system wide. This is intended for load sharing, not remote polling. You must read the documentation for steps to enable: https://docs.librenms.org/Extensions/Distributed-Poller/',
+            'help' => 'Enable distributed polling system wide. This is intended for load sharing, not remote polling. You must read the documentation for steps to enable: https://docs.kartsnms.org/Extensions/Distributed-Poller/',
         ],
         'default_poller_group' => [
             'description' => 'Default Poller Group',
@@ -924,7 +924,7 @@ return [
         ],
         'mydomain' => [
             'description' => 'Primary Domain',
-            'help' => 'This domain is used for network auto-discovery and other processes. LibreNMS will attempt to append it to unqualified hostnames.',
+            'help' => 'This domain is used for network auto-discovery and other processes. KartsNMS will attempt to append it to unqualified hostnames.',
         ],
         'network_map_show_on_worldmap' => [
             'description' => 'Display network links on the map',
@@ -997,8 +997,8 @@ return [
             ],
         ],
         'own_hostname' => [
-            'description' => 'LibreNMS hostname',
-            'help' => 'Should be set to the hostname/ip the librenms server is added as',
+            'description' => 'KartsNMS hostname',
+            'help' => 'Should be set to the hostname/ip the kartsnms server is added as',
         ],
         'oxidized' => [
             'default_group' => [
@@ -1022,7 +1022,7 @@ return [
             ],
             'ignore_os' => [
                 'description' => 'Do not backup these OS',
-                'help' => 'Do not backup the listed OS with Oxidized.  The OS must match the LibreNMS OS name (these are all lowercase with no spaces).  Only allows existing OS.',
+                'help' => 'Do not backup the listed OS with Oxidized.  The OS must match the KartsNMS OS name (these are all lowercase with no spaces).  Only allows existing OS.',
             ],
             'ignore_types' => [
                 'description' => 'Do not backup these device types',
@@ -1281,11 +1281,11 @@ return [
         'reporting' => [
             'error' => [
                 'description' => 'Send Error Reports',
-                'help' => 'Sends some errors to LibreNMS for analysis and fixing',
+                'help' => 'Sends some errors to KartsNMS for analysis and fixing',
             ],
             'usage' => [
                 'description' => 'Send Usage Reports',
-                'help' => 'Reports usage and versions to LibreNMS. To delete anonymous stats, visit the about page. You can view stats at https://stats.librenms.org',
+                'help' => 'Reports usage and versions to KartsNMS. To delete anonymous stats, visit the about page. You can view stats at https://stats.kartsnms.org',
             ],
             'dump_errors' => [
                 'description' => 'Dump debug errors (Will break your install)',
@@ -1310,7 +1310,7 @@ return [
         ],
         'rrd_dir' => [
             'description' => 'RRD Location',
-            'help' => 'Location of rrd files.  Default is rrd inside the LibreNMS directory.  Changing this setting does not move the rrd files.',
+            'help' => 'Location of rrd files.  Default is rrd inside the KartsNMS directory.  Changing this setting does not move the rrd files.',
         ],
         'rrd_purge' => [
             'description' => 'RRD Files entries older than',
@@ -1333,7 +1333,7 @@ return [
         ],
         'rrdtool_version' => [
             'description' => 'Sets the version of rrdtool on your server',
-            'help' => 'Anything over 1.5.5 supports all features LibreNMS uses, do not set higher than your installed version',
+            'help' => 'Anything over 1.5.5 supports all features KartsNMS uses, do not set higher than your installed version',
         ],
         'service_poller_enabled' => [
             'description' => 'Enable Polling',
@@ -1421,7 +1421,7 @@ return [
         ],
         'service_watchdog_log' => [
             'description' => 'Log File to Watch',
-            'help' => 'Default is the LibreNMS log file. Sets the default value for all nodes.',
+            'help' => 'Default is the KartsNMS log file. Sets the default value for all nodes.',
         ],
         'sfdp' => [
             'description' => 'Path to sfdp',

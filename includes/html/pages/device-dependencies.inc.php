@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2017 Aldemir Akpinar <https://github.com/aldemira>
  *

@@ -24,7 +24,7 @@ return [
      |
      */
 
-    'name' => env('APP_NAME', 'LibreNMS'),
+    'name' => env('APP_NAME', 'KartsNMS'),
 
     /*
      |--------------------------------------------------------------------------
@@ -173,7 +173,7 @@ return [
           */
 
         /*
-          * LibreNMS Service Providers...
+          * KartsNMS Service Providers...
           */
         App\Providers\ConfigServiceProvider::class,
         App\Providers\ErrorReportingProvider::class, // This should always be after the config is loaded
@@ -205,14 +205,14 @@ return [
         'Flare' => Spatie\LaravelIgnition\Facades\Flare::class,
         'Redis' => Illuminate\Support\Facades\Redis::class,
 
-        // LibreNMS
+        // KartsNMS
         'DeviceCache' => \App\Facades\DeviceCache::class,
         'Permissions' => \App\Facades\Permissions::class,
         'PluginManager' => \App\Facades\PluginManager::class,
         'Rrd' => \App\Facades\Rrd::class,
         'SnmpQuery' => \App\Facades\FacadeAccessorSnmp::class,
     ])->forget([
-        'Http', // don't use Laravel Http facade, LibreNMS has its own wrapper
+        'Http', // don't use Laravel Http facade, KartsNMS has its own wrapper
     ])->toArray(),
 
     'charset' => env('CHARSET', ini_get('php.output_encoding') ?: ini_get('default_charset') ?: 'UTF-8'),

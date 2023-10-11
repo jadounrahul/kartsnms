@@ -62,7 +62,7 @@ around 50. You will also need to set the correct snmp version,
 hostname and community string:
 
 `time snmpbulkwalk -v2c -cpublic HOSTNAME -Cr-REPEATERS- -M
-/opt/librenms/mibs -m IF-MIB IfEntry`
+/opt/kartsnms/mibs -m IF-MIB IfEntry`
 
 > NOTE: Do not go blindly setting this value as you can impact polling
 > negatively.
@@ -116,11 +116,11 @@ optimal. A general rule of thumb is 2 threads per core but we suggest
 that you play around with lowering / increasing the number until you 
 get the optimal value. **Note** KEEP in MIND that this doesn't 
 always help, it depends on your system and CPU. So be careful. 
-This can be changed by going to the cron job for librenms. 
-Usually in `/etc/cron.d/librenms` and changing the "16"
+This can be changed by going to the cron job for kartsnms. 
+Usually in `/etc/cron.d/kartsnms` and changing the "16"
 
 ```
-*/5  *    * * *   librenms    /opt/librenms/cronic /opt/librenms/poller-wrapper.py 16
+*/5  *    * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/poller-wrapper.py 16
 ```
 Please also see [Dispatcher Service](../Extensions/Dispatcher-Service.md)
 
@@ -128,7 +128,7 @@ Please also see [Dispatcher Service](../Extensions/Dispatcher-Service.md)
 
 If your install uses hostnames for devices and you have quite a lot
 then it's advisable to setup a local recursive dns instance on the
-LibreNMS server. Something like pdns-recursor can be used and then
+KartsNMS server. Something like pdns-recursor can be used and then
 configure `/etc/resolv.conf` to use 127.0.0.1 for queries.
 
 ## Per port polling - experimental
@@ -197,8 +197,8 @@ If you are having caching issues, you can clear the opcache by simply restarting
 
 ### For pollers
 
-Create a cache directory that is writable by the librenms user first:
-`sudo mkdir -p /tmp/cache && sudo chmod 775 /tmp/cache && sudo chown -R librenms /tmp/cache`
+Create a cache directory that is writable by the kartsnms user first:
+`sudo mkdir -p /tmp/cache && sudo chmod 775 /tmp/cache && sudo chown -R kartsnms /tmp/cache`
 
 Update your PHP opcache.ini.  Possible locations: `/etc/php/8.1/cli/conf.d/opcache.ini`, `/etc/php.d/opcache.ini`, or `/etc/php/conf.d/opcache.ini`.
 

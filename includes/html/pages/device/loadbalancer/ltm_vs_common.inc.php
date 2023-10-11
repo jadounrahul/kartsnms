@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to Display data from F5 BigIP LTM Devices
+ * KartsNMS module to Display data from F5 BigIP LTM Devices
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *

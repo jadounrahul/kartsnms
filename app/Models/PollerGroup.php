@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Thomas Berberich
  * @author     Thomas Berberich <sourcehhdoctor@gmail.com>
@@ -43,7 +43,7 @@ class PollerGroup extends Model
 
         static::deleting(function (PollerGroup $pollergroup) {
             // handle device poller group fallback to default poller
-            $default_poller_id = \LibreNMS\Config::get('default_poller_group');
+            $default_poller_id = \KartsNMS\Config::get('default_poller_group');
             $pollergroup->devices()->update(['poller_group' => $default_poller_id]);
         });
     }

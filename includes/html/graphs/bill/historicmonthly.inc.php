@@ -4,8 +4,8 @@ use Amenadiel\JpGraph\Graph\Graph;
 use Amenadiel\JpGraph\Plot\BarPlot;
 use Amenadiel\JpGraph\Plot\GroupBarPlot;
 use Amenadiel\JpGraph\Plot\LinePlot;
-use LibreNMS\Billing;
-use LibreNMS\Util\Number;
+use KartsNMS\Billing;
+use KartsNMS\Util\Number;
 
 $graph_data = Billing::getHistoricTransferGraphData($vars['id']);
 
@@ -58,7 +58,7 @@ $graph->xgrid->SetColor('#e0e0e0', '#efefef');
 
 function YCallback($value)
 {
-    return Number::formatBase($value, \LibreNMS\Config::get('billing.base'), 2, 1);
+    return Number::formatBase($value, \KartsNMS\Config::get('billing.base'), 2, 1);
 }
 
 $graph->yaxis->SetFont(FF_FONT1);
@@ -75,7 +75,7 @@ $barplot_tot->SetLegend('Traffic total');
 $barplot_tot->SetColor('darkgray');
 $barplot_tot->SetFillColor('lightgray@0.4');
 $barplot_tot->value->Show();
-$barplot_tot->value->SetFormatCallback('\LibreNMS\Billing::formatBytesShort');
+$barplot_tot->value->SetFormatCallback('\KartsNMS\Billing::formatBytesShort');
 
 $barplot_in = new BarPlot($graph_data['in_data']);
 $barplot_in->SetLegend('Traffic In');

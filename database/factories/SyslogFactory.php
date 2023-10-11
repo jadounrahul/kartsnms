@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Syslog;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use LibreNMS\Enum\SyslogSeverity;
+use KartsNMS\Enum\SyslogSeverity;
 
 /** @extends Factory<Syslog> */
 class SyslogFactory extends Factory

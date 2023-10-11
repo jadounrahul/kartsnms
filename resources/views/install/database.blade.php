@@ -46,7 +46,7 @@
                         <div class="form-row pb-3">
                             <label for="username" class="col-4 col-form-label text-right">{{ __('install.database.username') }}</label>
                             <div class="col-6">
-                                <input type="text" class="form-control" name="username" id="username" value="{{ $username ?? 'librenms' }}">
+                                <input type="text" class="form-control" name="username" id="username" value="{{ $username ?? 'kartsnms' }}">
                             </div>
                         </div>
                         <div class="form-row pb-3">
@@ -58,7 +58,7 @@
                         <div class="form-row pb-3">
                             <label for="database" class="col-4 col-form-label text-right">{{ __('install.database.name') }}</label>
                             <div class="col-6">
-                                <input type="text" class="form-control" name="database" id="database" value="{{ $database ?? 'librenms' }}">
+                                <input type="text" class="form-control" name="database" id="database" value="{{ $database ?? 'kartsnms' }}">
                             </div>
                         </div>
                         <div class="row">

@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit;
+namespace KartsNMS\Tests\Unit;
 
-use LibreNMS\Tests\TestCase;
-use LibreNMS\Util\CiHelper;
+use KartsNMS\Tests\TestCase;
+use KartsNMS\Util\CiHelper;
 
 class CiHelperTest extends TestCase
 {
@@ -187,7 +187,7 @@ class CiHelperTest extends TestCase
 
     public function testFileCategorization(): void
     {
-        putenv('FILES=LibreNMS/Alert/Transport/Sensu.php includes/services.inc.php');
+        putenv('FILES=KartsNMS/Alert/Transport/Sensu.php includes/services.inc.php');
         $helper = new CiHelper();
         $helper->detectChangedFiles();
         $this->assertFlagsSet($helper, [
@@ -203,7 +203,7 @@ class CiHelperTest extends TestCase
             'lint_skip_python' => true,
         ]);
 
-        putenv('FILES=daily.sh LibreNMS/__init__.py');
+        putenv('FILES=daily.sh KartsNMS/__init__.py');
         $helper = new CiHelper();
         $helper->detectChangedFiles();
         $this->assertFlagsSet($helper, [

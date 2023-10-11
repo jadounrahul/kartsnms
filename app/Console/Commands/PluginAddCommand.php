@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use LibreNMS\ComposerHelper;
+use KartsNMS\ComposerHelper;
 
 class PluginAddCommand extends Command
 {

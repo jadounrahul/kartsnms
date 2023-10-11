@@ -147,7 +147,7 @@ if (! Auth::user()->hasGlobalAdmin()) {
 
         // Display device groups this user doesn't have access to
         echo '<h4>Grant access to new Device Group</h4>';
-        $allow_dynamic = \LibreNMS\Config::get('permission.device_group.allow_dynamic');
+        $allow_dynamic = \KartsNMS\Config::get('permission.device_group.allow_dynamic');
         if (! $allow_dynamic) {
             echo '<i>Dynamic groups are disabled, set permission.device_group.allow_dynamic to enable.</i>';
         }
@@ -194,7 +194,7 @@ if (! Auth::user()->hasGlobalAdmin()) {
         foreach ($interface_perms as $interface_perm) {
             echo '<tr>
               <td>
-                <strong>' . $interface_perm['hostname'] . ' - ' . $interface_perm['ifDescr'] . '</strong>' . '' . \LibreNMS\Util\Clean::html($interface_perm['ifAlias'], []) . "
+                <strong>' . $interface_perm['hostname'] . ' - ' . $interface_perm['ifDescr'] . '</strong>' . '' . \KartsNMS\Util\Clean::html($interface_perm['ifAlias'], []) . "
               </td>
               <td>
                 &nbsp;&nbsp;<a href='edituser/action=delifperm/user_id=" . $user_data['user_id'] . '/port_id=' . $interface_perm['port_id'] . "'><i class='fa fa-trash fa-lg icon-theme' aria-hidden='true'></i></a>

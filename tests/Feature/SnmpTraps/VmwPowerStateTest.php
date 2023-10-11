@@ -19,19 +19,19 @@
  *
  * Tests vmwVmPoweredOff, vmwVmPoweredOn, and vmwVmSuspended traps from VMWare ESXi hosts.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 KanREN, Inc
  * @author     Heath Barnhart <hbarnhart@kanren.net>
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 use App\Models\Device;
 use App\Models\Vminfo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use LibreNMS\Enum\PowerState;
-use LibreNMS\Tests\Traits\RequiresDatabase;
+use KartsNMS\Enum\PowerState;
+use KartsNMS\Tests\Traits\RequiresDatabase;
 
 class VmwPowerStateTest extends SnmpTrapTestCase
 {

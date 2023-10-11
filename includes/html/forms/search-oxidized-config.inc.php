@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2017 Søren Friis Rosiak <sorenrosiak@gmail.com>
  * This program is free software: you can redistribute it and/or modify it
@@ -22,7 +22,7 @@ if (isset($parameters)) {
 } else {
     $message = 'ERROR: Could not query';
 }
-echo \LibreNMS\Util\Clean::html(json_encode([
+echo \KartsNMS\Util\Clean::html(json_encode([
     'status' => $status,
     'message' => $message,
     'search_in_conf_textbox' => $parameters,

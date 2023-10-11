@@ -18,7 +18,7 @@
  * Package Search
  *
  * @author Daniel Preussker <f0o@devilcode.org>
- * @copyright 2014 f0o, LibreNMS
+ * @copyright 2014 f0o, KartsNMS
  * @license GPL
  */
 print_optionbar_start(28);
@@ -154,7 +154,7 @@ foreach ($ordered as $name => $entry) {
     if (sizeof($arch) > 0 && sizeof($vers) > 0) {
         ?>
         <tr>
-            <td><a href="<?php echo \LibreNMS\Util\Url::generate(['page' => 'packages', 'name' => $name]); ?>"><?php echo $name; ?></a></td>
+            <td><a href="<?php echo \KartsNMS\Util\Url::generate(['page' => 'packages', 'name' => $name]); ?>"><?php echo $name; ?></a></td>
             <td><?php echo implode('<br/>', $vers); ?></td>
             <td><?php echo implode('<br/>', $arch); ?></td>
             <td><?php echo implode('<br/>', $devs); ?></td>

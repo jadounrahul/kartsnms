@@ -1,4 +1,4 @@
-name: Report an issue with LibreNMS
+name: Report an issue with KartsNMS
 description: Bugs/issues only, no requests!
 body:
   - type: markdown
@@ -6,9 +6,9 @@ body:
       value: |
         This issue form is for reporting generic bugs/issues only!
   
-        * [Report a device issue here](https://github.com/librenms/librenms/issues/new?template=device_bug.yml)
-        * [Add Device request here](https://community.librenms.org/c/device-requests/12)
-        * [I have a question or need support](https://www.librenms.org/#support)
+        * [Report a device issue here](https://github.com/jadounrahul/kartsnms/issues/new?template=device_bug.yml)
+        * [Add Device request here](https://community.itkarts.com/c/device-requests/12)
+        * [I have a question or need support](https://www.itkarts.com/#support)
         
   - type: textarea
     validations:
@@ -31,11 +31,11 @@ body:
     attributes:
       label: Output of ./validate.php
       description: |
-        Please post the output of running: /opt/librenms/validate.php
+        Please post the output of running: /opt/kartsnms/validate.php
       render: txt
   - type: input
     attributes:
-      label: What was the last working version of LibreNMS?
+      label: What was the last working version of KartsNMS?
       placeholder: 21.7.0
       description: If known, otherwise leave blank.
  
@@ -48,5 +48,5 @@ body:
       label: Anything in the logs that might be useful for us?
       description: |
         For example, error messages, or stack traces.
-        *Hint: /opt/librenms/logs/*
+        *Hint: /opt/kartsnms/logs/*
       render: txt

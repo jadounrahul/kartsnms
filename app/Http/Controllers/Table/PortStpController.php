@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -28,8 +28,8 @@ namespace App\Http\Controllers\Table;
 use App\Facades\DeviceCache;
 use App\Models\PortStp;
 use App\Models\Stp;
-use LibreNMS\Util\Mac;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Mac;
+use KartsNMS\Util\Url;
 
 class PortStpController extends TableController
 {

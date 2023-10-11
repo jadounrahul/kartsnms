@@ -1,8 +1,8 @@
 <?php
 
-use LibreNMS\OS;
+use KartsNMS\OS;
 
 if (! $os instanceof OS) {
     $os = OS::make($device);
 }
-(new \LibreNMS\Modules\Netstats())->poll($os, app('Datastore'));
+(new \KartsNMS\Modules\Netstats())->poll($os, app('Datastore'));

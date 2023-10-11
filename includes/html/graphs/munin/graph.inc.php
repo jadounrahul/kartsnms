@@ -35,11 +35,11 @@ foreach ($dbq as $ds) {
 
     if ($ds['ds_graph'] == 'yes') {
         if (empty($ds['colour'])) {
-            $colour = \LibreNMS\Config::get("graph_colours.mixed.$c_i");
+            $colour = \KartsNMS\Config::get("graph_colours.mixed.$c_i");
 
             if (! $colour) {
                 $c_i = 0;
-                $colour = \LibreNMS\Config::get("graph_colours.mixed.$c_i");
+                $colour = \KartsNMS\Config::get("graph_colours.mixed.$c_i");
             }
 
             $c_i++;
@@ -47,7 +47,7 @@ foreach ($dbq as $ds) {
             $colour = $ds['colour'];
         }
 
-        $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($ds['ds_label'], $descr_len);
+        $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($ds['ds_label'], $descr_len);
 
         $cmd_graph .= ' ' . $ds['ds_draw'] . ':' . $ds_name . '#' . $colour . ":'" . $descr . "'";
         $cmd_graph .= ' GPRINT:' . $ds_name . ':LAST:"%6.2lf%s"';

@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS discovery module for Eltex-MES23xx SFP inventory items
+ * KartsNMS discovery module for Eltex-MES23xx SFP inventory items
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,8 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Peca Nesovanovic
  * @author     Peca Nesovanovic <peca.nesovanovic@sattrakt.com>
@@ -42,11 +42,11 @@ foreach ($trans as $index => $data) {
             'entPhysicalDescr'        => $data['eltPhdTransceiverInfoType'],
             'entPhysicalClass'        => 'sfp-cage',
             'entPhysicalName'         => strtoupper($data['eltPhdTransceiverInfoConnectorType']),
-            'entPhysicalModelName'    => \LibreNMS\OS\EltexMes23xx::normData($data['eltPhdTransceiverInfoPartNumber']),
+            'entPhysicalModelName'    => \KartsNMS\OS\EltexMes23xx::normData($data['eltPhdTransceiverInfoPartNumber']),
             'entPhysicalSerialNum'    => $data['eltPhdTransceiverInfoSerialNumber'],
             'entPhysicalContainedIn'  => $connectedto,
             'entPhysicalMfgName'      => $data['eltPhdTransceiverInfoVendorName'],
-            'entPhysicalHardwareRev'  => \LibreNMS\OS\EltexMes23xx::normData($data['eltPhdTransceiverInfoVendorRev']),
+            'entPhysicalHardwareRev'  => \KartsNMS\OS\EltexMes23xx::normData($data['eltPhdTransceiverInfoVendorRev']),
             'entPhysicalIsFRU'        => 'true',
         ];
     }

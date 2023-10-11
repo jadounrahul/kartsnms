@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -12,7 +12,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Alert\AlertDB;
+use KartsNMS\Alert\AlertDB;
 
 if (! Auth::user()->hasGlobalAdmin()) {
     exit('ERROR: You need to be admin');

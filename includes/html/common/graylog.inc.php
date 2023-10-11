@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -10,11 +10,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 use App\Models\Device;
@@ -49,7 +49,7 @@ searchbar = "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\">
 
 $tmp_output .= '"<div class=\"form-group\"><select name=\"stream\" id=\"stream\" class=\"form-control\" data-placeholder=\"All Messages\">"+';
 if ($vars['stream']) {
-    $tmp_output .= '"<option value=\"' . \LibreNMS\Util\Clean::html($vars['stream'], []) . '\">' . \LibreNMS\Util\Clean::html($vars['stream'], []) . '</option>" +';
+    $tmp_output .= '"<option value=\"' . \KartsNMS\Util\Clean::html($vars['stream'], []) . '\">' . \KartsNMS\Util\Clean::html($vars['stream'], []) . '</option>" +';
     $filter_device = $device->device_id;
 }
 $tmp_output .= '"</select>&nbsp;</div>"+';
@@ -73,7 +73,7 @@ if (! empty($filter_device)) {
 ';
 }
 
-if (\LibreNMS\Config::has('graylog.timezone')) {
+if (\KartsNMS\Config::has('graylog.timezone')) {
     $timezone = 'row.timestamp;';
 } else {
     $timezone = 'moment.parseZone(row.timestamp).local().format("YYYY-MM-DD HH:MM:SS");';

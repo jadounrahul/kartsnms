@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -33,10 +33,10 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
-use LibreNMS\Alert\AlertRules;
-use LibreNMS\Config;
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Debug;
+use KartsNMS\Alert\AlertRules;
+use KartsNMS\Config;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Debug;
 use Symfony\Component\Process\Process;
 
 class PingCheck implements ShouldQueue

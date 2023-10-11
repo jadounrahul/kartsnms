@@ -2,7 +2,7 @@
 /**
  * AddUserCommand.php
  *
- * CLI command to add a user to LibreNMS
+ * CLI command to add a user to KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -29,8 +29,8 @@ use App\Console\LnmsCommand;
 use App\Models\User;
 use Bouncer;
 use Illuminate\Validation\Rule;
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Config;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Config;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -37,7 +37,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('layouts.librenmsv1', \App\Http\ViewComposers\LayoutComposer::class);
+        View::composer('layouts.kartsnmsv1', \App\Http\ViewComposers\LayoutComposer::class);
         View::composer('layouts.menu', \App\Http\ViewComposers\MenuComposer::class);
     }
 

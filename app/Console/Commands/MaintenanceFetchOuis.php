@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Console\LnmsCommand;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use LibreNMS\Config;
+use KartsNMS\Config;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -68,7 +68,7 @@ class MaintenanceFetchOuis extends LnmsCommand
 
         try {
             $this->line('  -> ' . trans('commands.maintenance:fetch-ouis.downloading') . ' ...');
-            $csv_data = \LibreNMS\Util\Http::client()->get($this->mac_oui_url)->body();
+            $csv_data = \KartsNMS\Util\Http::client()->get($this->mac_oui_url)->body();
 
             // convert the csv into an array to be consumed by upsert
             $this->line('  -> ' . trans('commands.maintenance:fetch-ouis.processing') . ' ...');

@@ -1,6 +1,6 @@
 <?php
 
-namespace LibreNMS\Tests\Browser\Pages;
+namespace KartsNMS\Tests\Browser\Pages;
 
 use Laravel\Dusk\Page as BasePage;
 

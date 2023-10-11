@@ -13,9 +13,9 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *
-* @package    LibreNMS
+* @package    KartsNMS
 * @subpackage pi-hole
-* @link       https://www.librenms.org
+* @link       https://www.itkarts.com
 * @copyright  2017 crcro
 * @author     Cercel Valentin <crc@nuamchefazi.ro>
 */

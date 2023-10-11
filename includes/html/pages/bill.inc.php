@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Billing;
-use LibreNMS\Util\Number;
+use KartsNMS\Billing;
+use KartsNMS\Util\Number;
 
 $bill_id = $vars['bill_id'];
 
@@ -48,8 +48,8 @@ if (bill_permitted($bill_id)) {
         $bill_color = '#0000cc';
     }
 
-    $fromtext = dbFetchCell("SELECT DATE_FORMAT($datefrom, '" . \LibreNMS\Config::get('dateformat.mysql.date') . "')");
-    $totext = dbFetchCell("SELECT DATE_FORMAT($dateto, '" . \LibreNMS\Config::get('dateformat.mysql.date') . "')");
+    $fromtext = dbFetchCell("SELECT DATE_FORMAT($datefrom, '" . \KartsNMS\Config::get('dateformat.mysql.date') . "')");
+    $totext = dbFetchCell("SELECT DATE_FORMAT($dateto, '" . \KartsNMS\Config::get('dateformat.mysql.date') . "')");
     $unixfrom = dbFetchCell("SELECT UNIX_TIMESTAMP('$datefrom')");
     $unixto = dbFetchCell("SELECT UNIX_TIMESTAMP('$dateto')");
 
@@ -119,7 +119,7 @@ if (bill_permitted($bill_id)) {
         $sep = ' | ';
     }
 
-    echo '<div style="font-weight: bold; float: right;"><a href="' . \LibreNMS\Util\Url::generate(['page' => 'bills']) . '/"><i class="fa fa-arrow-left fa-lg icon-theme" aria-hidden="true"></i> Back to Bills</a></div>';
+    echo '<div style="font-weight: bold; float: right;"><a href="' . \KartsNMS\Util\Url::generate(['page' => 'bills']) . '/"><i class="fa fa-arrow-left fa-lg icon-theme" aria-hidden="true"></i> Back to Bills</a></div>';
 
     print_optionbar_end();
 
@@ -164,7 +164,7 @@ if (bill_permitted($bill_id)) {
             $percent = Number::calculatePercent($total_data, $bill_data['bill_quota']);
             $unit = 'MB';
             $total_data = round($total_data, 2);
-            $background = \LibreNMS\Util\Color::percentage($percent, null);
+            $background = \KartsNMS\Util\Color::percentage($percent, null);
             $type = '&amp;ave=yes'; ?>
         <td>
             <?php echo Billing::formatBytes($total_data) ?> of <?php echo Billing::formatBytes($bill_data['bill_quota']) . ' (' . $percent . '%)' ?>
@@ -184,7 +184,7 @@ if (bill_permitted($bill_id)) {
             $cdr = $bill_data['bill_cdr'];
             $rate_95th = round($rate_95th, 2);
             $percent = Number::calculatePercent($rate_95th, $cdr);
-            $background = \LibreNMS\Util\Color::percentage($percent, null);
+            $background = \KartsNMS\Util\Color::percentage($percent, null);
             $type = '&amp;95th=yes'; ?>
         <td>
             <?php echo Number::formatSi($rate_95th, 2, 3, '') . 'bps' ?> of <?php echo Number::formatSi($cdr, 2, 3, '') . 'bps (' . $percent . '%)' ?> (95th%ile)
@@ -225,7 +225,7 @@ if (bill_permitted($bill_id)) {
             $li .= "$type'>";
 
             $di = "<img src='billing-graph.php?bill_id=" . $bill_id . '&amp;bill_code=' . htmlspecialchars($_GET['bill_code']);
-            $di .= '&amp;from=' . \LibreNMS\Config::get('time.day') . '&amp;to=' . \LibreNMS\Config::get('time.now');
+            $di .= '&amp;from=' . \KartsNMS\Config::get('time.day') . '&amp;to=' . \KartsNMS\Config::get('time.now');
             $di .= '&amp;x=1190&amp;y=250';
             $di .= "$type'>";
 
@@ -243,7 +243,7 @@ if (bill_permitted($bill_id)) {
             $li .= '&amp;width=1000&amp;height=200&amp;total=1&amp;dir=' . $dir_95th . "'>";
 
             $di = "<img src='graph.php?type=bill_bits&amp;id=" . $bill_id;
-            $di .= '&amp;from=' . \LibreNMS\Config::get('time.day') . '&amp;to=' . \LibreNMS\Config::get('time.now');
+            $di .= '&amp;from=' . \KartsNMS\Config::get('time.day') . '&amp;to=' . \KartsNMS\Config::get('time.now');
             $di .= '&amp;width=1000&amp;height=200&amp;total=1&amp;dir=' . $dir_95th . "'>";
 
             $mi = "<img src='graph.php?type=bill_bits&amp;id=" . $bill_id;

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -25,7 +25,7 @@
 
 use App\Models\Application;
 use App\Observers\ModuleModelObserver;
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 echo "\nApplications: ";
 
@@ -95,7 +95,7 @@ foreach ($results as $extend => $result) {
 $apps_to_remove = array_diff($discovered_apps, $current_apps);
 DeviceCache::getPrimary()->applications()->whereIn('app_type', $apps_to_remove)->get()->each(function (Application $app) {
     $app->delete();
-    \App\Models\Eventlog::log("Application disabled by discovery: $app->app_type", DeviceCache::getPrimary(), 'application', \LibreNMS\Enum\Severity::Notice);
+    \App\Models\Eventlog::log("Application disabled by discovery: $app->app_type", DeviceCache::getPrimary(), 'application', \KartsNMS\Enum\Severity::Notice);
 });
 
 // clean application_metrics

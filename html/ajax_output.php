@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -12,7 +12,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Util\Debug;
+use KartsNMS\Util\Debug;
 
 session_start();
 session_write_close();
@@ -31,6 +31,6 @@ if (isset($_SESSION['stage']) && $_SESSION['stage'] == 2) {
 Debug::set($_REQUEST['debug']);
 $id = basename($_REQUEST['id']);
 
-if ($id && is_file(\LibreNMS\Config::get('install_dir') . "/includes/html/output/$id.inc.php")) {
-    require \LibreNMS\Config::get('install_dir') . "/includes/html/output/$id.inc.php";
+if ($id && is_file(\KartsNMS\Config::get('install_dir') . "/includes/html/output/$id.inc.php")) {
+    require \KartsNMS\Config::get('install_dir') . "/includes/html/output/$id.inc.php";
 }

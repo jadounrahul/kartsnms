@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Number;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Number;
 
 $storage_cache = $storage_cache ?? [];
 foreach (dbFetchRows('SELECT * FROM storage WHERE device_id = ?', [$device['device_id']]) as $storage) {
@@ -15,7 +15,7 @@ foreach (dbFetchRows('SELECT * FROM storage WHERE device_id = ?', [$device['devi
         ->addDataset('used', 'GAUGE', 0)
         ->addDataset('free', 'GAUGE', 0);
 
-    $file = \LibreNMS\Config::get('install_dir') . '/includes/polling/storage/' . $mib . '.inc.php';
+    $file = \KartsNMS\Config::get('install_dir') . '/includes/polling/storage/' . $mib . '.inc.php';
     if (is_file($file)) {
         include $file;
     }

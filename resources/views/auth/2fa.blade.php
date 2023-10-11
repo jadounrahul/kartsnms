@@ -1,4 +1,4 @@
-@extends('layouts.librenmsv1')
+@extends('layouts.kartsnmsv1')
 
 @section('javascript')
     <script src="{{ asset('js/jquery-qrcode.min.js') }}"></script>
@@ -10,7 +10,7 @@
     <div class="col-md-6 col-md-offset-3">
         <x-panel>
             <x-slot name="title">
-                <img class="logon-logo img-responsive" src="{{ asset(\LibreNMS\Config::get('title_image', 'images/librenms_logo_light.svg')) }}">
+                <img class="logon-logo img-responsive" src="{{ asset(\KartsNMS\Config::get('title_image', 'images/kartsnms_logo_light.svg')) }}">
             </x-slot>
 
             <div class="container-fluid">

@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Device;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use LibreNMS\Data\Source\SnmpResponse;
+use KartsNMS\Data\Source\SnmpResponse;
 use SnmpQuery;
 
 class SnmpTranslate extends SnmpFetch

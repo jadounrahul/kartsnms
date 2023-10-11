@@ -1,4 +1,4 @@
-# LibreNMS VMs
+# KartsNMS VMs
 
 > NOTE: We highly advise that you change all passwords on this image
 > when you deploy it!!
@@ -20,8 +20,8 @@ At present we provide the following builds:
 - Vagrant Box file.
 
 - Any issues and or help with these images should be reported via
-  [Community Forum](https://community.librenms.org) or our [Discord
-  server](https://t.libren.ms/discord)
+  [Community Forum](https://community.itkarts.com) or our [Discord
+  server](https://t.kartsn.ms/discord)
 
 ## Setup
 
@@ -47,8 +47,8 @@ At present we provide the following builds:
 ## Download
 
 All images can be downloaded from
-[GitHub](https://github.com/librenms/packer-builds/releases/latest). The
-tags follow the main LibreNMS repo. When a new LibreNMS release is
+[GitHub](https://github.com/kartsnms/packer-builds/releases/latest). The
+tags follow the main KartsNMS repo. When a new KartsNMS release is
 available we will push new images out running that version. Please do
 note that if you download an older release with a view to running that
 specific version, you will need to disable updates `lnms config:set update false`.
@@ -60,11 +60,11 @@ these ports are forwarded from your machine to the VM: 8080 for WebUI and 2023 f
 Remember to edit/remove them if you change (and you should) the VM network configuration.
 
 - WebUI (http://localhost:8080)
-  - username: librenms
+  - username: kartsnms
   - password: `D32fwefwef`
 
 - SSH (change the password ssh://localhost:2023)
-  - username: librenms
+  - username: kartsnms
   - password: `CDne3fwdfds`
 
 - SSH (remove this account)
@@ -72,11 +72,11 @@ Remember to edit/remove them if you change (and you should) the VM network confi
   - password; vagrant
 
 - MySQL/MariaDB
-  - username: librenms
+  - username: kartsnms
   - password: `D42nf23rewD`
 
 ## Contributing
 
 If you would like to help with these images whether it's add
 additional features or default software / settings then you can do so
-on [GitHub](https://github.com/librenms/packer-builds/).
+on [GitHub](https://github.com/kartsnms/packer-builds/).

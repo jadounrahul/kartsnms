@@ -1,0 +1,15 @@
+33   */6  * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/discovery-wrapper.py 1
+*/5  *    * * *   kartsnms    /opt/kartsnms/discovery.php -h new >> /dev/null 2>&1
+
+*/5  *    * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/poller-wrapper.py 16
+*    *    * * *   kartsnms    /opt/kartsnms/alerts.php >> /dev/null 2>&1
+
+*/5  *    * * *   kartsnms    /opt/kartsnms/poll-billing.php >> /dev/null 2>&1
+01   *    * * *   kartsnms    /opt/kartsnms/billing-calculate.php >> /dev/null 2>&1
+*/5  *    * * *   kartsnms    /opt/kartsnms/check-services.php >> /dev/null 2>&1
+
+# Daily maintenance script. DO NOT DISABLE!
+# If you want to modify updates:
+#  Switch to monthly stable release: https://docs.kartsnms.org/General/Releases/
+#  Disable updates: https://docs.kartsnms.org/General/Updating/
+19   0    * * *   kartsnms    /opt/kartsnms/daily.sh >> /dev/null 2>&1

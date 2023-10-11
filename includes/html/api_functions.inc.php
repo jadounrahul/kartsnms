@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -34,16 +34,16 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use LibreNMS\Alerting\QueryBuilderParser;
-use LibreNMS\Billing;
-use LibreNMS\Config;
-use LibreNMS\Exceptions\InvalidIpException;
-use LibreNMS\Exceptions\InvalidTableColumnException;
-use LibreNMS\Util\Graph;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\IPv4;
-use LibreNMS\Util\Mac;
-use LibreNMS\Util\Number;
+use KartsNMS\Alerting\QueryBuilderParser;
+use KartsNMS\Billing;
+use KartsNMS\Config;
+use KartsNMS\Exceptions\InvalidIpException;
+use KartsNMS\Exceptions\InvalidTableColumnException;
+use KartsNMS\Util\Graph;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\IPv4;
+use KartsNMS\Util\Mac;
+use KartsNMS\Util\Number;
 
 function api_success($result, $result_name, $message = null, $code = 200, $count = null, $extra = null): JsonResponse
 {
@@ -124,7 +124,7 @@ function api_get_graph(Request $request, array $additional = [])
         }
 
         return response($graph->data, 200, ['Content-Type' => $graph->contentType()]);
-    } catch (\LibreNMS\Exceptions\RrdGraphException $e) {
+    } catch (\KartsNMS\Exceptions\RrdGraphException $e) {
         return api_error(500, $e->getMessage());
     }
 }
@@ -812,7 +812,7 @@ function get_components(Illuminate\Http\Request $request)
     $device_id = ctype_digit($hostname) ? $hostname : getidbyname($hostname);
 
     return check_device_permission($device_id, function ($device_id) use ($options) {
-        $COMPONENT = new LibreNMS\Component();
+        $COMPONENT = new KartsNMS\Component();
         $components = $COMPONENT->getComponents($device_id, $options);
 
         return api_success($components[$device_id], 'components');
@@ -826,7 +826,7 @@ function add_components(Illuminate\Http\Request $request)
 
     // use hostname as device_id if it's all digits
     $device_id = ctype_digit($hostname) ? $hostname : getidbyname($hostname);
-    $COMPONENT = new LibreNMS\Component();
+    $COMPONENT = new KartsNMS\Component();
     $component = $COMPONENT->createComponent($device_id, $ctype);
 
     return api_success($component, 'components');
@@ -839,7 +839,7 @@ function edit_components(Illuminate\Http\Request $request)
 
     // use hostname as device_id if it's all digits
     $device_id = ctype_digit($hostname) ? $hostname : getidbyname($hostname);
-    $COMPONENT = new LibreNMS\Component();
+    $COMPONENT = new KartsNMS\Component();
 
     if (! $COMPONENT->setComponentPrefs($device_id, $data)) {
         return api_error(500, 'Components could not be edited.');
@@ -852,7 +852,7 @@ function delete_components(Illuminate\Http\Request $request)
 {
     $cid = $request->route('component');
 
-    $COMPONENT = new LibreNMS\Component();
+    $COMPONENT = new KartsNMS\Component();
     if ($COMPONENT->deleteComponent($cid)) {
         return api_success_noresult(200);
     } else {
@@ -1006,7 +1006,7 @@ function list_available_wireless_graphs(Illuminate\Http\Request $request)
 }
 
 /**
- * @throws \LibreNMS\Exceptions\ApiException
+ * @throws \KartsNMS\Exceptions\ApiException
  */
 function get_port_graphs(Illuminate\Http\Request $request): JsonResponse
 {
@@ -1079,7 +1079,7 @@ function get_port_info(Illuminate\Http\Request $request)
 }
 
 /**
- * @throws \LibreNMS\Exceptions\ApiException
+ * @throws \KartsNMS\Exceptions\ApiException
  */
 function search_ports(Illuminate\Http\Request $request): JsonResponse
 {
@@ -1112,7 +1112,7 @@ function search_ports(Illuminate\Http\Request $request): JsonResponse
 }
 
 /**
- * @throws \LibreNMS\Exceptions\ApiException
+ * @throws \KartsNMS\Exceptions\ApiException
  */
 function get_all_ports(Illuminate\Http\Request $request): JsonResponse
 {
@@ -1178,7 +1178,7 @@ function list_alert_rules(Illuminate\Http\Request $request)
 }
 
 /**
- * @throws \LibreNMS\Exceptions\ApiException
+ * @throws \KartsNMS\Exceptions\ApiException
  */
 function list_alerts(Illuminate\Http\Request $request): JsonResponse
 {
@@ -2685,7 +2685,7 @@ function list_logs(Illuminate\Http\Request $request, Router $router)
 }
 
 /**
- * @throws \LibreNMS\Exceptions\ApiException
+ * @throws \KartsNMS\Exceptions\ApiException
  */
 function validate_column_list(?string $columns, string $table, array $default = []): array
 {
@@ -2695,7 +2695,7 @@ function validate_column_list(?string $columns, string $table, array $default = 
 
     static $schema;
     if (is_null($schema)) {
-        $schema = new \LibreNMS\DB\Schema();
+        $schema = new \KartsNMS\DB\Schema();
     }
 
     $column_names = is_array($columns) ? $columns : explode(',', $columns);
@@ -3000,7 +3000,7 @@ function edit_service_for_host(Illuminate\Http\Request $request)
 }
 
 /**
- * recieve syslog messages via json https://github.com/librenms/librenms/pull/14424
+ * recieve syslog messages via json https://github.com/jadounrahul/kartsnms/pull/14424
  */
 function post_syslogsink(Illuminate\Http\Request $request)
 {
@@ -3020,11 +3020,11 @@ function post_syslogsink(Illuminate\Http\Request $request)
 }
 
 /**
- * Display Librenms Instance Info
+ * Display Kartsnms Instance Info
  */
 function server_info()
 {
-    $version = \LibreNMS\Util\Version::get();
+    $version = \KartsNMS\Util\Version::get();
 
     $versions = [
         'local_ver' => $version->name(),

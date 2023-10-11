@@ -19,7 +19,7 @@ require 'includes/html/dev-groups-overview-data.inc.php';
 require 'overview/puppet_agent.inc.php';
 require 'overview/tracepath.inc.php';
 
-echo LibreNMS\Plugins::call('device_overview_container', [$device]);
+echo KartsNMS\Plugins::call('device_overview_container', [$device]);
 PluginManager::call(DeviceOverviewHook::class, ['device' => DeviceCache::getPrimary()])->each(function ($view) {
     echo $view;
 });

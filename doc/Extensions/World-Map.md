@@ -1,6 +1,6 @@
 # World Map Configuration
 
-LibreNMS comes with a configurable Geo Map based on World Map Widget
+KartsNMS comes with a configurable Geo Map based on World Map Widget
 to visualize where your equipment is located geographically.
 
 ## World Map Widget

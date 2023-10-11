@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -31,10 +31,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
-use LibreNMS\Config;
-use LibreNMS\Util\Rewrite;
-use LibreNMS\Util\Time;
-use LibreNMS\Util\Url;
+use KartsNMS\Config;
+use KartsNMS\Util\Rewrite;
+use KartsNMS\Util\Time;
+use KartsNMS\Util\Url;
 
 class DeviceController extends TableController
 {
@@ -196,7 +196,7 @@ class DeviceController extends TableController
         } elseif ($device->status == 0) {
             return 'label-danger';
         } else {
-            $warning_time = \LibreNMS\Config::get('uptime_warning', 84600);
+            $warning_time = \KartsNMS\Config::get('uptime_warning', 84600);
             if ($device->uptime < $warning_time && $device->uptime != 0) {
                 return 'label-warning';
             }
@@ -327,7 +327,7 @@ class DeviceController extends TableController
 
         $ssh_href = 'ssh://' . $device->hostname;
         if ($server = Config::get('gateone.server')) {
-            $ssh_href = Config::get('gateone.use_librenms_user')
+            $ssh_href = Config::get('gateone.use_kartsnms_user')
                 ? $server . '?ssh=ssh://' . Auth::user()->username . '@' . $device->hostname . '&location=' . $device->hostname
                 : $server . '?ssh=ssh://' . $device->hostname . '&location=' . $device->hostname;
         }

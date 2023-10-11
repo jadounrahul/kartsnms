@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
 
 if ($_POST['editing']) {
     if (Auth::user()->hasGlobalAdmin()) {
@@ -353,13 +353,13 @@ echo "        </select>
     <label for='authalgo' class='col-sm-2 control-label'>Auth Algorithm</label>
     <div class='col-sm-4'>
     <select id='authalgo' name='authalgo' class='form-control'>";
-foreach (\LibreNMS\SNMPCapabilities::authAlgorithms() as $algo => $enabled) {
+foreach (\KartsNMS\SNMPCapabilities::authAlgorithms() as $algo => $enabled) {
     echo "<option value='$algo' " . ($device['authalgo'] === $algo ? 'selected' : '') . ($enabled ? '' : ' disabled') . ">$algo</option>\n";
 }
 echo '</select>';
 
-if (! \LibreNMS\SNMPCapabilities::supportsSHA2()) {
-    echo '<label class="text-left"><small>Some options are disabled. <a href="https://docs.librenms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>';
+if (! \KartsNMS\SNMPCapabilities::supportsSHA2()) {
+    echo '<label class="text-left"><small>Some options are disabled. <a href="https://docs.kartsnms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>';
 }
 echo "
     </div>
@@ -375,13 +375,13 @@ echo "
     <div class='col-sm-4'>
     <select id='cryptoalgo' name='cryptoalgo' class='form-control'>";
 
-foreach (\LibreNMS\SNMPCapabilities::cryptoAlgoritms() as $algo => $enabled) {
+foreach (\KartsNMS\SNMPCapabilities::cryptoAlgoritms() as $algo => $enabled) {
     echo "<option value='$algo' " . ($device['cryptoalgo'] === $algo ? 'selected' : '') . ($enabled ? '' : ' disabled') . ">$algo</option>\n";
 }
 echo '</select>
     ';
-if (! \LibreNMS\SNMPCapabilities::supportsAES256()) {
-    echo '<label class="text-left"><small>Some options are disabled. <a href="https://docs.librenms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>';
+if (! \KartsNMS\SNMPCapabilities::supportsAES256()) {
+    echo '<label class="text-left"><small>Some options are disabled. <a href="https://docs.kartsnms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>';
 }
     echo '
     </div>

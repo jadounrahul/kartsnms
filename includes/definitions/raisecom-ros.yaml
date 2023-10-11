@@ -5,7 +5,7 @@ bad_snmpEngineTime: true
 mib_dir: raisecom
 oids:
   unordered:
-    # Tell LibreNMS to call snmpwalk with the -Cc flag for these entries
+    # Tell KartsNMS to call snmpwalk with the -Cc flag for these entries
     - ifEntry
     - ifXEntry
     - ifDescr

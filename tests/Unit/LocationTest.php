@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @package    KartsNMS
+ * @link       http://kartsnms.org
  * @copyright  2021 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit;
+namespace KartsNMS\Tests\Unit;
 
 use App\Models\Device;
 use App\Models\Location;
-use LibreNMS\Config;
-use LibreNMS\Interfaces\Geocoder;
-use LibreNMS\Tests\TestCase;
-use LibreNMS\Util\Dns;
+use KartsNMS\Config;
+use KartsNMS\Interfaces\Geocoder;
+use KartsNMS\Tests\TestCase;
+use KartsNMS\Util\Dns;
 use Mockery\MockInterface;
 
 class LocationTest extends TestCase

@@ -2,7 +2,7 @@
 
 // This is my translation of Smokeping's graphing.
 // Thanks to Bill Fenner for Perl->Human translation:>
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $scale_min = 0;
 $scale_rigid = true;
@@ -35,7 +35,7 @@ foreach ($smokeping_files[$direction][$device['hostname']] as $source => $filena
     $colour = Config::get("graph_colours.$colourset.$iter");
     $iter++;
 
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($source, $descr_len);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($source, $descr_len);
 
     $filename = generate_smokeping_file($device, $filename);
     $rrd_options .= " DEF:median$i=" . $filename . ':median:AVERAGE ';

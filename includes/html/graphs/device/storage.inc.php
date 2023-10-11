@@ -11,7 +11,7 @@ $rrd_options .= " COMMENT:'                        Size      Used    % Used\\l'"
 $storages = dbFetchRows('SELECT * FROM storage where device_id = ?', [$device['device_id']]);
 
 if (empty($storages)) {
-    throw new \LibreNMS\Exceptions\RrdGraphException('No Storage');
+    throw new \KartsNMS\Exceptions\RrdGraphException('No Storage');
 }
 
 foreach ($storages as $storage) {
@@ -33,7 +33,7 @@ foreach ($storages as $storage) {
         $iter = '0';
     }
 
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($storage['storage_descr'], 16);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($storage['storage_descr'], 16);
     $rrd = Rrd::name($device['hostname'], ['storage', $storage['storage_mib'], $storage['storage_descr']]);
     $rrd_options .= " DEF:{$storage['storage_id']}used=$rrd:used:AVERAGE";
     $rrd_options .= " DEF:{$storage['storage_id']}free=$rrd:free:AVERAGE";

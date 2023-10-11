@@ -13,9 +13,9 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *
-* @package    LibreNMS
-* @link       https://www.librenms.org
-* @copyright  2016 Karl Shea, LibreNMS
+* @package    KartsNMS
+* @link       https://www.itkarts.com
+* @copyright  2016 Karl Shea, KartsNMS
 * @author     Karl Shea <karl@karlshea.com>
 *
 */

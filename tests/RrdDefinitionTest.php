@@ -17,16 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Config;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Config;
+use KartsNMS\RRD\RrdDefinition;
 
 class RrdDefinitionTest extends TestCase
 {
@@ -37,7 +37,7 @@ class RrdDefinitionTest extends TestCase
 
     public function testWrongType(): void
     {
-        $this->expectException(\LibreNMS\Exceptions\InvalidRrdTypeException::class);
+        $this->expectException(\KartsNMS\Exceptions\InvalidRrdTypeException::class);
         Config::set('rrd.step', 300);
         Config::set('rrd.heartbeat', 600);
         $def = new RrdDefinition();

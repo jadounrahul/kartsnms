@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 #  -*- coding: utf-8 -*-
 #
-# This file is part of LibreNMS
+# This file is part of KartsNMS
 
 __author__ = "Orsiris de Jong"
-__copyright__ = "Copyright (C) 2021 LibreNMS"
+__copyright__ = "Copyright (C) 2021 KartsNMS"
 
 import os
 import sys

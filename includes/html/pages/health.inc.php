@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,18 +8,18 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 $no_refresh = true;
 
 $datas = ['mempool', 'processor', 'storage'];
 
-$used_sensors = \LibreNMS\Util\ObjectCache::sensors();
+$used_sensors = \KartsNMS\Util\ObjectCache::sensors();
 foreach ($used_sensors as $group => $types) {
     foreach ($types as $entry) {
         $datas[] = $entry['class'];

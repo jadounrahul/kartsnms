@@ -17,7 +17,7 @@ $message = 'Error with config';
 // enable/disable components on devices.
 $device_id = intval($_POST['device']);
 
-$OBJCOMP = new LibreNMS\Component();
+$OBJCOMP = new KartsNMS\Component();
 
 // Go get the component array.
 $COMPONENTS = $OBJCOMP->getComponents($device_id);

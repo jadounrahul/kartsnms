@@ -6,8 +6,8 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
 
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  * @copyright  2018 ACL
  * @author     Abel Laura <abel.laura@gmail.com>
 */

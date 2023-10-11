@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -27,7 +27,7 @@ namespace App\Http\Controllers\Table;
 
 use App\Models\Device;
 use App\Models\Vminfo;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\Url;
 
 class VminfoController extends TableController
 {

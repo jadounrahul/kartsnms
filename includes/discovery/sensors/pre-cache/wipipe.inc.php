@@ -1,7 +1,7 @@
 <?php
 
 /*
- * LibreNMS Sensor pre-cache module for the CradlePoint WiPipe
+ * KartsNMS Sensor pre-cache module for the CradlePoint WiPipe
  *
  * © 2017 Chris A. Evans <thecityofguanyu@outlook.com>
  *

@@ -1,8 +1,8 @@
 <?php
 
 // Calculate filters
-use LibreNMS\Billing;
-use LibreNMS\Util\Number;
+use KartsNMS\Billing;
+use KartsNMS\Util\Number;
 
 $prev = ! empty($vars['period']) && ($vars['period'] == 'prev');
 $wheres = [];
@@ -93,7 +93,7 @@ foreach (dbFetchRows($sql, $param) as $bill) {
     $dir_95th = $bill['dir_95th'];
     $total_data = Billing::formatBytes($bill['total_data']);
     $rate_average = $bill['rate_average'];
-    $url = \LibreNMS\Util\Url::generate(['page' => 'bill', 'bill_id' => $bill['bill_id']]);
+    $url = \KartsNMS\Util\Url::generate(['page' => 'bill', 'bill_id' => $bill['bill_id']]);
     $used95th = Number::formatSi($bill['rate_95th'], 2, 3, '') . 'bps';
     $notes = htmlentities($bill['bill_notes']);
 
@@ -138,7 +138,7 @@ foreach (dbFetchRows($sql, $param) as $bill) {
         $total_data = "<b>$total_data</b>";
     }
 
-    $background = \LibreNMS\Util\Color::percentage($percent, null);
+    $background = \KartsNMS\Util\Color::percentage($percent, null);
     $right_background = $background['right'];
     $left_background = $background['left'];
     $overuse_formatted = (($overuse <= 0) ? '-' : "<span style='color: #${background['left']}; font-weight: bold;'>$overuse_formatted</span>");
@@ -149,7 +149,7 @@ foreach (dbFetchRows($sql, $param) as $bill) {
     $actions = '';
 
     if (! $prev && Auth::user()->hasGlobalAdmin()) {
-        $actions .= "<a href='" . \LibreNMS\Util\Url::generate(['page' => 'bill', 'bill_id' => $bill['bill_id'], 'view' => 'edit']) .
+        $actions .= "<a href='" . \KartsNMS\Util\Url::generate(['page' => 'bill', 'bill_id' => $bill['bill_id'], 'view' => 'edit']) .
             "'><i class='fa fa-pencil fa-lg icon-theme' title='Edit' aria-hidden='true'></i> Edit</a> ";
     }
     if (strtolower($bill['bill_type']) == 'cdr') {

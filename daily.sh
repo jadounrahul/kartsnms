@@ -25,14 +25,14 @@ DAILY_SCRIPT=$(readlink -f "$0")
 LIBRENMS_DIR=$(dirname "$DAILY_SCRIPT")
 COMPOSER="php ${LIBRENMS_DIR}/scripts/composer_wrapper.php --no-interaction"
 
-# set log_file, using librenms 'log_dir' config setting, if set
-# otherwise we default to <LibreNMS Install Directory>/logs
+# set log_file, using kartsnms 'log_dir' config setting, if set
+# otherwise we default to <KartsNMS Install Directory>/logs
 LOG_DIR=$(php -r "@include '${LIBRENMS_DIR}/config.php'; echo isset(\$config['log_dir']) ? \$config['log_dir'] : '${LIBRENMS_DIR}/logs';")
 
-# get the librenms user
+# get the kartsnms user
 # shellcheck source=.env.example
 source "${LIBRENMS_DIR}/.env"
-LIBRENMS_USER="${LIBRENMS_USER:-librenms}"
+LIBRENMS_USER="${LIBRENMS_USER:-kartsnms}"
 LIBRENMS_USER_ID=$(id -u "$LIBRENMS_USER")
 
 #######################################
@@ -55,7 +55,7 @@ status_run() {
     arg_option=$3
     log_file=${LOG_DIR}/daily.log
 
-    # set log_file, using librenms $config['log_dir'], if set
+    # set log_file, using kartsnms $config['log_dir'], if set
     # otherwise we default to ./logs/daily.log
 
     printf "%-50s" "${arg_text}"

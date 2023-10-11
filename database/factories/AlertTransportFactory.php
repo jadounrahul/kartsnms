@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use LibreNMS\Alert\Transport;
+use KartsNMS\Alert\Transport;
 
 class AlertTransportFactory extends Factory
 {
@@ -21,7 +21,7 @@ class AlertTransportFactory extends Factory
         string $options = '',
         string $method = 'get',
         string $body = '',
-        string $url = 'https://librenms.org',
+        string $url = 'https://kartsnms.org',
         string $headers = 'test=header',
         string $username = '',
         string $password = ''

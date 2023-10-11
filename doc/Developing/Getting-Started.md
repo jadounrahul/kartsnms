@@ -1,7 +1,7 @@
-# Get ready to contribute to LibreNMS
+# Get ready to contribute to KartsNMS
 
 This document is intended to help you get your local environment set
-up to contribute code to the LibreNMS project.
+up to contribute code to the KartsNMS project.
 
 ## Setting up a development environment
 
@@ -13,7 +13,7 @@ really help.
 Possible options:
 
 - A Linux computer, VM, or container
-- Another directory on your LibreNMS server
+- Another directory on your KartsNMS server
 - Windows Subsystem for Linux
 
 ### Set up your development git clone
@@ -37,7 +37,7 @@ APP_DEBUG=true
 
 ### Automated testing
 
-LibreNMS uses continuous integration to test code changes to help
+KartsNMS uses continuous integration to test code changes to help
 reduce bugs.  This also helps guarantee the changes you contribute
 won't be broken in the future. You can find out more in our [Validating Code Documentation](Validating-Code.md)
 
@@ -51,7 +51,7 @@ are:
 DB_TEST_DRIVER="mysql"   # PDO driver
 DB_TEST_HOST="localhost" # hostname or IP address
 DB_TEST_PORT=""          # port
-DB_TEST_DATABASE="librenms_phpunit_78hunjuybybh" # database
+DB_TEST_DATABASE="kartsnms_phpunit_78hunjuybybh" # database
 DB_TEST_USERNAME="root"  # username
 DB_TEST_PASSWORD=""      # password
 DB_TEST_SOCKET=""        # unix socket path
@@ -98,10 +98,10 @@ periodically)
 ### Emulating devices
 
 You can capture and emulate devices using
-[Snmpsim](https://github.com/etingof/snmpsim).  LibreNMS has a set of
+[Snmpsim](https://github.com/etingof/snmpsim).  KartsNMS has a set of
 scripts to make it easier to work with snmprec files.
-[LibreNMS Snmpsim helpers](https://github.com/librenms/librenms-snmpsim)
+[KartsNMS Snmpsim helpers](https://github.com/kartsnms/kartsnms-snmpsim)
 
 ### Laravel documentation
 
-You can find a lot of how LibreNMS works by following the [Laravel Documentation](https://laravel.com/docs/)
+You can find a lot of how KartsNMS works by following the [Laravel Documentation](https://laravel.com/docs/)

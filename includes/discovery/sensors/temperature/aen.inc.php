@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Accedian MetroNID Temperature Sensor Discovery module
+ * KartsNMS Accedian MetroNID Temperature Sensor Discovery module
  *
  * Copyright (c) 2016 Chris A. Evans <thecityofguanyu@outlook.com>
  *

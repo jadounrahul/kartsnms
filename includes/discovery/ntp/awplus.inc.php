@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to capture statistics from the AT-NTP-MIB
+ * KartsNMS module to capture statistics from the AT-NTP-MIB
  *
  * Copyright (c) 2018 Matt Read <matt.read@alliedtelesis.co.nz>
  *
@@ -13,7 +13,7 @@
 
 $module = 'ntp';
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['type'=>$module]);
 
 // We only care about our device id.
@@ -24,7 +24,7 @@ $tblComponents = [];
 
 // Let's gather some data..
 // For Reference:
-//      https://github.com/librenms/librenms/blob/master/mibs/awplus/AT-NTP-MIB
+//      https://github.com/jadounrahul/kartsnms/blob/master/mibs/awplus/AT-NTP-MIB
 //      https://www.alliedtelesis.com/documents/network-time-protocol-ntp-feature-overview-and-configuration-guide
 $atNtpAssociationEntry = snmpwalk_group($device, 'atNtpAssociationEntry', 'AT-NTP-MIB');
 

@@ -2,7 +2,7 @@
 
 // Polls shoutcast statistics from script via SNMP
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'shoutcast';
 

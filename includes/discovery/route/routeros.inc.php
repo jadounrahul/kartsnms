@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS discovery module for RouterOS IPv6 Routes introduced in ROSv7
+ * KartsNMS discovery module for RouterOS IPv6 Routes introduced in ROSv7
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,15 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Peca Nesovanovic
  *
  * @author     Peca Nesovanovic <peca.nesovanovic@sattrakt.com>
  */
 
-use LibreNMS\Util\IPv6;
+use KartsNMS\Util\IPv6;
 
 $oids = SnmpQuery::walk('IPV6-MIB::ipv6RouteTable')->table(1);
 

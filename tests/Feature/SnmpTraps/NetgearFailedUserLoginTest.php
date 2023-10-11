@@ -17,12 +17,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  */
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 class NetgearFailedUserLoginTest extends SnmpTrapTestCase
 {

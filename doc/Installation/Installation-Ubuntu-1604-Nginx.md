@@ -14,18 +14,18 @@
 apt install acl composer fping git graphviz imagemagick mariadb-client mariadb-server mtr-tiny nginx-full nmap php7.0-cli php7.0-curl php7.0-fpm php7.0-gd php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-snmp php7.0-xml php7.0-zip python-memcache python-mysqldb rrdtool snmp snmpd whois
 ```
 
-# Add librenms user
+# Add kartsnms user
 
 ```bash
-useradd librenms -d /opt/librenms -M -r
-usermod -a -G librenms www-data
+useradd kartsnms -d /opt/kartsnms -M -r
+usermod -a -G kartsnms www-data
 ```
 
-# Install LibreNMS
+# Install KartsNMS
 
 ```bash
 cd /opt
-composer create-project --no-dev --keep-vcs librenms/librenms librenms dev-master
+composer create-project --no-dev --keep-vcs kartsnms/kartsnms kartsnms dev-master
 ```
 
 # DB Server
@@ -40,9 +40,9 @@ mysql -uroot -p
 > NOTE: Please change the 'password' below to something secure.
 
 ```sql
-CREATE DATABASE librenms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'librenms'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'localhost';
+CREATE DATABASE kartsnms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'kartsnms'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON kartsnms.* TO 'kartsnms'@'localhost';
 FLUSH PRIVILEGES;
 exit
 ```
@@ -84,7 +84,7 @@ systemctl restart php7.0-fpm
 ## Configure NGINX
 
 ```bash
-vim /etc/nginx/conf.d/librenms.conf
+vim /etc/nginx/conf.d/kartsnms.conf
 ```
 
 Add the following config, edit `server_name` as required:
@@ -92,8 +92,8 @@ Add the following config, edit `server_name` as required:
 ```nginx
 server {
  listen      80;
- server_name librenms.example.com;
- root        /opt/librenms/html;
+ server_name kartsnms.example.com;
+ root        /opt/kartsnms/html;
  index       index.php;
 
  charset utf-8;
@@ -129,14 +129,14 @@ rm /etc/nginx/sites-enabled/default
 # Configure snmpd
 
 ```bash
-cp /opt/librenms/snmpd.conf.example /etc/snmp/snmpd.conf
+cp /opt/kartsnms/snmpd.conf.example /etc/snmp/snmpd.conf
 vim /etc/snmp/snmpd.conf
 ```
 
 Edit the text which says `RANDOMSTRINGGOESHERE` and set your own community string.
 
 ```bash
-curl -o /usr/bin/distro https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/distro
+curl -o /usr/bin/distro https://raw.githubusercontent.com/kartsnms/kartsnms-agent/master/snmp/distro
 chmod +x /usr/bin/distro
 systemctl restart snmpd
 ```
@@ -144,7 +144,7 @@ systemctl restart snmpd
 # Cron job
 
 ```bash
-cp /opt/librenms/dist/librenms.cron /etc/cron.d/librenms
+cp /opt/kartsnms/dist/kartsnms.cron /etc/cron.d/kartsnms
 ```
 
 > NOTE: Keep in mind  that cron, by default, only uses a very limited
@@ -152,25 +152,25 @@ cp /opt/librenms/dist/librenms.cron /etc/cron.d/librenms
 > variables for the cron invocation. Alternatively adding the proxy
 > settings in config.php is possible too. The config.php file will be
 > created in the upcoming steps. Review the following URL after you
-> finished librenms install steps:
+> finished kartsnms install steps:
 > <@= config.site_url =@/Support/Configuration/#proxy-support>
 
 # Copy logrotate config
 
-LibreNMS keeps logs in `/opt/librenms/logs`. Over time these can
+KartsNMS keeps logs in `/opt/kartsnms/logs`. Over time these can
 become large and be rotated out.  To rotate out the old logs you can
 use the provided logrotate config file:
 
 ```bash
-cp /opt/librenms/misc/librenms.logrotate /etc/logrotate.d/librenms
+cp /opt/kartsnms/misc/kartsnms.logrotate /etc/logrotate.d/kartsnms
 ```
 
 # Set permissions
 
 ```bash
-chown -R librenms:librenms /opt/librenms
-setfacl -d -m g::rwx /opt/librenms/rrd /opt/librenms/logs /opt/librenms/bootstrap/cache/ /opt/librenms/storage/
-setfacl -R -m g::rwx /opt/librenms/rrd /opt/librenms/logs /opt/librenms/bootstrap/cache/ /opt/librenms/storage/
+chown -R kartsnms:kartsnms /opt/kartsnms
+setfacl -d -m g::rwx /opt/kartsnms/rrd /opt/kartsnms/logs /opt/kartsnms/bootstrap/cache/ /opt/kartsnms/storage/
+setfacl -R -m g::rwx /opt/kartsnms/rrd /opt/kartsnms/logs /opt/kartsnms/bootstrap/cache/ /opt/kartsnms/storage/
 ```
 
 # Web installer
@@ -178,24 +178,24 @@ setfacl -R -m g::rwx /opt/librenms/rrd /opt/librenms/logs /opt/librenms/bootstra
 Now head to the web installer and follow the on-screen instructions.
 
 ```
-http://librenms.example.com/install.php
+http://kartsnms.example.com/install.php
 ```
 
 The web installer might prompt you to create a `config.php` file in
-your librenms install location manually, copying the content displayed
+your kartsnms install location manually, copying the content displayed
 on-screen to the file. If you have to do this, please remember to set
 the permissions on config.php after you copied the on-screen contents
 to the file. Run:
 
 ```bash
-chown librenms:librenms /opt/librenms/config.php
+chown kartsnms:kartsnms /opt/kartsnms/config.php
 ```
 
 # Final steps
 
 That's it!  You now should be able to log in to
-<http://librenms.example.com/>.  Please note that we have not covered
-HTTPS setup in this example, so your LibreNMS install is not secure by
+<http://kartsnms.example.com/>.  Please note that we have not covered
+HTTPS setup in this example, so your KartsNMS install is not secure by
 default.  Please do not expose it to the public Internet unless you
 have configured HTTPS and taken appropriate web server hardening
 steps.
@@ -207,19 +207,19 @@ We now suggest that you add localhost as your first device from within the WebUI
 # Troubleshooting
 
 If you ever have issues with your install, run validate.php as root in
-the librenms directory:
+the kartsnms directory:
 
 ```bash
-cd /opt/librenms
+cd /opt/kartsnms
 ./validate.php
 ```
 
-There are various options for getting help listed on the LibreNMS web
-site: <https://www.librenms.org/#support>
+There are various options for getting help listed on the KartsNMS web
+site: <https://www.itkarts.com/#support>
 
 # What next?
 
-Now that you've installed LibreNMS, we'd suggest that you have a read
+Now that you've installed KartsNMS, we'd suggest that you have a read
 of a few other docs to get you going:
 
 - [Performance tuning](../Support/Performance.md)
@@ -229,11 +229,11 @@ of a few other docs to get you going:
 
 # Closing
 
-We hope you enjoy using LibreNMS. If you do, it would be great if you
+We hope you enjoy using KartsNMS. If you do, it would be great if you
 would consider opting into the stats system we have, please see [this
 page](../General/Callback-Stats-and-Privacy.md) on
 what it is and how to enable it.
 
-If you would like to help make LibreNMS better there are [many ways to
+If you would like to help make KartsNMS better there are [many ways to
 help](../Support/FAQ.md#a-namefaq9-what-can-i-do-to-helpa). You
-can also [back LibreNMS on Open Collective](https://t.libren.ms/donations).
+can also [back KartsNMS on Open Collective](https://t.kartsn.ms/donations).

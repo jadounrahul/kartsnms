@@ -6,7 +6,7 @@ use App\Models\User;
 use Hash;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use LibreNMS\Config;
+use KartsNMS\Config;
 use Silber\Bouncer\BouncerFacade as Bouncer;
 
 class UpdateUserRequest extends FormRequest

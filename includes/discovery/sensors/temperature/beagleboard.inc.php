@@ -1,7 +1,7 @@
 <?php
 /*
  * Temperature Sensors for BeagleBoard
- * Requires snmp extend agent script from librenms-agent
+ * Requires snmp extend agent script from kartsnms-agent
  */
 
 $type = 'beagleboardTemp';

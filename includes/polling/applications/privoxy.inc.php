@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'privoxy';
 try {

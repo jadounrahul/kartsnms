@@ -1,20 +1,20 @@
 <?php
 
 /**
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS
+ *   This file is part of KartsNMS
  *
- * @author     LibreNMS Contributors <librenms-project@google.groups.com>
+ * @author     KartsNMS Contributors <kartsnms-project@google.groups.com>
  * @copyright  (C) 2006 - 2012 Adam Armstrong (as Observium)
- * @copyright  (C) 2013 LibreNMS Group
+ * @copyright  (C) 2013 KartsNMS Group
  */
 
 use App\Facades\DeviceCache;
-use LibreNMS\Config;
-use LibreNMS\Enum\ImageFormat;
-use LibreNMS\Util\Number;
-use LibreNMS\Util\Rewrite;
+use KartsNMS\Config;
+use KartsNMS\Enum\ImageFormat;
+use KartsNMS\Util\Number;
+use KartsNMS\Util\Rewrite;
 
 /**
  * Compare $t with the value of $vars[$v], if that exists
@@ -52,7 +52,7 @@ function var_get($v)
 
 function toner2colour($descr, $percent)
 {
-    $colour = \LibreNMS\Util\Color::percentage(100 - $percent, null);
+    $colour = \KartsNMS\Util\Color::percentage(100 - $percent, null);
 
     if (substr($descr, -1) == 'C' || stripos($descr, 'cyan') !== false) {
         $colour['left'] = '55D6D3';
@@ -84,7 +84,7 @@ function toner2colour($descr, $percent)
 
 function generate_link($text, $vars, $new_vars = [])
 {
-    return '<a href="' . \LibreNMS\Util\Url::generate($vars, $new_vars) . '">' . $text . '</a>';
+    return '<a href="' . \KartsNMS\Util\Url::generate($vars, $new_vars) . '">' . $text . '</a>';
 }//end generate_link()
 
 function escape_quotes($text)
@@ -97,7 +97,7 @@ function generate_overlib_content($graph_array, $text)
     $overlib_content = '<div class=overlib><span class=overlib-text>' . $text . '</span><br />';
     foreach (['day', 'week', 'month', 'year'] as $period) {
         $graph_array['from'] = Config::get("time.$period");
-        $overlib_content .= escape_quotes(\LibreNMS\Util\Url::graphTag($graph_array));
+        $overlib_content .= escape_quotes(\KartsNMS\Util\Url::graphTag($graph_array));
     }
 
     $overlib_content .= '</div>';
@@ -109,7 +109,7 @@ function generate_device_link($device, $text = null, $vars = [], $start = 0, $en
 {
     $deviceModel = DeviceCache::get((int) $device['device_id']);
 
-    return \LibreNMS\Util\Url::deviceLink($deviceModel, $text, $vars, $start, $end, $escape_text, $overlib);
+    return \KartsNMS\Util\Url::deviceLink($deviceModel, $text, $vars, $start, $end, $escape_text, $overlib);
 }
 
 function bill_permitted($bill_id)
@@ -251,7 +251,7 @@ STATE;
 
 function print_percentage_bar($width, $height, $percent, $left_text, $left_colour, $left_background, $right_text, $right_colour, $right_background)
 {
-    return \LibreNMS\Util\Html::percentageBar($width, $height, $percent, $left_text, $right_text, null, null, [
+    return \KartsNMS\Util\Html::percentageBar($width, $height, $percent, $left_text, $right_text, null, null, [
         'left' => $left_background,
         'left_text' => $left_colour,
         'right' => $right_background,
@@ -328,8 +328,8 @@ function generate_port_link($port, $text = null, $type = null, $overlib = 1, $si
         $port = cleanPort($port);
     }
 
-    $content = '<div class=list-large>' . $port['hostname'] . ' - ' . Rewrite::normalizeIfName(addslashes(\LibreNMS\Util\Clean::html($port['label'], []))) . '</div>';
-    $content .= addslashes(\LibreNMS\Util\Clean::html($port['ifAlias'], [])) . '<br />';
+    $content = '<div class=list-large>' . $port['hostname'] . ' - ' . Rewrite::normalizeIfName(addslashes(\KartsNMS\Util\Clean::html($port['label'], []))) . '</div>';
+    $content .= addslashes(\KartsNMS\Util\Clean::html($port['ifAlias'], [])) . '<br />';
 
     $content .= "<div style=\'width: 850px\'>";
     $graph_array['type'] = $port['graph_type'];
@@ -339,14 +339,14 @@ function generate_port_link($port, $text = null, $type = null, $overlib = 1, $si
     $graph_array['to'] = Config::get('time.now');
     $graph_array['from'] = Config::get('time.day');
     $graph_array['id'] = $port['port_id'];
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
     if ($single_graph == 0) {
         $graph_array['from'] = Config::get('time.week');
-        $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+        $content .= \KartsNMS\Util\Url::graphTag($graph_array);
         $graph_array['from'] = Config::get('time.month');
-        $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+        $content .= \KartsNMS\Util\Url::graphTag($graph_array);
         $graph_array['from'] = Config::get('time.year');
-        $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+        $content .= \KartsNMS\Util\Url::graphTag($graph_array);
     }
 
     $content .= '</div>';
@@ -356,7 +356,7 @@ function generate_port_link($port, $text = null, $type = null, $overlib = 1, $si
     if ($overlib == 0) {
         return $content;
     } elseif (port_permitted($port['port_id'], $port['device_id'])) {
-        return \LibreNMS\Util\Url::overlibLink($url, $text, $content, $class);
+        return \KartsNMS\Util\Url::overlibLink($url, $text, $content, $class);
     } else {
         return Rewrite::normalizeIfName($text);
     }
@@ -390,27 +390,27 @@ function generate_sensor_link($args, $text = null, $type = null)
         'from' => Config::get('time.day'),
         'id' => $args['sensor_id'],
     ];
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
 
     $graph_array['from'] = Config::get('time.week');
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
 
     $graph_array['from'] = Config::get('time.month');
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
 
     $graph_array['from'] = Config::get('time.year');
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
 
     $content .= '</div>';
 
-    $url = \LibreNMS\Util\Url::generate(['page' => 'graphs', 'id' => $args['sensor_id'], 'type' => $args['graph_type'], 'from' => \LibreNMS\Config::get('time.day')], []);
+    $url = \KartsNMS\Util\Url::generate(['page' => 'graphs', 'id' => $args['sensor_id'], 'type' => $args['graph_type'], 'from' => \KartsNMS\Config::get('time.day')], []);
 
-    return \LibreNMS\Util\Url::overlibLink($url, $text, $content);
+    return \KartsNMS\Util\Url::overlibLink($url, $text, $content);
 }//end generate_sensor_link()
 
 function generate_port_url($port, $vars = [])
 {
-    return \LibreNMS\Util\Url::generate(['page' => 'device', 'device' => $port['device_id'], 'tab' => 'port', 'port' => $port['port_id']], $vars);
+    return \KartsNMS\Util\Url::generate(['page' => 'device', 'device' => $port['device_id'], 'tab' => 'port', 'port' => $port['port_id']], $vars);
 }//end generate_port_url()
 
 function generate_sap_url($sap, $vars = [])
@@ -420,7 +420,7 @@ function generate_sap_url($sap, $vars = [])
         $sap['sapEncapValue'] = '4095';
     }
 
-    return \LibreNMS\Util\Url::graphPopup(['device' => $sap['device_id'], 'page' => 'graphs', 'type' => 'device_sap', 'tab' => 'routing', 'proto' => 'mpls', 'view' => 'saps', 'traffic_id' => $sap['svc_oid'] . '.' . $sap['sapPortId'] . '.' . $sap['sapEncapValue']], $vars);
+    return \KartsNMS\Util\Url::graphPopup(['device' => $sap['device_id'], 'page' => 'graphs', 'type' => 'device_sap', 'tab' => 'routing', 'proto' => 'mpls', 'view' => 'saps', 'traffic_id' => $sap['svc_oid'] . '.' . $sap['sapPortId'] . '.' . $sap['sapEncapValue']], $vars);
 }//end generate_sap_url()
 
 function generate_port_image($args)
@@ -441,7 +441,7 @@ function generate_port_image($args)
 function graph_error($text, $short = null, $color = [128, 0, 0])
 {
     header('Content-Type: ' . ImageFormat::forGraph()->contentType());
-    echo \LibreNMS\Util\Graph::error($text, $short, 300, null, $color);
+    echo \KartsNMS\Util\Graph::error($text, $short, 300, null, $color);
 }
 
 function print_port_thumbnail($args)
@@ -542,7 +542,7 @@ function generate_ap_link($args, $text = null, $type = null)
 
     $content = '<div class=list-large>' . $args['text'] . ' - ' . Rewrite::normalizeIfName($args['label']) . '</div>';
     if ($args['ifAlias']) {
-        $content .= \LibreNMS\Util\Clean::html($args['ifAlias'], []) . '<br />';
+        $content .= \KartsNMS\Util\Clean::html($args['ifAlias'], []) . '<br />';
     }
 
     $content .= "<div style=\'width: 850px\'>";
@@ -554,18 +554,18 @@ function generate_ap_link($args, $text = null, $type = null)
     $graph_array['to'] = Config::get('time.now');
     $graph_array['from'] = Config::get('time.day');
     $graph_array['id'] = $args['accesspoint_id'];
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
     $graph_array['from'] = Config::get('time.week');
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
     $graph_array['from'] = Config::get('time.month');
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
     $graph_array['from'] = Config::get('time.year');
-    $content .= \LibreNMS\Util\Url::graphTag($graph_array);
+    $content .= \KartsNMS\Util\Url::graphTag($graph_array);
     $content .= '</div>';
 
     $url = generate_ap_url($args);
     if (port_permitted($args['interface_id'], $args['device_id'])) {
-        return \LibreNMS\Util\Url::overlibLink($url, $text, $content);
+        return \KartsNMS\Util\Url::overlibLink($url, $text, $content);
     } else {
         return Rewrite::normalizeIfName($text);
     }
@@ -573,7 +573,7 @@ function generate_ap_link($args, $text = null, $type = null)
 
 function generate_ap_url($ap, $vars = [])
 {
-    return \LibreNMS\Util\Url::generate(['page' => 'device', 'device' => $ap['device_id'], 'tab' => 'accesspoints', 'ap' => $ap['accesspoint_id']], $vars);
+    return \KartsNMS\Util\Url::generate(['page' => 'device', 'device' => $ap['device_id'], 'tab' => 'accesspoints', 'ap' => $ap['accesspoint_id']], $vars);
 }//end generate_ap_url()
 
 // Find all the files in the given directory that match the pattern
@@ -687,7 +687,7 @@ function alert_details($details)
         $fallback = true;
         $fault_detail .= '#' . ($o + 1) . ':&nbsp;';
         if (isset($tmp_alerts['bill_id'])) {
-            $fault_detail .= '<a href="' . \LibreNMS\Util\Url::generate(['page' => 'bill', 'bill_id' => $tmp_alerts['bill_id']], []) . '">' . $tmp_alerts['bill_name'] . '</a>;&nbsp;';
+            $fault_detail .= '<a href="' . \KartsNMS\Util\Url::generate(['page' => 'bill', 'bill_id' => $tmp_alerts['bill_id']], []) . '">' . $tmp_alerts['bill_name'] . '</a>;&nbsp;';
             $fallback = false;
         }
 
@@ -695,7 +695,7 @@ function alert_details($details)
             if ($tmp_alerts['isisISAdjState']) {
                 $fault_detail .= 'Adjacent ' . $tmp_alerts['isisISAdjIPAddrAddress'];
                 $port = \App\Models\Port::find($tmp_alerts['port_id']);
-                $fault_detail .= ', Interface ' . \LibreNMS\Util\Url::portLink($port);
+                $fault_detail .= ', Interface ' . \KartsNMS\Util\Url::portLink($port);
             } else {
                 $tmp_alerts = cleanPort($tmp_alerts);
                 $fault_detail .= generate_port_link($tmp_alerts) . ';&nbsp;';
@@ -739,7 +739,7 @@ function alert_details($details)
         if (isset($tmp_alerts['bgpPeer_id'])) {
             // If we have a bgpPeer_id, we format the data accordingly
             $fault_detail .= "BGP peer <a href='" .
-                \LibreNMS\Util\Url::generate([
+                \KartsNMS\Util\Url::generate([
                     'page' => 'device',
                     'device' => $tmp_alerts['device_id'],
                     'tab' => 'routing',
@@ -762,7 +762,7 @@ function alert_details($details)
 
         if (in_array('app_id', array_keys($tmp_alerts))) {
             $fault_detail .= "<a href='" .
-                \LibreNMS\Util\Url::generate([
+                \KartsNMS\Util\Url::generate([
                     'page' => 'device',
                     'device' => $tmp_alerts['device_id'],
                     'tab' => 'apps',
@@ -920,7 +920,7 @@ function search_oxidized_config($search_in_conf_textbox)
     $context = stream_context_create($opts);
 
     $nodes = json_decode(file_get_contents($oxidized_search_url, false, $context), true);
-    // Look up Oxidized node names to LibreNMS devices for a link
+    // Look up Oxidized node names to KartsNMS devices for a link
     foreach ($nodes as &$n) {
         $dev = device_by_name($n['node']);
         $n['dev_id'] = $dev ? $dev['device_id'] : false;
@@ -1096,7 +1096,7 @@ function get_sensor_label_color($sensor, $type = 'sensors')
     }
     $unit = __("$type.{$sensor['sensor_class']}.unit");
     if ($sensor['sensor_class'] == 'runtime') {
-        $sensor['sensor_current'] = \LibreNMS\Util\Time::formatInterval($sensor['sensor_current'] * 60);
+        $sensor['sensor_current'] = \KartsNMS\Util\Time::formatInterval($sensor['sensor_current'] * 60);
 
         return "<span class='label $label_style'>" . trim($sensor['sensor_current']) . '</span>';
     }

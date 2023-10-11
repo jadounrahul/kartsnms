@@ -1,7 +1,7 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Config;
+use KartsNMS\RRD\RrdDefinition;
 
 $ipmi_rows = dbFetchRows("SELECT * FROM sensors WHERE device_id = ? AND poller_type='ipmi'", [$device['device_id']]);
 

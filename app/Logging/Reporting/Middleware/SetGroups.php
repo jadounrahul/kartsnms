@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -25,13 +25,13 @@
 
 namespace App\Logging\Reporting\Middleware;
 
-use LibreNMS\Util\Version;
+use KartsNMS\Util\Version;
 use Spatie\FlareClient\Report;
 
 class SetGroups implements \Spatie\FlareClient\FlareMiddleware\FlareMiddleware
 {
     /**
-     * Middleware to set LibreNMS and Tools grouping data
+     * Middleware to set KartsNMS and Tools grouping data
      *
      * @return mixed
      */
@@ -40,7 +40,7 @@ class SetGroups implements \Spatie\FlareClient\FlareMiddleware\FlareMiddleware
         try {
             $version = Version::get();
 
-            $report->group('LibreNMS', [
+            $report->group('KartsNMS', [
                 'Git version' => $version->name(),
                 'App version' => Version::VERSION,
             ]);

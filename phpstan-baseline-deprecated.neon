@@ -6,7 +6,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Alert/AlertDB.php
+			path: KartsNMS/Alert/AlertDB.php
 
 		-
 			message: """
@@ -14,7 +14,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Alert/AlertRules.php
+			path: KartsNMS/Alert/AlertRules.php
 
 		-
 			message: """
@@ -22,7 +22,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Alert/AlertRules.php
+			path: KartsNMS/Alert/AlertRules.php
 
 		-
 			message: """
@@ -30,7 +30,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Alert/AlertRules.php
+			path: KartsNMS/Alert/AlertRules.php
 
 		-
 			message: """
@@ -38,7 +38,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 4
-			path: LibreNMS/Alert/AlertRules.php
+			path: KartsNMS/Alert/AlertRules.php
 
 		-
 			message: """
@@ -46,7 +46,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 4
-			path: LibreNMS/Alert/AlertRules.php
+			path: KartsNMS/Alert/AlertRules.php
 
 		-
 			message: """
@@ -54,7 +54,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 4
-			path: LibreNMS/Alert/AlertUtil.php
+			path: KartsNMS/Alert/AlertUtil.php
 
 		-
 			message: """
@@ -62,7 +62,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 6
-			path: LibreNMS/Alert/AlertUtil.php
+			path: KartsNMS/Alert/AlertUtil.php
 
 		-
 			message: """
@@ -70,7 +70,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#deleting\\-models$#
 			"""
 			count: 2
-			path: LibreNMS/Alert/RunAlerts.php
+			path: KartsNMS/Alert/RunAlerts.php
 
 		-
 			message: """
@@ -78,7 +78,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 2
-			path: LibreNMS/Alert/RunAlerts.php
+			path: KartsNMS/Alert/RunAlerts.php
 
 		-
 			message: """
@@ -86,7 +86,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 3
-			path: LibreNMS/Alert/RunAlerts.php
+			path: KartsNMS/Alert/RunAlerts.php
 
 		-
 			message: """
@@ -94,7 +94,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 4
-			path: LibreNMS/Alert/RunAlerts.php
+			path: KartsNMS/Alert/RunAlerts.php
 
 		-
 			message: """
@@ -102,7 +102,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Alert/RunAlerts.php
+			path: KartsNMS/Alert/RunAlerts.php
 
 		-
 			message: """
@@ -110,7 +110,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 6
-			path: LibreNMS/Alert/RunAlerts.php
+			path: KartsNMS/Alert/RunAlerts.php
 
 		-
 			message: """
@@ -118,7 +118,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 3
-			path: LibreNMS/Component.php
+			path: KartsNMS/Component.php
 
 		-
 			message: """
@@ -126,7 +126,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 2
-			path: LibreNMS/Component.php
+			path: KartsNMS/Component.php
 
 		-
 			message: """
@@ -134,7 +134,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#deleting\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Device/Processor.php
+			path: KartsNMS/Device/Processor.php
 
 		-
 			message: """
@@ -142,7 +142,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Device/Processor.php
+			path: KartsNMS/Device/Processor.php
 
 		-
 			message: """
@@ -150,7 +150,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Device/Processor.php
+			path: KartsNMS/Device/Processor.php
 
 		-
 			message: """
@@ -158,7 +158,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#deleting\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Device/Sensor.php
+			path: KartsNMS/Device/Sensor.php
 
 		-
 			message: """
@@ -166,7 +166,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 2
-			path: LibreNMS/Device/Sensor.php
+			path: KartsNMS/Device/Sensor.php
 
 		-
 			message: """
@@ -174,7 +174,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 2
-			path: LibreNMS/Device/Sensor.php
+			path: KartsNMS/Device/Sensor.php
 
 		-
 			message: """
@@ -182,7 +182,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 2
-			path: LibreNMS/Device/Sensor.php
+			path: KartsNMS/Device/Sensor.php
 
 		-
 			message: """
@@ -190,7 +190,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Device/Sensor.php
+			path: KartsNMS/Device/Sensor.php
 
 		-
 			message: """
@@ -198,7 +198,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 2
-			path: LibreNMS/Device/Sensor.php
+			path: KartsNMS/Device/Sensor.php
 
 		-
 			message: """
@@ -206,7 +206,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Device/WirelessSensor.php
+			path: KartsNMS/Device/WirelessSensor.php
 
 		-
 			message: """
@@ -214,7 +214,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 13
-			path: LibreNMS/IRCBot.php
+			path: KartsNMS/IRCBot.php
 
 		-
 			message: """
@@ -222,7 +222,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 3
-			path: LibreNMS/IRCBot.php
+			path: KartsNMS/IRCBot.php
 
 		-
 			message: """
@@ -230,7 +230,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 7
-			path: LibreNMS/IRCBot.php
+			path: KartsNMS/IRCBot.php
 
 		-
 			message: """
@@ -238,7 +238,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#deleting\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Model.php
+			path: KartsNMS/Model.php
 
 		-
 			message: """
@@ -246,7 +246,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 2
-			path: LibreNMS/Model.php
+			path: KartsNMS/Model.php
 
 		-
 			message: """
@@ -254,7 +254,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Model.php
+			path: KartsNMS/Model.php
 
 		-
 			message: """
@@ -262,7 +262,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Model.php
+			path: KartsNMS/Model.php
 
 		-
 			message: """
@@ -270,7 +270,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Model.php
+			path: KartsNMS/Model.php
 
 		-
 			message: """
@@ -278,7 +278,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/Model.php
+			path: KartsNMS/Model.php
 
 		-
 			message: """
@@ -286,7 +286,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/OS/Vrp.php
+			path: KartsNMS/OS/Vrp.php
 
 		-
 			message: """
@@ -294,7 +294,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 1
-			path: LibreNMS/OS/Vrp.php
+			path: KartsNMS/OS/Vrp.php
 
 		-
 			message: """
@@ -302,7 +302,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent\\#inserting\\-and\\-updating\\-models$#
 			"""
 			count: 2
-			path: LibreNMS/OS/Vrp.php
+			path: KartsNMS/OS/Vrp.php
 
 		-
 			message: """
@@ -310,7 +310,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/ObjectCache.php
+			path: KartsNMS/ObjectCache.php
 
 		-
 			message: """
@@ -350,7 +350,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 3
-			path: LibreNMS/Billing.php
+			path: KartsNMS/Billing.php
 
 		-
 			message: """
@@ -358,7 +358,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 4
-			path: LibreNMS/Billing.php
+			path: KartsNMS/Billing.php
 
 		-
 			message: """
@@ -366,7 +366,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 3
-			path: LibreNMS/Billing.php
+			path: KartsNMS/Billing.php
 
 		-
 			message: """
@@ -374,7 +374,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 8
-			path: LibreNMS/Billing.php
+			path: KartsNMS/Billing.php
 
 		-
 			message: """
@@ -382,7 +382,7 @@ parameters:
 				Please use Eloquent instead; https\\://laravel\\.com/docs/eloquent$#
 			"""
 			count: 1
-			path: LibreNMS/Billing.php
+			path: KartsNMS/Billing.php
 
 		-
 			message: """

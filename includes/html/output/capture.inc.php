@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -32,7 +32,7 @@ $type = $_REQUEST['type'];
 
 switch ($type) {
     case 'poller':
-        $cmd = ['php', \LibreNMS\Config::get('install_dir') . '/lnms', 'device:poll', $hostname, '--no-data', '-vv'];
+        $cmd = ['php', \KartsNMS\Config::get('install_dir') . '/lnms', 'device:poll', $hostname, '--no-data', '-vv'];
         $filename = "poller-$hostname.txt";
         break;
     case 'snmpwalk':
@@ -43,7 +43,7 @@ switch ($type) {
         $filename = $device['os'] . '-' . $device['hostname'] . '.snmpwalk';
         break;
     case 'discovery':
-        $cmd = ['php', \LibreNMS\Config::get('install_dir') . '/discovery.php', '-h', $hostname, '-d'];
+        $cmd = ['php', \KartsNMS\Config::get('install_dir') . '/discovery.php', '-h', $hostname, '-d'];
         $filename = "discovery-$hostname.txt";
         break;
     default:

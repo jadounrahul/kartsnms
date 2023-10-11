@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2022 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -25,7 +25,7 @@
 
 namespace App\ApiClients;
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 class Oxidized extends BaseApi
 {
@@ -39,7 +39,7 @@ class Oxidized extends BaseApi
     }
 
     /**
-     * Ask oxidized to refresh the node list for the source (likely the LibreNMS API).
+     * Ask oxidized to refresh the node list for the source (likely the KartsNMS API).
      */
     public function reloadNodes(): void
     {

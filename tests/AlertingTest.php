@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Neil Lathwood
  * @author     Neil Lathwood <neil@lathwood.co.uk>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -45,15 +45,15 @@ class AlertingTest extends TestCase
         foreach ($this->getTransportFiles() as $file => $_unused) {
             $parts = explode('/', $file);
             $transport = ucfirst(str_replace('.php', '', array_pop($parts)));
-            $class = 'LibreNMS\\Alert\\Transport\\' . $transport;
+            $class = 'KartsNMS\\Alert\\Transport\\' . $transport;
             $this->assertTrue(class_exists($class), "The transport $transport does not exist");
-            $this->assertInstanceOf(\LibreNMS\Interfaces\Alert\Transport::class, new $class);
+            $this->assertInstanceOf(\KartsNMS\Interfaces\Alert\Transport::class, new $class);
         }
     }
 
     private function getTransportFiles(): RegexIterator
     {
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('LibreNMS/Alert/Transport'));
+        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('KartsNMS/Alert/Transport'));
 
         return new RegexIterator($iterator, '/^.+\.php$/i', RegexIterator::GET_MATCH);
     }

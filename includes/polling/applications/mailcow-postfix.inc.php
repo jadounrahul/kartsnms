@@ -13,14 +13,14 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *
-* @package    LibreNMS
-* @link       https://www.librenms.org
-* @copyright  2020 LibreNMS
+* @package    KartsNMS
+* @link       https://www.itkarts.com
+* @copyright  2020 KartsNMS
 * @author     Cercel Valentin <crc@nuamchefazi.ro>
 */
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'mailcow-postfix';
 

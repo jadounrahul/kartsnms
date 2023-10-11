@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,14 +8,14 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2018 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2018 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
-use LibreNMS\Util\StringHelpers;
+use KartsNMS\Util\StringHelpers;
 
 $graph_type = 'toner_usage';
 
@@ -61,16 +61,16 @@ foreach (dbFetchRows($sql, $param) as $toner) {
 
         $graph_array['type'] = $graph_type;
         $graph_array['id'] = $toner['supply_id'];
-        $graph_array['from'] = \LibreNMS\Config::get('time.day');
-        $graph_array['to'] = \LibreNMS\Config::get('time.now');
+        $graph_array['from'] = \KartsNMS\Config::get('time.day');
+        $graph_array['to'] = \KartsNMS\Config::get('time.now');
         $graph_array['height'] = '20';
         $graph_array['width'] = '80';
         $graph_array_zoom = $graph_array;
         $graph_array_zoom['height'] = '150';
         $graph_array_zoom['width'] = '400';
         $link = 'graphs/id=' . $graph_array['id'] . '/type=' . $graph_array['type'] . '/from=' . $graph_array['from'] . '/to=' . $graph_array['to'] . '/';
-        $mini_graph = \LibreNMS\Util\Url::overlibLink($link, \LibreNMS\Util\Url::graphTag($graph_array), \LibreNMS\Util\Url::graphTag($graph_array_zoom));
-        $background = \LibreNMS\Util\Color::percentage(100 - $perc, null);
+        $mini_graph = \KartsNMS\Util\Url::overlibLink($link, \KartsNMS\Util\Url::graphTag($graph_array), \KartsNMS\Util\Url::graphTag($graph_array_zoom));
+        $background = \KartsNMS\Util\Color::percentage(100 - $perc, null);
         $bar_link = print_percentage_bar(400, 20, $perc, "$perc%", 'ffffff', $background['left'], $free, 'ffffff', $background['right']);
 
         $response[] = [
@@ -85,7 +85,7 @@ foreach (dbFetchRows($sql, $param) as $toner) {
         if ($vars['view'] == 'graphs') {
             $graph_array['height'] = '100';
             $graph_array['width'] = '216';
-            $graph_array['to'] = \LibreNMS\Config::get('time.now');
+            $graph_array['to'] = \KartsNMS\Config::get('time.now');
             $graph_array['id'] = $toner['supply_id'];
             $graph_array['type'] = $graph_type;
             $return_data = true;

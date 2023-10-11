@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -27,18 +27,18 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use LibreNMS\Data\Store\Datastore;
-use LibreNMS\Interfaces\Data\Datastore as DatastoreContract;
+use KartsNMS\Data\Store\Datastore;
+use KartsNMS\Interfaces\Data\Datastore as DatastoreContract;
 
 class DatastoreServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'LibreNMS\\Data\\Store\\';
+    protected $namespace = 'KartsNMS\\Data\\Store\\';
     protected $stores = [
-        'LibreNMS\Data\Store\Graphite',
-        'LibreNMS\Data\Store\InfluxDB',
-        'LibreNMS\Data\Store\OpenTSDB',
-        'LibreNMS\Data\Store\Prometheus',
-        'LibreNMS\Data\Store\Rrd',
+        'KartsNMS\Data\Store\Graphite',
+        'KartsNMS\Data\Store\InfluxDB',
+        'KartsNMS\Data\Store\OpenTSDB',
+        'KartsNMS\Data\Store\Prometheus',
+        'KartsNMS\Data\Store\Rrd',
     ];
 
     public function register(): void
@@ -68,7 +68,7 @@ class DatastoreServiceProvider extends ServiceProvider
     public function registerInflux()
     {
         $this->app->singleton('InfluxDB\Database', function ($app) {
-            return \LibreNMS\Data\Store\InfluxDB::createFromConfig();
+            return \KartsNMS\Data\Store\InfluxDB::createFromConfig();
         });
     }
 }

@@ -2,7 +2,7 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -13,9 +13,9 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Config;
-use LibreNMS\ValidationResult;
-use LibreNMS\Validator;
+use KartsNMS\Config;
+use KartsNMS\ValidationResult;
+use KartsNMS\Validator;
 
 chdir(__DIR__); // cwd to the directory containing this script
 
@@ -46,7 +46,7 @@ if (isset($options['h'])) {
           - python: check that various Python modules and functions exist
           - system: checks system related items
           - updates: checks the status of git and updates
-          - user: check that the LibreNMS user is set properly
+          - user: check that the KartsNMS user is set properly
 
         Example: ./validate.php -g mail.
 
@@ -127,7 +127,7 @@ if (! file_exists(Config::get('install_dir') . '/.env')) {
     exit;
 }
 
-if (\LibreNMS\DB\Eloquent::isConnected()) {
+if (\KartsNMS\DB\Eloquent::isConnected()) {
     $validator->ok('Database connection successful', null, 'database');
 } else {
     $validator->fail('Error connecting to your database.', null, 'database');
@@ -152,7 +152,7 @@ function print_header()
     $output = ob_get_clean();
     @ob_end_clean();
 
-    echo \LibreNMS\Util\Version::get()->header() . PHP_EOL;
+    echo \KartsNMS\Util\Version::get()->header() . PHP_EOL;
     echo $output;
 }
 

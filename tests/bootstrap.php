@@ -17,14 +17,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2016 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-use LibreNMS\Config;
-use LibreNMS\Util\Snmpsim;
+use KartsNMS\Config;
+use KartsNMS\Util\Snmpsim;
 
 $install_dir = realpath(__DIR__ . '/..');
 
@@ -68,7 +68,7 @@ if (getenv('DBTEST')) {
     // fclose($dbFile);
 
     // try to avoid erasing people's primary databases
-    if ($db_config['database'] !== \config('database.connections.mysql.database', 'librenms')) {
+    if ($db_config['database'] !== \config('database.connections.mysql.database', 'kartsnms')) {
         if (! getenv('SKIP_DB_REFRESH')) {
             echo 'Refreshing database...';
             $migrate_result = Artisan::call('migrate:fresh', ['--seed' => true, '--env' => 'testing', '--database' => 'testing']);
@@ -84,6 +84,6 @@ if (getenv('DBTEST')) {
 }
 
 Config::reload(); // reload the config including database config
-\LibreNMS\Util\OS::updateCache(true); // Force update of OS Cache
+\KartsNMS\Util\OS::updateCache(true); // Force update of OS Cache
 
 app()->terminate(); // destroy the bootstrap Laravel application

@@ -3,17 +3,17 @@
 
 /*
  * Daily Task Checks
- * (c) 2013 LibreNMS Contributors
+ * (c) 2013 KartsNMS Contributors
  */
 
 use App\Models\Device;
 use App\Models\DeviceGroup;
 use Illuminate\Database\Eloquent\Collection;
-use LibreNMS\Alert\AlertDB;
-use LibreNMS\Config;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Notifications;
-use LibreNMS\Validations\Php;
+use KartsNMS\Alert\AlertDB;
+use KartsNMS\Config;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Notifications;
+use KartsNMS\Validations\Php;
 
 $options = getopt('df:o:t:r:');
 
@@ -126,7 +126,7 @@ if ($options['f'] === 'authlog') {
 }
 
 if ($options['f'] === 'callback') {
-    \LibreNMS\Util\Stats::submit();
+    \KartsNMS\Util\Stats::submit();
 }
 
 if ($options['f'] === 'device_perf') {
@@ -163,7 +163,7 @@ if ($options['f'] === 'handle_notifiable') {
             // result was a failure (0), create the notification
             Notifications::create($title, "The daily update script (daily.sh) has failed on $poller_name."
                 . 'Please check output by hand. If you need assistance, '
-                . 'visit the <a href="https://www.librenms.org/#support">LibreNMS Website</a> to find out how.',
+                . 'visit the <a href="https://www.itkarts.com/#support">KartsNMS Website</a> to find out how.',
                 'daily.sh',
                 2
             );
@@ -178,7 +178,7 @@ if ($options['f'] === 'handle_notifiable') {
                 $eol_date = Php::PHP_MIN_VERSION_DATE;
 
                 Notifications::create($error_title,
-                    "PHP version $phpver is the minimum supported version as of $eol_date.  We recommend you update to PHP a supported version of PHP (" . Php::PHP_RECOMMENDED_VERSION . ' suggested) to continue to receive updates.  If you do not update PHP, LibreNMS will continue to function but stop receiving bug fixes and updates.',
+                    "PHP version $phpver is the minimum supported version as of $eol_date.  We recommend you update to PHP a supported version of PHP (" . Php::PHP_RECOMMENDED_VERSION . ' suggested) to continue to receive updates.  If you do not update PHP, KartsNMS will continue to function but stop receiving bug fixes and updates.',
                     'daily.sh',
                     2
                 );
@@ -195,14 +195,14 @@ if ($options['f'] === 'handle_notifiable') {
         if (Config::get('update') && $options['r']) {
             if ($options['r'] === 'python3-missing') {
                 Notifications::create($error_title,
-                    'Python 3 is required to run LibreNMS as of May, 2020. You need to install Python 3 to continue to receive updates.  If you do not install Python 3 and required packages, LibreNMS will continue to function but stop receiving bug fixes and updates.',
+                    'Python 3 is required to run KartsNMS as of May, 2020. You need to install Python 3 to continue to receive updates.  If you do not install Python 3 and required packages, KartsNMS will continue to function but stop receiving bug fixes and updates.',
                     'daily.sh',
                     2
                 );
                 exit(1);
             } elseif ($options['r'] === 'python3-deps') {
                 Notifications::create($error_title,
-                    'Python 3 dependencies are missing. You need to install them via pip3 install -r requirements.txt or system packages to continue to receive updates.  If you do not install Python 3 and required packages, LibreNMS will continue to function but stop receiving bug fixes and updates.',
+                    'Python 3 dependencies are missing. You need to install them via pip3 install -r requirements.txt or system packages to continue to receive updates.  If you do not install Python 3 and required packages, KartsNMS will continue to function but stop receiving bug fixes and updates.',
                     'daily.sh',
                     2
                 );
@@ -286,11 +286,11 @@ if ($options['f'] === 'purgeusers') {
     $lock = Cache::lock('purgeusers', 86000);
     if ($lock->get()) {
         $purge = 0;
-        if (is_numeric(\LibreNMS\Config::get('radius.users_purge')) && Config::get('auth_mechanism') === 'radius') {
-            $purge = \LibreNMS\Config::get('radius.users_purge');
+        if (is_numeric(\KartsNMS\Config::get('radius.users_purge')) && Config::get('auth_mechanism') === 'radius') {
+            $purge = \KartsNMS\Config::get('radius.users_purge');
         }
-        if (is_numeric(\LibreNMS\Config::get('active_directory.users_purge')) && Config::get('auth_mechanism') === 'active_directory') {
-            $purge = \LibreNMS\Config::get('active_directory.users_purge');
+        if (is_numeric(\KartsNMS\Config::get('active_directory.users_purge')) && Config::get('auth_mechanism') === 'active_directory') {
+            $purge = \KartsNMS\Config::get('active_directory.users_purge');
         }
         if ($purge > 0) {
             $users = \App\Models\AuthLog::where('datetime', '>=', \Carbon\Carbon::now()->subDays($purge))
@@ -341,8 +341,8 @@ if ($options['f'] === 'refresh_device_groups') {
 }
 
 if ($options['f'] === 'notify') {
-    if (\LibreNMS\Config::has('alert.default_mail')) {
-        \LibreNMS\Util\Mail::send(\LibreNMS\Config::get('alert.default_mail'), '[LibreNMS] Auto update has failed for ' . Config::get('distributed_poller_name'), "We just attempted to update your install but failed. The information below should help you fix this.\r\n\r\n" . $options['o'], false);
+    if (\KartsNMS\Config::has('alert.default_mail')) {
+        \KartsNMS\Util\Mail::send(\KartsNMS\Config::get('alert.default_mail'), '[KartsNMS] Auto update has failed for ' . Config::get('distributed_poller_name'), "We just attempted to update your install but failed. The information below should help you fix this.\r\n\r\n" . $options['o'], false);
     }
 }
 

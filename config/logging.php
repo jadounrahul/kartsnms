@@ -80,7 +80,7 @@ return [
 
         'single' => [
             'driver' => 'single',
-            'path' => env('APP_LOG', \LibreNMS\Config::get('log_file', base_path('logs/librenms.log'))),
+            'path' => env('APP_LOG', \KartsNMS\Config::get('log_file', base_path('logs/kartsnms.log'))),
             'formatter' => \App\Logging\NoColorFormatter::class,
             'level' => env('LOG_LEVEL', 'error'),
             'replace_placeholders' => true,
@@ -88,7 +88,7 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'path' => env('APP_LOG', \LibreNMS\Config::get('log_file', base_path('logs/librenms.log'))),
+            'path' => env('APP_LOG', \KartsNMS\Config::get('log_file', base_path('logs/kartsnms.log'))),
             'formatter' => \App\Logging\NoColorFormatter::class,
             'level' => env('LOG_LEVEL', 'error'),
             'days' => 14,

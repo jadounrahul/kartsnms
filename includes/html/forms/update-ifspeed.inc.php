@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2014 Neil Lathwood <https://github.com/laf/ http://www.lathwood.co.uk/fa>
  *
@@ -12,7 +12,7 @@
 */
 
 use App\Models\Port;
-use LibreNMS\Enum\Severity;
+use KartsNMS\Enum\Severity;
 
 header('Content-type: application/json');
 
@@ -36,7 +36,7 @@ if ($port) {
             $device_tune = $port->device->getAttrib('override_rrdtool_tune');
             if ($port_tune == 'true' ||
                 ($device_tune == 'true' && $port_tune != 'false') ||
-                (\LibreNMS\Config::get('rrdtool_tune') == 'true' && $port_tune != 'false' && $device_tune != 'false')) {
+                (\KartsNMS\Config::get('rrdtool_tune') == 'true' && $port_tune != 'false' && $device_tune != 'false')) {
                 $rrdfile = get_port_rrdfile_path($port->device->hostname, $port_id);
                 Rrd::tune('port', $rrdfile, $speed);
             }

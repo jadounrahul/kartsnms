@@ -6,7 +6,7 @@ use App\Models\Plugin;
 use App\Plugins\Hooks\SettingsHook;
 use App\Plugins\PluginManager;
 use Illuminate\Http\Request;
-use LibreNMS\Util\Notifications;
+use KartsNMS\Util\Notifications;
 
 class PluginSettingsController extends Controller
 {

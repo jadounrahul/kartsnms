@@ -1,9 +1,9 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\Exceptions\HostUnreachableException;
-use LibreNMS\Util\IP;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\Exceptions\HostUnreachableException;
+use KartsNMS\Util\IP;
 
 $no_refresh = true;
 
@@ -23,7 +23,7 @@ $snmp_enabled = ! isset($_POST['hostname']) || isset($_POST['snmp']);
 
 if (! empty($_POST['hostname'])) {
     $hostname = strip_tags($_POST['hostname']);
-    if (! \LibreNMS\Util\Validate::hostname($hostname) && ! IP::isValid($hostname)) {
+    if (! \KartsNMS\Util\Validate::hostname($hostname) && ! IP::isValid($hostname)) {
         print_error("Invalid hostname or IP: $hostname");
     }
 
@@ -56,7 +56,7 @@ if (! empty($_POST['hostname'])) {
             }
 
             $snmpver = strip_tags($_POST['snmpver']);
-            print_message("Adding host $hostname communit" . (count(Config::get('snmp.community')) == 1 ? 'y' : 'ies') . ' ' . implode(', ', array_map("\LibreNMS\Util\Clean::html", Config::get('snmp.community'))) . " port $port using $transport");
+            print_message("Adding host $hostname communit" . (count(Config::get('snmp.community')) == 1 ? 'y' : 'ies') . ' ' . implode(', ', array_map("\KartsNMS\Util\Clean::html", Config::get('snmp.community'))) . " port $port using $transport");
         } elseif ($_POST['snmpver'] === 'v3') {
             $v3 = [
                 'authlevel'  => strip_tags($_POST['authlevel']),
@@ -83,7 +83,7 @@ if (! empty($_POST['hostname'])) {
         $port_assoc_mode = strip_tags($_POST['port_assoc_mode']);
         try {
             $device_id = addHost($hostname, $snmpver, $port, $transport, $poller_group, $force_add, $port_assoc_mode, $additional);
-            $link = \LibreNMS\Util\Url::deviceUrl($device_id);
+            $link = \KartsNMS\Util\Url::deviceUrl($device_id);
             print_message("Device added <a href='$link'>$hostname ($device_id)</a>");
         } catch (HostUnreachableException $e) {
             print_error($e->getMessage());
@@ -236,13 +236,13 @@ foreach (PortAssociationMode::getModes() as $mode) {
             <div class="col-sm-9">
               <select name="authalgo" id="authalgo" class="form-control input-sm">
                   <?php
-                  foreach (\LibreNMS\SNMPCapabilities::authAlgorithms() as $algo => $enabled) {
+                  foreach (\KartsNMS\SNMPCapabilities::authAlgorithms() as $algo => $enabled) {
                       echo "<option value=\"$algo\"" . ($enabled ?: ' disabled') . ">$algo</option>";
                   }
                   ?>
               </select>
-              <?php if (! \LibreNMS\SNMPCapabilities::supportsSHA2()) {?>
-              <label class="text-left"><small>Some options are disabled. <a href="https://docs.librenms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>
+              <?php if (! \KartsNMS\SNMPCapabilities::supportsSHA2()) {?>
+              <label class="text-left"><small>Some options are disabled. <a href="https://docs.kartsnms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>
               <?php } ?>
             </div>
           </div>
@@ -257,13 +257,13 @@ foreach (PortAssociationMode::getModes() as $mode) {
             <div class="col-sm-9">
               <select name="cryptoalgo" id="cryptoalgo" class="form-control input-sm">
                   <?php
-                  foreach (\LibreNMS\SNMPCapabilities::cryptoAlgoritms() as $algo => $enabled) {
+                  foreach (\KartsNMS\SNMPCapabilities::cryptoAlgoritms() as $algo => $enabled) {
                       echo "<option value=\"$algo\"" . ($enabled ?: ' disabled') . ">$algo</option>";
                   }
                   ?>
               </select>
-              <?php if (! \LibreNMS\SNMPCapabilities::supportsAES256()) {?>
-              <label class="text-left"><small>Some options are disabled. <a href="https://docs.librenms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>
+              <?php if (! \KartsNMS\SNMPCapabilities::supportsAES256()) {?>
+              <label class="text-left"><small>Some options are disabled. <a href="https://docs.kartsnms.org/Support/FAQ/#optional-requirements-for-snmpv3-sha2-auth">Read more here</a></small></label>
               <?php } ?>
             </div>
           </div>

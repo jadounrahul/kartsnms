@@ -1,7 +1,7 @@
 # Templates
 
 > This page is for installs running version 1.42 or later. You can
-> find the older docs [here](https://github.com/librenms/librenms/blob/773411359489e0ffcc3ba763f1f138403343591a/doc/Alerting/Old_Templates.md)
+> find the older docs [here](https://github.com/jadounrahul/kartsnms/blob/773411359489e0ffcc3ba763f1f138403343591a/doc/Alerting/Old_Templates.md)
 
 Templates can be assigned to a single or a group of rules and can
 contain any kind of text. There is also a default template which is
@@ -110,7 +110,7 @@ Displays the following:
 ```
 <html>
     <head>
-        <title>LibreNMS Alert</title>
+        <title>KartsNMS Alert</title>
     </head>
     <body>
         <div class="container">
@@ -264,7 +264,7 @@ Conditional formatting example, will display a link to the host in
 email or just the hostname in any other transport:
 
 ```text
-@if ($alert->transport == 'mail')<a href="https://my.librenms.install/device/device={{ $alert->hostname }}/">{{ $alert->hostname }}</a>
+@if ($alert->transport == 'mail')<a href="https://my.kartsnms.install/device/device={{ $alert->hostname }}/">{{ $alert->hostname }}</a>
 @else
 {{ $alert->hostname }}
 @endif
@@ -291,7 +291,7 @@ emails
 There are two helpers for graphs that will use a signed url to allow secure external
 access.  Anyone using the signed url will be able to view the graph.
 
- - Your LibreNMS web must be accessible from the location where the graph is viewed.
+ - Your KartsNMS web must be accessible from the location where the graph is viewed.
    Some alert transports require publicly accessible urls.
  - APP_URL must be set in .env to use signed graphs.
  - Changing APP_KEY will invalidate all previously issued singed urls.
@@ -324,13 +324,13 @@ for that transport.
 
 Output:
 ```html
-<img class="librenms-graph" src="https://librenms.org/graph?from=1662176216&amp;height=250&amp;id=20425&amp;to=1662219416&amp;type=port_bits&amp;width=700&amp;signature=f6e516e8fd893c772eeaba165d027cb400e15a515254de561a05b63bc6f360a4">
+<img class="kartsnms-graph" src="https://kartsnms.org/graph?from=1662176216&amp;height=250&amp;id=20425&amp;to=1662219416&amp;type=port_bits&amp;width=700&amp;signature=f6e516e8fd893c772eeaba165d027cb400e15a515254de561a05b63bc6f360a4">
 ```
 
 Specific graph using url input:
 
 ```
-@signedGraphTag('https://librenms.org/graph.php?type=device_processor&from=-2d&device=2&legend=no&height=400&width=1200')
+@signedGraphTag('https://kartsnms.org/graph.php?type=device_processor&from=-2d&device=2&legend=no&height=400&width=1200')
 ```
 
 ### @signedGraphUrl
@@ -437,7 +437,7 @@ The included templates apart from the default template are:
 ### Microsoft Teams - Markdown
 
 ```
-[{{ $alert->title }}](https://your.librenms.url/device/device={{ $alert->device_id }}/)
+[{{ $alert->title }}](https://your.kartsnms.url/device/device={{ $alert->device_id }}/)
 **Device name:** {{ $alert->sysName }}
 **Severity:** {{ $alert->severity }}
 @if ($alert->state == 0)
@@ -476,19 +476,19 @@ The included templates apart from the default template are:
 @else
     "themeColor": "337AB7",
 @endif
-    "summary": "LibreNMS",
+    "summary": "KartsNMS",
     "sections": [
         {
 @if ($alert->name)
             "facts": [
                 {
                     "name": "Rule:",
-                    "value": "[{{ $alert->name }}](https://your.librenms.url/device/device={{ $alert->device_id }}/tab=alert/)"
+                    "value": "[{{ $alert->name }}](https://your.kartsnms.url/device/device={{ $alert->device_id }}/tab=alert/)"
                 },
 @else
                 {
                     "name": "Rule:",
-                    "value": "[{{ $alert->rule }}](https://your.librenms.url/device/device={{ $alert->device_id }}/tab=alert/)"
+                    "value": "[{{ $alert->rule }}](https://your.kartsnms.url/device/device={{ $alert->device_id }}/tab=alert/)"
                 },
 @endif
                 {
@@ -511,7 +511,7 @@ The included templates apart from the default template are:
 @endif
                 {
                     "name": "Hostname:",
-                    "value": "[{{ $alert->hostname }}](https://your.librenms.url/device/device={{ $alert->device_id }}/)"
+                    "value": "[{{ $alert->hostname }}](https://your.kartsnms.url/device/device={{ $alert->device_id }}/)"
                 },
                 {
                     "name": "Hardware:",
@@ -533,7 +533,7 @@ The included templates apart from the default template are:
             "facts": [
                 {
                     "name": "Port:",
-                    "value": "[{{ $value['ifName'] }}](https://your.librenms.url/device/device={{ $alert->device_id }}/tab=port/port={{ $value['port_id'] }}/)"
+                    "value": "[{{ $value['ifName'] }}](https://your.kartsnms.url/device/device={{ $alert->device_id }}/tab=port/port={{ $value['port_id'] }}/)"
                 },
                 {
                     "name": "Description:",

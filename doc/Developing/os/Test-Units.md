@@ -1,6 +1,6 @@
 # Tests
 
-Tests ensure LibreNMS works as expected, now and in the future.  New
+Tests ensure KartsNMS works as expected, now and in the future.  New
 OS should provide as much test data as needed and added test data for
 existing OS is welcome.
 
@@ -32,7 +32,7 @@ make sure it is modified in a consistent manner.
 `./scripts/collect-snmp-data.php` is provided to make it easy to
 collect data for tests.  Running collect-snmp-data.php with the
 `--hostname (-h)` allows you to capture all data used to discover and
-poll a device already added to LibreNMS.  Make sure to re-run the
+poll a device already added to KartsNMS.  Make sure to re-run the
 script if you add additional support. Check the command-line help for
 more options.
 
@@ -51,7 +51,7 @@ save-test-data.php to update the database dump (json) after that.
 ## Running tests
 
 **Note:** To run tests, ensure you have executed
-`./scripts/composer_wrapper.php install` from your LibreNMS root
+`./scripts/composer_wrapper.php install` from your KartsNMS root
 directory. This will read composer.json and install any dependencies required.
 
 After you have saved your test data, you should run
@@ -94,7 +94,7 @@ data. Here is an example snippet.
 1.3.6.1.2.1.1.2.0|6|1.3.6.1.4.1.12532.254.1.1
 ```
 
-During testing LibreNMS will use any info in the snmprec file for snmp
+During testing KartsNMS will use any info in the snmprec file for snmp
 calls.  This one provides sysDescr (`.1.3.6.1.2.1.1.1.0`, 4 = Octet
 String) and sysObjectID (`.1.3.6.1.2.1.1.2.0`, 6 = Object Identifier),
 which is the minimum that should be provided for new snmprec files.
@@ -135,7 +135,7 @@ must use a variant to store your test data (-v).
 
 ### Add initial detection
 
-1. Add device to LibreNMS. It is generic and device_id = 42
+1. Add device to KartsNMS. It is generic and device_id = 42
 1. Run `./scripts/collect-snmp-data.php -h 42`, initial snmprec will be created
 1. [Add initial detection](Initial-Detection.md) for `example-os`
 1. Run discovery to make sure it detects properly `./discovery.php -h 42`

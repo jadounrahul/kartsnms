@@ -8,9 +8,9 @@ $(function () {
 use App\Models\Port;
 use App\Models\PortAdsl;
 use App\Models\PortVdsl;
-use LibreNMS\Config;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\Number;
+use KartsNMS\Config;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\Number;
 
 // This file prints a table row for each interface
 $port['device_id'] = $device['device_id'];
@@ -109,7 +109,7 @@ if ($port['ifOperStatus'] == 'up') {
 
 echo "</td><td width=75 onclick=\"location.href='" . generate_port_url($port) . "'\" >";
 if ($port['ifSpeed']) {
-    echo '<span class=box-desc>' . \LibreNMS\Util\Number::formatSi($port['ifSpeed'], 2, 3, 'bps') . '</span>';
+    echo '<span class=box-desc>' . \KartsNMS\Util\Number::formatSi($port['ifSpeed'], 2, 3, 'bps') . '</span>';
 }
 
 echo '<br />';
@@ -129,7 +129,7 @@ $vlan_count = count($vlans);
 
 if ($vlan_count > 1) {
     echo '<p class=box-desc><span class=purple><a href="';
-    echo \LibreNMS\Util\Url::deviceUrl((int) $device['device_id'], ['tab' => 'vlans']);
+    echo \KartsNMS\Util\Url::deviceUrl((int) $device['device_id'], ['tab' => 'vlans']);
     echo '" title="';
     echo implode(', ', $vlans);
     echo '">VLANs: ';
@@ -171,7 +171,7 @@ if (! empty($port_adsl->adslLineCoding)) {
 } else {
     echo "</td><td width=150 onclick=\"location.href='" . generate_port_url($port) . "'\" >";
     if ($port['ifType'] && $port['ifType'] != '') {
-        echo '<span class=box-desc>' . \LibreNMS\Util\Rewrite::normalizeIfType($port['ifType']) . '</span>';
+        echo '<span class=box-desc>' . \KartsNMS\Util\Rewrite::normalizeIfType($port['ifType']) . '</span>';
     } else {
         echo '-';
     }
@@ -230,7 +230,7 @@ if (strpos($port['label'], 'oopback') === false && empty($graph_type)) {
                 $this_ifid = $new['port_id'];
                 $this_hostid = $new['device_id'];
                 $this_hostname = $new['hostname'];
-                $this_ifname = \LibreNMS\Util\Rewrite::normalizeIfName($new['label']);
+                $this_ifname = \KartsNMS\Util\Rewrite::normalizeIfName($new['label']);
                 $int_links[$this_ifid] = $this_ifid;
                 $int_links_v4[$this_ifid] = 1;
             }
@@ -252,7 +252,7 @@ if (strpos($port['label'], 'oopback') === false && empty($graph_type)) {
                 $this_ifid = $new['port_id'];
                 $this_hostid = $new['device_id'];
                 $this_hostname = $new['hostname'];
-                $this_ifname = \LibreNMS\Util\Rewrite::normalizeIfName($new['label']);
+                $this_ifname = \KartsNMS\Util\Rewrite::normalizeIfName($new['label']);
                 $int_links[$this_ifid] = $this_ifid;
                 $int_links_v6[$this_ifid] = 1;
             }

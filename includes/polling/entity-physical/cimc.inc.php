@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to poll hardware components in a Cisco Integrated Management Controller
+ * KartsNMS module to poll hardware components in a Cisco Integrated Management Controller
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $components = $component->getComponents($device['device_id'], ['type'=>'Cisco-CIMC']);
 
 // We only care about our device id.

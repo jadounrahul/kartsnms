@@ -29,18 +29,18 @@ foreach ($rrd_list as $rrd) {
     if ($rrd['colour']) {
         $colour = $rrd['colour'];
     } else {
-        if (! \LibreNMS\Config::get("graph_colours.$colours.$colour_iter")) {
+        if (! \KartsNMS\Config::get("graph_colours.$colours.$colour_iter")) {
             $colour_iter = 0;
         }
 
-        $colour = \LibreNMS\Config::get("graph_colours.$colours.$colour_iter");
+        $colour = \KartsNMS\Config::get("graph_colours.$colours.$colour_iter");
         $colour_iter++;
     }
     $i++;
     $ds = $rrd['ds'];
     $filename = $rrd['filename'];
 
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($rrd['descr'], $descr_len);
     $id = 'ds' . $i;
 
     $rrd_options .= ' DEF:' . $rrd['ds'] . $i . '=' . $rrd['filename'] . ':' . $rrd['ds'] . ':AVERAGE ';

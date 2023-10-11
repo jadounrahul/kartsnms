@@ -22,7 +22,7 @@ You can configure your install (this is the default) to use this
 branch by setting `lnms config:set update_channel master` 
 and ensuring you switch to the master branch with:
 
-`cd /opt/librenms && git checkout master`
+`cd /opt/kartsnms && git checkout master`
 
 ## Stable branch
 
@@ -37,6 +37,6 @@ and date so you can see what changes have been made since the last release.
 To switch to using stable branches you can set
 `lnms config:set update_channel release`
 
-This will pause updates until the next stable release, at that time LibreNMS will
+This will pause updates until the next stable release, at that time KartsNMS will
 update to the stable release and continue to only update to stable releases.
-Downgrading is not supported on LibreNMS and will likely cause bugs.
+Downgrading is not supported on KartsNMS and will likely cause bugs.

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use LibreNMS\Interfaces\ValidationFixer;
-use LibreNMS\Validator;
+use KartsNMS\Interfaces\ValidationFixer;
+use KartsNMS\Validator;
 
 class ValidateController extends Controller
 {
@@ -27,7 +27,7 @@ class ValidateController extends Controller
     {
         $this->validate($request, [
             'fixer' => [
-                'starts_with:LibreNMS\Validations',
+                'starts_with:KartsNMS\Validations',
                 function ($attribute, $value, $fail) {
                     if (! class_exists($value) || ! in_array(ValidationFixer::class, class_implements($value))) {
                         $fail(trans('validation.results.invalid_fixer'));

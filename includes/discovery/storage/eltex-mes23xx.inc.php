@@ -1,7 +1,7 @@
 <?php
 /*
  *
- * LibreNMS storage discovery module for Eltex-MES23xx
+ * KartsNMS storage discovery module for Eltex-MES23xx
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  *
  * @author     Peca Nesovanovic <peca.nesovanovic@sattrakt.com>
  */

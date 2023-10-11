@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Facades\DeviceCache;
 use App\Models\Device;
 use Illuminate\View\Component;
-use LibreNMS\Util\Graph;
+use KartsNMS\Util\Graph;
 
 class DeviceLink extends Component
 {

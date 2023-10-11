@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Console\LnmsCommand;
 use App\Models\Device;
 use Illuminate\Support\Str;
-use LibreNMS\Util\Snmpsim;
+use KartsNMS\Util\Snmpsim;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\Process;

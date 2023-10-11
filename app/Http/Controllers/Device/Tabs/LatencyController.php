@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -28,9 +28,9 @@ namespace App\Http\Controllers\Device\Tabs;
 use App\Models\Device;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use LibreNMS\Config;
-use LibreNMS\Interfaces\UI\DeviceTab;
-use LibreNMS\Util\Smokeping;
+use KartsNMS\Config;
+use KartsNMS\Interfaces\UI\DeviceTab;
+use KartsNMS\Util\Smokeping;
 use Request;
 
 class LatencyController implements DeviceTab

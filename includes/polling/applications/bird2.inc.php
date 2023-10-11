@@ -5,13 +5,13 @@ use Carbon\Carbon;
 
 $name = 'bird2';
 
-if (! \LibreNMS\Config::get('enable_bgp')) {
+if (! \KartsNMS\Config::get('enable_bgp')) {
     echo PHP_EOL . $name . ': BGP is not enabled in config' . PHP_EOL;
 
     return;
 }
 
-$birdOutput = snmp_get($device, 'nsExtendOutputFull.' . \LibreNMS\Util\Oid::ofString($name), '-Oqv', 'NET-SNMP-EXTEND-MIB');
+$birdOutput = snmp_get($device, 'nsExtendOutputFull.' . \KartsNMS\Util\Oid::ofString($name), '-Oqv', 'NET-SNMP-EXTEND-MIB');
 
 // make sure we actually get something back
 if (empty($birdOutput)) {
@@ -150,7 +150,7 @@ foreach ($protocolsData as $protocol) {
     ]);
 
     $bgpPeer->device_id = $device['device_id'];
-    $bgpPeer->astext = \LibreNMS\Util\AutonomousSystem::get($protocol['neighbor_as'])->name();
+    $bgpPeer->astext = \KartsNMS\Util\AutonomousSystem::get($protocol['neighbor_as'])->name();
     $bgpPeer->bgpPeerIdentifier = $protocol['neighbor_id'] ?: '0.0.0.0';
     $bgpPeer->bgpPeerRemoteAs = $protocol['neighbor_as'];
     $bgpPeer->bgpPeerState = strtolower($protocol['bgp_state']);

@@ -1,10 +1,10 @@
 <?php
 
-use LibreNMS\Config;
-use LibreNMS\Enum\PortAssociationMode;
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Debug;
-use LibreNMS\Util\Number;
+use KartsNMS\Config;
+use KartsNMS\Enum\PortAssociationMode;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Debug;
+use KartsNMS\Util\Number;
 
 // Build SNMP Cache Array
 $data_oids = [
@@ -444,7 +444,7 @@ $polled = time();
 // End Building SNMP Cache Array
 d_echo($port_stats);
 
-// By default libreNMS uses the ifIndex to associate ports on devices with ports discoverd/polled
+// By default kartsNMS uses the ifIndex to associate ports on devices with ports discoverd/polled
 // before and stored in the database. On Linux boxes this is a problem as ifIndexes may be
 // unstable between reboots or (re)configuration of tunnel interfaces (think: GRE/OpenVPN/Tinc/...)
 // The port association configuration allows to choose between association via ifIndex, ifName,
@@ -674,7 +674,7 @@ foreach ($ports as $port) {
                     // handle legacy '1' setting, otherwise use value set by override
                     $current_oid = $ifAlias_override === '1' ? $port['ifAlias'] : $ifAlias_override;
                 } else {
-                    $current_oid = \LibreNMS\Util\StringHelpers::inferEncoding($this_port['ifAlias']);
+                    $current_oid = \KartsNMS\Util\StringHelpers::inferEncoding($this_port['ifAlias']);
                 }
             }
             if ($oid == 'ifSpeed') {

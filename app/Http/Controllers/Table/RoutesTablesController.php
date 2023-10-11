@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2019 PipoCanaja
  * @author     PipoCanaja
@@ -29,8 +29,8 @@ use App\Models\Device;
 use App\Models\Route;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use LibreNMS\Util\IP;
-use LibreNMS\Util\Url;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\Url;
 
 class RoutesTablesController extends TableController
 {

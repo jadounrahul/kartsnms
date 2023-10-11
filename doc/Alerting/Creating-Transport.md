@@ -2,7 +2,7 @@
 
 ## File location
 
-All transports are located in `LibreNMS\Alert\Transport` and the files
+All transports are located in `KartsNMS\Alert\Transport` and the files
 are named after the Transport name. I.e `Discord.php` for Discord.
 
 ## Transport structure

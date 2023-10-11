@@ -1,19 +1,19 @@
 # Docker
 
-An official LibreNMS docker image based on Alpine Linux and Nginx is available
-on [DockerHub](https://hub.docker.com/r/librenms/librenms/).
+An official KartsNMS docker image based on Alpine Linux and Nginx is available
+on [DockerHub](https://hub.docker.com/r/kartsnms/kartsnms/).
 
 # Documentation
 
-Full install and configuration documentation can be found on the [GitHub repository](https://github.com/librenms/docker).
+Full install and configuration documentation can be found on the [GitHub repository](https://github.com/kartsnms/docker).
 
 # Quick install
 1. Install docker: https://docs.docker.com/engine/install/
 2. Download and unzip composer files:
 ```
-mkdir librenms
-cd librenms
-wget https://github.com/librenms/docker/archive/refs/heads/master.zip
+mkdir kartsnms
+cd kartsnms
+wget https://github.com/kartsnms/docker/archive/refs/heads/master.zip
 unzip master.zip
 cd docker-master/examples/compose
 ```

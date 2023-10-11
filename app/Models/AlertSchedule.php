@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -33,7 +33,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use LibreNMS\Enum\AlertScheduleStatus;
+use KartsNMS\Enum\AlertScheduleStatus;
 
 /**
  * @method static \Database\Factories\AlertScheduleFactory factory(...$parameters)
@@ -140,7 +140,7 @@ class AlertSchedule extends Model
     }
 
     /**
-     * @return int \LibreNMS\Enum\AlertScheduleStatus
+     * @return int \KartsNMS\Enum\AlertScheduleStatus
      */
     public function getStatusAttribute()
     {

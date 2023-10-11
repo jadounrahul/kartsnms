@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Cisco wireless controller temperature monitoring module
+ * KartsNMS Cisco wireless controller temperature monitoring module
  *
  * Copyright (c) 2016 Tuomas Riihimäki <tuomari@iudex.fi>
  * This program is free software: you can redistribute it and/or modify it

@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Util\IP;
-use LibreNMS\Util\IPv4;
-use LibreNMS\Util\IPv6;
+use KartsNMS\Util\IP;
+use KartsNMS\Util\IPv4;
+use KartsNMS\Util\IPv6;
 
 class IpTest extends TestCase
 {
@@ -55,7 +55,7 @@ class IpTest extends TestCase
     }
 
     /**
-     * See https://github.com/librenms/librenms/pull/13468 for more info
+     * See https://github.com/jadounrahul/kartsnms/pull/13468 for more info
      *
      * @requires PHP >= 7.4
      */
@@ -76,13 +76,13 @@ class IpTest extends TestCase
         $this->assertEquals('2001:db8:85a3::8a2e:370:7334', new IPv6('2001:db8:85a3::8a2e:370:7334'));
         $this->assertEquals('::1', new IPv6('::1'));
 
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         new IPv6('192.168.0.1');
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         new IPv6('127.0.0.1');
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         new IPv4('2001:db8:85a3::8a2e:370:7334');
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         new IPv4('::1');
     }
 
@@ -103,10 +103,10 @@ class IpTest extends TestCase
 
         $this->assertEquals('::', IP::fromHexString('00000000000000000000000000000000'));
 
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         IP::fromHexString('c0 a8 01 01 fe');
 
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         IP::fromHexString('20 01 0d b8 00 00 00 00 00 00 00 00 00 02 00 00 00 01');
     }
 
@@ -134,13 +134,13 @@ class IpTest extends TestCase
         $this->assertTrue(IP::parse('2001:db8:85a3::8a2e:370:7334')->inNetwork('2001:db8:85a3::8a2e:370:7334/128'));
         $this->assertFalse(IP::parse('2001:db8:85a3::8a2e:370:7335')->inNetwork('2001:db8:85a3::8a2e:370:7334/128'));
 
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         IP::parse('42')->inNetwork('192.168.1.0/4');
 
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         IP::parse('192.168.1.256')->inNetwork('192.168.1.0/24');
 
-        $this->expectException('LibreNMS\Exceptions\InvalidIpException');
+        $this->expectException('KartsNMS\Exceptions\InvalidIpException');
         IP::parse('192.168.1.0')->inNetwork('192.168.1.0');
     }
 

@@ -2,18 +2,18 @@
 <?php
 
 /*
- * LibreNMS
+ * KartsNMS
  *
- *   This file is part of LibreNMS.
+ *   This file is part of KartsNMS.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage billing
  * @copyright  (C) 2006 - 2012 Adam Armstrong
  */
 
-use LibreNMS\Billing;
-use LibreNMS\Data\Store\Datastore;
-use LibreNMS\Util\Debug;
+use KartsNMS\Billing;
+use KartsNMS\Data\Store\Datastore;
+use KartsNMS\Util\Debug;
 
 $init_modules = [];
 require __DIR__ . '/includes/init.php';
@@ -31,7 +31,7 @@ Datastore::init();
 $poller_start = microtime(true);
 echo "Starting Polling Session ... \n\n";
 
-$query = \LibreNMS\DB\Eloquent::DB()->table('bills');
+$query = \KartsNMS\DB\Eloquent::DB()->table('bills');
 
 if (isset($options['b'])) {
     $query->where('bill_id', $options['b']);

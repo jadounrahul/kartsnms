@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display captured NTP statistics
+ * KartsNMS module to display captured NTP statistics
  *
  * Copyright (c) 2016 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options = [];
 $options['filter']['type'] = ['=', 'ntp'];
 $components = $component->getComponents($device['device_id'], $options);
@@ -31,7 +31,7 @@ foreach ($components as $id => $array) {
 
     if (Rrd::checkRrdExists($rrd_filename)) {
         // Grab a color from the array.
-        $color = \LibreNMS\Config::get("graph_colours.mixed.$count", \LibreNMS\Config::get('graph_colours.oranges.' . ($count - 7)));
+        $color = \KartsNMS\Config::get("graph_colours.mixed.$count", \KartsNMS\Config::get('graph_colours.oranges.' . ($count - 7)));
 
         $rrd_additions .= ' DEF:DS' . $count . '=' . $rrd_filename . ':dispersion:AVERAGE ';
         $rrd_additions .= ' LINE1.25:DS' . $count . '#' . $color . ":'" . str_pad(substr($array['peer'], 0, 15), 15) . "'" . $stack;

@@ -41,7 +41,7 @@ $sql = "SELECT * $sql";
 foreach (dbFetchRows($sql, $param) as $drive) {
     $perc = round($drive['storage_perc']);
     $perc_warn = round($drive['storage_perc_warn']);
-    $size = \LibreNMS\Util\Number::formatBi($drive['storage_size']);
+    $size = \KartsNMS\Util\Number::formatBi($drive['storage_size']);
     $response[] = [
         'storage_id' => $drive['storage_id'],
         'hostname' => generate_device_link($drive),

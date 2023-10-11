@@ -1,4 +1,4 @@
-@extends('layouts.librenmsv1')
+@extends('layouts.kartsnmsv1')
 
 @section('title', __('About'))
 
@@ -24,11 +24,11 @@
     <div class="row">
         <div class="col-md-6">
 
-            <h3>{{ __('LibreNMS is an autodiscovering PHP/MySQL-based network monitoring system') }}</h3>
+            <h3>{{ __('KartsNMS is an autodiscovering PHP/MySQL-based network monitoring system') }}</h3>
             <table class='table table-condensed table-hover'>
                 <tr>
                     <td><b>{{ __('Version') }}</b></td>
-                    <td><a target="_blank" href='https://www.librenms.org/changelog.html'>{{ $version_local }}<span id='version_date' style="display: none;">{{ $git_date }}</span></a></td>
+                    <td><a target="_blank" href='https://www.itkarts.com/changelog.html'>{{ $version_local }}<span id='version_date' style="display: none;">{{ $git_date }}</span></a></td>
                 </tr>
                 <tr>
                     <td><b>{{ __('Database Schema') }}</b></td>
@@ -60,25 +60,25 @@
                 </tr>
             </table>
 
-          <h3>{{ __('LibreNMS is a community-based project') }}</h3>
+          <h3>{{ __('KartsNMS is a community-based project') }}</h3>
           <p>
             {{ __('Please feel free to join us and contribute code, documentation, and bug reports:') }}
             <br />
-            <a target="_blank" href="https://www.librenms.org/">{{ __('Web site') }}</a> |
-            <a target="_blank" href="https://docs.librenms.org/">{{ __('Docs') }}</a> |
-            <a target="_blank" href="https://github.com/librenms/">{{ __('GitHub') }}</a> |
-            <a target="_blank" href="https://community.librenms.org/c/help">{{ __('Bug tracker') }}</a> |
-            <a target="_blank" href="https://www.librenms.org/shop">{{ __('Merch Shop') }}</a> |
-            <a target="_blank" href="https://community.librenms.org">{{ __('Community Forum') }}</a> |
-            <a target="_blank" href="https://twitter.com/librenms">{{ __('Twitter') }}</a> |
-            <a target="_blank" href="https://www.linkedin.com/company/librenms">{{ __('LinkedIn') }}</a> |
-            <a target="_blank" href="https://www.librenms.org/changelog.html">{{ __('Changelog') }}</a> |
+            <a target="_blank" href="https://www.itkarts.com/">{{ __('Web site') }}</a> |
+            <a target="_blank" href="https://docs.kartsnms.org/">{{ __('Docs') }}</a> |
+            <a target="_blank" href="https://github.com/kartsnms/">{{ __('GitHub') }}</a> |
+            <a target="_blank" href="https://community.itkarts.com/c/help">{{ __('Bug tracker') }}</a> |
+            <a target="_blank" href="https://www.itkarts.com/shop">{{ __('Merch Shop') }}</a> |
+            <a target="_blank" href="https://community.itkarts.com">{{ __('Community Forum') }}</a> |
+            <a target="_blank" href="https://twitter.com/kartsnms">{{ __('Twitter') }}</a> |
+            <a target="_blank" href="https://www.linkedin.com/company/kartsnms">{{ __('LinkedIn') }}</a> |
+            <a target="_blank" href="https://www.itkarts.com/changelog.html">{{ __('Changelog') }}</a> |
             <a href="#" data-toggle="modal" data-target="#git_log">{{ __('Local git log') }}</a>
           </p>
 
           <h3>{{ __('Contributors') }}</h3>
 
-          <p>{!! __('See the <a target="_blank" href=":url">list of contributors</a> on GitHub.', ['url' => 'https://github.com/librenms/librenms/graphs/contributors']) !!}</p>
+          <p>{!! __('See the <a target="_blank" href=":url">list of contributors</a> on GitHub.', ['url' => 'https://github.com/jadounrahul/kartsnms/graphs/contributors']) !!}</p>
 
           <h3>{{ __('Acknowledgements') }}</h3>
 
@@ -99,13 +99,13 @@
             <tr>
                 <td colspan='4'>
                     <div>
-                        <label for="reporting.usage" class="bg-info">{{ __('Opt in to send anonymous reports to LibreNMS?') }}</label>
+                        <label for="reporting.usage" class="bg-info">{{ __('Opt in to send anonymous reports to KartsNMS?') }}</label>
                     </div>
                     <div>
                         {{ __('Error reporting:') }} <input type="checkbox" id="reporting.error" name="reporting" data-size="small" @if($error_reporting_status) checked @endif>
                     </div>
                     <div class="tw-mt-2">
-                    {{ __('Usage statistics:') }} <input type="checkbox" id="reporting.usage" name="reporting" data-size="small" @if($usage_reporting_status) checked @endif> <a target="_blank" href='https://stats.librenms.org/'>stats.librenms.org</a>
+                    {{ __('Usage statistics:') }} <input type="checkbox" id="reporting.usage" name="reporting" data-size="small" @if($usage_reporting_status) checked @endif> <a target="_blank" href='https://stats.kartsnms.org/'>stats.kartsnms.org</a>
                     </div>
                     @if($reporting_clearable)
                         <div class="tw-mt-2">

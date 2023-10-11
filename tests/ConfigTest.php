@@ -2,7 +2,7 @@
 /**
  * ConfigTest.php
  *
- * Tests for LibreNMS\Config
+ * Tests for KartsNMS\Config
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests;
+namespace KartsNMS\Tests;
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 class ConfigTest extends TestCase
 {

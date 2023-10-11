@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,11 +8,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
+ * @author     KartsNMS Contributors
 */
 
 $pagetitle[] = 'Services';
@@ -187,12 +187,12 @@ require_once 'includes/html/modal/delete_service.inc.php';
 
                         echo '<tr id="row_' . $service['service_id'] . '">';
                         echo '<td><span data-toggle="tooltip" title="' . $title . '" class="alert-status ' . $label . '"></span></td>';
-                        echo '<td>' . nl2br(\LibreNMS\Util\Clean::html($service['service_name'], [])) . '</td>';
-                        echo '<td>' . nl2br(\LibreNMS\Util\Clean::html($service['service_type'], [])) . '</td>';
-                        echo '<td>' . nl2br(\LibreNMS\Util\Clean::html($service['service_ip'], [])) . '</td>';
-                        echo '<td>' . nl2br(\LibreNMS\Util\Clean::html($service['service_message'], [])) . '</td>';
-                        echo '<td>' . nl2br(\LibreNMS\Util\Clean::html($service['service_desc'], [])) . '</td>';
-                        echo '<td>' . \LibreNMS\Util\Time::formatInterval(time() - $service['service_changed']) . '</td>';
+                        echo '<td>' . nl2br(\KartsNMS\Util\Clean::html($service['service_name'], [])) . '</td>';
+                        echo '<td>' . nl2br(\KartsNMS\Util\Clean::html($service['service_type'], [])) . '</td>';
+                        echo '<td>' . nl2br(\KartsNMS\Util\Clean::html($service['service_ip'], [])) . '</td>';
+                        echo '<td>' . nl2br(\KartsNMS\Util\Clean::html($service['service_message'], [])) . '</td>';
+                        echo '<td>' . nl2br(\KartsNMS\Util\Clean::html($service['service_desc'], [])) . '</td>';
+                        echo '<td>' . \KartsNMS\Util\Time::formatInterval(time() - $service['service_changed']) . '</td>';
 
                         $service_checked = '';
                         $ico = 'pause';
@@ -217,7 +217,7 @@ require_once 'includes/html/modal/delete_service.inc.php';
                             $service_checked = 'checked';
                         }
                         $service_id = $service['service_id'];
-                        $service_name = \LibreNMS\Util\Clean::html($service['service_name']);
+                        $service_name = \KartsNMS\Util\Clean::html($service['service_name']);
 
                         echo '<td>' . '<span id="service_status-' . $service_id . '" class="fa fa-fw fa-2x text-' . $color . ' fa-' . $ico . '" data-original-title="" title=""></span></td>';
 

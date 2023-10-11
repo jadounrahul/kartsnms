@@ -151,7 +151,7 @@ return [
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
 
-    // Librenms specific
+    // Kartsnms specific
     'alpha_space' => 'The :attribute may only contain letters, numbers, underscores and spaces.',
     'ip_or_hostname' => 'The :attribute must a valid IP address/network or hostname.',
     'is_regex' => 'The :attribute is not a valid regular expression',

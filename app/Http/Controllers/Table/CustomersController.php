@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -27,9 +27,9 @@ namespace App\Http\Controllers\Table;
 
 use App\Models\Port;
 use Illuminate\Support\Arr;
-use LibreNMS\Config;
-use LibreNMS\Util\Html;
-use LibreNMS\Util\Url;
+use KartsNMS\Config;
+use KartsNMS\Util\Html;
+use KartsNMS\Util\Url;
 
 class CustomersController extends TableController
 {

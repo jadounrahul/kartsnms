@@ -1,6 +1,6 @@
 # Device Sensors
 
-LibreNMS has a standard for device sensors they are split into
+KartsNMS has a standard for device sensors they are split into
 categories. This doc is to help users understand device sensors in
 general, if you need help with developing sensors for a device please
 see the Contributing + Developing section.
@@ -13,7 +13,7 @@ custom High and Low values. List of these sensors can be found here
 [Link](../Developing/os/Health-Information.md)
 
 **Note** Some values are defined by the manufactures and others are
-auto calculated when you add the device into librenms. Keep in mind
+auto calculated when you add the device into kartsnms. Keep in mind
 every environment is different and may require user input.
 
 ## Wireless Sensors
@@ -24,7 +24,7 @@ you can set your own custom High and Low values. List of these sensors
 can be found here [Link](../Developing/os/Wireless-Sensors.md)
 
 **Note** Some values are defined by the manufactures and others are
-auto calculated when you add the device into librenms. Keep in mind
+auto calculated when you add the device into kartsnms. Keep in mind
 every environment is different and may require user input.
 
 ## State Sensors

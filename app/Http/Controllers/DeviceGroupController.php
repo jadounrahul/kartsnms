@@ -6,8 +6,8 @@ use App\Models\DeviceGroup;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use LibreNMS\Alerting\QueryBuilderFilter;
-use LibreNMS\Alerting\QueryBuilderFluentParser;
+use KartsNMS\Alerting\QueryBuilderFilter;
+use KartsNMS\Alerting\QueryBuilderFluentParser;
 
 class DeviceGroupController extends Controller
 {

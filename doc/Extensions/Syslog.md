@@ -2,13 +2,13 @@
 
 
 ## Syslog integration variants
-This section explain different ways to recieve and process syslog with LibreNMS.
-Except of graylog, all Syslogs variants store their logs in the LibreNMS database. You need to enable the Syslog extension in  `config.php`:
+This section explain different ways to recieve and process syslog with KartsNMS.
+Except of graylog, all Syslogs variants store their logs in the KartsNMS database. You need to enable the Syslog extension in  `config.php`:
 
 ```php
 $config['enable_syslog'] = 1;
 ```
-A Syslog integration gives you a centralized view of information within the LibreNMS (device view, traps, event). Further more you can trigger alerts based on syslog messages (see rule collections).
+A Syslog integration gives you a centralized view of information within the KartsNMS (device view, traps, event). Further more you can trigger alerts based on syslog messages (see rule collections).
 
 ### Traditional Syslog server
 
@@ -23,7 +23,7 @@ A Syslog integration gives you a centralized view of information within the Libr
     ```
 
 Once syslog-ng is installed, create the config file 
-(/etc/syslog-ng/conf.d/librenms.conf) and paste the following:
+(/etc/syslog-ng/conf.d/kartsnms.conf) and paste the following:
 
 ```bash
 source s_net {
@@ -31,14 +31,14 @@ source s_net {
         udp(port(514) flags(syslog-protocol));
 };
 
-destination d_librenms {
-        program("/opt/librenms/syslog.php" template ("$HOST||$FACILITY||$PRIORITY||$LEVEL||$TAG||$R_YEAR-$R_MONTH-$R_DAY $R_HOUR:$R_MIN:$R_SEC||$MSG||$PROGRAM\n") template-escape(yes));
+destination d_kartsnms {
+        program("/opt/kartsnms/syslog.php" template ("$HOST||$FACILITY||$PRIORITY||$LEVEL||$TAG||$R_YEAR-$R_MONTH-$R_DAY $R_HOUR:$R_MIN:$R_SEC||$MSG||$PROGRAM\n") template-escape(yes));
 };
 
 log {
         source(s_net);
         source(s_sys);
-        destination(d_librenms);
+        destination(d_kartsnms);
 };
 ```
 
@@ -48,10 +48,10 @@ Next start syslog-ng:
 service syslog-ng restart
 ```
 
-If no messages make it to the syslog tab in LibreNMS, chances are you experience an issue with SELinux. If so, create a file mycustom-librenms-rsyslog.te , with the following content:
+If no messages make it to the syslog tab in KartsNMS, chances are you experience an issue with SELinux. If so, create a file mycustom-kartsnms-rsyslog.te , with the following content:
 
 ```
-module mycustom-librenms-rsyslog 1.0;
+module mycustom-kartsnms-rsyslog 1.0;
 
 require {
         type syslogd_t;
@@ -72,9 +72,9 @@ allow syslogd_t ping_exec_t:file execute;
 Then, as root, execute the following commands:
 
 ```ssh
-checkmodule -M -m -o mycustom-librenms-rsyslog.mod mycustom-librenms-rsyslog.te
-semodule_package -o mycustom-librenms-rsyslog.pp -m mycustom-librenms-rsyslog.mod
-semodule -i mycustom-librenms-rsyslog.pp
+checkmodule -M -m -o mycustom-kartsnms-rsyslog.mod mycustom-kartsnms-rsyslog.te
+semodule_package -o mycustom-kartsnms-rsyslog.pp -m mycustom-kartsnms-rsyslog.mod
+semodule -i mycustom-kartsnms-rsyslog.pp
 ```
 
 
@@ -92,31 +92,31 @@ $ModLoad imudp
 $UDPServerRun 514
 ```
 
-Create a file called `/etc/rsyslog.d/30-librenms.conf`and add the following depending on your version of rsyslog.
+Create a file called `/etc/rsyslog.d/30-kartsnms.conf`and add the following depending on your version of rsyslog.
 
 === "Version 8"
     ```
-    # Feed syslog messages to librenms
+    # Feed syslog messages to kartsnms
     module(load="omprog")
 
-    template(name="librenms"
+    template(name="kartsnms"
             type="string"
             string= "%fromhost%||%syslogfacility%||%syslogpriority%||%syslogseverity%||%syslogtag%||%$year%-%$month%-%$day% %timegenerated:8:25%||%msg%||%programname%\n")
             action(type="omprog"
-            binary="/opt/librenms/syslog.php"
-            template="librenms")
+            binary="/opt/kartsnms/syslog.php"
+            template="kartsnms")
 
     & stop
     ```
 
 === "Version 7"
     ```
-    #Feed syslog messages to librenms
+    #Feed syslog messages to kartsnms
     $ModLoad omprog
 
-    $template librenms,"%fromhost%||%syslogfacility%||%syslogpriority%||%syslogseverity%||%syslogtag%||%$year%-%$month%-%$day% %timegenerated:8:25%||%msg%||%programname%\n"
+    $template kartsnms,"%fromhost%||%syslogfacility%||%syslogpriority%||%syslogseverity%||%syslogtag%||%$year%-%$month%-%$day% %timegenerated:8:25%||%msg%||%programname%\n"
 
-    *.* action(type="omprog" binary="/opt/librenms/syslog.php" template="librenms")
+    *.* action(type="omprog" binary="/opt/kartsnms/syslog.php" template="kartsnms")
 
     & stop
 
@@ -124,12 +124,12 @@ Create a file called `/etc/rsyslog.d/30-librenms.conf`and add the following depe
 
 === "Legacy"
     ```
-    # Feed syslog messages to librenms
+    # Feed syslog messages to kartsnms
     $ModLoad omprog
-    $template librenms,"%FROMHOST%||%syslogfacility-text%||%syslogpriority-text%||%syslogseverity%||%syslogtag%||%$YEAR%-%$MONTH%-%$DAY%    %timegenerated:8:25%||%msg%||%programname%\n"
+    $template kartsnms,"%FROMHOST%||%syslogfacility-text%||%syslogpriority-text%||%syslogseverity%||%syslogtag%||%$YEAR%-%$MONTH%-%$DAY%    %timegenerated:8:25%||%msg%||%programname%\n"
 
-    $ActionOMProgBinary /opt/librenms/syslog.php
-    *.* :omprog:;librenms
+    $ActionOMProgBinary /opt/kartsnms/syslog.php
+    *.* :omprog:;kartsnms
     ```
 
 If your rsyslog server is receiving messages relayed by another syslog
@@ -142,7 +142,7 @@ syslog messages.
 ### Local Logstash
 
 If you prefer logstash, and it is installed on the same server as
-LibreNMS, here are some hints on how to get it working.
+KartsNMS, here are some hints on how to get it working.
 
 First, install the output-exec plugin for logstash:
 
@@ -164,7 +164,7 @@ syslog {
 
 output {
         exec {
-        command => "echo `echo %{host},,,,%{facility},,,,%{priority},,,,%{severity},,,,%{facility_label},,,,``date --date='%{timestamp}' '+%Y-%m-%d %H:%M:%S'``echo ',,,,%{message}'``echo ,,,,%{program} | sed 's/\x25\x7b\x70\x72\x6f\x67\x72\x61\x6d\x7d/%{facility_label}/'` | sed 's/,,,,/||/g' | /opt/librenms/syslog.php &"
+        command => "echo `echo %{host},,,,%{facility},,,,%{priority},,,,%{severity},,,,%{facility_label},,,,``date --date='%{timestamp}' '+%Y-%m-%d %H:%M:%S'``echo ',,,,%{message}'``echo ,,,,%{program} | sed 's/\x25\x7b\x70\x72\x6f\x67\x72\x61\x6d\x7d/%{facility_label}/'` | sed 's/,,,,/||/g' | /opt/kartsnms/syslog.php &"
         }
         elasticsearch {
         hosts => ["10.10.10.10:9200"]
@@ -175,11 +175,11 @@ output {
 
 Replace 10.10.10.10 with your primary elasticsearch server IP, and set
 the incoming syslog port. Alternatively, if you already have a
-logstash config file that works except for the LibreNMS export, take
+logstash config file that works except for the KartsNMS export, take
 only the "exec" section from output and add it.
 
 ### Remote Logstash (or any json source)
-If you have a large logstash / elastic installation for collecting and filtering syslogs, you can simply pass the relevant logs as json to the LibreNMS API "syslog sink". This variant may be more flexible and secure in transport. It does not require any major changes to existing ELK setup. You can also pass simple json kv messages from any kind of application or script (example below) to this sink. 
+If you have a large logstash / elastic installation for collecting and filtering syslogs, you can simply pass the relevant logs as json to the KartsNMS API "syslog sink". This variant may be more flexible and secure in transport. It does not require any major changes to existing ELK setup. You can also pass simple json kv messages from any kind of application or script (example below) to this sink. 
 
 For long term or advanced aggregation searches you might still use Kibana/Grafana/Graylog etc. It is recommended to keep `config['syslog_purge']` short.
 
@@ -200,7 +200,7 @@ A schematic setup can look like this:
                                           │
                                           ▼
                          ┌────────────────────┐    ┌────────────────────┐
-                         │LibreNMS Sink       ├┬──►│LibreNMS Master     │
+                         │KartsNMS Sink       ├┬──►│KartsNMS Master     │
                          │/api/v0/syslogsink/ ││   │ MariaDB            │
                          └┬───────────────────┼│   └────────────────────┘
                           └────────────────────┘
@@ -210,13 +210,13 @@ A minimal [Logstash http output](https://www.elastic.co/guide/en/logstash/curren
 ```
 output {
 ....
-        #feed it to LibreNMS
+        #feed it to KartsNMS
      	http {
      		http_method => "post"
-     		url => "https://sink.librenms.org/api/v0/syslogsink/    # replace with your librenms host
+     		url => "https://sink.kartsnms.org/api/v0/syslogsink/    # replace with your kartsnms host
      		format => "json_batch"                                  # put multiple syslogs in on HTTP message
                 retry_failed => false                               # if true, logstash is blocking if the API is unavailable, be careful! 
-                headers => ["X-Auth-Token","xxxxxxxLibreNMSApiToken]
+                headers => ["X-Auth-Token","xxxxxxxKartsNMSApiToken]
                 
                 # optional if your mapping is not already done before or does not match. "msg" and "host" is mandatory. 
                 # you might also use out the clone {} function to duplicate your log stream and a dedicated log filtering/mapping etc.
@@ -236,7 +236,7 @@ output {
 
 Sample test data:
 ```
-curl -L -X POST 'https://sink.librenms.org/api/v0/syslogsink/' -H 'X-Auth-Token: xxxxxxxLibreNMSApiToken' --data-raw '[   
+curl -L -X POST 'https://sink.kartsnms.org/api/v0/syslogsink/' -H 'X-Auth-Token: xxxxxxxKartsNMSApiToken' --data-raw '[   
     {
         "msg": "kernel: minimum Message",
         "host": "mydevice.fqdn.com"
@@ -270,20 +270,20 @@ Below are sample configurations for a variety of clients. You should
 understand the config before using it as you may want to make some
 slight changes. Further configuration hints may be found in the file Graylog.md.
 
-Replace librenms.ip with IP or hostname of your LibreNMS install.
+Replace kartsnms.ip with IP or hostname of your KartsNMS install.
 
 Replace any variables in <brackets> with the relevant information.
 
 ### syslog
 
 ```config
-*.*     @librenms.ip
+*.*     @kartsnms.ip
 ```
 
 ### rsyslog
 
 ```config
-*.* @librenms.ip:514
+*.* @kartsnms.ip:514
 ```
 
 ### Cisco ASA
@@ -294,7 +294,7 @@ logging timestamp
 logging buffer-size 200000
 logging buffered debugging
 logging trap notifications
-logging host <outside interface name> librenms.ip
+logging host <outside interface name> kartsnms.ip
 ```
 
 ### Cisco IOS
@@ -302,32 +302,32 @@ logging host <outside interface name> librenms.ip
 ```config
 logging trap debugging
 logging facility local6
-logging librenms.ip
+logging kartsnms.ip
 ```
 
 ### Cisco NXOS
 
 ```config
-logging server librenms.ip 5 use-vrf default facility local6
+logging server kartsnms.ip 5 use-vrf default facility local6
 ```
 
 ### Juniper Junos
 
 ```config
-set system syslog host librenms.ip authorization any
-set system syslog host librenms.ip daemon any
-set system syslog host librenms.ip kernel any
-set system syslog host librenms.ip user any
-set system syslog host librenms.ip change-log any
-set system syslog host librenms.ip source-address <management ip>
-set system syslog host librenms.ip exclude-hostname
+set system syslog host kartsnms.ip authorization any
+set system syslog host kartsnms.ip daemon any
+set system syslog host kartsnms.ip kernel any
+set system syslog host kartsnms.ip user any
+set system syslog host kartsnms.ip change-log any
+set system syslog host kartsnms.ip source-address <management ip>
+set system syslog host kartsnms.ip exclude-hostname
 set system syslog time-format
 ```
 
 ### Huawei VRP
 
 ```config
-info-center loghost librenms.ip
+info-center loghost kartsnms.ip
 info-center timestamp debugging short-date without-timezone // Optional
 info-center timestamp log short-date // Optional
 info-center timestamp trap short-date // Optional
@@ -343,14 +343,14 @@ info-center filter-id bymodule-alias HTTP ACL_DENY
 ### Huawei SmartAX (GPON OLT)
 
 ```config
-loghost add librenms.ip librenms
-loghost activate name librenms
+loghost add kartsnms.ip kartsnms
+loghost activate name kartsnms
 ```
 
 ### Allied Telesis Alliedware Plus
 
 ```config
-log date-format iso // Required so syslog-ng/LibreNMS can correctly interpret the log message formatting.
+log date-format iso // Required so syslog-ng/KartsNMS can correctly interpret the log message formatting.
 log host x.x.x.x
 log host x.x.x.x level <errors> // Required. A log-level must be specified for syslog messages to send.
 log host x.x.x.x level notices program imish // Useful for seeing all commands executed by users.
@@ -364,21 +364,21 @@ log host source <eth0>
 configure
 logging severity warning
 logging facility local6
-logging librenms.ip control-descr “LibreNMS”
+logging kartsnms.ip control-descr “KartsNMS”
 logging notify running-config-change
 write memory
 ```
 
 If you have permitted udp and tcp 514 through any firewall then that
 should be all you need. Logs should start appearing and displayed
-within the LibreNMS web UI.
+within the KartsNMS web UI.
 
 ### Windows
 
 By Default windows has no native way to send logs to a remote syslog server.
 
 Using this how to you can download Datagram-Syslog Agent to send logs
-to a remote syslog server (LibreNMS).
+to a remote syslog server (KartsNMS).
 
 #### Note
 
@@ -393,7 +393,7 @@ You will need to download and install "Datagram-Syslog Agent" for this how to
 ## External hooks
 
 Trigger external scripts based on specific syslog patterns being
-matched with syslog hooks. Add the following to your LibreNMS
+matched with syslog hooks. Add the following to your KartsNMS
 `config.php` to enable hooks:
 
 ```ssh
@@ -407,37 +407,37 @@ devices. Add to your `config.php` file to enable.
 ### Cisco ASA
 
 ```ssh
-$config['os']['asa']['syslog_hook'][] = Array('regex' => '/%ASA-(config-)?5-111005/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['asa']['syslog_hook'][] = Array('regex' => '/%ASA-(config-)?5-111005/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ### Cisco IOS
 
 ```ssh
-$config['os']['ios']['syslog_hook'][] = Array('regex' => '/%SYS-(SW[0-9]+-)?5-CONFIG_I/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['ios']['syslog_hook'][] = Array('regex' => '/%SYS-(SW[0-9]+-)?5-CONFIG_I/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ### Cisco NXOS
 
 ```ssh
-$config['os']['nxos']['syslog_hook'][] = Array('regex' => '/%VSHD-5-VSHD_SYSLOG_CONFIG_I/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['nxos']['syslog_hook'][] = Array('regex' => '/%VSHD-5-VSHD_SYSLOG_CONFIG_I/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ### Cisco IOSXR
 
 ```ssh
-$config['os']['iosxr']['syslog_hook'][] = Array('regex' => '/%GBL-CONFIG-6-DB_COMMIT/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['iosxr']['syslog_hook'][] = Array('regex' => '/%GBL-CONFIG-6-DB_COMMIT/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ### Juniper Junos
 
 ```ssh
-$config['os']['junos']['syslog_hook'][] = Array('regex' => '/UI_COMMIT:/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['junos']['syslog_hook'][] = Array('regex' => '/UI_COMMIT:/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ### Juniper ScreenOS
 
 ```ssh
-$config['os']['screenos']['syslog_hook'][] = Array('regex' => '/System configuration saved/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['screenos']['syslog_hook'][] = Array('regex' => '/System configuration saved/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ### Allied Telesis Alliedware Plus
@@ -448,13 +448,13 @@ configuration. This is to ensure the syslog hook log message gets sent
 to the syslog server.
 
 ```ssh
-$config['os']['awplus']['syslog_hook'][] = Array('regex' => '/IMI.+.Startup-config saved on/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['awplus']['syslog_hook'][] = Array('regex' => '/IMI.+.Startup-config saved on/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
     
 ### HPE/Aruba Procurve
 
 ```ssh
-$config['os']['procurve']['syslog_hook'][] = Array('regex' => '/Running Config Change/', 'script' => '/opt/librenms/scripts/syslog-notify-oxidized.php');
+$config['os']['procurve']['syslog_hook'][] = Array('regex' => '/Running Config Change/', 'script' => '/opt/kartsnms/scripts/syslog-notify-oxidized.php');
 ```
 
 ## Configuration Options
@@ -474,11 +474,11 @@ Options [Link](../Support/Cleanup-options.md)
 ### Matching syslogs to hosts with different names
 
 In some cases, you may get logs that aren't being associated with the
-device in LibreNMS. For example, in LibreNMS the device is known as
+device in KartsNMS. For example, in KartsNMS the device is known as
 "ne-core-01", and that's how DNS resolves. However, the received
 syslogs are for "loopback.core-nw".
 
-To fix this issue, you can configure LibreNMS to translate the
+To fix this issue, you can configure KartsNMS to translate the
 incoming syslog hostname into another hostname, so that the logs get
 associated with the correct device.
 

@@ -48,9 +48,9 @@ jobs:
         image: ${{ matrix.database }}
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: librenms_phpunit_78hunjuybybh
-          MYSQL_USER: librenms
-          MYSQL_PASSWORD: librenms
+          MYSQL_DATABASE: kartsnms_phpunit_78hunjuybybh
+          MYSQL_USER: kartsnms
+          MYSQL_PASSWORD: kartsnms
         ports:
           - 3306
     steps:
@@ -124,15 +124,15 @@ jobs:
           DB_DRIVER=mysql
           DB_HOST=127.0.0.1
           DB_PORT=${{ job.services.database.ports[3306] }}
-          DB_DATABASE=librenms_phpunit_78hunjuybybh
-          DB_USERNAME=librenms
-          DB_PASSWORD=librenms
+          DB_DATABASE=kartsnms_phpunit_78hunjuybybh
+          DB_USERNAME=kartsnms
+          DB_PASSWORD=kartsnms
           DB_TEST_DRIVER=mysql
           DB_TEST_HOST=127.0.0.1
           DB_TEST_PORT=${{ job.services.database.ports[3306] }}
-          DB_TEST_DATABASE=librenms_phpunit_78hunjuybybh
-          DB_TEST_USERNAME=librenms
-          DB_TEST_PASSWORD=librenms
+          DB_TEST_DATABASE=kartsnms_phpunit_78hunjuybybh
+          DB_TEST_USERNAME=kartsnms
+          DB_TEST_PASSWORD=kartsnms
           EOL
       -
         name: Composer install
@@ -151,20 +151,20 @@ jobs:
         env:
           PORT: ${{ job.services.database.ports[3306] }}
         run: |
-          mysqladmin -h"127.0.0.1" -P"$PORT" --user=librenms --password=librenms ping --wait=5
+          mysqladmin -h"127.0.0.1" -P"$PORT" --user=kartsnms --password=kartsnms ping --wait=5
       -
         name: Set MySQL authentication plugin
         if: matrix.database == 'mysql:8.0'
         env:
           PORT: ${{ job.services.database.ports[3306] }}
         run: |
-          mysql -h"127.0.0.1" -P"$PORT" --user=root -e "ALTER USER 'librenms'@'%' IDENTIFIED WITH mysql_native_password BY 'librenms'"
+          mysql -h"127.0.0.1" -P"$PORT" --user=root -e "ALTER USER 'kartsnms'@'%' IDENTIFIED WITH mysql_native_password BY 'kartsnms'"
       -
         name: Set MySQL collate
         env:
           PORT: ${{ job.services.database.ports[3306] }}
         run: |
-          mysql -h"127.0.0.1" -P"$PORT" --user=librenms --password=librenms -e 'ALTER DATABASE librenms_phpunit_78hunjuybybh CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+          mysql -h"127.0.0.1" -P"$PORT" --user=kartsnms --password=kartsnms -e 'ALTER DATABASE kartsnms_phpunit_78hunjuybybh CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
       -
         name: Setup SQLite
         run: sqlite3 database/testing.sqlite ""

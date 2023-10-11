@@ -1,6 +1,6 @@
 <?php
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if ($this_port['dot3StatsIndex'] and $port['ifType'] == 'ethernetCsmacd') {
     $etherlike_oids = [

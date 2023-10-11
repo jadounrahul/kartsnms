@@ -1,7 +1,7 @@
 <?php
 
 // FIXME svn stuff still using optc etc, won't work, needs updating!
-use LibreNMS\Config;
+use KartsNMS\Config;
 use Symfony\Component\Process\Process;
 
 if (Auth::user()->hasGlobalAdmin()) {
@@ -127,7 +127,7 @@ if (Auth::user()->hasGlobalAdmin()) {
             $text = join("\n", $lines);
         }
     } elseif (Config::get('oxidized.enabled') === true && Config::has('oxidized.url')) {
-        // Try with hostname as set in librenms first
+        // Try with hostname as set in kartsnms first
         $oxidized_hostname = $device['hostname'];
         // fetch info about the node and then a list of versions for that node
         $node_info = json_decode((new \App\ApiClients\Oxidized())->getContent('/node/show/' . $oxidized_hostname . '?format=json'), true);

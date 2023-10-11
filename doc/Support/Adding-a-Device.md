@@ -1,6 +1,6 @@
 # Adding Device
 
-You have two options for adding a new device into LibreNMS. You can
+You have two options for adding a new device into KartsNMS. You can
 add a device via the `cli` or by using the `WebUI`.
 
 ## Via WebUI
@@ -20,7 +20,7 @@ fill out the optional field `Overwrite IP` with it's IP-Address.
 ## Via CLI
 
 Using the command line via ssh you can add a new device by changing to
-the directory of your LibreNMS install and typing (be sure to put the
+the directory of your KartsNMS install and typing (be sure to put the
 correct details).
 
 ```bash
@@ -42,9 +42,9 @@ would enter:
 
 ## Ping Only Device
 
-You can add ping only devices into LibreNMS through the WebUI or CLI. When
+You can add ping only devices into KartsNMS through the WebUI or CLI. When
 adding the device switch the SNMP button to "off". Device will be
-added into LibreNMS as Ping Only Device and will show ICMP Response Graph.
+added into KartsNMS as Ping Only Device and will show ICMP Response Graph.
 
 - Hostname: IP address or DNS name.
 - Hardware: Optional you can type in whatever you like.

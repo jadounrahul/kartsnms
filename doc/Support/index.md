@@ -8,10 +8,10 @@
 
 We have a few methods for you to get in touch to ask for help.
 
-- [Community Forum](https://community.librenms.org)
-  - [Ask for Help](https://community.librenms.org/c/help)
-  - [Feature Requests](https://community.librenms.org/c/feature-requests?order=op_likes&status=open)
+- [Community Forum](https://community.itkarts.com)
+  - [Ask for Help](https://community.itkarts.com/c/help)
+  - [Feature Requests](https://community.itkarts.com/c/feature-requests?order=op_likes&status=open)
 
-- [Discord](https://t.libren.ms/discord) Active chat and discussion
+- [Discord](https://t.kartsn.ms/discord) Active chat and discussion
 
-- [Bug Reports](https://community.librenms.org/c/help)
+- [Bug Reports](https://community.itkarts.com/c/help)

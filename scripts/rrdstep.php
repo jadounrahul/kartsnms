@@ -3,7 +3,7 @@
 /**
  * rrdstep.php
  *
- * LibreNMS Script to convert rrd files from default 300 step to user defined
+ * KartsNMS Script to convert rrd files from default 300 step to user defined
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,13 +18,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2017 Neil Lathwood
  * @author     Neil Lathwood <neil@lathwood.co.uk>
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $init_modules = [];
 require realpath(__DIR__ . '/..') . '/includes/init.php';

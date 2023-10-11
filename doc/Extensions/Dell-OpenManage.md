@@ -24,7 +24,7 @@ Ensure that srvadmin is started, this is usually done by executing:
 /opt/dell/srvadmin/sbin/srvadmin-services.sh start
 ```
 
-Once this has been done, add the device to LibreNMS as normal and you
+Once this has been done, add the device to KartsNMS as normal and you
 will start to receive Temperatures and Fan speed data.
 
 ## Windows

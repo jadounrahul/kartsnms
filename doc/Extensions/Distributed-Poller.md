@@ -1,6 +1,6 @@
 # Distributed Poller
 
-A normal install contains all parts of LibreNMS:
+A normal install contains all parts of KartsNMS:
 
 - Poller/Discovery/etc workers
 - RRD (Time series data store) *
@@ -27,12 +27,12 @@ mechanisms available
 - redis (preferred)
 - sql locks (default)
 
-All of the above locking mechanisms are natively supported in LibreNMS.
+All of the above locking mechanisms are natively supported in KartsNMS.
 If none are specified, it will default to using SQL.
 
 ## Requirements for distributed polling
 
-These requirements are above the normal requirements for a full LibreNMS install.
+These requirements are above the normal requirements for a full KartsNMS install.
 
 - rrdtool version 1.4 or above
 - At least one locking mechanism configured
@@ -94,10 +94,10 @@ Python 3 python-memcached package.
 Below is an example setup based on a real deployment which at the time
 of writing covers over 2,500 devices and 50,000 ports. The setup is
 running within an OpenStack environment with some commodity hardware
-for remote pollers. Here's a diagram of how you can scale LibreNMS
+for remote pollers. Here's a diagram of how you can scale KartsNMS
 out:
 
-![Example Setup](@= config.site_url =@/img/librenms-distributed-diagram.png)
+![Example Setup](@= config.site_url =@/img/kartsnms-distributed-diagram.png)
 
 ## Architecture
 
@@ -211,7 +211,7 @@ Web server, DB server, RRDCached server and 3 pollers.
 
 Web Server:
 
-Running Apache and an install of LibreNMS in /opt/librenms
+Running Apache and an install of KartsNMS in /opt/kartsnms
 
 !!! setting "poller/distributed"
     ```bash
@@ -248,7 +248,7 @@ Ubuntu (/etc/default/rrdcached)
 ```conf
 OPTS="-l 0:42217"
 OPTS="$OPTS -j /var/lib/rrdcached/journal/ -F"
-OPTS="$OPTS -b /opt/librenms/rrd -B"
+OPTS="$OPTS -b /opt/kartsnms/rrd -B"
 OPTS="$OPTS -w 1800 -z 900"
 ```
 
@@ -257,12 +257,12 @@ Ubuntu (/etc/default/rrdcached) - RRDCached 1.5.5 and above.
 ```
 BASE_OPTIONS="-l 0:42217"
 BASE_OPTIONS="$BASE_OPTIONS -R -j /var/lib/rrdcached/journal/ -F"
-BASE_OPTIONS="$BASE_OPTIONS -b /opt/librenms/rrd -B"
+BASE_OPTIONS="$BASE_OPTIONS -b /opt/kartsnms/rrd -B"
 BASE_OPTIONS="$BASE_OPTIONS -w 1800 -z 900"
 ```
 
 Poller 1:
-Running an install of LibreNMS in /opt/librenms
+Running an install of KartsNMS in /opt/kartsnms
 
 `config.php`
 
@@ -284,21 +284,21 @@ $config['distributed_billing']               = true;
     lnms config:set rrdcached "example.com:42217"
     ```
 
-`/etc/cron.d/librenms`
+`/etc/cron.d/kartsnms`
 
 Runs discovery and polling for group 0, daily.sh to deal with
 notifications and DB cleanup and alerts.
 
 ```conf
-33   */6  * * *   librenms    /opt/librenms/cronic /opt/librenms/discovery-wrapper.py 1
-*/5  *    * * *   librenms    /opt/librenms/discovery.php -h new >> /dev/null 2>&1
-*/5  *    * * *   librenms    /opt/librenms/cronic /opt/librenms/poller-wrapper.py 16
-15   0    * * *   librenms    /opt/librenms/daily.sh >> /dev/null 2>&1
-*    *    * * *   librenms    /opt/librenms/alerts.php >> /dev/null 2>&1
+33   */6  * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/discovery-wrapper.py 1
+*/5  *    * * *   kartsnms    /opt/kartsnms/discovery.php -h new >> /dev/null 2>&1
+*/5  *    * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/poller-wrapper.py 16
+15   0    * * *   kartsnms    /opt/kartsnms/daily.sh >> /dev/null 2>&1
+*    *    * * *   kartsnms    /opt/kartsnms/alerts.php >> /dev/null 2>&1
 ```
 
 Poller 2:
-Running an install of LibreNMS in /opt/librenms
+Running an install of KartsNMS in /opt/kartsnms
 
 `config.php`
 
@@ -320,19 +320,19 @@ $config['distributed_billing']               = true;
     lnms config:set rrdcached "example.com:42217"
     ```
 
-`/etc/cron.d/librenms`
+`/etc/cron.d/kartsnms`
 
 Runs billing as well as polling for group 0.
 
 ```conf
-*/5 * * * * librenms /opt/librenms/poller-wrapper.py 16 >> /opt/librenms/logs/wrapper.log
-*/5 * * * * librenms /opt/librenms/poll-billing.php >> /dev/null 2>&1
-01  * * * * librenms /opt/librenms/billing-calculate.php >> /dev/null 2>&1
-15  0 * * * librenms    /opt/librenms/daily.sh >> /dev/null 2>&1
+*/5 * * * * kartsnms /opt/kartsnms/poller-wrapper.py 16 >> /opt/kartsnms/logs/wrapper.log
+*/5 * * * * kartsnms /opt/kartsnms/poll-billing.php >> /dev/null 2>&1
+01  * * * * kartsnms /opt/kartsnms/billing-calculate.php >> /dev/null 2>&1
+15  0 * * * kartsnms    /opt/kartsnms/daily.sh >> /dev/null 2>&1
 ```
 
 Poller 3:
-Running an install of LibreNMS in /opt/librenms
+Running an install of KartsNMS in /opt/kartsnms
 
 `config.php`
 
@@ -354,13 +354,13 @@ $config['distributed_billing']               = true;
     lnms config:set rrdcached "example.com:42217"
     ```
 
-`/etc/cron.d/librenms`
+`/etc/cron.d/kartsnms`
 Runs discovery and polling for groups 2 and 3.
 
 ```conf
-33  */6 * * *   librenms    /opt/librenms/cronic /opt/librenms/discovery-wrapper.py 1
-*/5 *   * * *   librenms    /opt/librenms/discovery.php -h new >> /dev/null 2>&1
-*/5 *   * * *   librenms    /opt/librenms/poll-billing.php >> /dev/null 2>&1
-*/5 *   * * *   librenms    /opt/librenms/cronic /opt/librenms/poller-wrapper.py 16
-15  0   * * *   librenms    /opt/librenms/daily.sh >> /dev/null 2>&1
+33  */6 * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/discovery-wrapper.py 1
+*/5 *   * * *   kartsnms    /opt/kartsnms/discovery.php -h new >> /dev/null 2>&1
+*/5 *   * * *   kartsnms    /opt/kartsnms/poll-billing.php >> /dev/null 2>&1
+*/5 *   * * *   kartsnms    /opt/kartsnms/cronic /opt/kartsnms/poller-wrapper.py 16
+15  0   * * *   kartsnms    /opt/kartsnms/daily.sh >> /dev/null 2>&1
 ```

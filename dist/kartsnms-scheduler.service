@@ -1,0 +1,11 @@
+[Unit]
+Description=KartsNMS Scheduler
+
+[Service]
+Type=oneshot
+StandardOutput=null
+StandardError=null
+WorkingDirectory=/opt/kartsnms/
+ExecStart=/usr/bin/env php artisan schedule:run --no-ansi --no-interaction
+User=kartsnms
+Group=kartsnms

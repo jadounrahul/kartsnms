@@ -2,7 +2,7 @@
 
 // Polls MailScanner statistics from script via SNMP
 
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 $name = 'mailscannerV2';
 $options = '-Oqv';

@@ -13,10 +13,10 @@ we've put together a simple validation tool which at present will:
 - Connection to your MySQL server to verify credentials.
 - Checks if you are running the older alerting system.
 - Checks your rrd directory setup if not running rrdcached.
-- Checks disk space for where /opt/librenms is installed.
+- Checks disk space for where /opt/kartsnms is installed.
 - Checks location to fping
 - Tests MySQL strict mode being enabled
-- Tests for files not owned by librenms user (if configured)
+- Tests for files not owned by kartsnms user (if configured)
 
 Optionally you can also pass -m and a module name for that to be
 tested. Current modules are:
@@ -40,7 +40,7 @@ things you need to fix:
 
 # Validate from the WebUI
 
-You can validate your LibreNMS install from the WebUI, using the nav
+You can validate your KartsNMS install from the WebUI, using the nav
 bar and clicking on the little Gear Icon -> Validate Config. 
 
 ![Validate Config Icon](/img/validate-config-icon.png) 

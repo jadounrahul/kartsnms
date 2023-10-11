@@ -1,7 +1,7 @@
 <?php
 
 // Plugins
-use LibreNMS\RRD\RrdDefinition;
+use KartsNMS\RRD\RrdDefinition;
 
 if (! empty($agent_data['munin'])) {
     echo 'Munin Plugins:';

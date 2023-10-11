@@ -298,7 +298,7 @@ in the $icons array.
 - `includes/discovery/functions.inc.php`: optional - if sensible low_limit and high_limit values
 are guessable when a SNMP-retrievable threshold is not available, add a case for the sensor class
 to the sensor_limit() and/or sensor_low_limit() functions.
-- `LibreNMS/Util/ObjectCache.php`: optional - choose menu grouping for the sensor class.
+- `KartsNMS/Util/ObjectCache.php`: optional - choose menu grouping for the sensor class.
 - `includes/html/pages/device/health.inc.php`: add a dbFetchCell(), $datas[], and $type_text[]
 entry for the sensor class.
 - `includes/html/pages/device/overview.inc.php`: add `require 'overview/sensors/$class.inc.php'`
@@ -364,8 +364,8 @@ foreach ($pre_cache['adva_fsp150_ports'] as $index => $entry) {
         //Discover received power level
         $oidRx = '.1.3.6.1.4.1.2544.1.12.5.1.21.1.34.' . $index . '.3';
         $oidTx = '.1.3.6.1.4.1.2544.1.12.5.1.21.1.33.' . $index . '.3';
-        $currentRx = snmp_get($device, $oidRx, '-Oqv', 'CM-PERFORMANCE-MIB', '/opt/librenms/mibs/adva');
-        $currentTx = snmp_get($device, $oidTx, '-Oqv', 'CM-PERFORMANCE-MIB', '/opt/librenms/mibs/adva');
+        $currentRx = snmp_get($device, $oidRx, '-Oqv', 'CM-PERFORMANCE-MIB', '/opt/kartsnms/mibs/adva');
+        $currentTx = snmp_get($device, $oidTx, '-Oqv', 'CM-PERFORMANCE-MIB', '/opt/kartsnms/mibs/adva');
         if ($currentRx != 0 || $currentTx != 0) {
             $entPhysicalIndex = $entry['cmEthernetTrafficPortIfIndex'];
             $entPhysicalIndex_measured = 'ports';
@@ -454,8 +454,8 @@ there is nothing next to the sensor type then the sensor was not discovered. The
 information about changes to the database and RRD files at the bottom.
 
 ```
-[librenms@nms-test ~]$ ./discovery.php -h 2 -m sensors
-LibreNMS Discovery
+[kartsnms@nms-test ~]$ ./discovery.php -h 2 -m sensors
+KartsNMS Discovery
 164.113.194.250 2 adva_fsp150
 
 #### Load disco module core ####

@@ -6,10 +6,10 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage nfs-server
- * @link       https://www.librenms.org
- * @copyright  2017 LibreNMS
+ * @link       https://www.itkarts.com
+ * @copyright  2017 KartsNMS
  * @author     SvennD <svennd@svennd.be>
 */
 
@@ -46,7 +46,7 @@ if (Rrd::checkRrdExists($rrd_filename)) {
         $rrd_list[$i]['filename'] = $rrd_filename;
         $rrd_list[$i]['descr'] = $var['descr'];
         $rrd_list[$i]['ds'] = $ds;
-        $rrd_list[$i]['colour'] = \LibreNMS\Config::get("graph_colours.$colours.$i");
+        $rrd_list[$i]['colour'] = \KartsNMS\Config::get("graph_colours.$colours.$i");
         $i++;
     }
 } else {

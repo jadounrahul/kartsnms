@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -41,9 +41,9 @@ class HandleCors extends \Illuminate\Http\Middleware\HandleCors
     public function __construct(Container $container, CorsService $cors)
     {
         // load legacy config settings before booting the CorsService
-        if (\LibreNMS\Config::get('api.cors.enabled')) {
+        if (\KartsNMS\Config::get('api.cors.enabled')) {
             $laravel_config = $container['config']->get('cors');
-            $legacy = \LibreNMS\Config::get('api.cors');
+            $legacy = \KartsNMS\Config::get('api.cors');
 
             $laravel_config['paths'][] = 'api/*';
 

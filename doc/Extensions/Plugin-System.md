@@ -1,13 +1,13 @@
 # Developing for the Plugin System
 
-With plugins you can extend LibreNMS with special functions that are
+With plugins you can extend KartsNMS with special functions that are
 specific to your setup or are not relevant or interesting for all community members.
 
 You are able to intervene in defined places in the behavior of
 the website, without it coming to problems with future updates.
 
 This documentation will give you a basis for writing a plugin for
-LibreNMS. An example plugin is included in the LibreNMS distribution.
+KartsNMS. An example plugin is included in the KartsNMS distribution.
 
 
 ## Version 2 Plugin System structure
@@ -73,7 +73,7 @@ class in 'app/Plugins/PluginName' and overload the hook methods.
 
 - menu.blade.php :: For a menu entry
 
-- page.blade.pho :: Here is a good place to add a own LibreNMS page without dependence with a device. A good place to create your own lists with special requirements and behavior.
+- page.blade.pho :: Here is a good place to add a own KartsNMS page without dependence with a device. A good place to create your own lists with special requirements and behavior.
 
 - settings.blade.php :: If you need your own settings and variables, you can have a look in the ExamplePlugin.
 
@@ -113,8 +113,8 @@ PluginName - This is a directory and needs to be named as per the
 plugin you are creating.
 
 - PluginName.php :: This file is used to process calls into the plugin
-  from the main LibreNMS install. Here only functions within the class
-  for your plugin that LibreNMS calls will be executed. For a list of
+  from the main KartsNMS install. Here only functions within the class
+  for your plugin that KartsNMS calls will be executed. For a list of
   currently enabled system hooks, please see further down. The minimum
   code required in this file is (replace Test with the name of your
   plugin):

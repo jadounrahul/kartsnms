@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2020 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
 
-namespace LibreNMS\Tests\Unit;
+namespace KartsNMS\Tests\Unit;
 
 use Illuminate\Support\Arr;
-use LibreNMS\Tests\TestCase;
-use LibreNMS\Util\FileCategorizer;
+use KartsNMS\Tests\TestCase;
+use KartsNMS\Util\FileCategorizer;
 
 class FileCategorizerTest extends TestCase
 {
@@ -60,7 +60,7 @@ class FileCategorizerTest extends TestCase
                 'includes/polling/sensors.inc.php',
                 'misc/test.php',
                 'app/Http/Kernel.php',
-                'LibreNMS/Modules/Mpls.php',
+                'KartsNMS/Modules/Mpls.php',
             ],
         ]);
     }
@@ -81,7 +81,7 @@ class FileCategorizerTest extends TestCase
         $this->assertCategorized([
             'python' => [
                 'python.py',
-                'LibreNMS/__init__.py',
+                'KartsNMS/__init__.py',
             ],
         ]);
     }
@@ -112,11 +112,11 @@ class FileCategorizerTest extends TestCase
         $this->assertCategorized([
             'resources' => [
                 'resources/js/app.js',
-                'resources/js/components/LibrenmsSetting.vue',
-                'resources/views/layouts/librenmsv1.blade.php',
+                'resources/js/components/KartsnmsSetting.vue',
+                'resources/views/layouts/kartsnmsv1.blade.php',
             ],
             'php' => [
-                'resources/views/layouts/librenmsv1.blade.php',
+                'resources/views/layouts/kartsnmsv1.blade.php',
             ],
         ]);
     }
@@ -158,16 +158,16 @@ class FileCategorizerTest extends TestCase
         $this->assertCategorized([
             'os' => ['3com', 'arris-dsr4410md', 'adva_fsp3kr7', 'xirrus_aos'],
             'os-files' => [
-                'LibreNMS/OS/ThreeCom.php',
-                'LibreNMS/OS/ArrisDsr4410md.php',
-                'LibreNMS/OS/AdvaFsp3kr7.php',
-                'LibreNMS/OS/XirrusAos.php',
+                'KartsNMS/OS/ThreeCom.php',
+                'KartsNMS/OS/ArrisDsr4410md.php',
+                'KartsNMS/OS/AdvaFsp3kr7.php',
+                'KartsNMS/OS/XirrusAos.php',
             ],
             'php' => [
-                'LibreNMS/OS/ThreeCom.php',
-                'LibreNMS/OS/ArrisDsr4410md.php',
-                'LibreNMS/OS/AdvaFsp3kr7.php',
-                'LibreNMS/OS/XirrusAos.php',
+                'KartsNMS/OS/ThreeCom.php',
+                'KartsNMS/OS/ArrisDsr4410md.php',
+                'KartsNMS/OS/AdvaFsp3kr7.php',
+                'KartsNMS/OS/XirrusAos.php',
             ],
         ]);
 
@@ -190,18 +190,18 @@ class FileCategorizerTest extends TestCase
             'os-files' => [
                 'tests/data/3com.json',
                 'tests/snmpsim/calix.snmprec',
-                'LibreNMS/OS/Ptp650.php',
+                'KartsNMS/OS/Ptp650.php',
                 'includes/definitions/dd-wrt.yaml',
                 'includes/definitions/discovery/arista_eos.yaml',
             ],
             'php' => [
-                'LibreNMS/OS/Ptp650.php',
+                'KartsNMS/OS/Ptp650.php',
             ],
             'full-checks' => [true],
         ], [
             'tests/data/3com.json',
             'tests/snmpsim/calix.snmprec',
-            'LibreNMS/OS/Ptp650.php',
+            'KartsNMS/OS/Ptp650.php',
             'includes/definitions/dd-wrt.yaml',
             'includes/definitions/discovery/arista_eos.yaml',
         ]);

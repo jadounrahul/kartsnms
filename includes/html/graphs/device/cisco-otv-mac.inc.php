@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS module to display Cisco Class-Based QoS Details
+ * KartsNMS module to display Cisco Class-Based QoS Details
  *
  * Copyright (c) 2015 Aaron Daniels <aaron@daniels.id.au>
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-$component = new LibreNMS\Component();
+$component = new KartsNMS\Component();
 $options['filter']['type'] = ['=', 'Cisco-OTV'];
 $components = $component->getComponents($device['device_id'], $options);
 
@@ -36,7 +36,7 @@ foreach ($components as $id => $array) {
             }
 
             // Grab a color from the array.
-            $color = \LibreNMS\Config::get("graph_colours.mixed.$count", \LibreNMS\Config::get('graph_colours.oranges.' . ($count - 7)));
+            $color = \KartsNMS\Config::get("graph_colours.mixed.$count", \KartsNMS\Config::get('graph_colours.oranges.' . ($count - 7)));
 
             $rrd_additions .= ' DEF:DS' . $count . '=' . $rrd_filename . ':count:AVERAGE ';
             $rrd_additions .= ' AREA:DS' . $count . '#' . $color . ":'" . str_pad(substr($components[$id]['endpoint'], 0, 15), 15) . "'" . $stack;

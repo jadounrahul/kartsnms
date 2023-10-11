@@ -1,0 +1,12 @@
+# /etc/systemd/system/kartsnms-irc.service 
+
+[Unit]
+Description=Kartsnms IRC bot
+After=network.target
+
+[Service]
+ExecStart=/opt/kartsnms/irc.php
+Restart=always
+
+[Install]
+WantedBy=default.target

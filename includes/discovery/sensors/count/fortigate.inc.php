@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS Dantel Webmon generic sensor
+ * KartsNMS Dantel Webmon generic sensor
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -8,11 +8,11 @@
  * option) any later version.  Please see LICENSE.txt at the top level of
  * the source code distribution for details.
  *
- * @package    LibreNMS
+ * @package    KartsNMS
  * @subpackage webui
- * @link       https://www.librenms.org
- * @copyright  2019 LibreNMS
- * @author     LibreNMS Contributors
+ * @link       https://www.itkarts.com
+ * @copyright  2019 KartsNMS
+ * @author     KartsNMS Contributors
  */
 
 $session_rate = [

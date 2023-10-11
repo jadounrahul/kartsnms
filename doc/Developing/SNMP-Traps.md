@@ -9,8 +9,8 @@ restart snmptrapd.
 
 `MIBDIRS` option is not recursive, so you need to specify each directory individually.
 
-Create a new class in `LibreNMS\Snmptrap\Handlers` that implements the
-`LibreNMS\Interfaces\SnmptrapHandler` interface. For example:
+Create a new class in `KartsNMS\Snmptrap\Handlers` that implements the
+`KartsNMS\Interfaces\SnmptrapHandler` interface. For example:
 
 ```php
 <?php
@@ -32,16 +32,16 @@ Create a new class in `LibreNMS\Snmptrap\Handlers` that implements the
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       https://www.librenms.org
+ * @package    KartsNMS
+ * @link       https://www.itkarts.com
  */
 
-namespace LibreNMS\Snmptrap\Handlers;
+namespace KartsNMS\Snmptrap\Handlers;
 
 use App\Models\Device;
-use LibreNMS\Enum\Severity;
-use LibreNMS\Interfaces\SnmptrapHandler;
-use LibreNMS\Snmptrap\Trap;
+use KartsNMS\Enum\Severity;
+use KartsNMS\Interfaces\SnmptrapHandler;
+use KartsNMS\Snmptrap\Trap;
 
 class ColdBoot implements SnmptrapHandler
 {
@@ -75,10 +75,10 @@ Register the mapping in the `config/snmptraps.php` file. Make sure to
 use the full trap OID and correct class.
 
 ```php
-'SNMPv2-MIB::coldStart' => \LibreNMS\Snmptrap\Handlers\ColdBoot::class,
+'SNMPv2-MIB::coldStart' => \KartsNMS\Snmptrap\Handlers\ColdBoot::class,
 ```
 
-The handle function inside your new class will receive a LibreNMS/Snmptrap/Trap
+The handle function inside your new class will receive a KartsNMS/Snmptrap/Trap
 object containing the parsed trap.  It is common to update the database and create
 event log entries within the handle function.
 
@@ -125,7 +125,7 @@ If your trap modifies the database, you should also test that it does so.
 ```php
 <?php
 
-namespace LibreNMS\Tests\Feature\SnmpTraps;
+namespace KartsNMS\Tests\Feature\SnmpTraps;
 
 class ColdStratTest extends SnmpTrapTestCase
 {

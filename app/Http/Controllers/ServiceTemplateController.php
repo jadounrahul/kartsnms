@@ -9,8 +9,8 @@ use App\Models\ServiceTemplate;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use LibreNMS\Alerting\QueryBuilderFilter;
-use LibreNMS\Services;
+use KartsNMS\Alerting\QueryBuilderFilter;
+use KartsNMS\Services;
 
 class ServiceTemplateController extends Controller
 {

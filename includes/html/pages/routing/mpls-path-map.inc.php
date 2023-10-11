@@ -1,6 +1,6 @@
 <?php
 /*
- * LibreNMS
+ * KartsNMS
  *
  * Copyright (c) 2019 Vitali Kari
  *
@@ -11,7 +11,7 @@
  * the source code distribution for details.
  */
 
-use LibreNMS\Config;
+use KartsNMS\Config;
 
 $hops = [];
 $links = [];

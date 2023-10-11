@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -29,9 +29,9 @@ use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\DB;
-use LibreNMS\Authentication\LegacyAuth;
-use LibreNMS\Exceptions\AuthenticationException;
-use LibreNMS\Util\Debug;
+use KartsNMS\Authentication\LegacyAuth;
+use KartsNMS\Exceptions\AuthenticationException;
+use KartsNMS\Util\Debug;
 use Log;
 use Request;
 use Session;

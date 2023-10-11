@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @link       https://www.librenms.org
+ * @link       https://www.itkarts.com
  *
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
@@ -52,10 +52,10 @@ use App\Models\Vrf;
 use App\Models\WirelessSensor;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use LibreNMS\Config;
-use LibreNMS\Data\Store\Rrd;
-use LibreNMS\Util\Http;
-use LibreNMS\Util\Version;
+use KartsNMS\Config;
+use KartsNMS\Data\Store\Rrd;
+use KartsNMS\Util\Http;
+use KartsNMS\Util\Version;
 
 class AboutController extends Controller
 {

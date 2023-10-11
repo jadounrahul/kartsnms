@@ -60,7 +60,7 @@ write them to the `component` table, not the `component_prefs` table.
 Create an instance of the component class:
 
 ```php
-$COMPONENT = new LibreNMS\Component();
+$COMPONENT = new KartsNMS\Component();
 ```
 
 ### Retrieving Components

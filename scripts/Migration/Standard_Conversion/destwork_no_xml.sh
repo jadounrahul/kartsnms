@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Observium to LibreNMS conversion
+# Observium to KartsNMS conversion
 
 ####################### SCRIPT DESCRIPTION ########################
-# A simple script to add each host in text file to LibreNMS       #
+# A simple script to add each host in text file to KartsNMS       #
 ###################################################################
 
 ########################### DIRECTIONS ############################
@@ -11,24 +11,24 @@
 ###################################################################
 
 ############################# CREDITS #############################
-# LibreNMS work is done by a great group - https://www.librenms.org    #
+# KartsNMS work is done by a great group - https://www.itkarts.com    #
 # Script Written by - Dan Brown - http://vlan50.com               #
 ###################################################################
 
-# Enter path to LibreNMS addhost module
-ADDHOST=/opt/librenms/addhost.php
+# Enter path to KartsNMS addhost module
+ADDHOST=/opt/kartsnms/addhost.php
 # Enter your unique SNMP String
 SNMPSTRING=cisconetwork
 # Enter SNMP version of all clients in nodelist text file
 SNMPVERSION=v2c
 # Enter path to nodelist text file
 NODELIST=/tmp/nodelist.txt
-# Enter user and group of LibreNMS installation
-L_USRGRP=librenms
+# Enter user and group of KartsNMS installation
+L_USRGRP=kartsnms
 
 while read line
-	# Change ownership to LibreNMS user and group
+	# Change ownership to KartsNMS user and group
 	chown -R $L_USRGRP:$L_USRGRP .;
-	# Add each host from the node list file to LibreNMS
+	# Add each host from the node list file to KartsNMS
 	do php $ADDHOST "${line%/*}" $SNMPSTRING $SNMPVERSION;
 done < $NODELIST

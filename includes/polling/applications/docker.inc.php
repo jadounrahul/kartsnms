@@ -1,9 +1,9 @@
 <?php
 
-use LibreNMS\Exceptions\JsonAppException;
-use LibreNMS\Exceptions\JsonAppMissingKeysException;
-use LibreNMS\RRD\RrdDefinition;
-use LibreNMS\Util\Number;
+use KartsNMS\Exceptions\JsonAppException;
+use KartsNMS\Exceptions\JsonAppMissingKeysException;
+use KartsNMS\RRD\RrdDefinition;
+use KartsNMS\Util\Number;
 
 $name = 'docker';
 $version = 1;

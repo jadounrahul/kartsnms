@@ -42,7 +42,7 @@ if (! $swap_present) {
     $rrd_options .= '-l 0 '; // swap is negative axis
 }
 
-$colors = \LibreNMS\Config::get('graph_colours.varied');
+$colors = \KartsNMS\Config::get('graph_colours.varied');
 $legend_sections = [0 => '', 1 => '', 2 => ''];
 $section = 0;
 $free_indexes = [];
@@ -52,7 +52,7 @@ $rrd_options .= " COMMENT:'                            Min   Max    Cur      \\n
 foreach ($mempools as $index => $mempool) {
     $color = $colors[$index % 8];
 
-    $descr = \LibreNMS\Data\Store\Rrd::fixedSafeDescr($mempool->mempool_descr, 22);
+    $descr = \KartsNMS\Data\Store\Rrd::fixedSafeDescr($mempool->mempool_descr, 22);
     $rrd_filename = Rrd::name($device['hostname'], ['mempool', $mempool->mempool_type, $mempool->mempool_class, $mempool->mempool_index]);
 
     if (Rrd::checkRrdExists($rrd_filename)) {
