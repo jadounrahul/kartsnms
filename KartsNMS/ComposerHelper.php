@@ -147,8 +147,8 @@ class ComposerHelper
                 'DB_DATABASE' => $config['db_name'],
                 'DB_SOCKET' => $config['db_socket'],
                 'APP_URL' => $config['base_url'],
-                'LIBRENMS_USER' => $config['user'],
-                'LIBRENMS_GROUP' => $config['group'],
+                'KARTSNMS_USER' => $config['user'],
+                'KARTSNMS_GROUP' => $config['group'],
                 'VAPID_PUBLIC_KEY' => $vapid['publicKey'],
                 'VAPID_PRIVATE_KEY' => $vapid['privateKey'],
             ]);

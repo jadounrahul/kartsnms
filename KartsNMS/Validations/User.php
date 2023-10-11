@@ -129,7 +129,7 @@ class User extends BaseValidation
                 }
             }
         } else {
-            $validator->warn("You don't have LIBRENMS_USER set, this most likely needs to be set to 'kartsnms'");
+            $validator->warn("You don't have KARTSNMS_USER set, this most likely needs to be set to 'kartsnms'");
         }
     }
 }

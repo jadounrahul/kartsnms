@@ -216,6 +216,6 @@ class EnvHelper
      */
     public static function kartsnmsDocker()
     {
-        return getenv('LIBRENMS_DOCKER') === '1';
+        return getenv('KARTSNMS_DOCKER') === '1';
     }
 }
